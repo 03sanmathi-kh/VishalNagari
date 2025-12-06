@@ -128,22 +128,30 @@
 
 <!-- Module content examples -->
 <div id="m1" class="module-content">
-  <h2>Budget Allocation</h2>
+  <h2>Smart Housing Allocation</h2>
   <p><strong>Case Study:</strong><br>
-    How can government budget be allocated to departments to maximize public welfare?</p>
-  <p><strong>Algorithm:</strong> Greedy Allocation<br><strong>Efficiency:</strong> O(n log n)</p>
+    How can housing units be allocated fairly across zones and budgets to maximize social welfare?</p>
+  <p><strong>Algorithm:</strong> AVL Tree + Segment Tree<br><strong>Efficiency:</strong></p>
+  <ul>
+    <li>AVL Tree operations (insert, search): O(log n)</li>
+    <li>Segment Tree build: O(n)</li>
+    <li>Segment Tree query/update: O(log n)</li>
+  </ul>
   <pre>
-C++ Pseudocode:
-vector<int> allocateBudget(vector<int>& needs, int totalBudget) {
-    sort(needs.rbegin(), needs.rend());
-    vector<int> allocation(needs.size(),0);
-    for(int i=0;i<needs.size();i++){
-        if(totalBudget>=needs[i]){ allocation[i]=needs[i]; totalBudget-=needs[i]; }
-        else{ allocation[i]=totalBudget; totalBudget=0; }
-    }
-    return allocation;
-}
+// Smart Housing Allocation
+AVLTree appTree; SegmentTree housingBlocks;
+appTree.insert(application);              // insert housing application by income/family size
+housingBlocks.build(data);                // build segment tree for housing blocks by zone/budget
+int zoneL=2, zoneR=5, budgetL=10000, budgetR=15000;
+int available = housingBlocks.query(zoneL, zoneR, budgetL, budgetR);
+if (available > 0) allocateUnit(application, available);
+cout << "Housing allocated successfully!";
   </pre>
+  <p><strong>✅ Conclusion:</strong><br>
+    By combining AVL Trees for fast application management and Segment Trees for efficient housing queries, 
+    Vishalanagari can allocate housing units fairly and quickly. This ensures optimized use of resources, 
+    balanced distribution across zones, and supports the city’s vision of being India’s smart housing innovation hub.
+  </p>
 </div>
 
 <div id="m2" class="module-content">
