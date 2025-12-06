@@ -107,13 +107,10 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 <!-- MODULE 1 -->
 <div id="a1" class="module-content">
 <h2>Intelligent Traffic Density Management System</h2>
-
 <h3>Problem</h3>
 <p>The city faces uneven traffic distribution because vehicles crowd main roads while other routes stay empty. Manual traffic control fails during peak hours, leading to congestion, delays, and inefficient EV flow.</p>
-
 <h3>Solution</h3>
 <p>A real-time automated traffic density system that uses sensors, cameras, and algorithms to monitor road load, rank congestion levels, and automatically adjust signal timings.</p>
-
 <h3>Data Structures Used</h3>
 <ul>
 <li>Array → Store live sensor data (vehicle count, speed).</li>
@@ -121,14 +118,12 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 <li>Queue → Manage vehicles approaching each signal.</li>
 <li>Graph → Represent entire road network for cross-road density checks.</li>
 </ul>
-
 <h3>Algorithms Used</h3>
 <ul>
 <li>Merge Sort → Sort road densities for ranking.</li>
 <li>Heap Operations → Prioritize which road gets green signal first.</li>
 <li>BFS → Spread density updates across nearby intersections.</li>
 </ul>
-
 <h3>Step-by-Step Process</h3>
 <p>1. Sensors send vehicle counts → stored in array.</p>
 <p>2. Merge Sort arranges roads from most to least crowded.</p>
@@ -137,116 +132,46 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 <p>5. Heap-based prioritization assigns green time to the busiest lanes.</p>
 <p>6. Signal controller updates timings in real time.</p>
 <p>7. Dashboard shows congestion map to users.</p>
-
 <hr>
-
-<!-- ARRAY + MERGE SORT -->
 <button class="code-btn" onclick="openCodeViewer('Array + Merge Sort – Congestion Ranking', 
 `#include &lt;iostream&gt;
 using namespace std;
 
-void merge(int a[], int l, int m, int r) {
-    int n1 = m-l+1, n2=r-m;
-    int L[n1], R[n2];
-    for(int i=0;i&lt;n1;i++) L[i]=a[l+i];
-    for(int i=0;i&lt;n2;i++) R[i]=a[m+1+i];
-    int i=0,j=0,k=l;
-    while(i&lt;n1 &amp;&amp; j&lt;n2){
-        if(L[i]&gt;=R[j]) a[k++]=L[i++];
-        else a[k++]=R[j++];
-    }
+void merge(int a[], int l, int m, int r){
+    int n1=m-l+1,n2=r-m,L[n1],R[n2]; int i=0,j=0,k=l;
+    for(i=0;i&lt;n1;i++) L[i]=a[l+i];
+    for(i=0;i&lt;n2;i++) R[i]=a[m+1+i];
+    while(i&lt;n1 &amp;&amp; j&lt;n2){ if(L[i]&gt;=R[j]) a[k++]=L[i++]; else a[k++]=R[j++]; }
     while(i&lt;n1) a[k++]=L[i++];
     while(j&lt;n2) a[k++]=R[j++];
 }
+void mergeSort(int a[], int l, int r){ if(l&lt;r){ int m=l+(r-l)/2; mergeSort(a,l,m); mergeSort(a,m+1,r); merge(a,l,m,r); } }
+int main(){ int n; cin&gt;&gt;n; int arr[n]; for(int i=0;i&lt;n;i++) cin&gt;&gt;arr[i]; mergeSort(arr,0,n-1); for(int i=0;i&lt;n;i++) cout&lt;&lt;arr[i]&quot; &quot;; return 0; }` )">📌 Array + Merge Sort</button>
 
-void mergeSort(int a[], int l, int r){
-    if(l&lt;r){
-        int m=l+(r-l)/2;
-        mergeSort(a,l,m);
-        mergeSort(a,m+1,r);
-        merge(a,l,m,r);
-    }
-}
-
-int main(){
-    int n; cin&gt;&gt;n;
-    int arr[n];
-    for(int i=0;i&lt;n;i++) cin&gt;&gt;arr[i];
-    mergeSort(arr,0,n-1);
-    for(int i=0;i&lt;n;i++) cout&lt;&lt;arr[i]&quot; &quot;;
-    return 0;
-}`)">📌 Array + Merge Sort</button>
-
-<!-- MAX HEAP -->
 <button class="code-btn" onclick="openCodeViewer('Max Heap – Select Busiest Roads',
 `#include &lt;iostream&gt;
 using namespace std;
+void heapify(int h[], int n, int i){ int k=i,v=h[i]; bool heap=false; while(!heap &amp;&amp; 2*k+1&lt;n){ int j=2*k+1; if(j+1&lt;n &amp;&amp; h[j]&lt;h[j+1]) j++; if(v&gt;=h[j]) heap=true; else{ h[k]=h[j]; k=j; } } h[k]=v; }
+void buildHeap(int h[], int n){ for(int i=n/2;i&gt;=0;i--) heapify(h,n,i); }
+int main(){ int n; cin&gt;&gt;n; int h[n]; for(int i=0;i&lt;n;i++) cin&gt;&gt;h[i]; buildHeap(h,n); for(int i=0;i&lt;n;i++) cout&lt;&lt;h[i]&quot; &quot;; }` )">📌 Max Heap</button>
 
-void heapify(int h[], int n, int i){
-    int k=i,v=h[i]; bool heap=false;
-    while(!heap &amp;&amp; 2*k+1&lt;n){
-        int j=2*k+1;
-        if(j+1&lt;n &amp;&amp; h[j]&lt;h[j+1]) j++;
-        if(v&gt;=h[j]) heap=true;
-        else{ h[k]=h[j]; k=j; }
-    }
-    h[k]=v;
-}
-
-void buildHeap(int h[], int n){
-    for(int i=n/2;i&gt;=0;i--) heapify(h,n,i);
-}
-
-int main(){
-    int n; cin&gt;&gt;n;
-    int h[n];
-    for(int i=0;i&lt;n;i++) cin&gt;&gt;h[i];
-    buildHeap(h,n);
-    for(int i=0;i&lt;n;i++) cout&lt;&lt;h[i]&quot; &quot;;
-}`)">📌 Max Heap</button>
-
-<!-- BFS -->
 <button class="code-btn" onclick="openCodeViewer('BFS – Spread Density Updates',
 `#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;queue&gt;
 using namespace std;
-
-void BFS(int s, vector&lt;int&gt; adj[], int n){
-    vector&lt;bool&gt; vis(n,false);
-    queue&lt;int&gt; q;
-    q.push(s); vis[s]=true;
-    while(!q.empty()){
-        int u=q.front(); q.pop();
-        cout&lt;&lt;u&quot; &quot;;
-        for(int v: adj[u])
-            if(!vis[v]){ q.push(v); vis[v]=true; }
-    }
-}
-
-int main(){
-    int n,m; cin&gt;&gt;n&gt;&gt;m;
-    vector&lt;int&gt; adj[n];
-    for(int i=0;i&lt;m;i++){
-        int u,v; cin&gt;&gt;u&gt;&gt;v;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-    }
-    BFS(0,adj,n);
-}`)">📌 BFS</button>
+void BFS(int s, vector&lt;int&gt; adj[], int n){ vector&lt;bool&gt; vis(n,false); queue&lt;int&gt; q; q.push(s); vis[s]=true; while(!q.empty()){ int u=q.front(); q.pop(); cout&lt;&lt;u&quot; &quot;; for(int v: adj[u]) if(!vis[v]){ q.push(v); vis[v]=true; } } }
+int main(){ int n,m; cin&gt;&gt;n&gt;&gt;m; vector&lt;int&gt; adj[n]; for(int i=0;i&lt;m;i++){ int u,v; cin&gt;&gt;u&gt;&gt;v; adj[u].push_back(v); adj[v].push_back(u); } BFS(0,adj,n); }` )">📌 BFS</button>
 
 </div>
 
 <!-- MODULE 2 -->
 <div id="a2" class="module-content">
 <h2>Signal Scheduling System</h2>
-
 <h3>Problem</h3>
 <p>Traffic signals often run on fixed timers, causing long waits on busy roads and underutilized green lights on less crowded streets. Manual adjustments are inefficient, leading to congestion and poor EV flow.</p>
-
 <h3>Solution</h3>
 <p>A real-time adaptive signal scheduling system that dynamically adjusts green/red timings based on live traffic data, prioritizing congested roads and emergency or EV lanes.</p>
-
 <h3>Data Structures Used</h3>
 <ul>
 <li>Array → Store vehicle counts per signal.</li>
@@ -254,84 +179,42 @@ int main(){
 <li>Graph → Represent intersections and signal connectivity.</li>
 <li>Queue → Manage waiting vehicles per lane.</li>
 </ul>
-
 <h3>Algorithms Used</h3>
 <ul>
 <li>Heap Operations → Pick the most congested signal first.</li>
 <li>Greedy Scheduling → Assign green time proportionally to congestion.</li>
 <li>BFS → Spread updates across connected intersections.</li>
 </ul>
-
 <h3>Step-by-Step Process</h3>
 <p>1. Sensors at each intersection count vehicles → stored in arrays.</p>
 <p>2. Priority Queue ranks signals by current congestion.</p>
 <p>3. Greedy algorithm assigns green times based on queue size.</p>
 <p>4. BFS updates neighboring intersections about signal changes.</p>
 <p>5. Real-time dashboard updates users and EV routing systems.</p>
-
 <hr>
-
-<!-- ARRAY FOR SIGNALS -->
 <button class="code-btn" onclick="openCodeViewer('Array – Store Signal Vehicle Counts', 
 `#include &lt;iostream&gt;
 using namespace std;
+int main(){ int signals[] = {12, 25, 7, 30, 10}; int n = 5; cout &lt;&lt; &quot;Vehicle counts stored for &quot; &lt;&lt; n &lt;&lt; &quot; signals.&quot;; }`)">📌 Array – Vehicle Counts</button>
 
-int main(){
-    int signals[] = {12, 25, 7, 30, 10};
-    int n = 5;
-    cout &lt;&lt; &quot;Vehicle counts stored for &quot; &lt;&lt; n &lt;&lt; &quot; signals.&quot;;
-}`)">📌 Array – Vehicle Counts</button>
-
-<!-- PRIORITY QUEUE / HEAP -->
 <button class="code-btn" onclick="openCodeViewer('Priority Queue – Select Next Green Signal',
 `#include &lt;iostream&gt;
 #include &lt;queue&gt;
 using namespace std;
+int main(){ priority_queue&lt;int&gt; pq; int vehicles[] = {12,25,7,30,10}; int n=5; for(int i=0;i&lt;n;i++) pq.push(vehicles[i]); cout &lt;&lt; &quot;Next green signal has &quot; &lt;&lt; pq.top() &lt;&lt; &quot; vehicles waiting.&quot;; }`)">📌 Priority Queue – Next Green</button>
 
-int main(){
-    priority_queue&lt;int&gt; pq;
-    int vehicles[] = {12,25,7,30,10};
-    int n=5;
-    for(int i=0;i&lt;n;i++) pq.push(vehicles[i]);
-    cout &lt;&lt; &quot;Next green signal has &quot; &lt;&lt; pq.top() &lt;&lt; &quot; vehicles waiting.&quot;;
-}`)">📌 Priority Queue – Next Green</button>
-
-<!-- GREEDY ALLOCATION -->
 <button class="code-btn" onclick="openCodeViewer('Greedy – Green Time Allocation', 
 `#include &lt;iostream&gt;
 using namespace std;
+int main(){ int congestion = 30; int greenTime = 10 + congestion/2; cout &lt;&lt; &quot;Assigned Green Time: &quot; &lt;&lt; greenTime &lt;&lt; &quot; sec&quot;; }`)">📌 Greedy – Green Time Allocation</button>
 
-int main(){
-    int congestion = 30; // max vehicles
-    int greenTime = 10 + congestion/2;
-    cout &lt;&lt; &quot;Assigned Green Time: &quot; &lt;&lt; greenTime &lt;&lt; &quot; sec&quot;;
-}`)">📌 Greedy – Green Time Allocation</button>
-
-<!-- BFS FOR SIGNAL UPDATES -->
 <button class="code-btn" onclick="openCodeViewer('BFS – Spread Signal Updates', 
 `#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;queue&gt;
 using namespace std;
-
-void BFS(int s, vector&lt;int&gt; adj[], int n){
-    vector&lt;bool&gt; visited(n,false);
-    queue&lt;int&gt; q;
-    q.push(s); visited[s]=true;
-    while(!q.empty()){
-        int u=q.front(); q.pop();
-        cout &lt;&lt; &quot;Signal &quot; &lt;&lt; u &lt;&lt; &quot; updated.&quot;&lt;&lt;endl;
-        for(int v: adj[u])
-            if(!visited[v]){ q.push(v); visited[v]=true; }
-    }
-}
-
-int main(){
-    int n=5; // signals
-    vector&lt;int&gt; adj[n];
-    adj[0]={1,2}; adj[1]={0,3}; adj[2]={0,3}; adj[3]={1,2,4}; adj[4]={3};
-    BFS(0,adj,n);
-}`)">📌 BFS – Spread Updates</button>
+void BFS(int s, vector&lt;int&gt; adj[], int n){ vector&lt;bool&gt; visited(n,false); queue&lt;int&gt; q; q.push(s); visited[s]=true; while(!q.empty()){ int u=q.front(); q.pop(); cout &lt;&lt; &quot;Signal &quot; &lt;&lt; u &lt;&lt; &quot; updated.&quot;&lt;&lt;endl; for(int v: adj[u]) if(!visited[v]){ q.push(v); visited[v]=true; } } }
+int main(){ int n=5; vector&lt;int&gt; adj[n]; adj[0]={1,2}; adj[1]={0,3}; adj[2]={0,3}; adj[3]={1,2,4}; adj[4]={3}; BFS(0,adj,n); }`)">📌 BFS – Spread Updates</button>
 
 </div>
 
@@ -370,7 +253,6 @@ function toggleTheme(){
    body.classList.contains('dark') ? "🌙 Dark Mode" : "☀ Light Mode";
 }
 
-/* FULLSCREEN CODE VIEWER */
 function openCodeViewer(title, code){
   document.getElementById("codeViewer").style.display = "block";
   document.getElementById("codeTitle").textContent = title;
@@ -379,6 +261,9 @@ function openCodeViewer(title, code){
 function closeCodeViewer(){
   document.getElementById("codeViewer").style.display = "none";
 }
+
+// Show Module 2 by default
+document.getElementById('a2').style.display = 'block';
 </script>
 
 </body>
