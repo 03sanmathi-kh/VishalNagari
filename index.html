@@ -1,1 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VISHALNAGARI – Intelligent & Sustainable City Portfolio</title>
 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+      color: #fff;
+      transition: color 0.8s ease;
+    }
+    body.light { color: #222; }
+
+    /* Multi-layer wavy background */
+    body::before,
+    body::after,
+    body .wave-layer3 {
+      content: "";
+      position: fixed;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      border-radius: 45%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Dark theme waves */
+    body.dark::before {
+      background: rgba(42, 42, 80, 0.8);
+      animation: wave1 30s linear infinite;
+      top: -50%;
+    }
+    body.dark::after {
+      background: rgba(58, 15, 76, 0.6);
+      animation: wave2 40s linear infinite;
+      top: -60%;
+    }
+    body.dark .wave-layer3 {
+      background: rgba(120, 30, 255, 0.5);
+      animation: wave3 50s linear infinite;
+      top: -55%;
+    }
+
+    /* Light theme waves */
+    body.light::before {
+      background: rgba(200, 230, 255, 0.8);
+      animation: wave1Light 30s linear infinite;
+      top: -50%;
+    }
+    body.light::after {
+      background: rgba(180, 220, 250, 0.6);
+      animation: wave2Light 40s linear infinite;
+      top: -60%;
+    }
+    body.light .wave-layer3 {
+      background: rgba(170, 230, 200, 0.5);
+      animation: wave3Light 50s linear infinite;
+      top: -55%;
+    }
+
+    /* Dark theme keyframes */
+    @keyframes wave1 { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(20%) rotate(3deg);} 100% {transform: translateX(0) rotate(0deg);} }
+    @keyframes wave2 { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(-15%) rotate(-3deg);} 100% {transform: translateX(0) rotate(0deg);} }
+    @keyframes wave3 { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(10%) rotate(1deg);} 100% {transform: translateX(0) rotate(0deg);} }
+
+    /* Light theme keyframes */
+    @keyframes wave1Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(20%) rotate(3deg);} 100% {transform: translateX(0) rotate(0deg);} }
+    @keyframes wave2Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(-15%) rotate(-3deg);} 100% {transform: translateX(0) rotate(0deg);} }
+    @keyframes wave3Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(10%) rotate(1deg);} 100% {transform: translateX(0) rotate(0deg);} }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      background: #ff79c6;
+      color: #fff;
+      transition: background 0.3s;
+      z-index: 2;
+      position: relative;
+    }
+    .theme-toggle:hover { background: #ff4c60; }
+
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+      z-index: 3;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s;
+      background: rgba(0,0,0,0.3);
+    }
+    nav a:hover { background: rgba(0,0,0,0.6); }
+    body.light nav a { color: #222; background: rgba(255,255,255,0.6); }
+    body.light nav a:hover { background: rgba(255,255,255,0.9); }
+
+    /* Headings */
+    .portfolio-heading {
+      margin-top: 40px;
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-align: center;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Course Card */
+    .course-card {
+      padding: 40px 30px;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 90%;
+      margin-top: 30px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      transition: background 0.4s;
+      z-index: 2;
+      position: relative;
+    }
+    body.light .course-card { background: rgba(255,255,255,0.8); }
+
+    .course-box {
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      border-left: 4px solid #ff4c60;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .course-box:hover { transform: scale(1.03); }
+    body.light .course-box { background: #f9f9f9; }
+
+    .course-box h3 { font-size: 20px; font-weight: 700; color: #ff79c6; margin: 0 0 8px; }
+    .course-box p { margin: 0; font-size: 16px; }
+    .division-d { border-left: 4px solid #27ae60; }
+
+    /* Course Overview Section */
+    .course-overview {
+      margin-top: 60px;
+      text-align: center;
+      max-width: 900px;
+      padding: 20px;
+    }
+    .course-overview h2 {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: #ff79c6;
+    }
+    .course-overview p {
+      font-size: 18px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 0 auto 30px;
+      transition: background 0.4s;
+    }
+    body.light .course-overview p { background: #f9f9f9; }
+
+    /* Vision Section */
+    .project-overview {
+      margin-top: 60px;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+    .project-overview h2 { font-size: 36px; font-weight: 900; margin-bottom: 20px; color: #ff79c6; }
+    .city-motto { font-size: 20px; font-weight: 700; color: #ffdd57; margin-bottom: 20px; }
+    .city-text {
+      font-size: 18px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 0 auto 30px;
+      transition: background 0.4s;
+    }
+    body.light .city-text { background: #f9f9f9; }
+
+    /* Team Section */
+    #meet-the-team {
+      padding: 40px;
+      text-align: center;
+    }
+    #meet-the-team h2 { font-size: 32px; font-weight: 900; margin-bottom: 30px; color: #ff79c6; }
+
+    .team-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+
+    .team-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      text-align: left;
+      transition: transform 0.3s, background 0.4s;
+    }
+    .team-card:hover { transform: scale(1.03); }
+    body.light .team-card { background: #fff; }
+
+    .team-card a { color: #ff79c6; font-weight: bold; text-decoration: none; }
+    .team-card a:hover { text-decoration: underline; }
+
+    .traffic { border-top: 6px solid #e74c3c; }
+    .industry { border-top: 6px solid #f39c12; }
+    .commerce { border-top: 6px solid #27ae60; }
+    .sustainability { border-top: 6px solid #8e44ad; }
+
+  </style>
+</head>
+
+<body class="dark">
+
+<!-- Extra wave layer -->
+<div class="wave-layer3"></div>
+
+<!-- Top Navigation Bar -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="sanmathi_port.html">Sanmathi</a>
+  <a href="vasavi_port.html">Vasavi</a>
+  <a href="akshata_port.html">Akshata</a>
+  <a href="isha_port.html">Isha</a>
+</nav>
+
+<!-- Theme Toggle -->
+<button class="theme-toggle" id="toggleBtn" onclick="toggleTheme()">Switch to Light Mode</button>
+
+<div class="portfolio-heading">
+  VISHALNAGARI – THE INTELLIGENT & SUSTAINABLE CITY PORTFOLIO
+</div>
+
+<!-- Course Card -->
+<div class="course-card">
+  <div class="course-box"><h3>Course Name</h3><p>Design & Analysis of Algorithms</p></div>
+  <div class="course-box"><h3>Course Code</h3><p>24ECS205</p></div>
+  <div class="course-box"><h3>Institution</h3><p>KLE Technological University</p></div>
+  <div class="course-box"><h3>Guide</h3><p>Prof. Prakash Hegade</p></div>
+  <div class="course-box division-d">
+    <h3>Team Members</h3>
+    <p>Sanmathi Hegde</p>
+    <p>Vasavi Kabbur</p>
+    <p>Akshata Pawar</p>
+    <p>Isha Shet</p>
+  </div>
+</div>
+
+<!-- Course Overview Section -->
+<section class="course-overview">
+  <h2>Course Overview</h2>
+  <p>
+    Algorithms are the heart of computer science and play a crucial role in solving real-world problems efficiently. 
+    They provide a structured approach to processing data, optimizing workflows, and making decisions. 
+    From traffic routing and supply chain management to healthcare diagnostics and financial analysis, 
+    algorithms enable automation, reduce human error, and improve resource utilization. 
+    Studying algorithms equips students with critical thinking, problem-solving skills, and the ability 
+    to design scalable and efficient solutions for complex systems.
+  </p>
+</section>
+
+<!-- Vision Section -->
+<section class="project-overview">
+  <h2>Our Vision</h2>
+  <p class="city-motto"><strong>Designing Tomorrow, One Algorithm at a Time</strong></p>
+  <p class="city-text">
+    Vishalnagari is a one-of-a-kind city — a living, intelligent ecosystem where sustainability meets innovation.
+    Known as <strong>India’s capital of civic heritage</strong>, it honors centuries of tradition while embracing technology.
+    The city exclusively uses <strong>100% electric vehicles</strong> within its boundaries, ensuring zero-emission transport and a cleaner environment.
+    <strong>Smart infrastructure</strong> and <strong>algorithm-driven management</strong> harmonize daily life: traffic flows smoothly through optimized routes, civic resources are distributed equitably, and green spaces flourish through intelligent planning and irrigation.
+    By combining <strong>innovation, efficiency, and sustainability</strong>, Vishalnagari demonstrates how technology and thoughtful design can create a city that is <strong>resilient, adaptive, and inspiring for its citizens</strong>.
+  </p>
+</section>
+
+<!-- City Design Section -->
+<section class="project-overview">
+  <h2>Design of City</h2>
+
+  <img src="Image1.jpg" alt="City Design" 
+       style="width: 90%; max-width: 900px; border-radius: 20px; margin-top: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.4);">
+
+</section>
+
+<!-- Meet the Team Section -->
+<section id="meet-the-team">
+  <h2>Meet the Team</h2>
+  <div class="team-container">
+    <div class="team-card industry">
+      <h3>Sanmathi Hegde</h3>
+      <p><strong>Roll No:</strong> 407</p>
+      <p><strong>USN:</strong> 01fe24bcs269</p>
+      <p><strong>Domain:</strong> Industrial and Manufacturing Systems</p>
+      <p>Optimization through Linear Programming and Flow Networks</p>
+      <a href="sanmathi_port.html" target="_blank">View Portfolio</a>
+    </div>
+    <div class="team-card commerce">
+      <h3>Vasavi Kabbur</h3>
+      <p><strong>Roll No:</strong> 415</p>
+      <p><strong>USN:</strong> 01fe24bcs278</p>
+      <p><strong>Domain:</strong> Commerce and Governance</p>
+      <p>Graph Matching & Greedy allocation for fair resource distribution</p>
+      <a href="vasavi_port.html" target="_blank">View Portfolio</a>
+    </div>
+    <div class="team-card traffic">
+      <h3>Akshata Pawar</h3>
+      <p><strong>Roll No:</strong> 434</p>
+      <p><strong>USN:</strong> 01fe24bcs297</p>
+      <p><strong>Domain:</strong> Traffic and Mobility</p>
+      <p>Shortest Path algorithms (Dijkstra’s, A*) for smooth routing</p>
+      <a href="akshata_port.html" target="_blank">View Portfolio</a>
+    </div>
+    <div class="team-card sustainability">
+      <h3>Isha Shet</h3>
+      <p><strong>Roll No:</strong> 418</p>
+      <p><strong>USN:</strong> 01fe24bcs281</p>
+      <p><strong>Domain:</strong> Agriculture and Sustainability</p>
+      <p>Dynamic Programming & Graph models for optimized irrigation</p>
+      <a href="isha_port.html" target="_blank">View Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("light");
+  const btn = document.getElementById("toggleBtn");
+  btn.textContent = document.body.classList.contains("light") ? "Switch to Dark Mode" : "Switch to Light Mode";
+}
+</script>
+
+</body>
+</html>
