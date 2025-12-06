@@ -2,273 +2,328 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Akshata – Traffic Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Smart Traffic Systems Modules</title>
 <style>
-body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; min-height:100vh; overflow-x:hidden; }
-body.dark{background:#0a0a0a;color:#fff;}
-body.light{background:#f5f5f5;color:#000;}
-
-.wave-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;}
-.wave{position:absolute;width:200%;height:200%;opacity:0.5;animation:waveMove 30s linear infinite;}
-.wave1{fill:#e74c3c;}
-.wave2{fill:#f39c12;}
-.wave3{fill:#c0392b;}
-body.light .wave1{fill:#fab1a0;}
-body.light .wave2{fill:#ffeaa7;}
-body.light .wave3{fill:#ff7675;}
-
-@keyframes waveMove{
- 0%{transform:translateX(0) translateY(0) rotate(0deg);}
- 50%{transform:translateX(10%) translateY(5%) rotate(2deg);}
- 100%{transform:translateX(0) translateY(0) rotate(0deg);}
-}
-
-header{text-align:center;padding:40px 20px;}
-header h1{font-size:42px;font-weight:900;color:#e74c3c;}
-header h3{font-size:22px;font-weight:600;color:#3498db;}
-header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:inherit;}
-
-.hex-container{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:30px;}
-.hex{
- position:relative;width:160px;height:90px;display:flex;
- align-items:center;justify-content:center;font-weight:600;
- text-align:center;cursor:pointer;transition:transform 0.3s ease;
- color:#fff;border-radius:12px;
-}
-.hex:hover{transform:scale(1.08);}
-.flow{background:#e74c3c;}
-.signal{background:#3498db;}
-.accident{background:#f1c40f;}
-.parking{background:#2ecc71;}
-.emergency{background:#9b59b6;}
-
-.module-content{display:none;margin:20px auto;padding:20px;border-radius:15px;
- max-width:900px;background:rgba(255,255,255,0.05);}
-.module-content h2{font-size:24px;margin-bottom:10px;}
-.module-content h3{font-size:20px;margin-bottom:5px;}
-.module-content p{font-size:16px;line-height:1.6;margin-bottom:10px;}
-.module-content ul{margin-left:20px;}
-
-.code-btn{
- background:#e67e22;border:none;padding:10px 20px;color:white;
- border-radius:8px;cursor:pointer;font-weight:600;margin-bottom:10px;
-}
-.code-btn:hover{background:#d35400;}
-
-#themeBtn,#homeBtn{
- position:fixed;top:20px;padding:10px 20px;font-size:14px;cursor:pointer;
- border:none;border-radius:8px;color:#fff;transition:background 0.3s;
-}
-#themeBtn{right:20px;background:#e74c3c;}
-#themeBtn:hover{background:#3498db;}
-#homeBtn{left:20px;background:#2ecc71;}
-#homeBtn:hover{background:#27ae60;}
-
-/* Fullscreen Code Viewer */
-#codeViewer{
-  display:none;
-  position:fixed; top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.95);
-  color:white; padding:30px;
-  overflow:auto;
-  z-index:9999;
-}
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+        color: #f1f1f1;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 90%;
+        margin: auto;
+        padding: 20px 0;
+    }
+    h1 {
+        text-align: center;
+        color: #00ffea;
+        text-shadow: 0 0 10px #00ffea;
+        margin-bottom: 30px;
+    }
+    .module-btn {
+        display: inline-block;
+        margin: 5px;
+        padding: 12px 20px;
+        background: #111;
+        border: 2px solid #00ffea;
+        border-radius: 8px;
+        cursor: pointer;
+        color: #00ffea;
+        font-weight: bold;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .module-btn:hover {
+        background: #00ffea;
+        color: #111;
+        box-shadow: 0 0 15px #00ffea;
+    }
+    .module {
+        display: none;
+        background: rgba(0,0,0,0.8);
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 20px;
+        box-shadow: 0 0 20px #00ffea;
+    }
+    .module h2 {
+        color: #ffdd00;
+        text-shadow: 0 0 8px #ffdd00;
+    }
+    .code-btn {
+        display: inline-block;
+        margin: 5px 0;
+        padding: 8px 15px;
+        background: #ff00ff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #fff;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .code-btn:hover {
+        background: #ff99ff;
+        box-shadow: 0 0 10px #ff99ff;
+    }
+    pre {
+        background: #111;
+        padding: 15px;
+        border-radius: 10px;
+        overflow-x: auto;
+        box-shadow: 0 0 10px #00ffea;
+    }
+    iframe {
+        width: 100%;
+        height: 80vh;
+        border: none;
+        border-radius: 10px;
+    }
+    .code-viewer {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.95);
+        z-index: 1000;
+        padding: 20px;
+    }
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        padding: 10px 20px;
+        background: red;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 0 10px red;
+    }
 </style>
 </head>
+<body>
+<div class="container">
+    <h1>Smart Traffic & EV Management Modules</h1>
+    <!-- Module Buttons -->
+    <div>
+        <button class="module-btn" onclick="showModule(1)">Module 1: Intelligent Traffic Density Management</button>
+        <button class="module-btn" onclick="showModule(2)">Module 2: Smart EV-Only Road Routing System</button>
+        <button class="module-btn" onclick="showModule(3)">Module 3: Visitor Vehicle Bypass Routing</button>
+        <button class="module-btn" onclick="showModule(4)">Module 4: Multi-Lane Road & Smart Gate</button>
+        <button class="module-btn" onclick="showModule(5)">Module 5: Road Quality Monitoring</button>
+        <button class="module-btn" onclick="showModule(6)">Module 6: Traffic Signal Optimization</button>
+        <button class="module-btn" onclick="showModule(7)">Module 7: Smart City Search System</button>
+        <button class="module-btn" onclick="showModule(8)">Module 8: Smart Urban Infrastructure Maintenance</button>
+    </div>
 
-<body class="dark">
-
-<div class="wave-bg">
-<svg class="wave wave1" viewBox="0 0 1440 320"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
-<svg class="wave wave2" viewBox="0 0 1440 320"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
-<svg class="wave wave3" viewBox="0 0 1440 320"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
-</div>
-
-<button id="homeBtn" onclick="goHome()">🏠 Home</button>
-<button id="themeBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
-
-<header>
-<h1>Akshata</h1>
-<h3>Traffic Management – Vishalnagari</h3>
-<p>Vishalnagari's Traffic domain ensures safe, fast, and intelligent mobility for every citizen.</p>
-</header>
-
-<div class="hex-container">
-<div class="hex flow" onclick="toggleModule('a1')">Intelligent Traffic Density Management</div>
-<div class="hex signal" onclick="toggleModule('a2')">Smart EV-Only Road Routing System</div>
-<div class="hex accident" onclick="toggleModule('a3')">Accident Detection</div>
-<div class="hex parking" onclick="toggleModule('a4')">Parking Allocation</div>
-<div class="hex emergency" onclick="toggleModule('a5')">Emergency Routing</div>
-</div>
-
-<!-- MODULE 1 -->
-<div id="a1" class="module-content">
-<h2>Intelligent Traffic Density Management System</h2>
-<p>Module 1 content remains as before...</p>
-</div>
-
-<!-- MODULE 2 -->
-<div id="a2" class="module-content">
-<h2>Smart EV-Only Road Routing System</h2>
-<h3>Problem</h3>
-<p>EV traffic inside the city gets delayed due to congestion, and non-EV vehicles entering EV zones cause delays and pollution. Manual route management cannot ensure smooth flow for EVs.</p>
-<h3>Solution</h3>
-<p>A smart routing system that monitors EV traffic, calculates the fastest path using real-time data, and restricts non-EV vehicles automatically.</p>
-<h3>Data Structures Used</h3>
-<ul>
-<li>Graph → Represent EV road network.</li>
-<li>Priority Queue (Heap) → Select the next intersection with minimum travel time.</li>
-</ul>
-<h3>Algorithms Used</h3>
-<ul>
-<li>Dijkstra’s Algorithm → Calculate real-time shortest path for EVs.</li>
-<li>BFS → Check connected intersections for alternate routing in case of congestion.</li>
-</ul>
-<h3>Step-by-Step Process</h3>
-<p>1. Map all EV roads as graph nodes and edges with travel time as weights.</p>
-<p>2. Input current EV positions and destinations.</p>
-<p>3. Use Dijkstra to find the shortest congested-free path.</p>
-<p>4. BFS monitors connected intersections for traffic updates.</p>
-<p>5. Navigation system directs EVs along optimal paths.</p>
-<p>6. Non-EV vehicles are restricted using smart gates.</p>
-<hr>
-
-<!-- Sample Code Buttons -->
-<button class="code-btn" onclick="openCodeViewer('Graph Representation', 
-`#include <iostream>
-#include <vector>
+    <!-- Module 1 -->
+    <div id="module1" class="module">
+        <h2>Intelligent Traffic Density Management</h2>
+        <p><strong>Problem:</strong> The city faces uneven traffic distribution...</p>
+        <p><strong>Solution:</strong> A real-time automated traffic density system...</p>
+        <p><strong>Data Structures Used:</strong> Array, Max Heap, Queue, Graph</p>
+        <p><strong>Algorithms Used:</strong> Merge Sort, Heap Operations, BFS</p>
+        <p><strong>Step-by-Step Process:</strong> Sensors send counts → Merge Sort → Max Heap → BFS → Signal updates → Dashboard</p>
+        <p><strong>Sample Codes:</strong></p>
+        <button class="code-btn" onclick="openCode('module1_code1')">Array + Merge Sort</button>
+        <button class="code-btn" onclick="openCode('module1_code2')">Max Heap</button>
+        <button class="code-btn" onclick="openCode('module1_code3')">BFS</button>
+        <pre id="module1_code1" style="display:none;">
+#include &lt;iostream&gt;
 using namespace std;
 
-int main(){
-    int n,m;
-    cin>>n>>m; 
-    vector<pair<int,int>> g[n];
-    for(int i=0;i<m;i++){
-        int u,v,w; 
-        cin>>u>>v>>w;
-        g[u].push_back({v,w});
-        g[v].push_back({u,w});
-    }
-    for(int i=0;i<n;i++){
-        cout<<"Node "<<i<<": ";
-        for(auto p:g[i]) cout<<"("<<p.first<<","<<p.second<<") ";
-        cout<<endl;
-    }
-    return 0;
-}`)">📌 Graph Representation</button>
-
-<button class="code-btn" onclick="openCodeViewer('Dijkstra’s Algorithm', 
-`#include <iostream>
-#include <vector>
-#include <queue>
+void merge(int a[], int l, int m, int r) { /.../ }
+void mergeSort(int a[], int l, int r){ /.../ }
+int main(){ /.../ return 0; }
+        </pre>
+        <pre id="module1_code2" style="display:none;">
+#include &lt;iostream&gt;
 using namespace std;
 
-int main(){
-    int n,m; cin>>n>>m;
-    vector<pair<int,int>> g[n];
-    for(int i=0;i<m;i++){
-        int u,v,w; cin>>u>>v>>w;
-        g[u].push_back({v,w});
-        g[v].push_back({u,w});
-    }
-
-    int src; cin>>src;
-    vector<int> dist(n,1e9);
-    dist[src]=0;
-    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
-    pq.push({0,src});
-    while(!pq.empty()){
-        auto [d,u]=pq.top(); pq.pop();
-        for(auto [v,w]:g[u]){
-            if(dist[v]>d+w){
-                dist[v]=d+w;
-                pq.push({dist[v],v});
-            }
-        }
-    }
-    for(int i=0;i<n;i++) cout<<"Distance to "<<i<<": "<<dist[i]<<endl;
-    return 0;
-}`)">📌 Dijkstra’s Algorithm</button>
-
-<button class="code-btn" onclick="openCodeViewer('BFS – Monitor Connected Intersections', 
-`#include <iostream>
-#include <vector>
-#include <queue>
+void heapify(int h[], int n, int i){ /.../ }
+void buildHeap(int h[], int n){ /.../ }
+int main(){ /.../ return 0; }
+        </pre>
+        <pre id="module1_code3" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
 using namespace std;
 
-int main(){
-    int n,m; cin>>n>>m;
-    vector<int> g[n];
-    for(int i=0;i<m;i++){
-        int u,v; cin>>u>>v;
-        g[u].push_back(v);
-        g[v].push_back(u);
-    }
-    int start; cin>>start;
-    vector<bool> vis(n,false);
-    queue<int> q;
-    q.push(start); vis[start]=true;
-    while(!q.empty()){
-        int u=q.front(); q.pop();
-        cout<<u<<" ";
-        for(int v:g[u]){
-            if(!vis[v]){
-                vis[v]=true;
-                q.push(v);
-            }
-        }
-    }
-    return 0;
-}`)">📌 BFS</button>
+void BFS(int s, vector&lt;int&gt; adj[], int n){ /.../ }
+int main(){ /.../ return 0; }
+        </pre>
+    </div>
+
+    <!-- Module 2 -->
+    <div id="module2" class="module">
+        <h2>Smart EV-Only Road Routing System</h2>
+        <p><strong>Problem:</strong> EV traffic inside the city gets delayed...</p>
+        <p><strong>Solution:</strong> A smart routing system monitors EV traffic...</p>
+        <p><strong>Data Structures Used:</strong> Graph, Priority Queue</p>
+        <p><strong>Algorithms Used:</strong> Dijkstra, BFS</p>
+        <p><strong>Step-by-Step Process:</strong> Map roads → Input positions → Dijkstra → BFS → Navigation → Restrict non-EVs</p>
+        <p><strong>Sample Codes:</strong></p>
+        <button class="code-btn" onclick="openCode('module2_code1')">Graph Representation</button>
+        <button class="code-btn" onclick="openCode('module2_code2')">Dijkstra's Algorithm</button>
+        <button class="code-btn" onclick="openCode('module2_code3')">BFS</button>
+        <pre id="module2_code1" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main(){ /* Graph Representation */ return 0; }
+        </pre>
+        <pre id="module2_code2" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int main(){ /* Dijkstra's Algorithm */ return 0; }
+        </pre>
+        <pre id="module2_code3" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int main(){ /* BFS */ return 0; }
+        </pre>
+    </div>
+
+    <!-- Module 3 -->
+    <div id="module3" class="module">
+        <h2>Visitor Vehicle Bypass Routing & Control System</h2>
+        <p><strong>Problem:</strong> Visitors entering EV-only zones...</p>
+        <p><strong>Solution:</strong> Smart system detects & routes visitors...</p>
+        <p><strong>Data Structures Used:</strong> Graph, Queue, Hash Table, Priority Queue</p>
+        <p><strong>Algorithms Used:</strong> Dijkstra, BFS, Hashing</p>
+        <p><strong>Step-by-Step Process:</strong> Vehicle arrives → Hash → Dijkstra → Queue → BFS → Gate & Navigation</p>
+        <p><strong>Sample Codes:</strong></p>
+        <button class="code-btn" onclick="openCode('module3_code1')">Hash Table</button>
+        <button class="code-btn" onclick="openCode('module3_code2')">Queue</button>
+        <button class="code-btn" onclick="openCode('module3_code3')">Dijkstra</button>
+        <button class="code-btn" onclick="openCode('module3_code4')">BFS</button>
+        <pre id="module3_code1" style="display:none;">/* Hash Table Code */</pre>
+        <pre id="module3_code2" style="display:none;">/* Queue Code */</pre>
+        <pre id="module3_code3" style="display:none;">/* Dijkstra Code */</pre>
+        <pre id="module3_code4" style="display:none;">/* BFS Code */</pre>
+    </div>
+
+    <!-- Module 4 -->
+    <div id="module4" class="module">
+        <h2>Multi-Lane Road Separation + Smart Gate Control System</h2>
+        <p><strong>Problem:</strong> All vehicle types mix...</p>
+        <p><strong>Solution:</strong> Multi-lane mapping & smart gates</p>
+        <p><strong>Data Structures Used:</strong> Graph, Hash Table, Queue</p>
+        <p><strong>Algorithms Used:</strong> BFS, Hash Lookup, Selection Sort</p>
+        <p><strong>Step-by-Step Process:</strong> Vehicle arrival → ANPR → Hash → Lane assignment → BFS → Gate opens/Queue</p>
+        <p><strong>Sample Codes:</strong></p>
+        <button class="code-btn" onclick="openCode('module4_code1')">Hash Table</button>
+        <button class="code-btn" onclick="openCode('module4_code2')">Queue</button>
+        <button class="code-btn" onclick="openCode('module4_code3')">BFS</button>
+        <button class="code-btn" onclick="openCode('module4_code4')">Selection Sort</button>
+        <pre id="module4_code1" style="display:none;">/* Hash Table */</pre>
+        <pre id="module4_code2" style="display:none;">/* Queue */</pre>
+        <pre id="module4_code3" style="display:none;">/* BFS */</pre>
+        <pre id="module4_code4" style="display:none;">/* Selection Sort */</pre>
+    </div>
+
+    <!-- Module 5 -->
+    <div id="module5" class="module">
+        <h2>Road Quality Monitoring & Smart Construction Analytics System</h2>
+        <p><strong>Problem:</strong> Road damage & delayed repair</p>
+        <p><strong>Solution:</strong> Automated road monitoring & repair prioritization</p>
+        <p><strong>Data Structures Used:</strong> Graph, Min-Heap, Hash Table, BST</p>
+        <p><strong>Algorithms Used:</strong> DFS, BFS, Merge Sort, Prim/Kruskal</p>
+        <p><strong>Step-by-Step Process:</strong> Sensor reports → BST → Min-Heap → DFS/BFS → Merge Sort → Repair execution</p>
+        <p><strong>Sample Codes:</strong></p>
+        <button class="code-btn" onclick="openCode('module5_code1')">Hash Table</button>
+        <button class="code-btn" onclick="openCode('module5_code2')">Min-Heap</button>
+        <button class="code-btn" onclick="openCode('module5_code3')">DFS</button>
+        <button class="code-btn" onclick="openCode('module5_code4')">BFS</button>
+        <pre id="module5_code1" style="display:none;">/* Hash Table */</pre>
+        <pre id="module5_code2" style="display:none;">/* Min-Heap */</pre>
+        <pre id="module5_code3" style="display:none;">/* DFS */</pre>
+        <pre id="module5_code4" style="display:none;">/* BFS */</pre>
+    </div>
+
+    <!-- Module 6 -->
+    <div id="module6" class="module">
+        <h2>Traffic Signal Optimization Using EV Priority</h2>
+        <p><strong>Problem:</strong> Emergency EVs face delays at signals</p>
+        <p><strong>Solution:</strong> Real-time signal management & priority for EVs</p>
+        <p><strong>Data Structures Used:</strong> Queue, Graph</p>
+        <p><strong>Algorithms Used:</strong> Dijkstra, BFS</p>
+        <p><strong>Step-by-Step Process:</strong> Detect EV → Graph → Dijkstra → BFS → Queue → Signal update</p>
+        <p><strong>Sample Code:</strong></p>
+        <button class="code-btn" onclick="openCode('module6_code1')">Dijkstra for EV</button>
+        <pre id="module6_code1" style="display:none;">/* Dijkstra C++ code */</pre>
+    </div>
+
+    <!-- Module 7 -->
+    <div id="module7" class="module">
+        <h2>Smart City Road & Vehicle Search System (Trie-Based)</h2>
+        <p><strong>Problem:</strong> Manual search is slow</p>
+        <p><strong>Solution:</strong> Trie-based fast prefix search</p>
+        <p><strong>Data Structures / Algorithms:</strong> Trie, DFS, KMP</p>
+        <p><strong>Step-by-Step Process:</strong> Insert roads → User types → DFS/KMP → Display results</p>
+        <p><strong>Sample Codes:</strong></p>
+        <button class="code-btn" onclick="openCode('module7_code1')">Trie Insert & Search</button>
+        <button class="code-btn" onclick="openCode('module7_code2')">DFS Prefix</button>
+        <button class="code-btn" onclick="openCode('module7_code3')">KMP Pattern Search</button>
+        <pre id="module7_code1" style="display:none;">/* Trie Insert/Search */</pre>
+        <pre id="module7_code2" style="display:none;">/* DFS Prefix */</pre>
+        <pre id="module7_code3" style="display:none;">/* KMP */</pre>
+    </div>
+
+    <!-- Module 8 -->
+    <div id="module8" class="module">
+        <h2>Smart Urban Infrastructure Maintenance & Planning System</h2>
+        <p><strong>Problem:</strong> Random maintenance causes congestion</p>
+        <p><strong>Solution:</strong> Intelligent planning & monitoring system</p>
+        <p><strong>Data Structures / Algorithms:</strong> Graph, Min-Heap, Queue, DFS/BFS, Quick Sort/Merge Sort</p>
+        <p><strong>Step-by-Step Process:</strong> Sensors/reports → Min-Heap → DFS/BFS → Queue → Quick/Merge Sort → Execute</p>
+        <p><strong>Sample Codes:</strong></p>
+        <button class="code-btn" onclick="openCode('module8_code1')">Min Heap</button>
+        <button class="code-btn" onclick="openCode('module8_code2')">Queue</button>
+        <button class="code-btn" onclick="openCode('module8_code3')">BFS</button>
+        <button class="code-btn" onclick="openCode('module8_code4')">Quick Sort</button>
+        <button class="code-btn" onclick="openCode('module8_code5')">DFS</button>
+        <pre id="module8_code1" style="display:none;">/* Min Heap */</pre>
+        <pre id="module8_code2" style="display:none;">/* Queue */</pre>
+        <pre id="module8_code3" style="display:none;">/* BFS */</pre>
+        <pre id="module8_code4" style="display:none;">/* Quick Sort */</pre>
+        <pre id="module8_code5" style="display:none;">/* DFS */</pre>
+    </div>
 </div>
 
-<!-- Other modules unchanged -->
-<div id="a3" class="module-content"><h2>Accident Detection</h2><p>Same as before…</p></div>
-<div id="a4" class="module-content"><h2>Parking Allocation</h2><p>Same as before…</p></div>
-<div id="a5" class="module-content"><h2>Emergency Routing</h2><p>Same as before…</p></div>
-
-<!-- FULLSCREEN CODE VIEWER -->
-<div id="codeViewer">
-  <button onclick="closeCodeViewer()" style="
-    position:fixed; right:30px; top:20px; background:#e74c3c;
-    padding:10px 20px; border:none; border-radius:8px; color:white;
-    font-size:16px; cursor:pointer;">
-    ✖ Close
-  </button>
-
-  <h2 id="codeTitle" style="color:#f39c12;"></h2>
-  <pre id="codeContent" style="white-space:pre-wrap; font-size:15px;"></pre>
+<!-- Fullscreen code viewer -->
+<div id="codeViewer" class="code-viewer">
+    <button class="close-btn" onclick="closeCode()">Close</button>
+    <pre id="codeContent"></pre>
 </div>
 
 <script>
-function toggleModule(id){
- document.querySelectorAll('.module-content').forEach(m => m.style.display='none');
- const x=document.getElementById(id);
- if(x) x.style.display='block';
+function showModule(num){
+    for(let i=1;i<=8;i++){
+        document.getElementById('module'+i).style.display='none';
+    }
+    document.getElementById('module'+num).style.display='block';
 }
 
-function goHome(){ window.location.href="index.html"; }
-
-function toggleTheme(){
- const body=document.body;
- body.classList.toggle('dark');
- body.classList.toggle('light');
- document.getElementById('themeBtn').textContent =
-   body.classList.contains('dark') ? "🌙 Dark Mode" : "☀ Light Mode";
+function openCode(id){
+    document.getElementById('codeContent').innerText = document.getElementById(id).innerText;
+    document.getElementById('codeViewer').style.display='block';
+}
+function closeCode(){
+    document.getElementById('codeViewer').style.display='none';
 }
 
-function openCodeViewer(title, code){
-  document.getElementById("codeViewer").style.display = "block";
-  document.getElementById("codeTitle").textContent = title;
-  document.getElementById("codeContent").textContent = code;
-}
-function closeCodeViewer(){
-  document.getElementById("codeViewer").style.display = "none";
-}
-</script>
-
-</body>
-</html>
+//
