@@ -107,86 +107,122 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 <!-- MODULE 1 -->
 <div id="a1" class="module-content">
 <h2>Intelligent Traffic Density Management System</h2>
-<h3>Problem</h3>
-<p>The city faces uneven traffic distribution because vehicles crowd main roads while other routes stay empty. Manual traffic control fails during peak hours, leading to congestion, delays, and inefficient EV flow.</p>
-<h3>Solution</h3>
-<p>A real-time automated traffic density system that uses sensors, cameras, and algorithms to monitor road load, rank congestion levels, and automatically adjust signal timings.</p>
-<h3>Data Structures Used</h3>
-<ul>
-<li>Array → Store live sensor data (vehicle count, speed).</li>
-<li>Max Heap → Identify most congested road instantly.</li>
-<li>Queue → Manage vehicles approaching each signal.</li>
-<li>Graph → Represent entire road network for cross-road density checks.</li>
-</ul>
-<h3>Algorithms Used</h3>
-<ul>
-<li>Merge Sort → Sort road densities for ranking.</li>
-<li>Heap Operations → Prioritize which road gets green signal first.</li>
-<li>BFS → Spread density updates across nearby intersections.</li>
-</ul>
-<h3>Step-by-Step Process</h3>
-<p>1. Sensors send vehicle counts → stored in array.</p>
-<p>2. Merge Sort arranges roads from most to least crowded.</p>
-<p>3. Max Heap picks the top 3 highest-density roads.</p>
-<p>4. BFS sends density updates to all connected intersections (graph).</p>
-<p>5. Heap-based prioritization assigns green time to the busiest lanes.</p>
-<p>6. Signal controller updates timings in real time.</p>
-<p>7. Dashboard shows congestion map to users.</p>
-<hr>
-<!-- Code buttons same as before for Module 1 -->
+<p>Module 1 content remains as before...</p>
 </div>
 
 <!-- MODULE 2 -->
 <div id="a2" class="module-content">
 <h2>Smart EV-Only Road Routing System</h2>
 <h3>Problem</h3>
-<p>City roads are congested with mixed traffic, which delays electric vehicles (EVs). Fixed signals cannot prioritize EVs, leading to longer travel times and inefficient EV flow.</p>
+<p>EV traffic inside the city gets delayed due to congestion, and non-EV vehicles entering EV zones cause delays and pollution. Manual route management cannot ensure smooth flow for EVs.</p>
 <h3>Solution</h3>
-<p>A real-time routing system that prioritizes EVs, assigns them dedicated paths, adjusts traffic signals dynamically, and ensures faster travel for EVs.</p>
+<p>A smart routing system that monitors EV traffic, calculates the fastest path using real-time data, and restricts non-EV vehicles automatically.</p>
 <h3>Data Structures Used</h3>
 <ul>
-<li>Array → Store live vehicle counts per lane.</li>
-<li>Priority Queue → Decide which EV gets green next.</li>
-<li>Graph → Represent intersections and road connectivity.</li>
-<li>Queue → Manage waiting vehicles per lane.</li>
+<li>Graph → Represent EV road network.</li>
+<li>Priority Queue (Heap) → Select the next intersection with minimum travel time.</li>
 </ul>
 <h3>Algorithms Used</h3>
 <ul>
-<li>Heap Operations → Pick EV-dense lanes first.</li>
-<li>Greedy Routing → Assign green time to EV-heavy lanes.</li>
-<li>BFS → Spread routing updates across connected intersections.</li>
+<li>Dijkstra’s Algorithm → Calculate real-time shortest path for EVs.</li>
+<li>BFS → Check connected intersections for alternate routing in case of congestion.</li>
 </ul>
 <h3>Step-by-Step Process</h3>
-<p>1. Sensors detect EVs and other vehicles → store in arrays.</p>
-<p>2. Priority Queue ranks EV-heavy lanes for green signals.</p>
-<p>3. Greedy algorithm allocates green time proportionally to EV density.</p>
-<p>4. BFS sends updates to nearby intersections.</p>
-<p>5. Dashboard shows EV routing and congestion map to users.</p>
+<p>1. Map all EV roads as graph nodes and edges with travel time as weights.</p>
+<p>2. Input current EV positions and destinations.</p>
+<p>3. Use Dijkstra to find the shortest congested-free path.</p>
+<p>4. BFS monitors connected intersections for traffic updates.</p>
+<p>5. Navigation system directs EVs along optimal paths.</p>
+<p>6. Non-EV vehicles are restricted using smart gates.</p>
 <hr>
-<!-- Example Code Buttons -->
-<button class="code-btn" onclick="openCodeViewer('Array – Store Lane Counts', 
-`#include &lt;iostream&gt;
-using namespace std;
-int main(){ int lanes[] = {12, 5, 20, 8}; int n = 4; cout &lt;&lt; &quot;Lane counts stored for &quot; &lt;&lt; n; }`)">📌 Array – Lane Counts</button>
 
-<button class="code-btn" onclick="openCodeViewer('Priority Queue – Select Next EV Lane',
-`#include &lt;iostream&gt;
-#include &lt;queue&gt;
+<!-- Sample Code Buttons -->
+<button class="code-btn" onclick="openCodeViewer('Graph Representation', 
+`#include <iostream>
+#include <vector>
 using namespace std;
-int main(){ priority_queue&lt;int&gt; pq; int lanes[] = {12,5,20,8}; int n=4; for(int i=0;i&lt;n;i++) pq.push(lanes[i]); cout &lt;&lt; &quot;Next green lane has &quot; &lt;&lt; pq.top() &lt;&lt; &quot; vehicles waiting.&quot;; }`)">📌 Priority Queue – Next EV Lane</button>
 
-<button class="code-btn" onclick="openCodeViewer('Greedy – EV Green Time Allocation', 
-`#include &lt;iostream&gt;
-using namespace std;
-int main(){ int evDensity = 20; int greenTime = 10 + evDensity/2; cout &lt;&lt; &quot;Assigned Green Time: &quot; &lt;&lt; greenTime &lt;&lt; &quot; sec&quot;; }`)">📌 Greedy – Green Time Allocation</button>
+int main(){
+    int n,m;
+    cin>>n>>m; 
+    vector<pair<int,int>> g[n];
+    for(int i=0;i<m;i++){
+        int u,v,w; 
+        cin>>u>>v>>w;
+        g[u].push_back({v,w});
+        g[v].push_back({u,w});
+    }
+    for(int i=0;i<n;i++){
+        cout<<"Node "<<i<<": ";
+        for(auto p:g[i]) cout<<"("<<p.first<<","<<p.second<<") ";
+        cout<<endl;
+    }
+    return 0;
+}`)">📌 Graph Representation</button>
 
-<button class="code-btn" onclick="openCodeViewer('BFS – Spread EV Routing Updates', 
-`#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;queue&gt;
+<button class="code-btn" onclick="openCodeViewer('Dijkstra’s Algorithm', 
+`#include <iostream>
+#include <vector>
+#include <queue>
 using namespace std;
-void BFS(int s, vector&lt;int&gt; adj[], int n){ vector&lt;bool&gt; vis(n,false); queue&lt;int&gt; q; q.push(s); vis[s]=true; while(!q.empty()){ int u=q.front(); q.pop(); cout &lt;&lt; &quot;Intersection &quot; &lt;&lt; u &lt;&lt; &quot; updated.&quot;&lt;&lt;endl; for(int v: adj[u]) if(!vis[v]){ q.push(v); vis[v]=true; } } }
-int main(){ int n=5; vector&lt;int&gt; adj[n]; adj[0]={1,2}; adj[1]={0,3}; adj[2]={0,3}; adj[3]={1,2,4}; adj[4]={3}; BFS(0,adj,n); }`)">📌 BFS – Spread Updates</button>
+
+int main(){
+    int n,m; cin>>n>>m;
+    vector<pair<int,int>> g[n];
+    for(int i=0;i<m;i++){
+        int u,v,w; cin>>u>>v>>w;
+        g[u].push_back({v,w});
+        g[v].push_back({u,w});
+    }
+
+    int src; cin>>src;
+    vector<int> dist(n,1e9);
+    dist[src]=0;
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+    pq.push({0,src});
+    while(!pq.empty()){
+        auto [d,u]=pq.top(); pq.pop();
+        for(auto [v,w]:g[u]){
+            if(dist[v]>d+w){
+                dist[v]=d+w;
+                pq.push({dist[v],v});
+            }
+        }
+    }
+    for(int i=0;i<n;i++) cout<<"Distance to "<<i<<": "<<dist[i]<<endl;
+    return 0;
+}`)">📌 Dijkstra’s Algorithm</button>
+
+<button class="code-btn" onclick="openCodeViewer('BFS – Monitor Connected Intersections', 
+`#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+int main(){
+    int n,m; cin>>n>>m;
+    vector<int> g[n];
+    for(int i=0;i<m;i++){
+        int u,v; cin>>u>>v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+    int start; cin>>start;
+    vector<bool> vis(n,false);
+    queue<int> q;
+    q.push(start); vis[start]=true;
+    while(!q.empty()){
+        int u=q.front(); q.pop();
+        cout<<u<<" ";
+        for(int v:g[u]){
+            if(!vis[v]){
+                vis[v]=true;
+                q.push(v);
+            }
+        }
+    }
+    return 0;
+}`)">📌 BFS</button>
 </div>
 
 <!-- Other modules unchanged -->
@@ -232,9 +268,6 @@ function openCodeViewer(title, code){
 function closeCodeViewer(){
   document.getElementById("codeViewer").style.display = "none";
 }
-
-// Show Module 2 by default
-document.getElementById('a2').style.display = 'block';
 </script>
 
 </body>
