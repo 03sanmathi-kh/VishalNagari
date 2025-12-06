@@ -201,8 +201,17 @@
       text-shadow: 0 0 6px #fff;
       background: rgba(255,255,255,0.05);
     }
-    .team-card a { color: #0ff; font-weight: bold; text-decoration: none; text-shadow: 0 0 6px #0ff; transition: 0.3s; }
-    .team-card a:hover { text-shadow: 0 0 12px #0ff; }
+    .team-card a { 
+    color: #ff0000; /* red */
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0 0 3px rgba(255,0,0,0.6); /* subtle red glow */
+    transition: 0.3s; 
+}
+
+.team-card a:hover { 
+    text-shadow: 0 0 8px rgba(255,0,0,0.8); /* stronger glow on hover */
+}
 
     .team-card.traffic { background: rgba(255,0,60,0.3); }
     .team-card.industry { background: rgba(255,200,0,0.3); }
