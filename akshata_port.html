@@ -1,131 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart City Traffic Modules</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Traffic Management Portfolio</title>
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #111;
-    color: #eee;
-    margin: 0;
-    padding: 20px;
-}
-.module {
-    background: #222;
-    margin: 15px 0;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #0ff;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.module:hover {
-    box-shadow: 0 0 20px #0ff;
-}
-.module h2 {
-    margin: 0;
-}
-.content {
-    display: none;
-    margin-top: 10px;
-    background: #111;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: inset 0 0 10px #0ff;
-}
-button {
-    background: #0ff;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #111;
-    margin-top: 5px;
-}
-button:hover {
-    background: #0aa;
-    color: #fff;
-}
+body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+.container { max-width: 1100px; margin: auto; }
+.hex-grid { display: fhhvamlex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 30px; }
+.hex { width: 140px; height: 140px; background: #3498db; color: white; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 16px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+.hex:hover { background: #217dbb; }
+.module { display: none; background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.module h2 { margin-top: 0; }
+.code { background: #eee; padding: 10px; border-radius: 8px; font-family: monospace; white-space: pre-wrap; }
 </style>
-</head>
-<body>
-
-<div class="module">
-    <h2>Module 1: Intelligent Traffic Density Management</h2>
-    <button onclick="toggleContent(this)">Show/Hide Details</button>
-    <div class="content">
-        <!-- Paste Module 1 content here -->
-        Problem: The city faces uneven traffic distribution...<br>
-        Solution: A real-time automated traffic density system...<br>
-        <!-- Continue all content -->
-    </div>
-</div>
-
-<div class="module">
-    <h2>Module 2: Smart EV-Only Road Routing System</h2>
-    <button onclick="toggleContent(this)">Show/Hide Details</button>
-    <div class="content">
-        <!-- Module 2 content -->
-    </div>
-</div>
-
-<div class="module">
-    <h2>Module 3: Visitor Vehicle Bypass Routing & Control System</h2>
-    <button onclick="toggleContent(this)">Show/Hide Details</button>
-    <div class="content">
-        <!-- Module 3 content -->
-    </div>
-</div>
-
-<div class="module">
-    <h2>Module 4: Multi-Lane Road Separation + Smart Gate Control System</h2>
-    <button onclick="toggleContent(this)">Show/Hide Details</button>
-    <div class="content">
-        <!-- Module 4 content -->
-    </div>
-</div>
-
-<div class="module">
-    <h2>Module 5: Road Quality Monitoring & Smart Construction Analytics System</h2>
-    <button onclick="toggleContent(this)">Show/Hide Details</button>
-    <div class="content">
-        <!-- Module 5 content -->
-    </div>
-</div>
-
-<div class="module">
-    <h2>Module 6: Traffic Signal Optimization Using EV Priority</h2>
-    <button onclick="toggleContent(this)">Show/Hide Details</button>
-    <div class="content">
-        <!-- Module 6 content -->
-    </div>
-</div>
-
-<div class="module">
-    <h2>Module 7: Smart City Road & Vehicle Search System (Trie-Based)</h2>
-    <button onclick="toggleContent(this)">Show/Hide Details</button>
-    <div class="content">
-        <!-- Module 7 content -->
-    </div>
-</div>
-
-<div class="module">
-    <h2>Module 8: Smart Urban Infrastructure Maintenance & Planning System</h2>
-    <button onclick="toggleContent(this)">Show/Hide Details</button>
-    <div class="content">
-        <!-- Module 8 content -->
-    </div>
-</div>
-
 <script>
-function toggleContent(btn) {
-    const content = btn.nextElementSibling;
-    content.style.display = content.style.display === "block" ? "none" : "block";
+function toggleModule(id) {
+  document.querySelectorAll('.module').forEach(m => m.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
 }
 </script>
+</head>
+<body>
+<div class="container">
+<h1>Smart Traffic Management System Portfolio</h1>
 
+<div class="hex-grid">
+  <div class="hex" onclick="toggleModule('m1')">Traffic Density<br>Management</div>
+  <div class="hex" onclick="toggleModule('m2')">Emergency<br>Vehicle Priority</div>
+  <div class="hex" onclick="toggleModule('m3')">Sound Pollution<br>Reduction</div>
+  <div class="hex" onclick="toggleModule('m4')">Smart Parking<br>Guidance</div>
+  <div class="hex" onclick="toggleModule('m5')">Accident Detection<br>& Alerts</div>
+  <div class="hex" onclick="toggleModule('m6')">Smart EV-Only<br>Routing System</div>
+</div>
+
+<!-- MODULE 1 -->
+<div class="module" id="m1">
+<h2>Module 1: Intelligent Traffic Density Management</h2>
+<h3>Problem Statement</h3>
+<p>Vehicles wait unnecessarily at empty signals. A smart system is needed to adjust green signal duration dynamically based on real-time density.</p>
+<h3>Solution</h3>
+<p>Uses sensors + dynamic time allocation using queue analysis and AVL trees.</p>
+<h3>Data Structures</h3>
+<ul>
+<li>Queue – for counting vehicle density</li>
+<li>AVL Tree – for time optimization</li>
+<li>Graphs – for road mapping</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>Sensors detect vehicle density.</li>
+<li>Data queued and processed.</li>
+<li>AVL tree balances and assigns green time.</li>
+<li>Signal updates automatically.</li>
+</ol>
+<h3>Sample Code</h3>
+<div class="code">int allocateGreenTime(int density) {
+ if (density > 50) return 40;
+ else if (density > 20) return 25;
+ else return 10;
+}
+</div>
+</div>
+
+<!-- MODULE 2 -->
+<div class="module" id="m2">
+<h2>Module 2: Emergency Vehicle Priority System</h2>
+<p>Detects ambulance/fire truck using IoT sensors and gives green corridor.</p>
+<h3>Algorithm Used: BFS</h3>
+<div class="code">bfs(start) {
+ queue.push(start);
+ while(!queue.empty()) {
+  node = queue.pop();
+  openSignal(node);
+ }
+}</div>
+</div>
+
+<!-- MODULE 3 -->
+<div class="module" id="m3">
+<h2>Module 3: Sound Pollution Reduction</h2>
+<p>Automatically reduces honking noise at traffic signals using sensors.</p>
+<h3>Approach</h3>
+<ul>
+<li>Sound sensor detects dB level</li>
+<li>Threshold check</li>
+<li>Trigger warning / penalty</li>
+</ul>
+</div>
+
+<!-- MODULE 4 -->
+<div class="module" id="m4">
+<h2>Module 4: Smart Parking Guidance System</h2>
+<p>Detects available slots and guides vehicles.</p>
+<h3>Algorithm: DFS</h3>
+<div class="code">dfs(slot) {
+ if (slot.empty) return slot.id;
+ for child in slot.child:
+  dfs(child);
+}</div>
+</div>
+
+<!-- MODULE 5 -->
+<div class="module" id="m5">
+<h2>Module 5: Accident Detection & Alerts</h2>
+<p>Sensors + ML-based crash detection + automated alert system.</p>
+<h3>Basic Logic</h3>
+<div class="code">if (impact_force > threshold)
+ sendAlert();</div>
+</div>
+
+<!-- MODULE 6 -->
+<div class="module" id="m6">
+<h2>Module 6: Smart EV-Only Road Routing System</h2>
+<h3>Problem Statement</h3>
+<p>Electric vehicles are allowed only in specific city routes. Need a system that highlights EV-safe roads.</p>
+<h3>Solution</h3>
+<p>Use graphs + Dijkstra + BFS to find EV-approved shortest path.</p>
+<h3>Steps</h3>
+<ol>
+<li>Build graph of all roads.</li>
+<li>Mark EV-only roads.</li>
+<li>Run Dijkstra with constraints.</li>
+<li>Display shortest EV path.</li>
+</ol>
+<h3>Sample Code</h3>
+<div class="code">dijkstra_EV(graph, start) {
+ for all nodes: dist = INF;
+ dist[start] = 0;
+ pq.push(start);
+ while(!pq.empty()) {
+  u = pq.pop();
+  for edge in graph[u]:
+   if edge.EV_allowed:
+    relax_edge();
+ }
+}</div>
+</div>
+
+</div>
 </body>
 </html>
