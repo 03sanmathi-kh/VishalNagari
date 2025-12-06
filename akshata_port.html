@@ -47,7 +47,9 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 .module-content{display:none;margin:20px auto;padding:20px;border-radius:15px;
  max-width:900px;background:rgba(255,255,255,0.05);}
 .module-content h2{font-size:24px;margin-bottom:10px;}
+.module-content h3{font-size:20px;margin-bottom:5px;}
 .module-content p{font-size:16px;line-height:1.6;margin-bottom:10px;}
+.module-content ul{margin-left:20px;}
 
 .code-btn{
  background:#e67e22;border:none;padding:10px 20px;color:white;
@@ -79,7 +81,6 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 
 <body class="dark">
 
-<!-- BACKGROUND WAVES -->
 <div class="wave-bg">
 <svg class="wave wave1" viewBox="0 0 1440 320"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
 <svg class="wave wave2" viewBox="0 0 1440 320"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
@@ -108,78 +109,135 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 <h2>Intelligent Traffic Density Management System</h2>
 
 <h3>Problem</h3>
-<p>Traffic becomes highly congested on certain roads while others remain free. Manual monitoring fails during peak hours, causing delays.</p>
+<p>The city faces uneven traffic distribution because vehicles crowd main roads while other routes stay empty. Manual traffic control fails during peak hours, leading to congestion, delays, and inefficient EV flow.</p>
 
 <h3>Solution</h3>
-<p>A smart system that collects traffic density in real time, sorts it, identifies busy roads, and adjusts signals automatically.</p>
+<p>A real-time automated traffic density system that uses sensors, cameras, and algorithms to monitor road load, rank congestion levels, and automatically adjust signal timings.</p>
 
 <h3>Data Structures Used</h3>
 <ul>
-<li>Array → stores density values</li>
-<li>Max Heap → pick highest congestion</li>
-<li>Queue → simulate waiting vehicles</li>
-<li>Graph → represent intersections</li>
+<li>Array → Store live sensor data (vehicle count, speed).</li>
+<li>Max Heap → Identify most congested road instantly.</li>
+<li>Queue → Manage vehicles approaching each signal.</li>
+<li>Graph → Represent entire road network for cross-road density checks.</li>
 </ul>
 
 <h3>Algorithms Used</h3>
 <ul>
-<li>Merge Sort → sort densities</li>
-<li>Greedy Allocation → assign green time</li>
-<li>BFS → network update</li>
+<li>Merge Sort → Sort road densities for ranking.</li>
+<li>Heap Operations → Prioritize which road gets green signal first.</li>
+<li>BFS → Spread density updates across nearby intersections.</li>
 </ul>
 
 <h3>Step-by-Step Process</h3>
-<p>1. Sensors collect density values into an array.</p>
-<p>2. Merge Sort arranges roads by density.</p>
-<p>3. Max Heap gets the most congested road.</p>
-<p>4. BFS spreads updates to neighbouring signals.</p>
-<p>5. Greedy logic increases green time for top-density road.</p>
+<p>1. Sensors send vehicle counts → stored in array.</p>
+<p>2. Merge Sort arranges roads from most to least crowded.</p>
+<p>3. Max Heap picks the top 3 highest-density roads.</p>
+<p>4. BFS sends density updates to all connected intersections (graph).</p>
+<p>5. Heap-based prioritization assigns green time to the busiest lanes.</p>
+<p>6. Signal controller updates timings in real time.</p>
+<p>7. Dashboard shows congestion map to users.</p>
 
 <hr>
 
-<!-- ARRAY -->
-<button class="code-btn" onclick="openCodeViewer('Array – Store Traffic Density', 
-`#include <iostream>
+<!-- ARRAY + MERGE SORT -->
+<button class="code-btn" onclick="openCodeViewer('Array + Merge Sort – Congestion Ranking', 
+`#include &lt;iostream&gt;
 using namespace std;
 
-int main() {
-    int density[] = {45, 80, 20, 62, 10};
-    int n = 5;
-}`)">📌 Array – Store Traffic Density</button>
+void merge(int a[], int l, int m, int r) {
+    int n1 = m-l+1, n2=r-m;
+    int L[n1], R[n2];
+    for(int i=0;i&lt;n1;i++) L[i]=a[l+i];
+    for(int i=0;i&lt;n2;i++) R[i]=a[m+1+i];
+    int i=0,j=0,k=l;
+    while(i&lt;n1 &amp;&amp; j&lt;n2){
+        if(L[i]&gt;=R[j]) a[k++]=L[i++];
+        else a[k++]=R[j++];
+    }
+    while(i&lt;n1) a[k++]=L[i++];
+    while(j&lt;n2) a[k++]=R[j++];
+}
 
-<!-- MERGE SORT -->
-<button class="code-btn" onclick="openCodeViewer('Merge Sort – Sort Density',
-`auto mergeSort = [&](auto&& self, int arr[], int l, int r) -> void {
-    if(l >= r) return;
-    int mid = (l + r) / 2;
-    self(self, arr, l, mid);
-    self(self, arr, mid + 1, r);
+void mergeSort(int a[], int l, int r){
+    if(l&lt;r){
+        int m=l+(r-l)/2;
+        mergeSort(a,l,m);
+        mergeSort(a,m+1,r);
+        merge(a,l,m,r);
+    }
+}
 
-    int temp[100], i=l, j=mid+1, k=0;
-    while(i <= mid && j <= r)
-        temp[k++] = (arr[i] < arr[j]) ? arr[i++] : arr[j++];
-    while(i <= mid) temp[k++] = arr[i++];
-    while(j <= r) temp[k++] = arr[j++];
-
-    for(int x=0; x<k; x++) arr[l+x] = temp[x];
-};`)"
->📌 Merge Sort – Sort Density</button>
+int main(){
+    int n; cin&gt;&gt;n;
+    int arr[n];
+    for(int i=0;i&lt;n;i++) cin&gt;&gt;arr[i];
+    mergeSort(arr,0,n-1);
+    for(int i=0;i&lt;n;i++) cout&lt;&lt;arr[i]&quot; &quot;;
+    return 0;
+}`)">📌 Array + Merge Sort</button>
 
 <!-- MAX HEAP -->
-<button class="code-btn" onclick="openCodeViewer('Max Heap – Find Most Congested Road',
-`int maxDensity = density[n-1];  // after sorting
-cout << "Most congested: " << maxDensity;`)"
->📌 Max Heap – Find Most Congested Road</button>
+<button class="code-btn" onclick="openCodeViewer('Max Heap – Select Busiest Roads',
+`#include &lt;iostream&gt;
+using namespace std;
 
-<!-- GREEN TIME -->
-<button class="code-btn" onclick="openCodeViewer('Greedy – Green Time Allocation',
-`int greenTime = 20 + maxDensity / 10;
-cout << "Green Time: " << greenTime;`)"
->📌 Greedy – Green Time Allocation</button>
+void heapify(int h[], int n, int i){
+    int k=i,v=h[i]; bool heap=false;
+    while(!heap &amp;&amp; 2*k+1&lt;n){
+        int j=2*k+1;
+        if(j+1&lt;n &amp;&amp; h[j]&lt;h[j+1]) j++;
+        if(v&gt;=h[j]) heap=true;
+        else{ h[k]=h[j]; k=j; }
+    }
+    h[k]=v;
+}
+
+void buildHeap(int h[], int n){
+    for(int i=n/2;i&gt;=0;i--) heapify(h,n,i);
+}
+
+int main(){
+    int n; cin&gt;&gt;n;
+    int h[n];
+    for(int i=0;i&lt;n;i++) cin&gt;&gt;h[i];
+    buildHeap(h,n);
+    for(int i=0;i&lt;n;i++) cout&lt;&lt;h[i]&quot; &quot;;
+}`)">📌 Max Heap</button>
+
+<!-- BFS -->
+<button class="code-btn" onclick="openCodeViewer('BFS – Spread Density Updates',
+`#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+void BFS(int s, vector&lt;int&gt; adj[], int n){
+    vector&lt;bool&gt; vis(n,false);
+    queue&lt;int&gt; q;
+    q.push(s); vis[s]=true;
+    while(!q.empty()){
+        int u=q.front(); q.pop();
+        cout&lt;&lt;u&quot; &quot;;
+        for(int v: adj[u])
+            if(!vis[v]){ q.push(v); vis[v]=true; }
+    }
+}
+
+int main(){
+    int n,m; cin&gt;&gt;n&gt;&gt;m;
+    vector&lt;int&gt; adj[n];
+    for(int i=0;i&lt;m;i++){
+        int u,v; cin&gt;&gt;u&gt;&gt;v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    BFS(0,adj,n);
+}`)">📌 BFS</button>
 
 </div>
 
-<!-- Other Modules -->
+<!-- Other modules -->
 <div id="a2" class="module-content"><h2>Signal Scheduling</h2><p>Same as before…</p></div>
 <div id="a3" class="module-content"><h2>Accident Detection</h2><p>Same as before…</p></div>
 <div id="a4" class="module-content"><h2>Parking Allocation</h2><p>Same as before…</p></div>
