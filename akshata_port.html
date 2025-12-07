@@ -299,95 +299,90 @@ function toggleCode(id){
 
 <hr>
 
-<button class="code-btn" 
-onclick="openCodeViewer('Graph Representation', 
-\`#include <iostream>
-#include <vector>
+<button class="code-btn" onclick="toggleCode('codeGraph')">📌 Graph Representation</button>
+<button class="code-btn" onclick="toggleCode('codeDijkstra')">📌 Dijkstra’s Algorithm</button>
+<button class="code-btn" onclick="toggleCode('codeBFS2')">📌 BFS – Monitor Intersections</button>
+
+<!-- Hidden Code Blocks -->
+<pre id="codeGraph" class="hidden-code">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
 using namespace std;
 
 int main(){
     int n,m;
-    cin>>n>>m; 
-    vector<pair<int,int>> g[n];
-    for(int i=0;i<m;i++){
+    cin&gt;&gt;n&gt;&gt;m; 
+    vector&lt;pair&lt;int,int&gt;&gt; g[n];
+    for(int i=0;i&lt;m;i++){
         int u,v,w; 
-        cin>>u>>v>>w;
+        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;
         g[u].push_back({v,w});
         g[v].push_back({u,w});
     }
-    for(int i=0;i<n;i++){
-        cout<<"Node "<<i<<": ";
-        for(auto p:g[i]) cout<<"("<<p.first<<","<<p.second<<") ";
-        cout<<endl;
+    for(int i=0;i&lt;n;i++){
+        cout&lt;&lt;"Node "&lt;&lt;i&lt;&lt;": ";
+        for(auto p:g[i]) cout&lt;&lt;"("&lt;&lt;p.first&lt;&lt;","&lt;&lt;p.second&lt;&lt;") ";
+        cout&lt;&lt;endl;
     }
     return 0;
-}\`)">
-📌 Graph Representation
-</button>
+}
+</pre>
 
-<!-- MODULE 2 – Dijkstra -->
-<button class="code-btn" 
-onclick="openCodeViewer('Dijkstra’s Algorithm', 
-\`#include <iostream>
-#include <vector>
-#include <queue>
+<pre id="codeDijkstra" class="hidden-code">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
 using namespace std;
 
 int main(){
-    int n,m; cin>>n>>m;
-    vector<pair<int,int>> g[n];
-    for(int i=0;i<m;i++){
-        int u,v,w; cin>>u>>v>>w;
+    int n,m; cin&gt;&gt;n&gt;&gt;m;
+    vector&lt;pair&lt;int,int&gt;&gt; g[n];
+    for(int i=0;i&lt;m;i++){
+        int u,v,w; cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;
         g[u].push_back({v,w});
         g[v].push_back({u,w});
     }
 
-    int src; cin>>src;
-    vector<int> dist(n,1e9);
+    int src; cin&gt;&gt;src;
+    vector&lt;int&gt; dist(n,1e9);
     dist[src]=0;
-    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+    priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;>, greater&lt;pair&lt;int,int&gt;&gt;&gt; pq;
     pq.push({0,src});
-
     while(!pq.empty()){
         auto [d,u]=pq.top(); pq.pop();
         for(auto [v,w]:g[u]){
-            if(dist[v] > d+w){
+            if(dist[v]&gt;d+w){
                 dist[v]=d+w;
                 pq.push({dist[v],v});
             }
         }
     }
-
-    for(int i=0;i<n;i++)
-        cout<<"Distance to "<<i<<": "<<dist[i]<<endl;
+    for(int i=0;i&lt;n;i++) cout&lt;&lt;"Distance to "&lt;&lt;i&lt;&lt;": "&lt;&lt;dist[i]&lt;&lt;endl;
     return 0;
-}\`)">
-📌 Dijkstra’s Algorithm
-</button>
+}
+</pre>
 
-<!-- MODULE 2 – BFS Monitoring -->
-<button class="code-btn" 
-onclick="openCodeViewer('BFS – Monitor Connected Intersections', 
-\`#include <iostream>
-#include <vector>
-#include <queue>
+<pre id="codeBFS2" class="hidden-code">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
 using namespace std;
 
 int main(){
-    int n,m; cin>>n>>m;
-    vector<int> g[n];
-    for(int i=0;i<m;i++){
-        int u,v; cin>>u>>v;
+    int n,m; cin&gt;&gt;n&gt;&gt;m;
+    vector&lt;int&gt; g[n];
+    for(int i=0;i&lt;m;i++){
+        int u,v; cin&gt;&gt;u&gt;&gt;v;
         g[u].push_back(v);
         g[v].push_back(u);
     }
-    int start; cin>>start;
-    vector<bool> vis(n,false);
-    queue<int> q;
+    int start; cin&gt;&gt;start;
+    vector&lt;bool&gt; vis(n,false);
+    queue&lt;int&gt; q;
     q.push(start); vis[start]=true;
     while(!q.empty()){
         int u=q.front(); q.pop();
-        cout<<u<<" ";
+        cout&lt;&lt;u&lt;&lt;" ";
         for(int v:g[u]){
             if(!vis[v]){
                 vis[v]=true;
@@ -396,11 +391,8 @@ int main(){
         }
     }
     return 0;
-}\`)">
-📌 BFS Monitoring
-</button>
-
-
+}
+</pre>
 </div>
 <div id="a3" class="module-content">
 <h2>Visitor Vehicle Bypass Routing & Control System</h2>
