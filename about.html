@@ -90,13 +90,28 @@
     .team-card,
     #about-text { box-shadow: none; text-shadow: none; transform: scale(1); }
 
-    .back-btn { display: block; margin: 20px auto; padding: 10px 20px; border-radius: 8px; background: #ff79c6; color: #fff; font-weight: 600; text-decoration: none; text-align: center; width: max-content; transition: 0.3s; }
+    .back-btn { 
+      position: fixed; 
+      top: 20px; 
+      left: 20px; 
+      padding: 10px 20px; 
+      border-radius: 8px; 
+      background: #ff79c6; 
+      color: #fff; 
+      font-weight: 600; 
+      text-decoration: none; 
+      text-align: center; 
+      transition: 0.3s; 
+      z-index: 3;
+    }
     .back-btn:hover { background: #ff4c60; }
   </style>
 </head>
 
 <body class="dark">
 <div class="wave-layer3"></div>
+
+<a class="back-btn" href="index.html">Back to Home</a>
 
 <nav>
   <a href="index.html">Home</a>
@@ -118,8 +133,6 @@
   </p>
 </section>
 
-<a class="back-btn" href="index.html">Back to Home</a>
-
 <section id="meet-the-team">
   <h2>Meet the Team</h2>
   <div class="team-container">
@@ -128,7 +141,9 @@
       <p><strong>Roll No:</strong> 407</p>
       <p><strong>USN:</strong> 01fe24bcs269</p>
       <p><strong>Skills:</strong> C, C++, SQL, Python, HTML, CSS</p>
-      <p><strong>LinkedIn:</strong> [Link Here]</p>
+      <p><strong>LinkedIn:</strong> www.linkedin.com/in/
+sanmathi-hegde-604a0637a
+</p>
       <a href="sanmathi_port.html" target="_blank">View Portfolio</a>
     </div>
     <div class="team-card commerce">
