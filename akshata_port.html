@@ -80,6 +80,12 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
   overflow:auto;
   z-index:9999;
 }
+
+/* small responsive */
+@media (max-width:600px){
+  .hex{width:140px;height:80px;font-size:14px;}
+  header h1{font-size:32px;}
+}
 </style>
 </head>
 
@@ -514,6 +520,8 @@ int main() {
 }`)">📌 BFS</button>
 
 </div>
+
+<!-- MODULE 4 & 5 & Remaining (you provided earlier, preserved) -->
 <div id="a4" class="module-content">
 <h2>Multi-Lane Road Separation + Smart Gate Control System</h2>
 
@@ -824,29 +832,88 @@ int main() {
 </div>
 
 <script>
+// ---------------------------
+// OPEN / CLOSE MODULE SECTIONS
+// ---------------------------
 function toggleModule(id){
- document.querySelectorAll('.module-content').forEach(m => m.style.display='none');
- const x=document.getElementById(id);
- if(x) x.style.display='block';
+    let target = document.getElementById(id);
+
+    // close others
+    document.querySelectorAll(".module-content").forEach(m=>{
+        if(m.id !== id) m.style.display = "none";
+    });
+
+    // toggle selected
+    target.style.display = (target.style.display === "block") ? "none" : "block";
 }
 
-function goHome(){ window.location.href="index.html"; }
-
-function toggleTheme(){
- const body=document.body;
- body.classList.toggle('dark');
- body.classList.toggle('light');
- document.getElementById('themeBtn').textContent =
-   body.classList.contains('dark') ? "🌙 Dark Mode" : "☀ Light Mode";
-}
-
+// ---------------------------
+// CODE VIEWER FUNCTIONALITY
+// ---------------------------
 function openCodeViewer(title, code){
-  document.getElementById("codeViewer").style.display = "block";
-  document.getElementById("codeTitle").textContent = title;
-  document.getElementById("codeContent").textContent = code;
+    const viewer = document.getElementById("codeViewer");
+
+    viewer.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+            <h2 style="margin:0;color:#f39c12;">${title}</h2>
+        </div>
+
+        <pre style="
+            white-space: pre-wrap;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 15px;
+            overflow-x: auto;
+            background: #111;
+            box-shadow: 0 0 20px rgba(0,255,255,0.06);
+            margin-top:12px;
+        ">${code}</pre>
+
+        <button onclick="closeCodeViewer()" style="
+            padding: 10px 20px;
+            background: #e74c3c;
+            border: none;
+            color: white;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(231,76,60,0.3);
+        ">Close</button>
+    `;
+
+    viewer.style.display = "block";
 }
+
 function closeCodeViewer(){
-  document.getElementById("codeViewer").style.display = "none";
+    document.getElementById("codeViewer").style.display = "none";
+}
+
+// ---------------------------
+// THEME TOGGLE
+// ---------------------------
+function toggleTheme(){
+    const body = document.body;
+
+    if(body.classList.contains("light")){
+        body.classList.remove("light");
+        body.classList.add("dark");
+        document.getElementById("themeBtn").innerHTML = "🌙 Dark Mode";
+    } else {
+        body.classList.remove("dark");
+        body.classList.add("light");
+        document.getElementById("themeBtn").innerHTML = "☀ Light Mode";
+    }
+}
+
+// ---------------------------
+// GO HOME (collapse modules)
+// ---------------------------
+function goHome(){
+    document.querySelectorAll(".module-content").forEach(m=>{
+        m.style.display = "none";
+    });
+    window.scrollTo({top: 0, behavior: "smooth"});
 }
 </script>
 
