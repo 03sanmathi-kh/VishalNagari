@@ -55,133 +55,364 @@ pre{background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;overflow-x
 <button id="themeBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
 
 <header>
-<h1>Akshata</h1>
-<h3>Traffic Management – Vishalnagari</h3>
-<p>Vishalnagari's Traffic domain ensures safe, fast, and intelligent mobility for every citizen.</p>
+<h1>ISHA</h1>
+<h3>AGRICULTURE – Vishalnagari</h3>
+<b>Vishalnagari’s Agriculture domain ensures sustainable farming, increased productivity, and smarter resource management for every farmer.</b>
 </header>
 
 <div class="hex-container">
-<div class="hex flow" onclick="toggleModule('a1')">Traffic Flow</div>
-<div class="hex signal" onclick="toggleModule('a2')">Signal Scheduling</div>
-<div class="hex accident" onclick="toggleModule('a3')">Accident Detection</div>
-<div class="hex parking" onclick="toggleModule('a4')">Parking Allocation</div>
-<div class="hex emergency" onclick="toggleModule('a5')">Emergency Routing</div>
+    <div class="hex flow" onclick="toggleModule('a1')">Smart Irrigation & Water Distribution</div>
+    <div class="hex signal" onclick="toggleModule('a2')">Crop Recommendation System</div>
+    <div class="hex accident" onclick="toggleModule('a3')">Agri Transport Route Optimization</div>
+    <div class="hex parking" onclick="toggleModule('a4')">Drone-based Field Monitoring</div>
+    <div class="hex emergency" onclick="toggleModule('a5')">Smart Warehouse & Cold Storage</div>
+    <div class="hex flow" onclick="toggleModule('a6')">Farmers Marketplace Platform</div>
+    <div class="hex signal" onclick="toggleModule('a7')">Smart Crop Storage & Expiry Tracking</div>
 </div>
 
 <!-- MODULES -->
 
 <div id="a1" class="module-content">
-<h2>Traffic Flow</h2>
-<p><strong>Algorithm:</strong> Dijkstra – shortest congestion-free path. O(E + V log V)</p>
-<pre>#include &lt;iostream&gt;
+<h2>Smart Irrigation & Water Distribution Network</h2>
+
+<p><strong>Problem Statement:</strong><br>
+Farmers often waste water because pipelines do not deliver water through the shortest or least-pressure-loss routes. This leads to unequal distribution and water scarcity.</p>
+
+<p><strong>Solution:</strong><br>
+Use <b>Dijkstra’s Algorithm</b> to find the shortest and most efficient pipeline route so that water reaches all connected fields with minimal loss.</p>
+
+<p><strong>Algorithm:</strong> Dijkstra – Shortest water flow route (O(E + V log V))</p>
+
+<pre>
+#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;queue&gt;
 using namespace std;
 
 int main(){
-    vector<vector<pair<int,int>>> adj(3);
-    adj[0]={{1,5},{2,9}};
-    adj[1]={{2,3}};
-    vector<int> dist(3,1e9); dist[0]=0;
+    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; pipe(3);
+    pipe[0]={{1,4},{2,7}};
+    pipe[1]={{2,2}};
 
-    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
+    vector&lt;int&gt; dist(3,1e9); 
+    dist[0]=0;
+
+    priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt;&gt;,greater&lt;&gt;&gt; pq;
     pq.push({0,0});
 
     while(!pq.empty()){
         auto [d,u]=pq.top(); pq.pop();
-        for(auto [v,w]:adj[u]){
-            if(dist[u]+w < dist[v]){
+        for(auto [v,w]:pipe[u]){
+            if(dist[u]+w &lt; dist[v]){
                 dist[v]=dist[u]+w;
                 pq.push({dist[v],v});
             }
         }
     }
-    for(int i=0;i<3;i++) cout<<"Distance to "<<i<<": "<<dist[i]<<endl;
-}</pre>
-<p><strong>Conclusion:</strong> Shortest-path routing minimizes congestion and improves vehicle flow.</p>
+
+    for(int i=0;i&lt;3;i++)
+        cout &lt;&lt; "Min water path to field " &lt;&lt; i 
+             &lt;&lt; ": " &lt;&lt; dist[i] &lt;&lt; endl;
+}
+</pre>
+
+<p><strong>Conclusion:</strong> Water reaches farms using the most efficient pipeline network.</p>
+
+<!-- Extra HTML Feature -->
+<div style="padding:15px;background:#1abc9c;border-radius:10px;color:#fff;">
+<b>Pipeline Status:</b> Water Flow: <progress value="70" max="100"></progress> 70%
+</div>
+
 </div>
 
 <div id="a2" class="module-content">
-<h2>Signal Scheduling</h2>
-<p><strong>Algorithm:</strong> Round Robin cycle optimization. O(n)</p>
-<pre>#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
+<h2>Crop Recommendation System</h2>
 
-int main(){
-    vector<int> signals={30,45,25};
-    for(int i=0;i<signals.size();i++){
-        cout<<"Signal "<<i<<" green for "<<signals[i]<<" sec"<<endl;
-    }
-    cout<<"Cycle repeats for smooth traffic movement.";
-}</pre>
-<p><strong>Conclusion:</strong> Balanced timing reduces waiting time at intersections.</p>
-</div>
+<p><strong>Problem Statement:</strong><br>
+Many farmers choose crops without analyzing soil type, water availability, or climatic needs, leading to lower yield.</p>
 
-<div id="a3" class="module-content">
-<h2>Accident Detection</h2>
-<p><strong>Algorithm:</strong> Sensor anomaly detection. O(n)</p>
-<pre>#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
+<p><strong>Solution:</strong><br>
+Use <b>Binary Search</b> to quickly match soil type to suitable crops.</p>
 
-int main(){
-    vector<int> sensor={0,0,1,0,1};
-    for(int i=0;i<sensor.size();i++){
-        if(sensor[i]==1)
-            cout<<"Accident detected at sensor "<<i<<endl;
-    }
-}</pre>
-<p><strong>Conclusion:</strong> Faster detection leads to quicker emergency response.</p>
-</div>
+<p><strong>Algorithm:</strong> Binary Search on crop-soil database (O(log n))</p>
 
-<div id="a4" class="module-content">
-<h2>Parking Allocation</h2>
-<p><strong>Algorithm:</strong> Greedy slot assignment. O(n log n)</p>
-<pre>#include &lt;iostream&gt;
+<pre>
+#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;algorithm&gt;
 using namespace std;
 
 int main(){
-    vector<int> slots={3,1,2};
-    vector<int> cars={2,1,3};
-    sort(slots.begin(),slots.end());
-    for(int i=0;i<cars.size();i++){
-        cout<<"Car "<<cars[i]<<" -> Slot "<<slots[i]<<endl;
+    vector&lt;string&gt; crops = {"Cotton", "Groundnut", "Millet", "Rice", "Wheat"};
+    sort(crops.begin(), crops.end());
+
+    string target = "Millet";
+    int l=0, r=crops.size()-1, mid;
+
+    while(l&lt;=r){
+        mid = (l+r)/2;
+        if(crops[mid] == target){
+            cout &lt;&lt; target &lt;&lt; " is recommended crop!" &lt;&lt; endl;
+            return 0;
+        }
+        else if(crops[mid] &lt; target) l = mid+1;
+        else r = mid-1;
     }
-}</pre>
-<p><strong>Conclusion:</strong> Greedy matching uses parking spaces efficiently.</p>
+
+    cout &lt;&lt; "Crop not found." &lt;&lt; endl;
+}
+</pre>
+
+<p><strong>Conclusion:</strong> Farmers get the most suitable crop based on soil and climate.</p>
+
+<!-- Extra HTML Feature -->
+<div style="background:#f39c12;padding:12px;border-radius:10px;color:white;">
+Recommended Soil Type: <b>Loamy</b>
 </div>
 
-<div id="a5" class="module-content">
-<h2>Emergency Routing</h2>
-<p><strong>Algorithm:</strong> A* (simplified). O(E)</p>
-<pre>#include &lt;iostream&gt;
+</div>
+
+<div id="a3" class="module-content">
+<h2>Transport Route Optimization</h2>
+
+<p><strong>Problem Statement:</strong><br>
+Agriculture produce often gets delayed, causing spoilage due to poor route planning.</p>
+
+<p><strong>Solution:</strong><br>
+Use <b>Dijkstra’s algorithm</b> to compute shortest delivery paths.</p>
+
+<p><strong>Algorithm:</strong> Dijkstra – Fastest delivery route (O(E log V))</p>
+
+<pre>
+#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;queue&gt;
 using namespace std;
 
 int main(){
-    vector<vector<int>> g={{0,2,4},{2,0,3},{4,3,0}};
-    vector<int> dist(3,1e9); dist[0]=0;
+    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; g(3);
+    g[0]={{1,6},{2,2}};
+    g[1]={{2,1}};
 
-    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
+    vector&lt;int&gt; dist(3,1e9);
+    dist[0]=0;
+
+    priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;&gt;, greater&lt;&gt;&gt; pq;
     pq.push({0,0});
 
     while(!pq.empty()){
         auto [d,u]=pq.top(); pq.pop();
-        for(int v=0;v<3;v++){
-            if(g[u][v] && dist[u]+g[u][v] < dist[v]){
-                dist[v]=dist[u]+g[u][v];
+        for(auto [v,w]:g[u]){
+            if(dist[u]+w &lt; dist[v]){
+                dist[v]=dist[u]+w;
                 pq.push({dist[v],v});
             }
         }
     }
-    for(int i=0;i<3;i++) cout<<"Emergency route to "<<i<<": "<<dist[i]<<endl;
-}</pre>
-<p><strong>Conclusion:</strong> Optimized routing ensures emergencies reach destinations faster.</p>
+
+    for(int i=0;i&lt;3;i++)
+        cout &lt;&lt; "Best route to center " &lt;&lt; i 
+             &lt;&lt; ": " &lt;&lt; dist[i] &lt;&lt; endl;
+}
+</pre>
+
+<p><strong>Conclusion:</strong> Ensures faster and safer produce transportation.</p>
+
+<!-- Extra HTML Feature -->
+<div style="border-left:5px solid #3498db;padding:10px;">
+<b>Live Status:</b> Delivery truck ETA: 12 minutes.
 </div>
+
+</div>
+
+<div id="a4" class="module-content">
+<h2>Drone-based Field Monitoring</h2>
+
+<p><strong>Problem Statement:</strong><br>
+Farmers cannot manually monitor large fields for pests, dryness, and diseases.</p>
+
+<p><strong>Solution:</strong><br>
+Use <b>DFS</b> to scan each field grid section deeply.</p>
+
+<p><strong>Algorithm:</strong> DFS on grid (O(n*m))</p>
+
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int vis[3][3];
+int field[3][3]={{1,0,1},{0,1,0},{1,0,1}};
+
+void dfs(int x, int y){
+    if(x&lt;0 || y&lt;0 || x&gt;=3 || y&gt;=3 || vis[x][y]) return;
+    vis[x][y]=1;
+    cout &lt;&lt; "Drone scanned cell: " &lt;&lt; x &lt;&lt; "," &lt;&lt; y &lt;&lt; endl;
+
+    dfs(x+1,y);
+    dfs(x-1,y);
+    dfs(x,y+1);
+    dfs(x,y-1);
+}
+
+int main(){
+    dfs(0,0);
+}
+</pre>
+
+<p><strong>Conclusion:</strong> Drones scan farms faster and detect issues early.</p>
+
+<!-- Extra HTML Feature -->
+<div style="padding:10px;background:#8e44ad;color:white;border-radius:8px;">
+Drone Battery: <progress value="85" max="100"></progress> 85%
+</div>
+
+</div>
+
+<div id="a5" class="module-content">
+<h2>Smart Warehouse & Cold Storage</h2>
+
+<p><strong>Problem Statement:</strong><br>
+Manual storage tracking leads to spoilage and inventory mismatch.</p>
+
+<p><strong>Solution:</strong><br>
+Use a <b>Binary Search Tree (BST)</b> for storing items in sorted order.</p>
+
+<p><strong>Algorithm:</strong> BST Insert & Traverse (O(log n))</p>
+
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+struct Node{
+    int item;
+    Node *left,*right;
+    Node(int x){ item=x; left=right=NULL; }
+};
+
+Node* insert(Node* root, int x){
+    if(!root) return new Node(x);
+    if(x &lt; root-&gt;item) root-&gt;left = insert(root-&gt;left,x);
+    else root-&gt;right = insert(root-&gt;right,x);
+    return root;
+}
+
+void inorder(Node* root){
+    if(!root) return;
+    inorder(root-&gt;left);
+    cout &lt;&lt; root-&gt;item &lt;&lt; " ";
+    inorder(root-&gt;right);
+}
+
+int main(){
+    Node* root=NULL;
+    root=insert(root,30);
+    insert(root,10);
+    insert(root,50);
+    inorder(root);
+}
+</pre>
+
+<p><strong>Conclusion:</strong> Warehouse items stay sorted and easily searchable.</p>
+
+<!-- Extra HTML Feature -->
+<div style="padding:12px;background:#2ecc71;color:#fff;border-radius:10px;">
+Cold Storage Temperature: <b>4°C</b>
+</div>
+
+</div>
+
+<div id="a6" class="module-content">
+<h2>Farmers Marketplace Platform</h2>
+
+<p><strong>Problem Statement:</strong><br>
+Farmers struggle to find the best buyers for their crops at fair prices.</p>
+
+<p><strong>Solution:</strong><br>
+Use <b>Merge Sort</b> to sort crops by price (best-priced crops shown first).</p>
+
+<p><strong>Algorithm:</strong> Merge Sort – Sort crops by price (O(n log n))</p>
+
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+void merge(int a[], int l, int m, int r){
+    int n1=m-l+1, n2=r-m;
+    int L[n1], R[n2];
+
+    for(int i=0;i&lt;n1;i++) L[i]=a[l+i];
+    for(int j=0;j&lt;n2;j++) R[j]=a[m+1+j];
+
+    int i=0,j=0,k=l;
+    while(i&lt;n1 && j&lt;n2){
+        if(L[i] &lt;= R[j]) a[k++]=L[i++];
+        else a[k++]=R[j++];
+    }
+    while(i&lt;n1) a[k++]=L[i++];
+    while(j&lt;n2) a[k++]=R[j++];
+}
+
+void mergesort(int a[], int l, int r){
+    if(l&lt;r){
+        int m=(l+r)/2;
+        mergesort(a,l,m);
+        mergesort(a,m+1,r);
+        merge(a,l,m,r);
+    }
+}
+
+int main(){
+    int price[]={40,10,30,20};
+    mergesort(price,0,3);
+    for(int x:price) cout &lt;&lt; x &lt;&lt; " ";
+}
+</pre>
+
+<p><strong>Conclusion:</strong> Marketplace always shows best deals to farmers.</p>
+
+<!-- Extra HTML Feature -->
+<div style="padding:10px;border:2px dashed #e67e22;border-radius:8px;">
+Top Deal of the Day: <b>Tomatoes - ₹22/kg</b>
+</div>
+
+</div>
+
+<div id="a7" class="module-content">
+<h2>Smart Crop Storage & Expiry Tracking</h2>
+
+<p><strong>Problem Statement:</strong><br>
+Stored grains rot early because farmers do not track expiry or humidity properly.</p>
+
+<p><strong>Solution:</strong><br>
+Use a <b>Min Heap</b> to always detect the crop with the earliest expiry date.</p>
+
+<p><strong>Algorithm:</strong> Min Heap – Earliest expiry first (O(log n))</p>
+
+<pre>
+#include &lt;iiostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int main(){
+    priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; expiry;
+
+    expiry.push(5);
+    expiry.push(2);
+    expiry.push(9);
+
+    cout &lt;&lt; "Earliest expiry in days: " &lt;&lt; expiry.top() &lt;&lt; endl;
+}
+</pre>
+
+<p><strong>Conclusion:</strong> Farmers can prevent crop spoilage by monitoring earliest expiry.</p>
+
+<!-- Extra HTML Feature -->
+<div style="background:#c0392b;color:white;padding:10px;border-radius:10px;">
+⚠ Expiry Alert: <b>Wheat expires in 2 days!</b>
+</div>
+
+</div>
+
 
 <script>
 function toggleModule(id){
