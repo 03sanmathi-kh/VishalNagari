@@ -239,14 +239,34 @@ deliverBatches(path);                        // send picked orders for delivery
   ensuring data-driven decisions and efficient civic resource management.</p>
 </div>
 
-<!-- MODULE 7: Population (EMPTY TEMPLATE FOR YOU) -->
+<!-- MODULE 7: Population Analytics -->
 <div id="m7" class="module-content">
-  <h2>Population</h2>
-  <p><strong>Information / Algorithm / Code:</strong></p>
+  <h2>Population Analytics</h2>
+
+  <p><strong>Business Problem:</strong><br>
+  Vishalnagari needs efficient analysis of population data — age groups, density, and growth trends.<br>
+  Without optimized querying, demographic insights become slow and unreliable.<br>
+  A smart analytics system ensures fast range queries and scalable preprocessing for large datasets.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Sparse Table for efficient range queries on static population data.<br>
+  - Preprocessing with Merge Sort / Heap Sort for scalable organization of demographic records.<br>
+  📊 Efficiency: Sorting O(n log n), Sparse Table build O(n log n), query O(1).</p>
 
   <pre>
-// Paste your Population algorithm / code here
+  // Population Analytics for Vishalnagari
+  vector<int> populationData = loadPopulation(); 
+  mergeSort(populationData); // or heapSort(populationData)
+  buildSparseTable(populationData);
+  int l = 2, r = 8; // query range (e.g., age groups or districts)
+  int result = rangeQuery(l, r);
+  cout << "Population Analysis Result: " << result;
   </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  This approach enables instant demographic queries across age groups, districts, or density ranges.<br>
+  Vishalnagari can deliver accurate population insights,<br>
+  supporting urban planning, healthcare, and resource allocation.</p>
 </div>
 
 <script>
