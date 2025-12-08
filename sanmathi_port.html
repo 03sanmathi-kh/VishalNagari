@@ -3,57 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Industries,Urban Infrastructure & Tourism</title>
+  <title>Industries, Urban Infrastructure & Tourism</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .main-heading .title,
-    .main-heading .subtitle {
-      color: maroon;
+    /* Title contrast colors */
+    body.dark .main-heading .title,
+    body.dark .main-heading .subtitle {
+      color: white; /* Light text for dark theme */
     }
 
-    
+    body.light .main-heading .title,
+    body.light .main-heading .subtitle {
+      color: maroon; /* Dark text for light theme */
+    }
+
+    /* Background colors */
+    body.dark {
+      background-color: navy; /* Navy blue background */
+      color: white;
+    }
+
+    body.light {
+      background-color: #f5f5f5; /* Light background */
+      color: black;
+    }
+
+    /* Hover effects with silver glow */
     .main-heading:hover,
     .project-overview img:hover,
     .city-text:hover {
-      box-shadow: 0 0 15px gold, 0 0 30px gold, 0 0 45px gold;
-      text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold;
+      box-shadow: 0 0 15px silver, 0 0 30px silver, 0 0 45px silver;
+      text-shadow: 0 0 10px silver, 0 0 20px silver, 0 0 30px silver;
       transform: scale(1.02);
     }
 
-    /* Optional: update link hovers to maroon/gold if needed */
+    /* Navigation styling */
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      background: rgba(0,0,128,0.8); /* navy bar */
+      padding: 10px;
+    }
+
+    nav a {
+      padding: 8px 12px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
     nav a:hover {
-      background: rgba(128,0,0,0.6); /* dark maroon hover */
-      color: gold;
+      background: rgba(0,0,128,0.6); /* navy hover */
+      color: silver;
+    }
+
+    nav a.active {
+      background: silver;
+      color: navy;
     }
   </style>
 </head>
 <body class="dark">
-  <!-- Theme Toggle Button -->
-  <button class="theme-toggle" onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">Toggle Theme</button>
-
-  <!-- Back Button -->
-  <a href="index.html" class="back-btn">Back</a>
 
   <!-- Navigation -->
   <nav>
-      <a href="#title">Home</a>
-      <a href="#images">Gallery</a>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="project.html">Project</a>
+      <a href="sanmathi.html" class="active">Sanmathi</a>
+      <a href="vasavi.html">Vasavi</a>
+      <a href="akshata.html">Akshata</a>
+      <a href="isha.html">Isha</a>
+      <a href="collabs.html">Collabs</a>
   </nav>
 
   <!-- Big Page Title -->
   <h1 id="title" class="main-heading">
-      <span class="title">Industries,Urban Infrastructure & Tourism</span>
+      <span class="title">Industries, Urban Infrastructure & Tourism</span>
   </h1>
 
   <!-- Images Section -->
   <section id="images" class="project-overview">
       <img src="industries.jpg" alt="First Image">
-      <img src="discript.jpg" alt="Second Image">
   </section>
 
-  <!-- Optional Space for Text -->
-  <section class="city-text">
-      <p>Leave space here for your text or descriptions about the images or your work.</p>
-  </section>
 </body>
 </html>
