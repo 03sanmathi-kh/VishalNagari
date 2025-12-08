@@ -6,18 +6,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; min-height:100vh; overflow-x:hidden; }
-body.dark{background:#0a0a0a;color:#fff;}
-body.light{background:#f5f5f5;color:#000;}
+/* --------------------------------------------- */
+/* BASE + SMOOTH UI IMPROVEMENTS (SAFE ADDITIONS) */
+/* --------------------------------------------- */
 
-.wave-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;}
-.wave{position:absolute;width:200%;height:200%;opacity:0.5;animation:waveMove 30s linear infinite;}
-.wave1{fill:#e74c3c;}
-.wave2{fill:#f39c12;}
-.wave3{fill:#c0392b;}
-body.light .wave1{fill:#fab1a0;}
-body.light .wave2{fill:#ffeaa7;}
-body.light .wave3{fill:#ff7675;}
+body { 
+  margin:0; 
+  font-family:'Segoe UI',sans-serif; 
+  transition:background 0.4s ease, color 0.4s ease; 
+  min-height:100vh; 
+  overflow-x:hidden; 
+}
+
+/* Smooth Glow Background */
+body {
+    background: radial-gradient(circle at center,
+        rgba(255,255,255,0.12) 0%,
+        rgba(0,0,0,0.95) 100%
+    );
+    animation: bgGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes bgGlow {
+    from { background-size: 100% 100%; }
+    to   { background-size: 105% 105%; }
+}
+
+body.dark{background:#050505;color:#fff;}
+body.light{background:#fafafa;color:#000;}
+
+
+/* --------------------------------------------- */
+/* WAVES (you already had) */
+/* --------------------------------------------- */
+
+.wave-bg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:-1;overflow:hidden;filter:blur(2px) brightness(0.9);
+}
+.wave{
+  position:absolute;width:200%;height:200%;opacity:0.4;
+  animation:waveMove 30s linear infinite;
+  mix-blend-mode:screen;
+}
+
+.wave1{fill:#ff6b6b;}
+.wave2{fill:#ffa502;}
+.wave3{fill:#ff4757;}
+body.light .wave1{fill:#ffbeaa;}
+body.light .wave2{fill:#ffe08a;}
+body.light .wave3{fill:#ff9999;}
 
 @keyframes waveMove{
  0%{transform:translateX(0) translateY(0) rotate(0deg);}
@@ -25,84 +63,58 @@ body.light .wave3{fill:#ff7675;}
  100%{transform:translateX(0) translateY(0) rotate(0deg);}
 }
 
-header{text-align:center;padding:40px 20px;}
-header h1{font-size:42px;font-weight:900;color:#e74c3c;}
-header h3{font-size:22px;font-weight:600;color:#3498db;}
+
+/* --------------------------------------------- */
+/* HEADER GLOW */
+/* --------------------------------------------- */
+
+header{
+    text-align:center;
+    padding:40px 20px;
+    animation: fadeIn 1s ease forwards;
+}
+
+header h1{
+  font-size:42px;font-weight:900;color:#e74c3c;
+  text-shadow:0 0 10px rgba(231,76,60,0.6);
+}
+
+header h3{
+  font-size:22px;font-weight:600;color:#3498db;
+  text-shadow:0 0 8px rgba(52,152,219,0.5);
+}
+
 header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:inherit;}
 
-.hex-container{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:30px;}
+
+/* --------------------------------------------- */
+/* HEX BUTTON AESTHETICS */
+/* --------------------------------------------- */
+
+.hex-container{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:30px;padding:30px;
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Button Base */
 .hex{
- position:relative;width:160px;height:90px;display:flex;
- align-items:center;justify-content:center;font-weight:600;
- text-align:center;cursor:pointer;transition:transform 0.3s ease;
- color:#fff;border-radius:12px;
-}
-.hex:hover{transform:scale(1.08);}
-.flow{background:#e74c3c;}
-.signal{background:#3498db;}
-.accident{background:#f1c40f;}
-.parking{background:#2ecc71;}
-.emergency{background:#9b59b6;}
-.evpriority{background:#1abc9c;}
-.trie{background:#e84393;}
-.infra{background:#2d3436;}
-.roadquality{background:#d63031;}
-
-.module-content{display:none;margin:20px auto;padding:20px;border-radius:15px;
- max-width:900px;background:rgba(255,255,255,0.05);}
-.module-content h2{font-size:24px;margin-bottom:10px;}
-.module-content h3{font-size:20px;margin-bottom:5px;}
-.module-content p{font-size:16px;line-height:1.6;margin-bottom:10px;}
-.module-content ul{margin-left:20px;}
-
-.code-btn{
- background:#e67e22;border:none;padding:10px 20px;color:white;
- border-radius:8px;cursor:pointer;font-weight:600;margin-bottom:10px;
-}
-.code-btn:hover{background:#d35400;}
-
-#themeBtn,#homeBtn{
- position:fixed;top:20px;padding:10px 20px;font-size:14px;cursor:pointer;
- border:none;border-radius:8px;color:#fff;transition:background 0.3s;
-}
-#themeBtn{right:20px;background:#e74c3c;}
-#themeBtn:hover{background:#3498db;}
-#homeBtn{left:20px;background:#2ecc71;}
-#homeBtn:hover{background:#27ae60;}
-
-/* Fullscreen Code Viewer */
-#codeViewer{
-  display:none;
-  position:fixed; top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.95);
-  color:white; padding:30px;
-  overflow:auto;
-  z-index:9999;
+  position:relative;
+  width:160px; height:90px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:600; text-align:center; cursor:pointer;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+  color:#fff; border-radius:12px;
+  overflow:hidden; 
 }
 
-/* small responsive */
-@media (max-width:600px){
-  .hex{width:140px;height:80px;font-size:14px;}
-  header h1{font-size:32px;}
-}
- body {
-    background: radial-gradient(circle at center,
-        rgba(255,255,255,0.12) 0%,
-        rgba(0,0,0,0.9) 100%
-    );
-    animation: bgGlow 6s ease-in-out infinite alternate;
+/* Hover Glow */
+.hex:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 18px rgba(255,255,255,0.35);
 }
 
-@keyframes bgGlow {
-    from { background-position: 0% 50%; }
-    to   { background-position: 100% 50%; }
-}
-.hex {
-    position: relative;
-    overflow: hidden;
-}
-
+/* Ripple Effect (you asked for) */
 .hex::after {
     content: "";
     position: absolute;
@@ -121,7 +133,106 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
     opacity: 0;
 }
 
+/* Colorful Hexes */
+.flow{background:#e74c3c;}
+.signal{background:#3498db;}
+.accident{background:#f1c40f;color:#000;}
+.parking{background:#2ecc71;}
+.emergency{background:#9b59b6;}
+.evpriority{background:#1abc9c;}
+.trie{background:#e84393;}
+.infra{background:#2d3436;}
+.roadquality{background:#d63031;}
+
+
+/* --------------------------------------------- */
+/* MODULE CARD ANIMATION */
+/* --------------------------------------------- */
+
+.module-content{
+  display:none;
+  margin:20px auto;
+  padding:20px;
+  border-radius:15px;
+  max-width:900px;
+  background:rgba(255,255,255,0.07);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 25px rgba(255,255,255,0.08);
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(10px);}
+  to   {opacity:1; transform:translateY(0);}
+}
+
+
+/* --------------------------------------------- */
+/* CODE BUTTON */
+/* --------------------------------------------- */
+
+.code-btn{
+  background:#e67e22;border:none;padding:10px 20px;color:white;
+  border-radius:8px;cursor:pointer;font-weight:600;margin-bottom:10px;
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+
+.code-btn:hover{
+  background:#d35400;
+  transform:scale(1.05);
+  box-shadow:0 0 10px rgba(230,126,34,0.6);
+}
+
+
+/* --------------------------------------------- */
+/* THEME BUTTONS */
+/* --------------------------------------------- */
+
+#themeBtn,#homeBtn{
+ position:fixed;top:20px;padding:10px 20px;
+ font-size:14px;cursor:pointer;
+ border:none;border-radius:8px;color:#fff;
+ transition:background 0.3s, transform 0.2s;
+}
+
+/* Small bounce on hover */
+#themeBtn:hover,#homeBtn:hover{ transform:scale(1.1); }
+
+#themeBtn{right:20px;background:#e74c3c;}
+#themeBtn:hover{background:#3498db;}
+#homeBtn{left:20px;background:#2ecc71;}
+#homeBtn:hover{background:#27ae60;}
+
+
+/* --------------------------------------------- */
+/* FULLSCREEN CODE VIEWER */
+/* --------------------------------------------- */
+
+#codeViewer{
+  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.95); color:white; padding:30px;
+  overflow:auto; z-index:9999;
+  backdrop-filter:blur(5px);
+}
+
+
+/* --------------------------------------------- */
+/* RESPONSIVE */
+/* --------------------------------------------- */
+
+@media (max-width:600px){
+  .hex{width:140px;height:80px;font-size:14px;}
+  header h1{font-size:32px;}
+}
+
+/* Fade In Base Animation */
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
 </style>
+
 </head>
 
 <body class="dark">
