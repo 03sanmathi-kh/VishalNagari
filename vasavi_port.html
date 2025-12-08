@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Vasavi – Commerce & Government Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
     body { margin:0; font-family:'Segoe UI',sans-serif; transition: background 0.3s,color 0.3s; position: relative; min-height: 100vh; overflow-x: hidden; }
     body.dark { background:#0a0a0a; color:#fff; }
@@ -15,16 +14,11 @@
     .wave1 { fill:#f39c12; animation-duration:30s; }
     .wave2 { fill:#e67e22; animation-duration:35s; }
     .wave3 { fill:#f1c40f; animation-duration:40s; }
-
     body.light .wave1 { fill:#fce5b6; }
     body.light .wave2 { fill:#f9d776; }
     body.light .wave3 { fill:#f7f1a5; }
 
-    @keyframes waveMove {
-      0% { transform: translateX(0) translateY(0) rotate(0deg); }
-      50% { transform: translateX(10%) translateY(5%) rotate(2deg); }
-      100% { transform: translateX(0) translateY(0) rotate(0deg); }
-    }
+    @keyframes waveMove { 0% { transform: translateX(0) translateY(0) rotate(0deg); } 50% { transform: translateX(10%) translateY(5%) rotate(2deg); } 100% { transform: translateX(0) translateY(0) rotate(0deg); } }
 
     header { text-align:center; padding:40px 20px; }
     header h1 { font-size:42px; font-weight:900; color:#f39c12; }
@@ -38,8 +32,9 @@
     .bubble { width:120px; height:120px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#fff; font-weight:600; transition:transform 0.3s ease, background 0.3s ease; text-align:center; padding:10px; }
     .bubble:hover { transform:scale(1.1); }
 
-    /* Updated Bubble Colors */
-    .housing { background:brown; }              /* Smart Housing → Brown */
+    /* Updated for brown color */
+    .housing { background:brown; }
+
     .tax { background:#3498db; }
     .loan { background:#f1c40f; color:#222; }
     .resource { background:#2ecc71; }
@@ -47,24 +42,18 @@
     .forecast { background:#1abc9c; }
     .supply { background:#8e44ad; }
 
-    .civic { background:#d35400; }              /* NEW BUBBLE 6 */
-    .population { background:#16a085; }         /* NEW BUBBLE 7 */
-
-    /* Module backgrounds */
-    #m1 { background: rgba(165,42,42,0.25); }
+    #m1 { background: rgba(165, 42, 42, 0.2); }
     #m2 { background: rgba(52,152,219,0.2); }
     #m3 { background: rgba(241,196,15,0.2); }
     #m4 { background: rgba(46,204,113,0.2); }
     #m5 { background: rgba(155,89,182,0.2); }
     #m6 { background: rgba(26,188,156,0.2); }
     #m7 { background: rgba(142,68,173,0.2); }
-    #m8 { background: rgba(211,84,0,0.25); }    /* Civic Analytics */
-    #m9 { background: rgba(22,160,133,0.25); }  /* Population */
+   
 
     .module-content { display:none; margin:20px auto; padding:20px; border-radius:15px; max-width:900px; }
   </style>
 </head>
-
 <body class="dark">
 
 <div class="wave-bg">
@@ -83,143 +72,191 @@
 </header>
 
 <div class="bubble-container">
+  <!-- 1 -->
+  <div class="bubble housing" onclick="toggleModule('m1')">Smart Housing Allocation</div>
 
-  <div class="bubble housing" onclick="toggleModule('m1')">Smart Housing</div>
+  <!-- 2 -->
   <div class="bubble tax" onclick="toggleModule('m2')">Tax Planning</div>
+
+  <!-- 3 -->
   <div class="bubble loan" onclick="toggleModule('m3')">Loan Distribution</div>
+
+  <!-- 4 -->
   <div class="bubble resource" onclick="toggleModule('m4')">Gaming</div>
+
+  <!-- 5 -->
   <div class="bubble optimization" onclick="toggleModule('m5')">E-Commerce</div>
-  <div class="bubble forecast" onclick="toggleModule('m6')">Budget Forecast</div>
-  <div class="bubble supply" onclick="toggleModule('m7')">Supply Chain</div>
 
-  <!-- NEW BUBBLES -->
-  <div class="bubble civic" onclick="toggleModule('m8')">Civic Data<br>Analytics</div>
-  <div class="bubble population" onclick="toggleModule('m9')">Population</div>
+  <!-- 6 (Civic Data Analytics) -->
+  <div class="bubble" style="background:orange;" onclick="toggleModule('m6')">Civic Data Analytics</div>
 
+  <!-- 7 (Population) -->
+  <div class="bubble" style="background:#0080ff;" onclick="toggleModule('m7')">Population</div>
 </div>
-<!-- MODULE 1 -->
+
+<!-- Module content examples -->
 <div id="m1" class="module-content">
   <h2>Smart Housing Allocation</h2>
-  <p>Optimized matching of households to available housing units based on priority rules.</p>
+  <p><strong>Case Study:</strong><br>
+    How can housing units be allocated fairly across zones and budgets to maximize social welfare?</p>
+  <p><strong>Algorithm:</strong> AVL Tree + Segment Tree<br><strong>Efficiency:</strong></p>
+  <ul>
+    <li>AVL Tree operations (insert, search): O(log n)</li>
+    <li>Segment Tree build: O(n)</li>
+    <li>Segment Tree query/update: O(log n)</li>
+  </ul>
   <pre>
-// Pseudocode
-sort(applicants by priority);
-assign(applicants, houses);
-print(result);
+// Smart Housing Allocation
+AVLTree appTree; SegmentTree housingBlocks;
+appTree.insert(application);              // insert housing application by income/family size
+housingBlocks.build(data);                // build segment tree for housing blocks by zone/budget
+int zoneL=2, zoneR=5, budgetL=10000, budgetR=15000;
+int available = housingBlocks.query(zoneL, zoneR, budgetL, budgetR);
+if (available > 0) allocateUnit(application, available);
+cout << "Housing allocated successfully!";
   </pre>
+  <p><strong>✅ Conclusion:</strong><br>
+    By combining AVL Trees for fast application management and Segment Trees for efficient housing queries, 
+    Vishalanagari can allocate housing units fairly and quickly. This ensures optimized use of resources, 
+    balanced distribution across zones, and supports the city’s vision of being India’s smart housing innovation hub.
+  </p>
 </div>
 
-<!-- MODULE 2 -->
 <div id="m2" class="module-content">
-  <h2>Tax Planning System</h2>
-  <p>Calculates optimal tax structure using slabs & deductions.</p>
+  <h2>Tax Planning</h2>
+  <p><strong>Case Study:</strong><br>
+    How to design tax rates to maximize revenue while keeping fairness?</p>
+  <p><strong>Algorithm:</strong> Linear Programming<br><strong>Efficiency:</strong> Polynomial average time</p>
   <pre>
-// Pseudocode
-tax = baseIncome * rate;
-tax -= deductions;
-cout << tax;
+C++ Pseudocode (conceptual):
+// maximize revenue: maximize sum(tax[i]*income[i])
+// constraints: sum(income[i]*tax[i]) >= requiredRevenue
+// use LP solver
   </pre>
 </div>
 
-<!-- MODULE 3 -->
 <div id="m3" class="module-content">
-  <h2>Loan Distribution System</h2>
-  <p>Weighted scoring + eligibility filtering for loan distribution.</p>
+  <h2>Loan Distribution</h2>
+  <p><strong>Case Study:</strong><br>
+    How to distribute limited loans to applicants to maximize bank returns?</p>
+  <p><strong>Algorithm:</strong> Knapsack / Dynamic Programming<br><strong>Efficiency:</strong> O(nW)</p>
   <pre>
-// Loan Scoring
-score = income*0.4 + credit*0.6;
-if(score > threshold) approve();
+C++ Pseudocode:
+int maxLoanProfit(int W, vector<int>& loans, vector<int>& returns, int n){
+    vector<vector<int>> dp(n+1, vector<int>(W+1,0));
+    for(int i=1;i<=n;i++){
+        for(int w=0;w<=W;w++){
+            if(loans[i-1]<=w)
+                dp[i][w]=max(dp[i-1][w], dp[i-1][w-loans[i-1]]+returns[i-1]);
+            else dp[i][w]=dp[i-1][w];
+        }
+    }
+    return dp[n][W];
+}
   </pre>
 </div>
 
-<!-- MODULE 4 -->
+<!-- MODULE 4: Gaming & Entertainment Allocation -->
 <div id="m4" class="module-content">
-  <h2>Gaming System</h2>
-  <p>Game resource flow and in-game economy simulation.</p>
+  <h2>Gaming & Entertainment Allocation</h2>
+
+  <p><strong>Business Problem:</strong><br>
+  Vishalnagari needs efficient allocation of gaming servers and entertainment resources.<br>
+  Without optimization, some zones face overload while others remain underutilized.<br>
+  A smart allocation system ensures fair distribution and smooth user experience.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  AVL Tree + Segment Tree for managing user bookings and seat/server allocation.<br>
+  📊 Efficiency: AVL operations O(log n), Segment Tree build O(n), query/update O(log n).</p>
+
   <pre>
-// Resource Flow
-updateCoins();
-updateEnergy();
-render();
+// Gaming & Entertainment Allocation
+AVLTree bookingTree; SegmentTree seatBlocks;
+bookingTree.insert(userBooking);              // insert booking by user ID or preference
+seatBlocks.build(seatData);                   // build segment tree for seat zones/prices
+int zoneL=1, zoneR=3, priceL=200, priceR=500;
+int available = seatBlocks.query(zoneL, zoneR, priceL, priceR);
+if (available > 0) allocateSeat(userBooking, available);
+cout << "Entertainment booking confirmed!";
   </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  This approach ensures fair seat allocation across zones and price ranges.<br>
+  Vishalnagari can deliver smooth entertainment experiences while optimizing server and seating resources.</p>
 </div>
 
-<!-- MODULE 5 -->
+<!-- MODULE 5: E-Commerce Order Fulfillment -->
 <div id="m5" class="module-content">
-  <h2>E-Commerce System</h2>
-  <p>Product recommendation + order optimization.</p>
+  <h2>E-Commerce Order Fulfillment</h2>
+
+  <p><strong>Business Problem:</strong><br>
+  Online retailers face delays in processing and delivering orders.<br>
+  Inefficient warehouse picking and routing increase delivery times and costs.<br>
+  Optimized order fulfillment ensures faster delivery and happier customers.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Greedy picking combined with shortest path routing minimizes warehouse travel time.<br>
+  Orders are batched to reduce redundant trips.<br>
+  Efficiency: O(n log n) for sorting and routing.</p>
+
   <pre>
-// Recommendation Example
-vector rec = recommend(userHistory);
-show(rec);
+// Pseudo C++ for E-Commerce Order Fulfillment
+vector<Order> orders = getOrders();          // fetch pending orders
+sort(orders by aisleLocation);               // greedy picking: minimize travel distance
+batchOrders(orders);                         // group orders to reduce redundant trips
+for each batch in orders {
+    path = shortestPath(batch);              // compute optimal warehouse route
+    for each order in batch
+        pick(order);                         // fulfill order at aisle
+}
+deliverBatches(path);                        // send picked orders for delivery
   </pre>
+
+  <p><strong>Conclusion:</strong> Optimized order fulfillment reduces delivery times, lowers costs, and improves customer experience in e-commerce.</p>
 </div>
 
-<!-- MODULE 6 -->
+<!-- MODULE 6: Civic Data Analytics (EMPTY TEMPLATE FOR YOU) -->
 <div id="m6" class="module-content">
-  <h2>Budget Forecasting</h2>
-  <p>Uses time-series prediction + regression models to forecast next-year budgets.</p>
-  <pre>
-// Time-Series Forecast
-model = trainModel(budgetData);
-predict = model.predict(nextYear);
-cout << predict;
-  </pre>
-</div>
-
-<!-- MODULE 7 -->
-<div id="m7" class="module-content">
-  <h2>Supply Chain Optimization</h2>
-  <p>Shortest-path + greedy routing for optimized delivery networks.</p>
-  <pre>
-// Routing
-routes = optimize(deliveryPoints);
-dispatch(routes);
-  </pre>
-</div>
-
-<!-- MODULE 8 (NEW) -->
-<div id="m8" class="module-content">
   <h2>Civic Data Analytics</h2>
-  <p>Analyses public services, reports, datasets for better governance dashboards.</p>
+  <p><strong>Information / Algorithm / Code:</strong></p>
 
   <pre>
-// Civic Data Framework
-load(civicDataset);
-clean();
-analyze();
-generateDashboard();
+// Paste your Civic Data Analytics algorithm / code here
   </pre>
 </div>
 
-<!-- MODULE 9 (NEW) -->
-<div id="m9" class="module-content">
-  <h2>Population Analytics</h2>
-  <p>Demographics, migration flow, density mapping, and growth projections.</p>
+<!-- MODULE 7: Population (EMPTY TEMPLATE FOR YOU) -->
+<div id="m7" class="module-content">
+  <h2>Population</h2>
+  <p><strong>Information / Algorithm / Code:</strong></p>
 
   <pre>
-// Population Projection
-growth = basePop * rate;
-future = basePop + growth - migrationOut + migrationIn;
-cout << future;
+// Paste your Population algorithm / code here
   </pre>
 </div>
 
 <script>
-  function toggleModule(id){
-    const sections = document.getElementsByClassName("module-content");
-    for (let s of sections) s.style.display = "none";
-    document.getElementById(id).style.display = "block";
-  }
+function toggleModule(id) {
+  const sections = document.getElementsByClassName("module-content");
+  for (let s of sections) s.style.display = "none";
+  const target = document.getElementById(id);
+  if (target) target.style.display = "block";
+}
 
-  function toggleTheme(){
-    document.body.classList.toggle("dark");
-    document.body.classList.toggle("light");
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  document.body.classList.toggle("light");
+  const btn = document.querySelector(".theme-toggle");
+  if (document.body.classList.contains("light")) {
+    btn.textContent = "☀ Light Mode";
+  } else {
+    btn.textContent = "🌙 Dark Mode";
   }
+}
 
-  function goHome(){
-    window.location.href = "index.html";
-  }
+function goHome() {
+  window.location.href = "index.html";
+}
 </script>
 
 </body>
