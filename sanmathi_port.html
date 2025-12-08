@@ -1,39 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanmathi Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industries,Urban Infrastructure & Tourism</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .main-heading .title,
+    .main-heading .subtitle {
+      color: maroon;
+    }
+
+    
+    .main-heading:hover,
+    .project-overview img:hover,
+    .city-text:hover {
+      box-shadow: 0 0 15px gold, 0 0 30px gold, 0 0 45px gold;
+      text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold;
+      transform: scale(1.02);
+    }
+
+    /* Optional: update link hovers to maroon/gold if needed */
+    nav a:hover {
+      background: rgba(128,0,0,0.6); /* dark maroon hover */
+      color: gold;
+    }
+  </style>
 </head>
 <body class="dark">
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">Toggle Theme</button>
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">Toggle Theme</button>
 
-    <!-- Back Button -->
-    <a href="index.html" class="back-btn">Back</a>
+  <!-- Back Button -->
+  <a href="index.html" class="back-btn">Back</a>
 
-    <!-- Navigation (optional) -->
-    <nav>
-        <a href="#title">Home</a>
-        <a href="#images">Gallery</a>
-    </nav>
+  <!-- Navigation -->
+  <nav>
+      <a href="#title">Home</a>
+      <a href="#images">Gallery</a>
+  </nav>
 
-    <!-- Big Page Title -->
-    <h1 id="title" class="main-heading">
-        <span class="title">Sanmathi's Portfolio</span>
-        <span class="subtitle">A Glimpse into My Work</span>
-    </h1>
+  <!-- Big Page Title -->
+  <h1 id="title" class="main-heading">
+      <span class="title">Sanmathi's Portfolio</span>
+      <span class="subtitle">A Glimpse into My Work</span>
+  </h1>
 
-    <!-- Images Section -->
-    <section id="images" class="project-overview">
-        <img src="096d6e06-6808-4afb-aa62-a0e6628baeef.jpg" alt="First Image">
-        <img src="8dbf928f-420a-40bf-8f78-446cc647ea79.jpg" alt="Second Image">
-    </section>
+  <!-- Images Section -->
+  <section id="images" class="project-overview">
+      <img src="industries.jpg" alt="First Image">
+      <img src="discript.jpg" alt="Second Image">
+  </section>
 
-    <!-- Optional Space for Text -->
-    <section class="city-text">
-        <p>Leave space here for your text or descriptions about the images or your work.</p>
-    </section>
+  <!-- Optional Space for Text -->
+  <section class="city-text">
+      <p>Leave space here for your text or descriptions about the images or your work.</p>
+  </section>
 </body>
 </html>
