@@ -6,25 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* --------------------------------------------- */
-/* BASE + SMOOTH UI IMPROVEMENTS (SAFE ADDITIONS) */
-/* --------------------------------------------- */
-
+/* ------------------------------- */
+/* BASE + SMOOTH GLOW BACKGROUND   */
+/* ------------------------------- */
 body { 
   margin:0; 
   font-family:'Segoe UI',sans-serif; 
   transition:background 0.4s ease, color 0.4s ease; 
   min-height:100vh; 
   overflow-x:hidden; 
-}
-
-/* Smooth Glow Background */
-body {
-    background: radial-gradient(circle at center,
-        rgba(255,255,255,0.12) 0%,
-        rgba(0,0,0,0.95) 100%
-    );
-    animation: bgGlow 6s ease-in-out infinite alternate;
+  background: radial-gradient(circle at center,
+    rgba(40,44,52,0.15) 0%,
+    rgba(10,10,15,0.95) 100%);
+  animation: bgGlow 8s ease-in-out infinite alternate;
+  color:#fff;
 }
 
 @keyframes bgGlow {
@@ -32,215 +27,188 @@ body {
     to   { background-size: 105% 105%; }
 }
 
-body.dark{background:#050505;color:#fff;}
-body.light{background:#fafafa;color:#000;}
+body.dark { background:#0b0b0f; color:#fff; }
+body.light { background:#fafafa; color:#111; }
 
-
-/* --------------------------------------------- */
-/* WAVES (you already had) */
-/* --------------------------------------------- */
-
-.wave-bg{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  z-index:-1;overflow:hidden;filter:blur(2px) brightness(0.9);
+/* ------------------------------- */
+/* WAVES BACKGROUND                */
+/* ------------------------------- */
+.wave-bg {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  z-index:-1; overflow:hidden; filter:blur(3px) brightness(0.9);
 }
-.wave{
-  position:absolute;width:200%;height:200%;opacity:0.4;
+.wave {
+  position:absolute; width:200%; height:200%; opacity:0.4;
   animation:waveMove 30s linear infinite;
   mix-blend-mode:screen;
 }
+.wave1 { fill:#ff6b81; }
+.wave2 { fill:#ff9f43; }
+.wave3 { fill:#5352ed; }
+body.light .wave1 { fill:#ffbea2; }
+body.light .wave2 { fill:#ffe08a; }
+body.light .wave3 { fill:#a4b0be; }
 
-.wave1{fill:#ff6b6b;}
-.wave2{fill:#ffa502;}
-.wave3{fill:#ff4757;}
-body.light .wave1{fill:#ffbeaa;}
-body.light .wave2{fill:#ffe08a;}
-body.light .wave3{fill:#ff9999;}
-
-@keyframes waveMove{
- 0%{transform:translateX(0) translateY(0) rotate(0deg);}
- 50%{transform:translateX(10%) translateY(5%) rotate(2deg);}
- 100%{transform:translateX(0) translateY(0) rotate(0deg);}
+@keyframes waveMove {
+ 0% { transform:translateX(0) translateY(0) rotate(0deg); }
+ 50% { transform:translateX(12%) translateY(6%) rotate(2deg); }
+ 100% { transform:translateX(0) translateY(0) rotate(0deg); }
 }
 
-
-/* --------------------------------------------- */
-/* HEADER GLOW */
-/* --------------------------------------------- */
-
-header{
-    text-align:center;
-    padding:40px 20px;
-    animation: fadeIn 1s ease forwards;
-}
-
-header h1{
-  font-size:42px;font-weight:900;color:#e74c3c;
-  text-shadow:0 0 10px rgba(231,76,60,0.6);
-}
-
-header h3{
-  font-size:22px;font-weight:600;color:#3498db;
-  text-shadow:0 0 8px rgba(52,152,219,0.5);
-}
-
-header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:inherit;}
-
-
-/* --------------------------------------------- */
-/* HEX BUTTON AESTHETICS */
-/* --------------------------------------------- */
-
-.hex-container{
-  display:flex;flex-wrap:wrap;justify-content:center;
-  gap:30px;padding:30px;
+/* ------------------------------- */
+/* HEADER GLOW                     */
+/* ------------------------------- */
+header {
+  text-align:center;
+  padding:50px 20px;
   animation: fadeIn 1s ease forwards;
 }
 
-/* Button Base */
-.hex{
-  position:relative;
-  width:160px; height:90px;
-  display:flex; align-items:center; justify-content:center;
+header h1 {
+  font-size:48px; font-weight:900; color:#ff4757;
+  text-shadow:0 0 15px rgba(255,71,87,0.7);
+}
+
+header h3 {
+  font-size:22px; font-weight:600; color:#5352ed;
+  text-shadow:0 0 10px rgba(83,82,237,0.5);
+}
+
+header p {
+  max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; color:inherit;
+}
+
+/* ------------------------------- */
+/* HEX BUTTONS                     */
+/* ------------------------------- */
+.hex-container {
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:30px; padding:30px;
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Base hex card */
+.hex {
+  position: relative;
+  width:180px; height:120px;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
   font-weight:600; text-align:center; cursor:pointer;
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
-  color:#fff; border-radius:12px;
-  overflow:hidden; 
+  transition:transform 0.3s ease, box-shadow 0.4s ease;
+  color:#fff; border-radius:16px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(8px);
 }
 
-/* Hover Glow */
-.hex:hover{
+/* Glow overlay */
+.hex::before {
+  content:"";
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  border-radius:16px;
+  background: linear-gradient(120deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+  opacity:0; transition:opacity 0.3s ease;
+}
+.hex:hover::before { opacity:1; }
+
+/* Hover + Neon Shadow */
+.hex:hover {
   transform:scale(1.08);
-  box-shadow:0 0 18px rgba(255,255,255,0.35);
+  box-shadow:0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,71,87,0.3);
 }
 
-/* Ripple Effect (you asked for) */
+/* Ripple Effect */
 .hex::after {
-    content: "";
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: rgba(255,255,255,0.4);
-    border-radius: 50%;
-    transform: scale(0);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.5s ease, opacity 0.6s ease;
+  content: "";
+  position: absolute;
+  width: 12px; height: 12px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.5s ease, opacity 0.6s ease;
 }
-
 .hex:active::after {
-    transform: scale(25);
-    opacity: 0;
+  transform: scale(25);
+  opacity: 0;
 }
 
-/* Colorful Hexes */
-.flow{background:#e74c3c;}
-.signal{background:#3498db;}
-.accident{background:#f1c40f;color:#000;}
-.parking{background:#2ecc71;}
-.emergency{background:#9b59b6;}
+/* Colorful hex backgrounds */
+.flow{background:#ff6b81;}
+.signal{background:#5352ed;}
+.accident{background:#ff9f43;color:#000;}
+.parking{background:#2ed573;}
 .evpriority{background:#1abc9c;}
-.trie{background:#e84393;}
-.infra{background:#2d3436;}
-.roadquality{background:#d63031;}
+.trie{background:#ff6bcb;}
+.roadquality{background:#ff4757;}
 
-
-/* --------------------------------------------- */
-/* MODULE CARD ANIMATION */
-/* --------------------------------------------- */
-
-.module-content{
+/* ------------------------------- */
+/* MODULE CARDS (can add images)  */
+/* ------------------------------- */
+.module-content {
   display:none;
   margin:20px auto;
   padding:20px;
-  border-radius:15px;
+  border-radius:18px;
   max-width:900px;
   background:rgba(255,255,255,0.07);
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 25px rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 30px rgba(255,255,255,0.08);
   animation: fadeUp 0.6s ease;
 }
 
+.module-content img {
+  width:100%; border-radius:12px; margin-bottom:10px;
+}
+
 @keyframes fadeUp {
-  from {opacity:0; transform:translateY(10px);}
-  to   {opacity:1; transform:translateY(0);}
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:translateY(0); }
 }
 
-
-/* --------------------------------------------- */
-/* CODE BUTTON */
-/* --------------------------------------------- */
-
-.code-btn{
-  background:#e67e22;border:none;padding:10px 20px;color:white;
-  border-radius:8px;cursor:pointer;font-weight:600;margin-bottom:10px;
-  transition:transform 0.2s, box-shadow 0.2s;
+/* ------------------------------- */
+/* THEME BUTTONS                   */
+/* ------------------------------- */
+#themeBtn,#homeBtn {
+  position:fixed; top:20px; padding:10px 20px;
+  font-size:14px; cursor:pointer;
+  border:none; border-radius:8px; color:#fff;
+  transition:background 0.3s, transform 0.2s;
 }
+#themeBtn:hover,#homeBtn:hover { transform:scale(1.1); }
+#themeBtn{right:20px;background:#ff6b81;}
+#themeBtn:hover{background:#5352ed;}
+#homeBtn{left:20px;background:#2ed573;}
+#homeBtn:hover{background:#1abc9c;}
 
-.code-btn:hover{
-  background:#d35400;
-  transform:scale(1.05);
-  box-shadow:0 0 10px rgba(230,126,34,0.6);
-}
-
-
-/* --------------------------------------------- */
-/* THEME BUTTONS */
-/* --------------------------------------------- */
-
-#themeBtn,#homeBtn{
- position:fixed;top:20px;padding:10px 20px;
- font-size:14px;cursor:pointer;
- border:none;border-radius:8px;color:#fff;
- transition:background 0.3s, transform 0.2s;
-}
-
-/* Small bounce on hover */
-#themeBtn:hover,#homeBtn:hover{ transform:scale(1.1); }
-
-#themeBtn{right:20px;background:#e74c3c;}
-#themeBtn:hover{background:#3498db;}
-#homeBtn{left:20px;background:#2ecc71;}
-#homeBtn:hover{background:#27ae60;}
-
-
-/* --------------------------------------------- */
-/* FULLSCREEN CODE VIEWER */
-/* --------------------------------------------- */
-
-#codeViewer{
-  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-  background:rgba(0,0,0,0.95); color:white; padding:30px;
-  overflow:auto; z-index:9999;
-  backdrop-filter:blur(5px);
-}
-
-
-/* --------------------------------------------- */
-/* RESPONSIVE */
-/* --------------------------------------------- */
-
+/* ------------------------------- */
+/* RESPONSIVE                      */
+/* ------------------------------- */
 @media (max-width:600px){
-  .hex{width:140px;height:80px;font-size:14px;}
-  header h1{font-size:32px;}
+  .hex{width:150px;height:100px;font-size:14px;}
+  header h1{font-size:36px;}
 }
 
-/* Fade In Base Animation */
-@keyframes fadeIn {
-  from {opacity:0;}
-  to {opacity:1;}
-}
+/* Base Fade Animations */
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
 
 </style>
-
 </head>
 
 <body class="dark">
 
 <div class="wave-bg">
-<svg class="wave wave1" viewBox="0 0 1440 320"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
-<svg class="wave wave2" viewBox="0 0 1440 320"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
-<svg class="wave wave3" viewBox="0 0 1440 320"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
+  <svg class="wave wave1" viewBox="0 0 1440 320">
+    <path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path>
+  </svg>
+  <svg class="wave wave2" viewBox="0 0 1440 320">
+    <path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path>
+  </svg>
+  <svg class="wave wave3" viewBox="0 0 1440 320">
+    <path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path>
+  </svg>
 </div>
 
 <button id="homeBtn" onclick="goHome()">🏠 Home</button>
@@ -253,15 +221,56 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 </header>
 
 <div class="hex-container">
-<div class="hex flow" onclick="toggleModule('a1')">Intelligent Traffic Density Management</div>
-<div class="hex signal" onclick="toggleModule('a2')">Smart EV-Only Road Routing</div>
-<div class="hex accident" onclick="toggleModule('a3')">Visitor Vehicle Bypass</div>
-<div class="hex parking" onclick="toggleModule('a4')">Multi-Lane Road Separation</div>
-<div class="hex roadquality" onclick="toggleModule('a5')">Road Quality Monitoring</div>
-<div class="hex evpriority" onclick="toggleModule('a6')">Traffic Signal EV Priority</div>
-<div class="hex trie" onclick="toggleModule('a7')">Urban Infrastructure Maintenance</div>
-
+  <div class="hex flow" onclick="toggleModule('a1')">
+    <span>Intelligent Traffic Density Management</span>
+  </div>
+  <div class="hex signal" onclick="toggleModule('a2')">
+    <span>Smart EV-Only Road Routing</span>
+  </div>
+  <div class="hex accident" onclick="toggleModule('a3')">
+    <span>Visitor Vehicle Bypass</span>
+  </div>
+  <div class="hex parking" onclick="toggleModule('a4')">
+    <span>Multi-Lane Road Separation</span>
+  </div>
+  <div class="hex roadquality" onclick="toggleModule('a5')">
+    <span>Road Quality Monitoring</span>
+  </div>
+  <div class="hex evpriority" onclick="toggleModule('a6')">
+    <span>Traffic Signal EV Priority</span>
+  </div>
+  <div class="hex trie" onclick="toggleModule('a7')">
+    <span>Urban Infrastructure Maintenance</span>
+  </div>
 </div>
+
+<!-- Example module content with image -->
+<div id="a1" class="module-content">
+  <img src="https://via.placeholder.com/800x300.png?text=Traffic+Density" alt="Traffic Density">
+  <h2>Intelligent Traffic Density Management</h2>
+  <p>Analyze and manage traffic density intelligently to reduce congestion.</p>
+</div>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+  document.body.classList.toggle('light');
+}
+
+function goHome() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleModule(id) {
+  const module = document.getElementById(id);
+  if(module.style.display === 'block') module.style.display = 'none';
+  else module.style.display = 'block';
+}
+</script>
+
+</body>
+</html>
+
 
 <!-- MODULES -->
 <!-- MODULE 1 -->
