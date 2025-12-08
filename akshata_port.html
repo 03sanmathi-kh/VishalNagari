@@ -1384,43 +1384,40 @@ int main(){
 
 
 <!-- FULLSCREEN CODE VIEWER -->
-<div id="codeViewer">
-  <button onclick="closeCodeViewer()" style="
-    position:fixed; right:30px; top:20px; background:#e74c3c;
-    padding:10px 20px; border:none; border-radius:8px; color:white;
-    font-size:16px; cursor:pointer;">
-    ✖ Close
-  </button>
-
-  <h2 id="codeTitle" style="color:#f39c12;"></h2>
-  <pre id="codeContent" style="white-space:pre-wrap; font-size:15px;"></pre>
-</div>
-
 <script>
 // ---------------------------
-// OPEN / CLOSE MODULE SECTIONS
+// TOGGLE MODULE SECTIONS
 // ---------------------------
-function toggleModule(id){
-    let target = document.getElementById(id);
-
-    // close others
-    document.querySelectorAll(".module-content").forEach(m=>{
-        if(m.id !== id) m.style.display = "none";
+function toggleModule(id) {
+    // Hide all other modules
+    document.querySelectorAll(".module-content").forEach(m => {
+        if (m.id !== id) m.style.display = "none";
     });
 
-    // toggle selected
-    target.style.display = (target.style.display === "block") ? "none" : "block";
+    // Toggle selected module
+    const target = document.getElementById(id);
+    if (target) {
+        target.style.display = (target.style.display === "block") ? "none" : "block";
+    }
 }
 
 // ---------------------------
-// CODE VIEWER FUNCTIONALITY
+// CODE VIEWER
 // ---------------------------
-function openCodeViewer(title, code){
+function openCodeViewer(title, code) {
     const viewer = document.getElementById("codeViewer");
-
     viewer.innerHTML = `
         <div style="display:flex;align-items:center;justify-content:space-between;">
             <h2 style="margin:0;color:#f39c12;">${title}</h2>
+            <button onclick="closeCodeViewer()" style="
+                background:#e74c3c;
+                padding:10px 20px;
+                border:none;
+                border-radius:8px;
+                color:white;
+                font-size:16px;
+                cursor:pointer;
+            ">✖ Close</button>
         </div>
 
         <pre style="
@@ -1433,52 +1430,34 @@ function openCodeViewer(title, code){
             box-shadow: 0 0 20px rgba(0,255,255,0.06);
             margin-top:12px;
         ">${code}</pre>
-
-        <button onclick="closeCodeViewer()" style="
-            padding: 10px 20px;
-            background: #e74c3c;
-            border: none;
-            color: white;
-            font-size: 16px;
-            margin-top: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 14px rgba(231,76,60,0.3);
-        ">Close</button>
     `;
-
     viewer.style.display = "block";
 }
 
-function closeCodeViewer(){
+function closeCodeViewer() {
     document.getElementById("codeViewer").style.display = "none";
 }
 
 // ---------------------------
 // THEME TOGGLE
 // ---------------------------
-function toggleTheme(){
-    const body = document.body;
+function toggleTheme() {
+    const btn = document.getElementById("themeBtn");
+    document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
 
-    if(body.classList.contains("light")){
-        body.classList.remove("light");
-        body.classList.add("dark");
-        document.getElementById("themeBtn").innerHTML = "🌙 Dark Mode";
+    if (document.body.classList.contains("light")) {
+        btn.textContent = "☀ Light Mode";
     } else {
-        body.classList.remove("dark");
-        body.classList.add("light");
-        document.getElementById("themeBtn").innerHTML = "☀ Light Mode";
+        btn.textContent = "🌙 Dark Mode";
     }
 }
 
 // ---------------------------
-// GO HOME (collapse modules)
+// HOME BUTTON
 // ---------------------------
-function goHome(){
-    document.querySelectorAll(".module-content").forEach(m=>{
-        m.style.display = "none";
-    });
-    window.scrollTo({top: 0, behavior: "smooth"});
+function goHome() {
+    window.location.href = "index.html"; // change this if your home page is different
 }
 </script>
 
