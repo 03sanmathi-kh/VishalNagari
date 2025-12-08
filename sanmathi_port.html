@@ -111,15 +111,24 @@
       height: 60px;
     }
 
-    /* Full-width images inside card with reduced vertical size */
+    /* Theme.png image (cut vertically) */
+    .card img.theme-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 400px; /* limit vertical size only for Theme.png */
+      margin-top: 15px;
+      border-radius: 0;
+      object-fit: cover;
+    }
+
+    /* dis.png image (full and clear) */
     .card img.full-image {
       display: block;
-      width: 100%;       /* stretches to card border */
-      height: auto;
-      max-height: 400px; /* limit vertical size */
+      width: 100%;
+      height: auto;       /* no vertical cut */
       margin-top: 15px;
-      border-radius: 0;  /* no rounding, touches edges */
-      object-fit: cover; /* crop gracefully if too tall */
+      border-radius: 0;
     }
 
     /* Ensure title starts below nav */
@@ -142,13 +151,13 @@
 
   <!-- Navigation -->
   <nav>
-      <a href="home.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="project.html">Project</a>
-      <a href="sanmathi.html" class="active">Sanmathi</a>
-      <a href="vasavi.html">Vasavi</a>
-      <a href="akshata.html">Akshata</a>
-      <a href="isha.html">Isha</a>
+      <a href="sanmathi_port.html" class="active">Sanmathi</a>
+      <a href="vasavi_port.html">Vasavi</a>
+      <a href="akshata_port.html">Akshata</a>
+      <a href="isha_port.html">Isha</a>
       <a href="collabs.html">Collabs</a>
   </nav>
 
@@ -161,10 +170,10 @@
   <section class="card">
       <img src="icon.jpg" alt="Industry Icon" class="icon">
       <h2>Why did I choose these sectors? A glimpse..</h2>
-      <!-- industries.jpg inside pink box -->
-      <img src="industries.jpg" alt="Industries Image" class="full-image">
-      <!-- discript.jpg below industries.jpg inside pink box -->
-      <img src="discript.jpg" alt="Description Image" class="full-image">
+      <!-- Theme.png inside pink box (cut vertically) -->
+      <img src="Theme.png" alt="Industries Image" class="theme-image">
+      <!-- dis.png below Theme.png inside pink box (full and clear) -->
+      <img src="dis.png" alt="Description Image" class="full-image">
   </section>
 
 </body>
