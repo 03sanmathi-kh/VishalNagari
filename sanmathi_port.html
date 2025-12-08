@@ -70,11 +70,16 @@
       top: 10px;
       left: 10px;
       padding: 6px 12px;
-      background: silver;
+      background: #444; /* darker gray for visibility */
+      color: white;     /* white text for contrast */
       border: none;
       cursor: pointer;
       font-weight: bold;
       border-radius: 4px;
+    }
+
+    .theme-toggle:hover {
+      background: #222; /* even darker on hover */
     }
 
     /* Wide card-like box */
@@ -119,9 +124,15 @@
       margin-top: 20px;
       text-align: center;
     }
+
+    /* Make main title smaller */
+    .main-heading .title {
+      font-size: 1.8em; /* smaller than default h1 */
+      font-weight: bold;
+    }
   </style>
 </head>
-<body class="dark">
+<body class="light"> <!-- set light mode default -->
 
   <!-- Theme Toggle Button -->
   <button class="theme-toggle" onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">Switch Theme</button>
@@ -138,7 +149,7 @@
       <a href="collabs.html">Collabs</a>
   </nav>
 
-  <!-- Big Page Title -->
+  <!-- Smaller Page Title -->
   <h1 id="title" class="main-heading">
       <span class="title">Industries, Urban Infrastructure & Tourism</span>
   </h1>
