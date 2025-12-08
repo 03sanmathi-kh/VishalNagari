@@ -6,15 +6,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; min-height:100vh; overflow-x:hidden; }
-body.dark{background:#0a0a0a;color:#fff;}
-body.light{background:#f5f5f5;color:#000;}
+body { 
+    margin:0; 
+    font-family:'Segoe UI',sans-serif; 
+    transition:background 0.3s,color 0.3s; 
+    min-height:100vh; 
+    overflow-x:hidden; 
+}
+body.dark { background:#0a0a0a; color:#fff; }
+body.light { background:#f5f5f5; color:#000; }
 
-.wave-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;}
-.wave{position:absolute;width:200%;height:200%;opacity:0.5;animation:waveMove 30s linear infinite;}
-.wave1{fill:#e74c3c;}
-.wave2{fill:#f39c12;}
-.wave3{fill:#c0392b;}
+.wave-bg {
+    position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden;
+}
+.wave {
+    position:absolute; width:200%; height:200%; opacity:0.5; animation:waveMove 30s linear infinite;
+}
+.wave1{ fill:#e74c3c; }
+.wave2{ fill:#f39c12; }
+.wave3{ fill:#c0392b; }
 body.light .wave1{fill:#fab1a0;}
 body.light .wave2{fill:#ffeaa7;}
 body.light .wave3{fill:#ff7675;}
@@ -25,19 +35,26 @@ body.light .wave3{fill:#ff7675;}
  100%{transform:translateX(0) translateY(0) rotate(0deg);}
 }
 
-header{text-align:center;padding:40px 20px;}
-header h1{font-size:42px;font-weight:900;color:#e74c3c;}
-header h3{font-size:22px;font-weight:600;color:#3498db;}
-header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:inherit;}
+header { text-align:center; padding:40px 20px; z-index:1; position:relative; }
+header h1{ font-size:42px; font-weight:900; color:#e74c3c; }
+header h3{ font-size:22px; font-weight:600; color:#3498db; }
+header p{ max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; color:inherit; }
 
-.hex-container{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:30px;}
-.hex{
- position:relative;width:160px;height:90px;display:flex;
- align-items:center;justify-content:center;font-weight:600;
- text-align:center;cursor:pointer;transition:transform 0.3s ease;
- color:#fff;border-radius:12px;
+.hex-container {
+    display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:30px;
 }
-.hex:hover{transform:scale(1.08);}
+.hex {
+    position:relative; width:160px; height:90px; display:flex;
+    align-items:center; justify-content:center; font-weight:600;
+    text-align:center; cursor:pointer; transition: all 0.3s ease;
+    color:#fff; border-radius:12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.hex:hover {
+    transform:scale(1.08);
+    box-shadow: 0 0 20px #fff, 0 0 30px #f39c12;
+}
+
 .flow{background:#e74c3c;}
 .signal{background:#3498db;}
 .accident{background:#f1c40f;}
@@ -47,29 +64,33 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 .infra{background:#2d3436;}
 .roadquality{background:#d63031;}
 
-.module-content{display:none;margin:20px auto;padding:20px;border-radius:15px;
- max-width:900px;background:rgba(255,255,255,0.05);}
-.module-content h2{font-size:24px;margin-bottom:10px;}
-.module-content h3{font-size:20px;margin-bottom:5px;}
-.module-content p{font-size:16px;line-height:1.6;margin-bottom:10px;}
-.module-content ul{margin-left:20px;}
+.module-content {
+    display:none; margin:20px auto; padding:20px; border-radius:15px;
+    max-width:900px; background:rgba(255,255,255,0.05); transition: all 0.3s ease;
+}
+body.dark .module-content{ background:rgba(30,30,30,0.85); color:#fff; }
+body.light .module-content{ background:rgba(255,255,255,0.85); color:#000; }
+
+.module-content h2{font-size:24px; margin-bottom:10px;}
+.module-content p{font-size:16px; line-height:1.6; margin-bottom:10px;}
 
 .code-btn{
- background:#e67e22;border:none;padding:10px 20px;color:white;
- border-radius:8px;cursor:pointer;font-weight:600;margin-bottom:10px;
+    background:#e67e22; border:none; padding:10px 20px; color:white;
+    border-radius:8px; cursor:pointer; font-weight:600; margin-bottom:10px;
 }
-.code-btn:hover{background:#d35400;}
+.code-btn:hover{ background:#d35400; }
 
 #themeBtn,#homeBtn{
- position:fixed;top:20px;padding:10px 20px;font-size:14px;cursor:pointer;
- border:none;border-radius:8px;color:#fff;transition:background 0.3s;
+    position:fixed; top:20px; padding:10px 20px; font-size:14px; cursor:pointer;
+    border:none; border-radius:8px; color:#fff; transition:all 0.3s ease; z-index:999;
 }
-#themeBtn{right:20px;background:#e74c3c;}
+#themeBtn{right:20px; background:#e74c3c;}
 #themeBtn:hover{background:#3498db;}
 #homeBtn{left:20px;background:#2ecc71;}
 #homeBtn:hover{background:#27ae60;}
 
-/* Fullscreen Code Viewer */
+.hidden-code{ display:none; background:#111; color:#fff; padding:15px; border-radius:10px; overflow-x:auto; margin-top:10px; }
+
 #codeViewer{
   display:none;
   position:fixed; top:0; left:0;
@@ -80,13 +101,10 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
   z-index:9999;
 }
 
-/* small responsive */
 @media (max-width:600px){
   .hex{width:140px;height:80px;font-size:14px;}
   header h1{font-size:32px;}
 }
-
-.hidden-code{display:none; background:#111; color:#fff; padding:15px; border-radius:10px; overflow-x:auto; margin-top:10px;}
 </style>
 </head>
 
@@ -121,37 +139,44 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 <div id="a1" class="module-content">
 <h2>Intelligent Traffic Density System</h2>
 <p>Manage traffic automatically using real-time sensor data and prioritization algorithms.</p>
-<button class="code-btn" onclick="toggleCode('codeExample1')">📌 Example Code</button>
-<pre id="codeExample1" class="hidden-code">
-#include &lt;iostream&gt;
-using namespace std;
-int main() { cout &lt;&lt; "Traffic Density Module"; }
-</pre>
+<button class="code-btn" onclick="openCodeViewer('Traffic Density Module','#include &lt;iostream&gt;\nusing namespace std;\nint main() { cout &lt;&lt; \"Traffic Density Module\"; }')">📌 Example Code</button>
 </div>
 
 <div id="a2" class="module-content">
 <h2>Smart EV Routing System</h2>
 <p>Real-time EV routing with shortest-path algorithms.</p>
-<button class="code-btn" onclick="toggleCode('codeExample2')">📌 Example Code</button>
-<pre id="codeExample2" class="hidden-code">
-#include &lt;iostream&gt;
-using namespace std;
-int main() { cout &lt;&lt; "EV Routing Module"; }
-</pre>
+<button class="code-btn" onclick="openCodeViewer('EV Routing Module','#include &lt;iostream&gt;\nusing namespace std;\nint main() { cout &lt;&lt; \"EV Routing Module\"; }')">📌 Example Code</button>
 </div>
 
 <div id="a3" class="module-content">
 <h2>Visitor Vehicle Bypass</h2>
 <p>Automatically guide non-EV vehicles around EV-only zones using queues and hash maps.</p>
-<button class="code-btn" onclick="toggleCode('codeExample3')">📌 Example Code</button>
-<pre id="codeExample3" class="hidden-code">
-#include &lt;iostream&gt;
-using namespace std;
-int main() { cout &lt;&lt; "Visitor Bypass Module"; }
-</pre>
+<button class="code-btn" onclick="openCodeViewer('Visitor Bypass Module','#include &lt;iostream&gt;\nusing namespace std;\nint main() { cout &lt;&lt; \"Visitor Bypass Module\"; }')">📌 Example Code</button>
 </div>
 
-<!-- Add more modules similarly -->
+<div id="a4" class="module-content">
+<h2>Multi-Lane Separation</h2>
+<p>Intelligent lane management for smooth traffic flow and congestion reduction.</p>
+<button class="code-btn" onclick="openCodeViewer('Multi-Lane Module','#include &lt;iostream&gt;\nusing namespace std;\nint main() { cout &lt;&lt; \"Multi-Lane Module\"; }')">📌 Example Code</button>
+</div>
+
+<div id="a5" class="module-content">
+<h2>Road Quality Monitoring</h2>
+<p>Monitor road conditions using IoT sensors for timely maintenance and alerts.</p>
+<button class="code-btn" onclick="openCodeViewer('Road Quality Module','#include &lt;iostream&gt;\nusing namespace std;\nint main() { cout &lt;&lt; \"Road Quality Module\"; }')">📌 Example Code</button>
+</div>
+
+<div id="a6" class="module-content">
+<h2>Traffic Signal EV Priority</h2>
+<p>EVs get priority at traffic lights to reduce wait time and improve efficiency.</p>
+<button class="code-btn" onclick="openCodeViewer('EV Priority Module','#include &lt;iostream&gt;\nusing namespace std;\nint main() { cout &lt;&lt; \"EV Priority Module\"; }')">📌 Example Code</button>
+</div>
+
+<div id="a7" class="module-content">
+<h2>Infrastructure Maintenance</h2>
+<p>Plan and manage urban infrastructure maintenance intelligently.</p>
+<button class="code-btn" onclick="openCodeViewer('Infrastructure Module','#include &lt;iostream&gt;\nusing namespace std;\nint main() { cout &lt;&lt; \"Infrastructure Module\"; }')">📌 Example Code</button>
+</div>
 
 <!-- FULLSCREEN CODE VIEWER -->
 <div id="codeViewer">
@@ -171,10 +196,13 @@ int main() { cout &lt;&lt; "Visitor Bypass Module"; }
 function toggleTheme(){
     document.body.classList.toggle('dark');
     document.body.classList.toggle('light');
+    document.getElementById('themeBtn').innerText = document.body.classList.contains('dark') ? '🌙 Dark Mode' : '☀️ Light Mode';
 }
 
 // GO HOME
 function goHome(){
+    const modules = document.querySelectorAll('.module-content');
+    modules.forEach(m => m.style.display='none');
     window.scrollTo({top:0, behavior:'smooth'});
 }
 
@@ -184,15 +212,10 @@ function toggleModule(id){
     modules.forEach(m => { if(m.id !== id) m.style.display='none'; });
     const target = document.getElementById(id);
     target.style.display = target.style.display==='block'?'none':'block';
+    if(target.style.display==='block') target.scrollIntoView({behavior:'smooth'});
 }
 
-// CODE TOGGLE
-function toggleCode(id){
-    const code = document.getElementById(id);
-    code.style.display = code.style.display==='block'?'none':'block';
-}
-
-// FULLSCREEN CODE VIEWER (optional)
+// FULLSCREEN CODE VIEWER
 function openCodeViewer(title, code){
     document.getElementById('codeTitle').innerText = title;
     document.getElementById('codeContent').innerText = code;
