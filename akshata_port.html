@@ -6,209 +6,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* ------------------------------- */
-/* BASE + SMOOTH GLOW BACKGROUND   */
-/* ------------------------------- */
-body { 
-  margin:0; 
-  font-family:'Segoe UI',sans-serif; 
-  transition:background 0.4s ease, color 0.4s ease; 
-  min-height:100vh; 
-  overflow-x:hidden; 
-  background: radial-gradient(circle at center,
-    rgba(40,44,52,0.15) 0%,
-    rgba(10,10,15,0.95) 100%);
-  animation: bgGlow 8s ease-in-out infinite alternate;
-  color:#fff;
+body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; min-height:100vh; overflow-x:hidden; }
+body.dark{background:#0a0a0a;color:#fff;}
+body.light{background:#f5f5f5;color:#000;}
+
+.wave-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;}
+.wave{position:absolute;width:200%;height:200%;opacity:0.5;animation:waveMove 30s linear infinite;}
+.wave1{fill:#e74c3c;}
+.wave2{fill:#f39c12;}
+.wave3{fill:#c0392b;}
+body.light .wave1{fill:#fab1a0;}
+body.light .wave2{fill:#ffeaa7;}
+body.light .wave3{fill:#ff7675;}
+
+@keyframes waveMove{
+ 0%{transform:translateX(0) translateY(0) rotate(0deg);}
+ 50%{transform:translateX(10%) translateY(5%) rotate(2deg);}
+ 100%{transform:translateX(0) translateY(0) rotate(0deg);}
 }
 
-@keyframes bgGlow {
-    from { background-size: 100% 100%; }
-    to   { background-size: 105% 105%; }
-}
+header{text-align:center;padding:40px 20px;}
+header h1{font-size:42px;font-weight:900;color:#e74c3c;}
+header h3{font-size:22px;font-weight:600;color:#3498db;}
+header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:inherit;}
 
-body.dark { background:#0b0b0f; color:#fff; }
-body.light { background:#fafafa; color:#111; }
-
-/* ------------------------------- */
-/* WAVES BACKGROUND                */
-/* ------------------------------- */
-.wave-bg {
-  position:fixed; top:0; left:0; width:100%; height:100%;
-  z-index:-1; overflow:hidden; filter:blur(3px) brightness(0.9);
+.hex-container{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:30px;}
+.hex{
+ position:relative;width:160px;height:90px;display:flex;
+ align-items:center;justify-content:center;font-weight:600;
+ text-align:center;cursor:pointer;transition:transform 0.3s ease;
+ color:#fff;border-radius:12px;
 }
-.wave {
-  position:absolute; width:200%; height:200%; opacity:0.4;
-  animation:waveMove 30s linear infinite;
-  mix-blend-mode:screen;
-}
-.wave1 { fill:#ff6b81; }
-.wave2 { fill:#ff9f43; }
-.wave3 { fill:#5352ed; }
-body.light .wave1 { fill:#ffbea2; }
-body.light .wave2 { fill:#ffe08a; }
-body.light .wave3 { fill:#a4b0be; }
-
-@keyframes waveMove {
- 0% { transform:translateX(0) translateY(0) rotate(0deg); }
- 50% { transform:translateX(12%) translateY(6%) rotate(2deg); }
- 100% { transform:translateX(0) translateY(0) rotate(0deg); }
-}
-
-/* ------------------------------- */
-/* HEADER GLOW                     */
-/* ------------------------------- */
-header {
-  text-align:center;
-  padding:50px 20px;
-  animation: fadeIn 1s ease forwards;
-}
-
-header h1 {
-  font-size:48px; font-weight:900; color:#ff4757;
-  text-shadow:0 0 15px rgba(255,71,87,0.7);
-}
-
-header h3 {
-  font-size:22px; font-weight:600; color:#5352ed;
-  text-shadow:0 0 10px rgba(83,82,237,0.5);
-}
-
-header p {
-  max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; color:inherit;
-}
-
-/* ------------------------------- */
-/* HEX BUTTONS                     */
-/* ------------------------------- */
-.hex-container {
-  display:flex; flex-wrap:wrap; justify-content:center;
-  gap:30px; padding:30px;
-  animation: fadeIn 1s ease forwards;
-}
-
-/* Base hex card */
-.hex {
-  position: relative;
-  width:180px; height:120px;
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  font-weight:600; text-align:center; cursor:pointer;
-  transition:transform 0.3s ease, box-shadow 0.4s ease;
-  color:#fff; border-radius:16px;
-  overflow:hidden;
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(8px);
-}
-
-/* Glow overlay */
-.hex::before {
-  content:"";
-  position:absolute;
-  top:0; left:0; width:100%; height:100%;
-  border-radius:16px;
-  background: linear-gradient(120deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0.1));
-  opacity:0; transition:opacity 0.3s ease;
-}
-.hex:hover::before { opacity:1; }
-
-/* Hover + Neon Shadow */
-.hex:hover {
-  transform:scale(1.08);
-  box-shadow:0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,71,87,0.3);
-}
-
-/* Ripple Effect */
-.hex::after {
-  content: "";
-  position: absolute;
-  width: 12px; height: 12px;
-  background: rgba(255,255,255,0.4);
-  border-radius: 50%;
-  transform: scale(0);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.5s ease, opacity 0.6s ease;
-}
-.hex:active::after {
-  transform: scale(25);
-  opacity: 0;
-}
-
-/* Colorful hex backgrounds */
-.flow{background:#ff6b81;}
-.signal{background:#5352ed;}
-.accident{background:#ff9f43;color:#000;}
-.parking{background:#2ed573;}
+.hex:hover{transform:scale(1.08);}
+.flow{background:#e74c3c;}
+.signal{background:#3498db;}
+.accident{background:#f1c40f;}
+.parking{background:#2ecc71;}
 .evpriority{background:#1abc9c;}
-.trie{background:#ff6bcb;}
-.roadquality{background:#ff4757;}
+.trie{background:#e84393;}
+.infra{background:#2d3436;}
+.roadquality{background:#d63031;}
 
-/* ------------------------------- */
-/* MODULE CARDS (can add images)  */
-/* ------------------------------- */
-.module-content {
+.module-content{display:none;margin:20px auto;padding:20px;border-radius:15px;
+ max-width:900px;background:rgba(255,255,255,0.05);}
+.module-content h2{font-size:24px;margin-bottom:10px;}
+.module-content h3{font-size:20px;margin-bottom:5px;}
+.module-content p{font-size:16px;line-height:1.6;margin-bottom:10px;}
+.module-content ul{margin-left:20px;}
+
+.code-btn{
+ background:#e67e22;border:none;padding:10px 20px;color:white;
+ border-radius:8px;cursor:pointer;font-weight:600;margin-bottom:10px;
+}
+.code-btn:hover{background:#d35400;}
+
+#themeBtn,#homeBtn{
+ position:fixed;top:20px;padding:10px 20px;font-size:14px;cursor:pointer;
+ border:none;border-radius:8px;color:#fff;transition:background 0.3s;
+}
+#themeBtn{right:20px;background:#e74c3c;}
+#themeBtn:hover{background:#3498db;}
+#homeBtn{left:20px;background:#2ecc71;}
+#homeBtn:hover{background:#27ae60;}
+
+/* Fullscreen Code Viewer */
+#codeViewer{
   display:none;
-  margin:20px auto;
-  padding:20px;
-  border-radius:18px;
-  max-width:900px;
-  background:rgba(255,255,255,0.07);
-  backdrop-filter:blur(12px);
-  box-shadow:0 0 30px rgba(255,255,255,0.08);
-  animation: fadeUp 0.6s ease;
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.95);
+  color:white; padding:30px;
+  overflow:auto;
+  z-index:9999;
 }
 
-.module-content img {
-  width:100%; border-radius:12px; margin-bottom:10px;
-}
-
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(12px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-
-/* ------------------------------- */
-/* THEME BUTTONS                   */
-/* ------------------------------- */
-#themeBtn,#homeBtn {
-  position:fixed; top:20px; padding:10px 20px;
-  font-size:14px; cursor:pointer;
-  border:none; border-radius:8px; color:#fff;
-  transition:background 0.3s, transform 0.2s;
-}
-#themeBtn:hover,#homeBtn:hover { transform:scale(1.1); }
-#themeBtn{right:20px;background:#ff6b81;}
-#themeBtn:hover{background:#5352ed;}
-#homeBtn{left:20px;background:#2ed573;}
-#homeBtn:hover{background:#1abc9c;}
-
-/* ------------------------------- */
-/* RESPONSIVE                      */
-/* ------------------------------- */
+/* small responsive */
 @media (max-width:600px){
-  .hex{width:150px;height:100px;font-size:14px;}
-  header h1{font-size:36px;}
+  .hex{width:140px;height:80px;font-size:14px;}
+  header h1{font-size:32px;}
 }
 
-/* Base Fade Animations */
-@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
-
+.hidden-code{display:none; background:#111; color:#fff; padding:15px; border-radius:10px; overflow-x:auto; margin-top:10px;}
 </style>
 </head>
 
 <body class="dark">
 
 <div class="wave-bg">
-  <svg class="wave wave1" viewBox="0 0 1440 320">
-    <path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path>
-  </svg>
-  <svg class="wave wave2" viewBox="0 0 1440 320">
-    <path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path>
-  </svg>
-  <svg class="wave wave3" viewBox="0 0 1440 320">
-    <path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path>
-  </svg>
+<svg class="wave wave1" viewBox="0 0 1440 320"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
+<svg class="wave wave2" viewBox="0 0 1440 320"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
+<svg class="wave wave3" viewBox="0 0 1440 320"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
 </div>
 
 <button id="homeBtn" onclick="goHome()">🏠 Home</button>
@@ -221,1243 +108,98 @@ header p {
 </header>
 
 <div class="hex-container">
-  <div class="hex flow" onclick="toggleModule('a1')">
-    <span>Intelligent Traffic Density Management</span>
-  </div>
-  <div class="hex signal" onclick="toggleModule('a2')">
-    <span>Smart EV-Only Road Routing</span>
-  </div>
-  <div class="hex accident" onclick="toggleModule('a3')">
-    <span>Visitor Vehicle Bypass</span>
-  </div>
-  <div class="hex parking" onclick="toggleModule('a4')">
-    <span>Multi-Lane Road Separation</span>
-  </div>
-  <div class="hex roadquality" onclick="toggleModule('a5')">
-    <span>Road Quality Monitoring</span>
-  </div>
-  <div class="hex evpriority" onclick="toggleModule('a6')">
-    <span>Traffic Signal EV Priority</span>
-  </div>
-  <div class="hex trie" onclick="toggleModule('a7')">
-    <span>Urban Infrastructure Maintenance</span>
-  </div>
+<div class="hex flow" onclick="toggleModule('a1')">Intelligent Traffic Density</div>
+<div class="hex signal" onclick="toggleModule('a2')">Smart EV Routing</div>
+<div class="hex accident" onclick="toggleModule('a3')">Visitor Vehicle Bypass</div>
+<div class="hex parking" onclick="toggleModule('a4')">Multi-Lane Separation</div>
+<div class="hex roadquality" onclick="toggleModule('a5')">Road Quality Monitoring</div>
+<div class="hex evpriority" onclick="toggleModule('a6')">Traffic Signal EV Priority</div>
+<div class="hex trie" onclick="toggleModule('a7')">Infrastructure Maintenance</div>
 </div>
-
-<!-- Example module content with image -->
-<div id="a1" class="module-content">
-  <img src="https://via.placeholder.com/800x300.png?text=Traffic+Density" alt="Traffic Density">
-  <h2>Intelligent Traffic Density Management</h2>
-  <p>Analyze and manage traffic density intelligently to reduce congestion.</p>
-</div>
-
-<script>
-function toggleTheme() {
-  document.body.classList.toggle('dark');
-  document.body.classList.toggle('light');
-}
-
-function goHome() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function toggleModule(id) {
-  const module = document.getElementById(id);
-  if(module.style.display === 'block') module.style.display = 'none';
-  else module.style.display = 'block';
-}
-</script>
-
-</body>
-</html>
-
 
 <!-- MODULES -->
-<!-- MODULE 1 -->
 <div id="a1" class="module-content">
-<h2>Intelligent Traffic Density Management System</h2>
-
-<h3>Problem</h3>
-<p>The city faces uneven traffic distribution because vehicles crowd main roads while other routes stay empty. Manual traffic control fails during peak hours, leading to congestion, delays, and inefficient EV flow.</p>
-
-<h3>Solution</h3>
-<p>A real-time automated traffic density system that uses sensors, cameras, and algorithms to monitor road load, rank congestion levels, and automatically adjust signal timings.</p>
-
-<h3>Data Structures Used</h3>
-<ul>
-<li>Array → Store live sensor data (vehicle count, speed).</li>
-<li>Max Heap → Identify most congested road instantly.</li>
-<li>Queue → Manage vehicles approaching each signal.</li>
-<li>Graph → Represent entire road network for cross-road density checks.</li>
-</ul>
-
-<h3>Algorithms Used</h3>
-<ul>
-<li>Merge Sort → Sort road densities for ranking.</li>
-<li>Heap Operations → Prioritize which road gets green signal first.</li>
-<li>BFS → Spread density updates across nearby intersections.</li>
-</ul>
-
-<h3>Step-by-Step Process</h3>
-<p>1. Sensors send vehicle counts → stored in array.</p>
-<p>2. Merge Sort arranges roads from most to least crowded.</p>
-<p>3. Max Heap picks the top 3 highest-density roads.</p>
-<p>4. BFS sends density updates to all connected intersections (graph).</p>
-<p>5. Heap-based prioritization assigns green time to the busiest lanes.</p>
-<p>6. Signal controller updates timings in real time.</p>
-<p>7. Dashboard shows congestion map to users.</p>
-
-<hr>
-
-<!-- ARRAY + MERGE SORT -->
-<button class="code-btn" onclick="toggleCode('codeMerge')">📌 Array + Merge Sort</button>
-<button class="code-btn" onclick="toggleCode('codeHeap')">📌 Max Heap</button>
-<button class="code-btn" onclick="toggleCode('codeBFS')">📌 BFS</button>
-
-<!-- Hidden Code Blocks -->
-<pre id="codeMerge" class="hidden-code">
-#include &lt;
- iostream&gt;
-using namespace std;
-
- int main() {
-    int n;
-    cin >> n;
-    int A[n];
-    for(int i = 0; i < n; i++)
-        cin >> A[i];
-    mergeSort(A, 0, n - 1);
-    for(int i = 0; i < n; i++)
-        cout << A[i] << " ";
-    return 0;
-}
-void mergeArray(int A[], int l, int mid, int r)
- {
- int p = mid - l + 1;   
-    int q = r - mid;         
- int B[p], C[q];          
- // Copy A[l..mid] → B[]
-    for(int i = 0; i < p; i++)
-        B[i] = A[l + i];
- // Copy A[mid+1..r] → C[]
-    for(int j = 0; j < q; j++)
-        C[j] = A[mid + 1 + j];
- int i = 0, j = 0, k = l;
- // Merge (DESCENDING ORDER)
-    while(i < p && j < q)
-             {
-        if(B[i] >= C[j])
-     {
-       A[k] = B[i];
-            i++;
-        } 
-     else
-     {
-     A[k] = C[j];
-            j++;
-     }
-        k++;
-  } // Remaining elements
-    while(i < p)
-        A[k++] = B[i++];
-    
-    while(j < q)
-        A[k++] = C[j++];
-}
-void mergeSort(int A[], int l, int r) {
-    if(l < r) {
-        int mid = (l + r) / 2;
-        mergeSort(A, l, mid);
-        mergeSort(A, mid + 1, r);
-        mergeArray(A, l, mid, r);
-    }
-}
-</pre>
-
-<pre id="codeHeap" class="hidden-code">
+<h2>Intelligent Traffic Density System</h2>
+<p>Manage traffic automatically using real-time sensor data and prioritization algorithms.</p>
+<button class="code-btn" onclick="toggleCode('codeExample1')">📌 Example Code</button>
+<pre id="codeExample1" class="hidden-code">
 #include &lt;iostream&gt;
 using namespace std;
- int main()
-  {
-    int n;
-    cin >> n;
-    int h[n];
-    for(int i = 0; i < n; i++)
-        cin >> h[i];
-    buildHeap(h, n);
-    for(int i = 0; i < n; i++)
-        cout << h[i] << " ";
-}
-void heapify(int h[], int n, int i)
-     {
-    int k = i, v = h[i];
-    bool heap = false;
-    while(!heap && (2*k + 1) < n)
-  {
-     int j = 2*k + 1;
-        if(j + 1 < n && h[j] < h[j+1])
-            j++;
-        if(v >= h[j])
-            heap = true;
-        else {
-            h[k] = h[j];
-            k = j;
-        }
-    }
-    h[k] = v;
-}
-void buildHeap(int h[], int n)
-     {
-    for(int i = n/2; i >= 0; i--)
-        heapify(h, n, i);
-     }
-
-
-</pre>
-
-<pre id="codeBFS" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;queue&gt;
-#include <bits/stdc++.h>
-using namespace std;
-int main() {
-    int n, m;
-    cin >> n >> m;  
-    int g[n][100];    
-    int deg[n] = {0};  
-    for(int i = 0; i < m; i++) {
-        int u, v;
-        cin >> u >> v; 
-        g[u][deg[u]++] = v;
-        g[v][deg[v]++] = u;
-    }
-    int visited[n] = {0};
-    int queue[1000];  
-    int front = 0, rear = 0;
-    int source;
-    cin >> source;
- 
-    visited[source] = 1;
-    queue[rear++] = source;
-   cout << "BFS Traversal: ";
-    while(front < rear) {
-        int u = queue[front++];
-        cout << u << " ";
-        for(int i = 0; i < deg[u]; i++) {
-            int v = g[u][i];
-            if(!visited[v]) {
-                visited[v] = 1;
-                queue[rear++] = v;
-            }
-        }
-    }
-
-    return 0;
-}
-
+int main() { cout &lt;&lt; "Traffic Density Module"; }
 </pre>
 </div>
 
-<style>
-.hidden-code{display:none; background:#111; color:#fff; padding:15px; border-radius:10px; overflow-x:auto; margin-top:10px;}
-</style>
-
-<script>
-function toggleCode(id){
-    const el = document.getElementById(id);
-    if(el.style.display==='block') el.style.display='none';
-    else el.style.display='block';
-}
-</script>
-</div>
 <div id="a2" class="module-content">
-<h2>Smart EV-Only Road Routing System</h2>
-
-<h3>Problem</h3>
-<p>EV traffic inside the city gets delayed due to congestion, and non-EV vehicles entering EV zones cause delays and pollution. Manual route management cannot ensure smooth flow for EVs.</p>
-
-<h3>Solution</h3>
-<p>A smart routing system that monitors EV traffic, calculates the fastest path using real-time data, and restricts non-EV vehicles automatically.</p>
-
-<h3>Data Structures Used</h3>
-<ul>
-<li>Graph → Represent EV road network.</li>
-<li>Priority Queue (Heap) → Select the next intersection with minimum travel time.</li>
-</ul>
-
-<h3>Algorithms Used</h3>
-<ul>
-<li>Dijkstra’s Algorithm → Calculate real-time shortest path for EVs.</li>
-<li>BFS → Check connected intersections for alternate routing in case of congestion.</li>
-</ul>
-
-<h3>Step-by-Step Process</h3>
-<p>1. Map all EV roads as graph nodes and edges with travel time as weights.</p>
-<p>2. Input current EV positions and destinations.</p>
-<p>3. Use Dijkstra to find the shortest congested-free path.</p>
-<p>4. BFS monitors connected intersections for traffic updates.</p>
-<p>5. Navigation system directs EVs along optimal paths.</p>
-<p>6. Non-EV vehicles are restricted using smart gates.</p>
-
-<hr>
-
-<button class="code-btn" onclick="toggleCode('codeGraph')">📌 Graph Representation</button>
-<button class="code-btn" onclick="toggleCode('codeDijkstra')">📌 Dijkstra’s Algorithm</button>
-<button class="code-btn" onclick="toggleCode('codeBFS2')">📌 BFS – Monitor Intersections</button>
-
-<!-- Hidden Code Blocks -->
-<pre id="codeGraph" class="hidden-code">
+<h2>Smart EV Routing System</h2>
+<p>Real-time EV routing with shortest-path algorithms.</p>
+<button class="code-btn" onclick="toggleCode('codeExample2')">📌 Example Code</button>
+<pre id="codeExample2" class="hidden-code">
 #include &lt;iostream&gt;
-#include &lt;vector&gt;
 using namespace std;
-int main() {
-    int n, m;
-    cin >> n >> m;
-    int g[n][100];     
-    int w[n][100];   
-    int deg[n] = {0};  
-    for(int i = 0; i < m; i++) {
-        int u, v, weight;
-        cin >> u >> v >> weight;
-        g[u][deg[u]] = v;
-        w[u][deg[u]] = weight;
-        deg[u]++;
-        g[v][deg[v]] = u;
-        w[v][deg[v]] = weight;
-        deg[v]++;
-    }
-    for(int i = 0; i < n; i++) {
-        cout << i << ": ";
-        for(int j = 0; j < deg[i]; j++) {
-            cout << g[i][j] << "(" << w[i][j] << ") ";
-        }
-        cout << endl;
-    }
-    return 0;
-               }
-
-</pre>
-
-<pre id="codeDijkstra" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;queue&gt;
-using namespace std;
-#define MAXN 100
-#define INF 1e9
-
-int main() {
-    int n, m;
-    cin >> n >> m;
-    int cost[MAXN][MAXN];
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            cost[i][j] = INF;
-    for (int i = 0; i < m; i++) {
-        int u, v, w;
-        cin >> u >> v >> w;
-        cost[u][v] = w;
-        cost[v][u] = w; 
-    }
-    int source;
-    cin >> source;
-    int dist[MAXN];
-    int visited[MAXN] = {0};
-    for (int i = 0; i < n; i++)
-        dist[i] = INF;
-    dist[source] = 0;  
-    for (int count = 0; count < n; count++) {
-        int u = -1;
-        int minDist = INF; 
-        for (int i = 0; i < n; i++) {
-            if (!visited[i] && dist[i] < minDist) {
-                minDist = dist[i];
-                u = i;
-            }
-        }
-
-        if (u == -1) 
-          break; 
-        visited[u] = 1;
-        for (int v = 0; v < n; v++) {
-            if (!visited[v] && cost[u][v] != INF) {
-                if (dist[u] + cost[u][v] < dist[v])
-                    dist[v] = dist[u] + cost[u][v];
-            }
-        }
-    }   
-    for (int i = 0; i < n; i++)
-        cout << "Distance to " << i << ": " << dist[i] << endl;
-    return 0;
-}
-
-</pre>
-
-<pre id="codeBFS2" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;queue&gt;
-using namespace std;
-int main() {
-    int n, m;
-    cin >> n >> m;
-    int g[n][100];  
-    int deg[n] = {0};
-    for(int i = 0; i < m; i++) {
-        int u, v;
-        cin >> u >> v;
-        g[u][deg[u]++] = v;
-        g[v][deg[v]++] = u;
-    }
-    int visited[n] = {0};
-    int queue[1000];   
-    int front = 0, rear = 0;
-    int source;
-    cin >> source;
-   
-    visited[source] = 1;
-    queue[rear++] = source;
-   cout << "BFS Traversal: ";
-    while(front < rear) {
-        int u = queue[front++];
-        cout << u << " ";
-        for(int i = 0; i < deg[u]; i++) {
-            int v = g[u][i];
-            if(!visited[v])
-                          {
-                visited[v] = 1;
-                queue[rear++] = v;
-            }
-        }
-    }
-
-    return 0;
-}
-
+int main() { cout &lt;&lt; "EV Routing Module"; }
 </pre>
 </div>
+
 <div id="a3" class="module-content">
-<h2>Visitor Vehicle Bypass Routing & Control System</h2>
-
-<h3>Problem</h3>
-<p>Visitors entering the smart EV city with petrol/diesel vehicles accidentally enter EV-only zones. This creates:</p>
-<ul>
-<li>traffic jams</li>
-<li>enforcement issues</li>
-<li>delays for local EV users</li>
-<li>confusion for outsiders</li>
-</ul>
-<p>The city needs a system that automatically detects visitor vehicles and guides them through a dedicated bypass road without disturbing internal EV traffic.</p>
-
-<h3>Solution</h3>
-<p>A smart control system that:</p>
-<ul>
-<li>Detects visitor vehicles at city entry</li>
-<li>Classifies them as EV / Non-EV</li>
-<li>Automatically routes outsiders through a bypass-only path</li>
-<li>Prevents entry into EV roads using smart gates</li>
-<li>Provides fastest bypass using graph shortest paths</li>
-</ul>
-
-<h3>Data Structures Used</h3>
-<ul>
-<li>Graph → represent city roads + bypass roads</li>
-<li>Queue → manage incoming vehicles at checkpoints</li>
-<li>Hash Table → store vehicle type (EV / Non-EV)</li>
-<li>Priority Queue (Min Heap) → find fastest bypass route (used by Dijkstra)</li>
-</ul>
-
-<h3>Algorithms Used</h3>
-<ul>
-<li>Dijkstra’s Algorithm → compute fastest bypass for visitors</li>
-<li>BFS (optional) → check if any entry point is blocked</li>
-<li>Hashing → quickly identify visitor vs resident vehicle</li>
-</ul>
-
-<h3>Step-by-Step Process</h3>
-<p>1. Vehicle arrives at entry gate → number plate read.</p>
-<p>2. Hash table lookup identifies:</p>
-<ul>
-<li>EV → allowed inside city</li>
-<li>Non-EV → redirect to bypass</li>
-</ul>
-<p>3. If Non-EV:</p>
-<ul>
-<li>Dijkstra calculates shortest bypass route</li>
-<li>Vehicle is sent only on non-interfering path</li>
-<li>Queue manages vehicles waiting at gate.</li>
-<li>If one bypass segment is blocked → BFS quickly finds next reachable bypass path.</li>
-<li>Gate opens + navigation is shown to visitor.</li>
-</ul>
-
-<hr>
-<button class="code-btn" onclick="toggleCode('codeHash')">📌 Hash Table – Identify Visitor Vehicle</button>
-<button class="code-btn" onclick="toggleCode('codeQueue')">📌 Queue – Vehicles Waiting at Gate</button>
-<button class="code-btn" onclick="toggleCode('codeDijkstra3')">📌 Dijkstra – Fastest Bypass Route</button>
-<button class="code-btn" onclick="toggleCode('codeBFS3')">📌 BFS – Next Available Bypass</button>
-
-<!-- Hidden Code Blocks -->
-<pre id="codeHash" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;unordered_map&gt;
-using namespace std;
- int main() {
-    string plate;
-    cin >> plate;
-  
-    if (plate == "MH09XY7777") 
-        cout << "Use BYPASS\n";
-    else if (plate == "KA01AB1234")
-        cout << "Welcome to EV City\n";
-    else
-        cout << "Plate not recognized\n";
-}
-
-</pre>
-
-<pre id="codeQueue" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;queue&gt;
-using namespace std;
-int main() {
-    string cars[3] = {"CAR1", "CAR2", "CAR3"};
-    int front = 0;  
-    int rear = 3; 
-while (front < rear) {
-        cout << "Processing " << cars[front] << endl;
-        front++;  // remove car from queue
-    }
-
-    return 0;
-}
-
-</pre>
-
-<pre id="codeDijkstra3" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;queue&gt;
-using namespace std;
-#define MAXN 100
-#define INF 1000000000
-
-int main() {
-    int n, m;
-    cin >> n >> m;
-    int cost[MAXN][MAXN];
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            cost[i][j] = INF;
-
-    for (int i = 0; i < m; i++) {
-        int u, v, w;
-        cin >> u >> v >> w;
-        cost[u][v] = w;
-        cost[v][u] = w;
-    }
-    int source, target;
-    cin >> source >> target;
-    int dist[MAXN];
-    int visited[MAXN] = {0};
-    for (int i = 0; i < n; i++)
-        dist[i] = INF;
-    dist[source] = 0;
-    for (int count = 0; count < n; count++) {
-        int u = -1;
-        int minDist = INF;
-        for (int i = 0; i < n; i++) {
-            if (!visited[i] && dist[i] < minDist) {
-                minDist = dist[i];
-                u = i;
-            }
-        }
-        if (u == -1) 
-                       break;
-        visited[u] = 1;
-        for (int v = 0; v < n; v++) {
-            if (!visited[v] && cost[u][v] != INF) {
-                if (dist[u] + cost[u][v] < dist[v])
-                    dist[v] = dist[u] + cost[u][v];
-            }
-        }
-    }
-    cout << "Fastest bypass to node " << target << " = " << dist[target] << endl;
-    return 0;
-}
-
-</pre>
-</div>
-<div id="a4" class="module-content">
-<h2>Multi-Lane Road Separation + Smart Gate Control System</h2>
-
-<h3>Problem</h3>
-<p>All types of vehicles move on the same road → EVs, petrol/diesel vehicles, buses, scooters, trucks. This causes congestion, delays, and unnecessary traffic mixing.</p>
-<p>The city needs separate lanes for:</p>
-<ul>
-<li>EV buses</li>
-<li>EV cars</li>
-<li>EV scooters</li>
-<li>Petrol/Diesel vehicles (resident vehicles)</li>
-<li>Outsider vehicles</li>
-<li>Goods trucks</li>
-</ul>
-<p>Also, the lanes must be monitored so that vehicles enter only their allowed lane.</p>
-
-<h3>Solution</h3>
-<p>A smart multi-lane road system where each lane is mapped, classified, and monitored using sensors and gates. When a vehicle arrives at a lane gate → the system checks its type and opens/blocks the gate automatically.</p>
-
-<h3>Data Structures Used</h3>
-<ul>
-<li>Graph → Represent all lanes and their connectivity.</li>
-<li>Hash Table → Map vehicle number → vehicle type (EV, petrol, diesel, truck).</li>
-<li>Queue → Store vehicles waiting at lane gates.</li>
-</ul>
-
-<h3>Algorithms Used</h3>
-<ul>
-<li>BFS → Check which lane path is available for a vehicle type.</li>
-<li>Hash Lookup → Fast classification of vehicle type.</li>
-<li>Simple Sorting (Selection Sort) → Sort lanes by load (optional).</li>
-</ul>
-
-
-<h3>Step-by-Step Process</h3>
-<ol>
-<li>Vehicle arrives at lane entrance.</li>
-<li>ANPR camera reads vehicle number.</li>
-<li>Vehicle number is searched in hash table → find vehicle type.</li>
-<li>Based on type:
-    <ul>
-    <li>EV Car → EV-Car Lane</li>
-    <li>EV Bus → EV-Bus Lane</li>
-    <li>EV Scooter → EV-Scooter Lane</li>
-    <li>Petrol/Diesel (Resident) → Non-EV Lane</li>
-    <li>Outsider Vehicle → Visitor Lane</li>
-    <li>Truck → Goods Lane</li>
-    </ul>
-</li>
-<li>BFS checks if lane path is free or congested.</li>
-<li>If lane free → gate opens.</li>
-<li>If lane full → vehicle is added to a queue until lane clears.</li>
-<li>Lanes are monitored and updated in real time.</li>
-</ol>
-
-<hr>
-<button class="code-btn" onclick="toggleCode('codeHash4')">📌 Hash Table – Vehicle Type Lookup</button>
-<button class="code-btn" onclick="toggleCode('codeQueue4')">📌 Queue – Vehicles Waiting at a Lane</button>
-<button class="code-btn" onclick="toggleCode('codeBFS4')">📌 BFS – Check If Lane Path Is Reachable</button>
-<button class="code-btn" onclick="toggleCode('codeSelectSort4')">📌 Selection Sort – Optional Lane Load Sorting</button>
-
-<!-- Hidden Code Blocks -->
-<pre id="codeHash4" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;unordered_map&gt;
-using namespace std;
-int main() {
-    string num;
-    cin >> num;
-
-    if(num == "KA01EV1234")
-        cout << "EV-Car";
-    else if(num == "KA09AB7890")
-        cout << "Petrol";
-    else if(num == "KA55TR1122")
-        cout << "Truck";
-    else
-        cout << "Unknown Vehicle";
-
-    return 0;
-}
-
-</pre>
-
-<pre id="codeQueue4" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;queue&gt;
-using namespace std;
-int main() {
-    string cars[3] = {"KA01EV1234", "KA09AB7890", "KA55TR1122"};
-    int front = 0;
-    int rear = 3;
-    while(front < rear) {
-        cout << cars[front] << " enters lane\n";
-        front++;
-    }
-    return 0;
-}
-
-</pre>
-
-<pre id="codeBFS4" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;queue&gt;
-using namespace std;
-bool bfs(int m[10][10], int n, int source, int target) {
-    int queue[20];
-    int front = 0, rear = 0;
-    int visited[10] = {0};
-    queue[rear++] = source;
-    visited[source] = 1;
-    while (front < rear) {
-        int u = queue[front++];
-        if (u == target) return true;
-
-        for (int v = 0; v < n; v++) {
-            if (m[u][v] == 1 && !visited[v]) {
-                visited[v] = 1;
-                queue[rear++] = v;
-            }
-        }
-    }
-
-    return false;
-}
-
-int main() {
-    int n = 5;
-    int m[10][10] = {
-        {0,1,0,0,0},
-        {0,0,1,0,0},
-        {0,0,0,0,0},
-        {0,0,0,0,0},
-        {1,1,1,0,0}
-    };
-
-    int source, target;
-    cin >> source >> target;
-
-    if (bfs(m, n, source, target))
-        cout << "Lane reachable";
-    else
-        cout << "Lane blocked";
-
-    return 0;
-}
-
-</pre>
-
-<pre id="codeSelectSort4" class="hidden-code">
+<h2>Visitor Vehicle Bypass</h2>
+<p>Automatically guide non-EV vehicles around EV-only zones using queues and hash maps.</p>
+<button class="code-btn" onclick="toggleCode('codeExample3')">📌 Example Code</button>
+<pre id="codeExample3" class="hidden-code">
 #include &lt;iostream&gt;
 using namespace std;
-int main()
- {
-    int a[5] = {30,10,50,20,40}, n=5;
-    for(int i=0;i<n;i++)
-        for(int j=i+1;j<n;j++)
-            if(a[j]<a[i]) 
-                  swap(a[i],a[j]);
-    for(int i=0;i<n;i++)
-                  cout<<a[i]<<" ";
-}
-
+int main() { cout &lt;&lt; "Visitor Bypass Module"; }
 </pre>
 </div>
 
-<div id="a5" class="module-content">
-<h2>Road Quality Monitoring & Smart Construction Analytics System</h2>
-
-<h3>Problem</h3>
-<p>The city faces continuous road damage due to heavy EV/bus usage, monsoon conditions, and poor maintenance scheduling. Repairs happen late, causing potholes, breakdowns, and traffic jams. No system exists to monitor damage in real time or prioritize which roads should be repaired first.</p>
-
-<h3>Solution</h3>
-<p>A smart automated system that:</p>
-<ul>
-<li>Detects road cracks, bumps, and potholes using sensors/cameras</li>
-<li>Tracks road health across all lanes (EV lane, petrol lane, goods lane)</li>
-<li>Prioritizes repair based on severity, traffic load, and safety</li>
-<li>Helps the city plan road construction scientifically instead of randomly</li>
-</ul>
-
-<h3>Data Structures Used</h3>
-<ul>
-<li>Graph → Represent city road network</li>
-<li>Min-Heap → Pick highest-priority road repairs</li>
-<li>Hash Table → Store damage reports from sensors/complaints</li>
-<li>BST → Sort roads by severity index</li>
-</ul>
-
-<h3>Algorithms Used</h3>
-<ul>
-<li>DFS → Detect clusters of connected damaged road segments</li>
-<li>BFS → Find shortest path to nearest repair team</li>
-<li>Merge Sort → Sort repair sites by cost or severity</li>
-<li>Prim's/Kruskal’s (Optional) → Plan cost-efficient new road layouts</li>
-</ul>
-
-<h3>Step-by-Step Process</h3>
-<ol>
-<li>Sensors & Mobile App Reports → Hash Table: store severity, location, lane type, time of damage report.</li>
-<li>Severity Index → Insert into BST: roads sorted by damage level.</li>
-<li>Min-Heap → Pick Top Priority Repairs: automatically selects most urgent road segments.</li>
-<li>DFS → Cluster Detection: if potholes appear in connected segments, treat as one repair project.</li>
-<li>BFS → Assign Repair Team: find nearest available repair vehicle/crew.</li>
-<li>Merge Sort → Cost Ranking: sort repair tasks by estimated cost/time.</li>
-<li>Team Executes Work: status updated and displayed on the dashboard.</li>
-</ol>
-
-<hr>
-
-<button class="code-btn" onclick="toggleCode('codeHash5')">📌 Hash Table – Storing Damage Reports</button>
-<button class="code-btn" onclick="toggleCode('codeHeap5')">📌 Min-Heap – Pick Highest Priority Damage</button>
-<button class="code-btn" onclick="toggleCode('codeDFS5')">📌 DFS – Find Connected Damaged Segments</button>
-<button class="code-btn" onclick="toggleCode('codeBFS5')">📌 BFS – Find Nearest Repair Team</button>
-
-<!-- Hidden Code Blocks -->
-<pre id="codeHash5" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;unordered_map&gt;
-using namespace std;
-int main() {
-    string roads[] = {"RoadA", "RoadB"};
-    int severity[] = {4, 2};
-
-    for(int i = 0; i < 2; i++)
-        cout << roads[i] << " = " << severity[i] << endl;
-}
-
-</pre>
-
-<pre id="codeHeap5" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;queue&gt;
-using namespace std;
-int main() {
-    int s[3] = {5, 2, 8};
-    string l[3] = {"Lane1", "Lane2", "Lane3"};
-    int max = 0;
-    for(int i = 1; i < 3; i++)
-        if(s[i] > s[max])
-            max = i;
-    cout << "Most severe: " << l[max] << endl;
-}
-
-</pre>
-
-<pre id="codeDFS5" class="hidden-code">
-#include &lt;iostream&gt;
-using namespace std;
-int v = 5;
-int m[10][10] = {{0,1,1,0,0}, {1,0,0,1,1},
-        {1,0,0,0,1}, {0,1,0,0,0}, {0,1,1,0,0}};
-int visited[10];
-void dfs(int m[10][10], int v, int source) {
-    visited[source] = 1;
-    for (int i = 0; i < v; i++) {
-        if (m[source][i] == 1 && visited[i] == 0) {
-            cout << i << "\t";
-            dfs(m, v, i);
-        }
-    }
-}
-int main() {
-    int source;
-    for (int i = 0; i < v; i++)
-        visited[i] = 0;
-
-    cout << "Enter the source vertex: ";
-    cin >> source;
-
-    cout << "The DFS Traversal is... \n";
-    cout << source << "\t";
-    dfs(m, v, source);
-
-    return 0;
-}
-</pre>
-
-<pre id="codeBFS5" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;queue&gt;
-using namespace std;
-#include <iostream>
-using namespace std;
-
-void bfs(int m[10][10], int v, int source) {
-    int queue[20];
-    int front = 0, rear = 0, u, i;
-    int visited[10];
-
-    for (i = 0; i < v; i++)
-        visited[i] = 0;
-
-    queue[rear] = source;
-    visited[source] = 1;
-
-    cout << "The BFS Traversal is... \n";
-
-    while (front <= rear) {
-        u = queue[front];
-        cout << u << "\t";
-        front++;
-
-        for (i = 0; i < v; i++) {
-            if (m[u][i] == 1 && visited[i] == 0) {
-                visited[i] = 1;
-                rear++;
-                queue[rear] = i;
-            }
-        }
-    }
-}
-
-int main() {
-    int v = 5;
-    int m[10][10] = {{0,1,1,0,0}, {1,0,0,1,1},
-        {1,0,0,0,1}, {0,1,0,0,0}, {0,1,1,0,0}};
-
-    int source;
-    cout << "Enter the source vertex: ";
-    cin >> source;
-
-    bfs(m, v, source);
-
-    return 0;
-}
-</pre>
-</div>
-<div id="a6" class="module-content">
-<h2>Traffic Signal Optimization Using EV Priority</h2>
-
-<h3>Problem</h3>
-<p>Emergency EVs (ambulances, fire trucks, police) face delays because signals don’t prioritize them, even if main roads are congested. This slows response times and can risk lives.</p>
-
-<h3>Solution</h3>
-<p>A real-time signal management system that detects emergency EVs, dynamically adjusts traffic lights, and clears their path while minimally affecting other vehicles.</p>
-
-<h3>Data Structures Used</h3>
-<ul>
-<li>Queue → Vehicles waiting at signals</li>
-<li>Graph → Represents road network for route planning</li>
-</ul>
-
-<h3>Algorithms Used</h3>
-<ul>
-<li>Dijkstra → Finds shortest path for emergency EVs</li>
-<li>BFS → Updates signals across connected intersections efficiently</li>
-</ul>
-
-<h3>Step-by-Step Process</h3>
-<ol>
-<li>Sensors detect an approaching emergency EV.</li>
-<li>Road network represented as a graph, with EV location as source.</li>
-<li>Dijkstra computes the shortest route from EV to destination.</li>
-<li>BFS updates connected intersections along that path.</li>
-<li>Queue manages vehicles waiting at signals to ensure minimal disruption.</li>
-<li>Signal timings adjust automatically to give green lights to EV.</li>
-<li>Dashboard shows real-time status for monitoring.</li>
-</ol>
-
-<hr>
-
-<button class="code-btn" onclick="toggleCode('codeDijkstra6')">📌 Dijkstra – Shortest Path for EV</button>
-
-<pre id="codeDijkstra6" class="hidden-code">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-#define MAXN 100
-#define INF 999
-
-int main() {
-    int n;
-    cout << "Enter the number of Vertices\n";
-    cin >> n;
-
-    int cost[MAXN][MAXN];
-
-    cout << "Enter the cost matrix: (Enter 999 for Infinity)\n";
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cin >> cost[i][j];
-        }
-    }
-
-    int source;
-    cout << "Enter the source\n";
-    cin >> source;
-
-    int dist[MAXN], path[MAXN], visited[MAXN];
-
-
-    for (int i = 0; i < n; i++) {
-        dist[i] = cost[source][i];
-        path[i] = source;
-        visited[i] = 0;
-    }
-    visited[source] = 1;
-
-
-    for (int iter = 0; iter < n - 1; iter++) {
-        int u = -1;
-        int min = INF + 1;
-
-
-        for (int i = 0; i < n; i++) {
-            if (!visited[i] && dist[i] < min) {
-                min = dist[i];
-                u = i;
-            }
-        }
-
-        if (u == -1)
-            break;
-
-        visited[u] = 1;
-
-
-        for (int v = 0; v < n; v++) {
-            if (!visited[v] && cost[u][v] != INF) {
-                if (dist[u] + cost[u][v] < dist[v]) {
-                    dist[v] = dist[u] + cost[u][v];
-                    path[v] = u;
-                }
-            }
-        }
-    }
-
-    cout << "\nVertex   Dist   Path\n";
-    for (int i = 0; i < n; i++) {
-        cout << i << "        " << dist[i] << "      " << path[i] << "\n";
-    }
-
-    return 0;
-}
-
-</pre>
-</div>
-<div id="a7" class="module-content">
-<h2>Smart Urban Infrastructure Maintenance & Planning System</h2>
-
-<h3>Problem</h3>
-<p>Random maintenance and construction of roads, bridges, flyovers, tunnels, and pedestrian paths cause congestion, delays, and wastage. Manual planning fails to optimize traffic, especially with EV-only lanes and multiple vehicle types.</p>
-
-<h3>Solution</h3>
-<p>An intelligent system that monitors the condition of all urban infrastructure, plans construction/repairs based on severity, traffic load, and cost, and ensures minimal disruption to EV and petrol/diesel traffic.</p>
-
-<h3>Data Structures / Algorithms Used</h3>
-<ul>
-<li>Graph → Represent roads, bridges, tunnels, flyovers, EV lanes.</li>
-<li>Min Heap → Prioritize repair/construction tasks based on urgency/cost.</li>
-<li>Queue → Manage task allocation for workers and materials.</li>
-<li>DFS / BFS → Detect connected damaged segments and optimize repair paths.</li>
-<li>Quick Sort / Merge Sort → Sort construction materials, sites, or urgency levels.</li>
-</ul>
-
-<h3>Step-by-Step Process</h3>
-<ol>
-<li>Sensors and citizen reports on roads, bridges, tunnels, flyovers, and pedestrian paths are collected and stored.</li>
-<li>Damaged areas prioritized using a min-heap based on severity and repair cost.</li>
-<li>DFS/BFS identifies clusters of connected damaged infrastructure.</li>
-<li>Optimal repair paths are computed to minimize traffic disruption.</li>
-<li>Repair tasks are assigned to workers using queues.</li>
-<li>Materials and construction resources are sorted with Quick Sort/Merge Sort.</li>
-<li>Construction/maintenance executed in optimal order, keeping EV and petrol/diesel lanes flowing.</li>
-</ol>
-
-<hr>
-
-<button class="code-btn" onclick="toggleCode('codeHeap7')">📌 Min Heap – Prioritize Repairs</button>
-<button class="code-btn" onclick="toggleCode('codeQueue7')">📌 Queue – Assign Tasks</button>
-<button class="code-btn" onclick="toggleCode('codeBFS7')">📌 BFS – Detect Connected Damaged Segments</button>
-<button class="code-btn" onclick="toggleCode('codeQuickSort7')">📌 Quick Sort – Organize Materials or Sites</button>
-<button class="code-btn" onclick="toggleCode('codeDFS7')">📌 DFS – Find Clusters of Damage</button>
-
-<pre id="codeHeap7" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-void heapify(vector&lt;int&gt; &H, int n, int i){
-    int smallest=i, l=2*i+1, r=2*i+2;
-    if(l&lt;n &amp;&amp; H[l]&lt;H[smallest]) smallest=l;
-    if(r&lt;n &amp;&amp; H[r]&lt;H[smallest]) smallest=r;
-    if(smallest!=i){
-        swap(H[i], H[smallest]);
-        heapify(H,n,smallest);
-    }
-}
-
-void buildHeap(vector&lt;int&gt; &H){
-    int n=H.size();
-    for(int i=n/2-1;i&gt;=0;i--) heapify(H,n,i);
-}
-
-int main(){
-    vector&lt;int&gt; H={30,10,20,40,50};
-    buildHeap(H);
-    for(int x:H) cout &lt;&lt; x &lt;&lt; " ";
-}
-</pre>
-
-<pre id="codeQueue7" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;queue&gt;
-using namespace std;
-
-int main(){
-    queue&lt;string&gt; tasks;
-    tasks.push("Repair Bridge A");
-    tasks.push("Fix Tunnel B");
-    tasks.push("Road C Maintenance");
-
-    while(!tasks.empty()){
-        cout &lt;&lt; tasks.front() &lt;&lt; endl;
-        tasks.pop();
-    }
-}
-</pre>
-
-<pre id="codeBFS7" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;queue&gt;
-using namespace std;
-
-void BFS(int start, vector&lt;vector&lt;int&gt;&gt; &graph, vector&lt;bool&gt; &visited){
-    queue&lt;int&gt; q;
-    q.push(start);
-    visited[start]=true;
-    while(!q.empty()){
-        int u=q.front(); q.pop();
-        cout &lt;&lt; "Node " &lt;&lt; u &lt;&lt; " needs repair" &lt;&lt; endl;
-        for(int v:graph[u]){
-            if(!visited[v]){
-                visited[v]=true;
-                q.push(v);
-            }
-        }
-    }
-}
-
-int main(){
-    vector&lt;vector&lt;int&gt;&gt; g={{1,2},{0,3},{0},{1}};
-    vector&lt;bool&gt; vis(4,false);
-    BFS(0,g,vis);
-}
-</pre>
-
-<pre id="codeQuickSort7" class="hidden-code">
-#include &lt;iostream&gt;
-using namespace std;
-
-void quicksort(int arr[], int l, int r){
-    if(l&gt;=r) return;
-    int pivot=arr[r], i=l-1;
-    for(int j=l;j&lt;r;j++){
-        if(arr[j]&lt;pivot){
-            i++; swap(arr[i],arr[j]);
-        }
-    }
-    swap(arr[i+1],arr[r]);
-    quicksort(arr,l,i);
-    quicksort(arr,i+2,r);
-}
-
-int main(){
-    int arr[]={50,10,40,20,30};
-    quicksort(arr,0,4);
-    for(int x:arr) cout &lt;&lt; x &lt;&lt; " ";
-}
-</pre>
-
-<pre id="codeDFS7" class="hidden-code">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-void DFS(int u, vector&lt;vector&lt;int&gt;&gt; &graph, vector&lt;bool&gt; &visited){
-    visited[u]=true;
-    cout &lt;&lt; "Node " &lt;&lt; u &lt;&lt; " needs repair" &lt;&lt; endl;
-    for(int v:graph[u]){
-        if(!visited[v]) DFS(v,graph,visited);
-    }
-}
-
-int main(){
-    vector&lt;vector&lt;int&gt;&gt; g={{1,2},{0,3},{0},{1}};
-    vector&lt;bool&gt; vis(4,false);
-    DFS(0,g,vis);
-}
-</pre>
-</div>
-
+<!-- Add more modules similarly -->
 
 <!-- FULLSCREEN CODE VIEWER -->
+<div id="codeViewer">
+  <button onclick="closeCodeViewer()" style="
+    position:fixed; right:30px; top:20px; background:#e74c3c;
+    padding:10px 20px; border:none; border-radius:8px; color:white;
+    font-size:16px; cursor:pointer;">
+    ✖ Close
+  </button>
+
+  <h2 id="codeTitle" style="color:#f39c12;"></h2>
+  <pre id="codeContent" style="white-space:pre-wrap; font-size:15px;"></pre>
+</div>
+
 <script>
-// ---------------------------
-// TOGGLE MODULE SECTIONS
-// ---------------------------
-function toggleModule(id) {
-    // Hide all other modules
-    document.querySelectorAll(".module-content").forEach(m => {
-        if (m.id !== id) m.style.display = "none";
-    });
-
-    // Toggle selected module
-    const target = document.getElementById(id);
-    if (target) {
-        target.style.display = (target.style.display === "block") ? "none" : "block";
-    }
-}
-
-// ---------------------------
-// CODE VIEWER
-// ---------------------------
-function openCodeViewer(title, code) {
-    const viewer = document.getElementById("codeViewer");
-    viewer.innerHTML = `
-        <div style="display:flex;align-items:center;justify-content:space-between;">
-            <h2 style="margin:0;color:#f39c12;">${title}</h2>
-            <button onclick="closeCodeViewer()" style="
-                background:#e74c3c;
-                padding:10px 20px;
-                border:none;
-                border-radius:8px;
-                color:white;
-                font-size:16px;
-                cursor:pointer;
-            ">✖ Close</button>
-        </div>
-
-        <pre style="
-            white-space: pre-wrap;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 15px;
-            overflow-x: auto;
-            background: #111;
-            box-shadow: 0 0 20px rgba(0,255,255,0.06);
-            margin-top:12px;
-        ">${code}</pre>
-    `;
-    viewer.style.display = "block";
-}
-
-function closeCodeViewer() {
-    document.getElementById("codeViewer").style.display = "none";
-}
-
-// ---------------------------
 // THEME TOGGLE
-// ---------------------------
-function toggleTheme() {
-    const btn = document.getElementById("themeBtn");
-    document.body.classList.toggle("dark");
-    document.body.classList.toggle("light");
-
-    if (document.body.classList.contains("light")) {
-        btn.textContent = "☀ Light Mode";
-    } else {
-        btn.textContent = "🌙 Dark Mode";
-    }
+function toggleTheme(){
+    document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
 }
 
-// ---------------------------
-// HOME BUTTON
-// ---------------------------
-function goHome() {
-    window.location.href = "index.html"; // change this if your home page is different
+// GO HOME
+function goHome(){
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// MODULE TOGGLE
+function toggleModule(id){
+    const modules = document.querySelectorAll('.module-content');
+    modules.forEach(m => { if(m.id !== id) m.style.display='none'; });
+    const target = document.getElementById(id);
+    target.style.display = target.style.display==='block'?'none':'block';
+}
+
+// CODE TOGGLE
+function toggleCode(id){
+    const code = document.getElementById(id);
+    code.style.display = code.style.display==='block'?'none':'block';
+}
+
+// FULLSCREEN CODE VIEWER (optional)
+function openCodeViewer(title, code){
+    document.getElementById('codeTitle').innerText = title;
+    document.getElementById('codeContent').innerText = code;
+    document.getElementById('codeViewer').style.display='block';
+}
+function closeCodeViewer(){
+    document.getElementById('codeViewer').style.display='none';
 }
 </script>
 
