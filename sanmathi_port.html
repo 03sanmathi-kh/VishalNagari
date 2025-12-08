@@ -94,11 +94,6 @@
       color: maroon;
     }
 
-    .card p {
-      font-size: 1em;
-      line-height: 1.6;
-    }
-
     /* Industry icon at top-right */
     .card .icon {
       position: absolute;
@@ -106,6 +101,15 @@
       right: 15px;
       width: 40px;
       height: 40px;
+    }
+
+    /* Full-width image inside card */
+    .card img.full-image {
+      display: block;
+      width: 100%;       /* stretches to card border */
+      height: auto;
+      margin-top: 15px;
+      border-radius: 0;  /* no rounding, touches edges */
     }
 
     /* Ensure title starts below nav */
@@ -140,8 +144,9 @@
   <!-- Card Section -->
   <section class="card">
       <img src="industry-icon.png" alt="Industry Icon" class="icon">
-      <h2>Section Title</h2>
-      <p>Paste your content here later. This box has a soft background and an icon at the top-right.</p>
+      <h2>Why I chose these sectors? A glimpse..</h2>
+      
+      <img src="discript.jpg" alt="Card Content Image" class="full-image">
   </section>
 
   <!-- Images Section -->
