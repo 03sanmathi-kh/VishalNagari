@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sanmathi_port.html</title>
+  <title>Module 1: Adaptive Resource Flow</title>
 
   <style>
     /* ===== THEME BACKGROUND ===== */
@@ -20,7 +20,7 @@
     .theme-toggle {
       position: fixed;
       top: 10px;
-      left: 100px;
+      left: 10px;
       background: #444;
       padding: 8px 14px;
       color: white;
@@ -30,10 +30,10 @@
       z-index: 999;
     }
 
-    /* ===== BACK BUTTON (moved below switch) ===== */
+    /* ===== BACK BUTTON ===== */
     .back-btn {
       position: fixed;
-      top: 55px;  /* moved from 10px to 55px */
+      top: 55px;  /* below toggle button */
       left: 10px;
       display: inline-block;
       text-decoration: none;
@@ -92,7 +92,6 @@
       transition: 0.3s ease-in-out;
     }
 
-    /* Shake removed ONLY these two lines */
     .content-box:hover {
       box-shadow: 0 0 50px 10px #00ffcc, 0 0 30px silver, 0 0 40px lime;
       transform: translateY(-1px);
@@ -137,14 +136,14 @@
 
 <body class="light">
 
-  <!-- Back Button -->
-  <a href="sanmathi_port.html" class="back-btn">⬅ Back</a>
-
   <!-- Theme Toggle -->
   <button class="theme-toggle"
     onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">
     Switch Theme
   </button>
+
+  <!-- Back Button -->
+  <a href="sanmathi_port.html" class="back-btn">⬅ Back</a>
 
   <div class="module-card">
 
@@ -152,49 +151,41 @@
 
     <h2 class="section-title">Problem Statement</h2>
     <div class="content-box">
-      Vishalanagari’s EV industry depends heavily on lithium, cobalt, and rare earth metals…
+      Vishalanagari is rapidly emerging as a hub for electric vehicle (EV) production in India.  
+      The EV battery industry relies on critical raw materials like lithium, cobalt, and rare earth metals.  
+      Supply shortages, unpredictable delivery times, and fluctuating demand create bottlenecks in production.  
+      Factories often face resource wastage or delays due to inefficient allocation of these materials.  
+      Managing multiple factories simultaneously and ensuring timely battery assembly requires smart decision-making.  
+      The challenge is to dynamically distribute resources to meet demand while minimizing delays and costs.  
+      This module focuses on optimizing the flow of critical materials across the EV battery manufacturing network.
     </div>
 
     <h2 class="section-title">Algorithms Used</h2>
     <div class="content-box">
-      <p><b>1. Greedy Allocation:</b> Quickly assigns incoming materials…</p>
-      <p><b>2. Dynamic Programming (DP):</b> …</p>
-      <p><b>3. Priority Queues:</b> …</p>
-      <p><b>4. Sliding Window Forecasting:</b> …</p>
-      <p><b>5. Feedback Loop:</b> …</p>
+      <p><b>1. Greedy Allocation:</b> Quickly assigns available materials to factories to meet immediate demand efficiently.</p>
+      <p><b>2. Dynamic Programming (DP):</b> Calculates optimal allocation strategies considering future demand and inventory.</p>
+      <p><b>3. Priority Queues:</b> Manages factories by urgency or material requirements for quick decision-making.</p>
+      <p><b>4. Sliding Window Forecasting:</b> Predicts upcoming resource requirements based on recent consumption trends.</p>
+      <p><b>5. Feedback Loop:</b> Adjusts allocations continuously based on real-time production data and shortages.</p>
     </div>
 
     <h2 class="section-title">Algorithm Efficiency</h2>
     <div class="content-box">
       <ul>
-        <li><b>Greedy Allocation:</b> O(n log n)…</li>
-        <li><b>Dynamic Programming:</b> …</li>
-        <li><b>Queue Updates:</b> …</li>
-        <li><b>Forecasting:</b> …</li>
-        <li><b>Feedback Loop:</b> …</li>
+        <li><b>Greedy Allocation:</b> O(n log n) – efficient for real-time assignment of materials.</li>
+        <li><b>Dynamic Programming:</b> O(n * m) – considers multiple factories and future demand scenarios.</li>
+        <li><b>Priority Queues:</b> O(log n) per operation – manages factory priority efficiently.</li>
+        <li><b>Sliding Window Forecasting:</b> O(n) – calculates predictions over recent data with minimal overhead.</li>
+        <li><b>Feedback Loop:</b> O(n) – updates allocation decisions in real time as new data arrives.</li>
       </ul>
     </div>
 
-    <h2 class="section-title">SDG Mapping</h2>
-    <div class="content-box">
-      <ul>
-        <li><b>SDG 7 – Affordable and Clean Energy:</b> …</li>
-        <li><b>SDG 9 – Industry, Innovation, and Infrastructure:</b> …</li>
-        <li><b>SDG 11 – Sustainable Cities and Communities:</b> …</li>
-        <li><b>SDG 12 – Responsible Consumption and Production:</b> …</li>
-      </ul>
-    </div>
-
-    <!-- C++ Implementation Heading -->
     <div class="cpp-heading">C++ Implementation</div>
-
-    <!-- FIXED BUTTONS (correct GitHub links) -->
     <div class="button-row">
-      <a href="https://github.com/03sanmathi-kh/Demo/raw/main/greedy.cpp" target="_blank" class="cpp-btn">
+      <a href="https://github.com/03sanmathi-kh/VishalNagari/blob/main/greedy.cpp" target="_blank" class="cpp-btn">
         Greedy Algorithm (C++)
       </a>
-
-      <a href="https://github.com/03sanmathi-kh/Demo/raw/main/pq.cpp" target="_blank" class="cpp-btn">
+      <a href="https://github.com/03sanmathi-kh/VishalNagari/blob/main/pq.cpp" target="_blank" class="cpp-btn">
         Priority Queue (C++)
       </a>
     </div>
