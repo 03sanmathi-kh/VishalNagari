@@ -144,6 +144,32 @@
       font-size: 1.8em; /* smaller than default h1 */
       font-weight: bold;
     }
+    .modules-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.module-btn {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background: maroon;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.module-btn:hover {
+  background: silver;
+  color: navy;
+  box-shadow: 0 0 10px silver, 0 0 20px silver;
+  transform: scale(1.05);
+}
+
   </style>
 </head>
 <body class="light"> <!-- set light mode default -->
