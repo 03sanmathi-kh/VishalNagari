@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Module 1</title>
+  <title>Module 2: Dynamic Inventory Prediction</title>
 
   <style>
     /* ===== THEME BACKGROUND ===== */
@@ -13,7 +13,7 @@
     }
     body.dark {
       background-color: navy;
-      color: white;
+      color: black;
     }
 
     /* ===== TOGGLE BUTTON ===== */
@@ -21,23 +21,51 @@
       position: fixed;
       top: 10px;
       left: 10px;
-      background: #444;
+      background: rgba(135, 206, 250, 0.8); /* same as back button */
       padding: 8px 14px;
-      color: white;
+      color: navy;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       z-index: 999;
     }
 
+    /* ===== BACK BUTTON ===== */
+    .back-btn {
+      position: fixed;
+      top: 55px;  /* below toggle button */
+      left: 10px;
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      background: rgba(135, 206, 250, 0.8);
+      color: navy;
+      box-shadow: 0 0 18px 3px silver;
+      transition: 0.3s;
+      z-index: 999;
+    }
+    .back-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px 8px silver, 0 0 25px rgba(135, 206, 250, 0.8);
+    }
+
     /* ===== MAIN CARD ===== */
     .module-card {
       width: 70%;
-      background: #ffe0e0;
-      margin: 60px auto;
+      background: rgba(255, 228, 196, 0.6); /* softer steel-industry feel */
+      margin: 80px auto 60px auto;
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      transition: 0.3s ease-in-out;
+    }
+
+    .module-card:hover {
+      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 25px rgba(255, 228, 196, 0.8);
+      transform: translateY(-2px);
     }
 
     .module-card h1 {
@@ -47,7 +75,7 @@
 
     /* ===== HEADINGS ===== */
     .section-title {
-      font-size: 1.4em;
+      font-size: 1.5em;
       margin-top: 25px;
       font-weight: bold;
       color: maroon;
@@ -55,81 +83,112 @@
 
     /* ===== CONTENT BOX ===== */
     .content-box {
-      background: white;
+      background: rgba(255, 255, 255, 0.85);
       padding: 18px;
       border-radius: 10px;
       margin-top: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
       color: black;
+      transition: 0.3s ease-in-out;
     }
 
-    body.dark .content-box {
-      background: #0b1b4a;
-      color: white;
-      box-shadow: 0 0 25px 5px silver; /* brighter glow */
+    .content-box:hover {
+      box-shadow: 0 0 50px 10px #FFD700, 0 0 30px silver, 0 0 40px #FFA500;
+      transform: translateY(-1px);
     }
 
-    /* BACK BUTTON */
-    .back-btn {
+    /* ===== BUTTONS ===== */
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .cpp-btn {
       display: inline-block;
-      margin-top: 20px;
       text-decoration: none;
       padding: 10px 20px;
-      background: skyblue;
-      color: navy;
       font-weight: bold;
       border-radius: 8px;
-      box-shadow: 0 0 18px 3px silver; /* brighter glow */
+      background: linear-gradient(135deg, #4682B4, #1E90FF);
+      color: white;
+      box-shadow: 0 0 18px 3px silver;
       transition: 0.3s;
     }
 
-    .back-btn:hover {
+    .cpp-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 30px 6px silver; /* much brighter on hover */
+      box-shadow: 0 0 40px 10px silver, 0 0 25px #1E90FF;
     }
+
+    .cpp-heading {
+      text-align: center;
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-top: 40px;
+      color: maroon;
+    }
+
   </style>
 </head>
 
 <body class="light">
 
+  <!-- Theme Toggle -->
   <button class="theme-toggle"
     onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">
-      Switch Theme
+    Switch Theme
   </button>
+
+  <!-- Back Button -->
+  <a href="sanmathi_port.html" class="back-btn">⬅ Back</a>
 
   <div class="module-card">
 
-    <h1>Module 1: Title Goes Here</h1>
+    <h1>Module 2: Dynamic Inventory Prediction in Steel Industry</h1>
 
     <h2 class="section-title">Problem Statement</h2>
     <div class="content-box">
-        <!-- paste your 6–7 sentence problem statement here -->
+      In Vishalanagri’s steel industry, production cannot be decided randomly because scrap availability, electricity costs, and construction demand fluctuate daily.  
+      Some days scrap is abundant, while other days it is limited. Electricity costs vary between peak and off-peak hours, impacting production expenses.  
+      Construction demand can spike or drop depending on new projects. Producing too much steel leads to storage costs, while producing too little causes revenue loss.  
+      The challenge is to plan daily production for the <b>next month</b> to meet expected demand while minimizing total production and storage costs.  
+      This requires analyzing resource patterns, forecasting demand, and deciding an optimal schedule that balances cost and supply.
     </div>
 
     <h2 class="section-title">Algorithms Used</h2>
     <div class="content-box">
-        <!-- list algorithms + how they solve -->
+      <p><b>1. Sliding Window / Sparse Table:</b> Forecast daily steel demand using historical construction data to predict resource requirements efficiently.</p>
+      <p><b>2. Segment Tree / Fenwick Tree:</b> Track scrap availability and electricity cost dynamically, allowing fast queries and updates.</p>
+      <p><b>3. Heap / Priority Queue:</b> Allocate production priority to days with abundant scrap or lower electricity cost to optimize daily production.</p>
+      <p><b>4. Dynamic Programming (DP):</b> Determine optimal monthly production schedule that minimizes total cost while meeting expected demand and storage constraints.</p>
+      <p><b>5. Graph Analysis (Dijkstra / Bellman-Ford):</b> Optional: Model supply chain and find minimum-cost paths from suppliers to factory to market for multi-factory scenarios.</p>
     </div>
 
     <h2 class="section-title">Algorithm Efficiency</h2>
     <div class="content-box">
-        <!-- time + space complexity -->
+      <ul>
+        <li><b>Sliding Window / Sparse Table:</b> O(n) or O(1) per query — fast demand forecasting over historical data.</li>
+        <li><b>Segment Tree / Fenwick Tree:</b> O(log n) per update/query — efficient dynamic tracking of scrap and electricity.</li>
+        <li><b>Heap / Priority Queue:</b> O(log n) per allocation — dynamically prioritizes low-cost production days.</li>
+        <li><b>Dynamic Programming:</b> O(n * m) — n = days in month, m = production options per day, ensures optimal cost schedule.</li>
+        <li><b>Graph Algorithms:</b> O(E log V) for Dijkstra, O(VE) for Bellman-Ford — useful for multi-supplier optimization.</li>
+      </ul>
     </div>
 
-    <h2 class="section-title">SDG Mapping</h2>
-    <div class="content-box">
-        <!-- SDG numbers & justification -->
+    <div class="cpp-heading">C++ Implementation</div>
+    <div class="button-row">
+      <a href="https://github.com/03sanmathi-kh/VishalNagari/blob/main/module2_greedy.cpp" target="_blank" class="cpp-btn">
+        Greedy & Forecasting (C++)
+      </a>
+      <a href="https://github.com/03sanmathi-kh/VishalNagari/blob/main/module2_dp.cpp" target="_blank" class="cpp-btn">
+        Dynamic Programming (C++)
+      </a>
     </div>
-
-    <h2 class="section-title">C++ Code</h2>
-    <div class="content-box">
-        <!-- fetch from GitHub or paste later -->
-    </div>
-
-    <a href="sanmathi.html" class="back-btn">⬅ Back to Modules</a>
 
   </div>
 
 </body>
 </html>
-
