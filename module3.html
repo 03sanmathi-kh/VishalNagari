@@ -159,9 +159,24 @@
 
     <h2 class="section-title">Algorithms Used</h2>
     <div class="content-box">
-      <p><b>1. Breadth-First Search (BFS):</b> Simulates flood propagation step-by-step to adjacent areas. <b>Efficiency:</b> O(V + E)</p>
-      <p><b>2. Dijkstra’s Algorithm:</b> Weighted flood spread considering elevation and obstacles. <b>Efficiency:</b> O((V + E) log V)</p>
-      <p><b>3. Optional Max-Heap Simulation:</b> Prioritizes flood spread to most vulnerable zones. <b>Efficiency:</b> O(V log V)</p>
+      <p><b>1. Breadth-First Search (BFS):</b>  
+      Used to simulate step-by-step flood propagation to all adjacent cells.  
+      BFS ensures that all reachable areas are visited in order of proximity to the flood source, helping to map immediate flood spread zones.</p>
+
+      <p><b>2. Dijkstra’s Algorithm:</b>  
+      Used to simulate weighted flood spread considering elevation differences and obstacles.  
+      Helps model realistic flood arrival times to different areas, prioritizing faster flooding to lower-elevation or vulnerable zones.</p>
+
+      <p><b>3. Optional Max-Heap Simulation:</b>  
+      Used to prioritize flood spread to the most vulnerable or critical areas first.  
+      This approach can help emergency planners focus resources on the highest-risk zones efficiently.</p>
+    </div>
+
+    <h2 class="section-title">Efficiency of Algorithms</h2>
+    <div class="content-box">
+      <p><b>BFS:</b> O(V + E) – Efficient for exploring all connected areas in the flood map without weights.</p>
+      <p><b>Dijkstra:</b> O((V + E) log V) – Handles weighted flood propagation efficiently using a priority queue.</p>
+      <p><b>Max-Heap Simulation:</b> O(V log V) – Efficiently prioritizes areas based on vulnerability.</p>
     </div>
 
     <div class="cpp-heading">C++ Implementation</div>
@@ -178,4 +193,3 @@
 
 </body>
 </html>
-
