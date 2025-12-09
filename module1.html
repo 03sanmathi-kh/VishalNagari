@@ -13,7 +13,7 @@
     }
     body.dark {
       background-color: navy;
-      color: black; /* keep same as light mode */
+      color: black;
     }
 
     /* ===== TOGGLE BUTTON ===== */
@@ -33,7 +33,7 @@
     /* ===== BACK BUTTON (moved below switch) ===== */
     .back-btn {
       position: fixed;
-      top: 55px; /* changed from 10px → 55px */
+      top: 55px;  /* moved from 10px to 55px */
       left: 10px;
       display: inline-block;
       text-decoration: none;
@@ -88,17 +88,15 @@
       border-radius: 10px;
       margin-top: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      color: black; /* same as light mode */
+      color: black;
       transition: 0.3s ease-in-out;
     }
 
-    /* Removed shake animation — ONLY removal done */
+    /* Shake removed ONLY these two lines */
     .content-box:hover {
       box-shadow: 0 0 50px 10px #00ffcc, 0 0 30px silver, 0 0 40px lime;
       transform: translateY(-1px);
     }
-
-    /* Removed @keyframes shake completely */
 
     /* ===== BUTTONS ===== */
     .button-row {
@@ -133,6 +131,7 @@
       margin-top: 40px;
       color: maroon;
     }
+
   </style>
 </head>
 
@@ -158,7 +157,6 @@
 
     <h2 class="section-title">Algorithms Used</h2>
     <div class="content-box">
-      <!-- (Content unchanged) -->
       <p><b>1. Greedy Allocation:</b> Quickly assigns incoming materials…</p>
       <p><b>2. Dynamic Programming (DP):</b> …</p>
       <p><b>3. Priority Queues:</b> …</p>
@@ -168,7 +166,6 @@
 
     <h2 class="section-title">Algorithm Efficiency</h2>
     <div class="content-box">
-      <!-- (Content unchanged) -->
       <ul>
         <li><b>Greedy Allocation:</b> O(n log n)…</li>
         <li><b>Dynamic Programming:</b> …</li>
@@ -180,7 +177,6 @@
 
     <h2 class="section-title">SDG Mapping</h2>
     <div class="content-box">
-      <!-- (Content unchanged) -->
       <ul>
         <li><b>SDG 7 – Affordable and Clean Energy:</b> …</li>
         <li><b>SDG 9 – Industry, Innovation, and Infrastructure:</b> …</li>
@@ -192,7 +188,7 @@
     <!-- C++ Implementation Heading -->
     <div class="cpp-heading">C++ Implementation</div>
 
-    <!-- FIXED BUTTONS (2 separate GitHub links) -->
+    <!-- FIXED BUTTONS (correct GitHub links) -->
     <div class="button-row">
       <a href="https://github.com/03sanmathi-kh/Demo/raw/main/greedy.cpp" target="_blank" class="cpp-btn">
         Greedy Algorithm (C++)
