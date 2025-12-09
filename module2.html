@@ -97,6 +97,21 @@
       transform: translateY(-1px);
     }
 
+    /* ===== ALGORITHM FLOW BOX ===== */
+    .flow-box {
+      background: rgba(255, 250, 205, 0.9);
+      padding: 20px;
+      margin-top: 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      line-height: 1.6;
+    }
+
+    .flow-step {
+      margin: 10px 0;
+    }
+
     /* ===== BUTTONS ===== */
     .button-row {
       display: flex;
@@ -178,6 +193,15 @@
       </ul>
     </div>
 
+    <h2 class="section-title">Algorithm Flow</h2>
+    <div class="flow-box">
+      <div class="flow-step"><b>Step 1:</b> Historical Demand Data → Sliding Window / Sparse Table → Forecasted Daily Demand</div>
+      <div class="flow-step"><b>Step 2:</b> Scrap & Electricity Data → Segment Tree / Fenwick Tree → Resource Availability per Day</div>
+      <div class="flow-step"><b>Step 3:</b> Forecasted Demand + Resource Availability → Heap / Priority Queue → Daily Production Priority</div>
+      <div class="flow-step"><b>Step 4:</b> Daily Priority + Resource Constraints → Dynamic Programming → Optimized Monthly Production Plan</div>
+      <div class="flow-step"><b>Step 5:</b> (Optional) Multi-Factory Supply Chain → Graph Algorithms (Dijkstra / Bellman-Ford) → Minimum-Cost Routes</div>
+    </div>
+
     <div class="cpp-heading">C++ Implementation</div>
     <div class="button-row">
       <a href="https://github.com/03sanmathi-kh/VishalNagari/blob/main/module2_greedy.cpp" target="_blank" class="cpp-btn">
@@ -185,6 +209,9 @@
       </a>
       <a href="https://github.com/03sanmathi-kh/VishalNagari/blob/main/module2_dp.cpp" target="_blank" class="cpp-btn">
         Dynamic Programming (C++)
+      </a>
+      <a href="https://github.com/03sanmathi-kh/VishalNagari/blob/main/module2_graph.cpp" target="_blank" class="cpp-btn">
+        Multi-Factory Graph (C++)
       </a>
     </div>
 
