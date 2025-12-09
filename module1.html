@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Module 1</title>
+  <title>Sanmathi_port.html</title>
 
   <style>
     /* ===== THEME BACKGROUND ===== */
@@ -43,7 +43,7 @@
     }
 
     .module-card:hover {
-      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 25px rgba(193, 255, 193, 0.8); /* glow on hover */
+      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 25px rgba(193, 255, 193, 0.8);
       transform: translateY(-2px);
     }
 
@@ -88,7 +88,7 @@
     body.dark .content-box {
       background: rgba(11, 27, 74, 0.9);
       color: white;
-      box-shadow: 0 0 25px 5px silver; /* bright silver glow */
+      box-shadow: 0 0 25px 5px silver;
       border: 1px solid silver;
     }
 
@@ -114,9 +114,8 @@
       transition: 0.3s;
     }
 
-    /* Back button */
     .back-btn {
-      background: rgba(135, 206, 250, 0.8); /* skyblue transparent */
+      background: rgba(135, 206, 250, 0.8);
       color: navy;
       box-shadow: 0 0 18px 3px silver;
     }
@@ -126,9 +125,8 @@
       box-shadow: 0 0 35px 8px silver, 0 0 25px rgba(135, 206, 250, 0.8);
     }
 
-    /* C++ Implementation button */
     .cpp-btn {
-      background: linear-gradient(135deg, #228B22, #32CD32); /* emerald gradient */
+      background: linear-gradient(135deg, #228B22, #32CD32);
       color: white;
       box-shadow: 0 0 18px 3px silver;
     }
@@ -149,26 +147,57 @@
 
   <div class="module-card">
 
-    <h1>Module 1: Title Goes Here</h1>
+    <h1>Module 1: Adaptive Resource Flow in EV Battery Manufacturing</h1>
 
     <h2 class="section-title">Problem Statement</h2>
     <div class="content-box">
-        <!-- paste your 6–7 sentence problem statement here -->
+        Vishalanagari’s EV industry depends heavily on lithium, cobalt, and rare earth metals for battery production. 
+        However, the arrival of these raw materials is highly volatile due to global supply chain disruptions, mining delays, 
+        and transport bottlenecks. Factories often face uneven distribution, leading to idle production lines or inefficient 
+        overstocking. The challenge is to dynamically allocate fluctuating material arrivals across multiple factories to 
+        minimize production delays, maximize throughput, and ensure fair distribution. A real-time adaptive system is needed 
+        to balance urgency, efficiency, and sustainability in resource allocation.
     </div>
 
     <h2 class="section-title">Algorithms Used</h2>
     <div class="content-box">
-        <!-- list algorithms + how they solve -->
+        <p><b>1. Greedy Allocation:</b> Quickly assigns incoming materials to the most urgent and efficient factories. 
+        Ensures no material sits idle and avoids immediate production delays.</p>
+
+        <p><b>2. Dynamic Programming (DP):</b> Considers multiple time steps and factory states to maximize overall throughput. 
+        Stores subproblem results to avoid recomputation, balancing fairness and efficiency across the EV ecosystem.</p>
+
+        <p><b>3. Priority Queues:</b> Factories are ranked dynamically based on urgency (idle lines, backlog orders) and efficiency 
+        (output per unit of material). This allows the system to always pick the best candidate factory in logarithmic time.</p>
+
+        <p><b>4. Sliding Window Forecasting:</b> Smooths recent arrival data to predict short-term availability. Helps decide whether 
+        to allocate immediately or reserve stock for upcoming high-priority demand.</p>
+
+        <p><b>5. Feedback Loop (Reinforcement Learning):</b> Monitors outcomes after each allocation cycle and adjusts factory scores 
+        automatically. The system learns from past performance, becoming adaptive and self-improving over time.</p>
     </div>
 
-    <h2 class="section-title">Algorithm Efficiency</h2>
+        <h2 class="section-title">Algorithm Efficiency</h2>
     <div class="content-box">
-        <!-- time + space complexity -->
+        <ul>
+          <li><b>Greedy Allocation:</b> O(n log n) using priority queues. Fast for up to 100 factories, ensures immediate responsiveness.</li>
+          <li><b>Dynamic Programming:</b> O(n × T) where T is forecast horizon. Provides optimal throughput planning across multiple time steps.</li>
+          <li><b>Queue Updates:</b> O(n) lightweight recalculations to refresh factory rankings after each allocation cycle.</li>
+          <li><b>Forecasting:</b> O(m) where m = number of material types. Efficient for short-term predictions of volatile supply chains.</li>
+          <li><b>Feedback Loop:</b> O(k) per learning episode, where k = number of actions. Adds adaptability without heavy computational cost.</li>
+        </ul>
+        <p><b>Overall:</b> The hybrid system achieves real-time responsiveness (Greedy) while maintaining long-term optimality (DP). 
+        It scales well for Vishalanagari’s EV industry, balancing speed, fairness, and sustainability.</p>
     </div>
 
     <h2 class="section-title">SDG Mapping</h2>
     <div class="content-box">
-        <!-- SDG numbers & justification -->
+        <ul>
+          <li><b>SDG 7 – Affordable and Clean Energy:</b> Efficient battery production accelerates adoption of clean mobility solutions.</li>
+          <li><b>SDG 9 – Industry, Innovation, and Infrastructure:</b> Smart allocation strengthens industrial resilience and innovation capacity.</li>
+          <li><b>SDG 11 – Sustainable Cities and Communities:</b> Reliable EV supply chains enable sustainable urban transport systems.</li>
+          <li><b>SDG 12 – Responsible Consumption and Production:</b> Optimized resource use reduces waste and promotes circular economy practices.</li>
+        </ul>
     </div>
 
     <!-- Buttons row -->
