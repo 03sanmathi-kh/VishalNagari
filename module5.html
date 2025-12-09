@@ -6,77 +6,66 @@
   <title>Module 5: Real-Time Tourist Crowding Prediction</title>
 
   <style>
-    /* ===== THEME BACKGROUND ===== */
     body.light { background-color: #ffffff; color: black; }
-    body.dark  { background-color: #1a0033; color: white; }
+    body.dark  { background-color: #150026; color: white; }
 
-    /* ===== TOGGLE BUTTON ===== */
     .theme-toggle {
-      position: fixed; top: 10px; left: 10px; 
-      background: #c8a2ff; /* lavender */
+      position: fixed; top: 10px; left: 10px;
+      background: #c8a2ff;
       padding: 8px 14px; color: white; border: none;
       border-radius: 6px; cursor: pointer; z-index: 999;
-      box-shadow: 0 0 15px silver;
+      box-shadow: 0 0 8px silver;
     }
 
-    /* ===== BACK BUTTON ===== */
     .back-btn {
       position: fixed; top: 55px; left: 10px;
       text-decoration: none; padding: 10px 20px;
       font-weight: bold; border-radius: 8px;
       background: rgba(200, 162, 255, 0.9);
-      color: white; box-shadow: 0 0 18px 3px silver;
+      color: white; box-shadow: 0 0 10px silver;
       transition: 0.3s; z-index: 999;
     }
     .back-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 35px 8px silver, 0 0 25px #e0c3ff;
+      box-shadow: 0 0 18px silver;
     }
 
-    /* ===== MODULE CARD ===== */
     .module-card {
-      width: 70%; background: rgba(230, 210, 255, 0.65); 
-      margin: 80px auto 60px auto; padding: 30px;
+      width: 70%; background: rgba(230, 210, 255, 0.55);
+      margin: 80px auto 60px; padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4),
-                  0 0 25px silver, 0 0 45px #d7b4ff;
-      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.3), 0 0 15px silver;
+      backdrop-filter: blur(6px);
       transition: 0.3s ease-in-out;
       color: black;
     }
     .module-card:hover {
-      box-shadow: 0 15px 55px rgba(0,0,0,0.6),
-                  0 0 35px silver,
-                  0 0 60px #e5c8ff;
-      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.45), 0 0 20px silver;
+      transform: translateY(-1px);
     }
 
-    .module-card h1 { 
-      text-align: center; 
-      color: #5a189a; /* deep lavender */
+    .module-card h1 {
+      text-align: center;
+      color: #5a189a;
     }
     .section-title {
       font-size: 1.4em; margin-top: 25px;
       font-weight: bold; color: #5a189a;
     }
 
-    /* ===== CONTENT BOX ===== */
     .content-box {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.85);
       padding: 18px; border-radius: 10px;
       margin-top: 10px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+      box-shadow: 0 0 8px rgba(0,0,0,0.18);
       color: black;
       transition: 0.3s ease-in-out;
     }
     .content-box:hover {
-      box-shadow: 0 0 45px silver, 
-                  0 0 25px #d7b4ff, 
-                  0 0 35px #e5c8ff;
+      box-shadow: 0 0 18px silver;
       transform: translateY(-1px);
     }
 
-    /* ===== BUTTONS ===== */
     .button-row {
       display: flex; justify-content: center;
       gap: 20px; margin-top: 10px; flex-wrap: wrap;
@@ -84,15 +73,14 @@
     .cpp-btn {
       text-decoration: none; padding: 10px 20px;
       font-weight: bold; border-radius: 8px;
-      background: linear-gradient(135deg, #d9b3ff, #b47bff);
-      color: white; 
-      box-shadow: 0 0 18px 3px silver;
+      background: linear-gradient(135deg, #d3b0ff, #a26bff);
+      color: white;
+      box-shadow: 0 0 12px silver;
       transition: 0.3s;
     }
     .cpp-btn:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 40px 10px silver,
-                  0 0 30px #e5c8ff;
+      transform: scale(1.06);
+      box-shadow: 0 0 22px silver;
     }
 
     .cpp-heading {
@@ -119,55 +107,51 @@
 
     <h2 class="section-title">Problem Statement</h2>
     <div class="content-box">
-      Vishalanagri attracts thousands of visitors daily through its amusement parks, historic temples, museums, 
-      theme parks, film cities, and art galleries.  
-      During peak seasons, uncontrolled crowd surges lead to long queues, safety issues, traffic blocks, and 
-      reduced visitor satisfaction.  
-      The goal is to create a real-time crowd prediction system that accurately estimates footfall, detects 
-      sudden crowd spikes, and identifies the least crowded tourist spots instantly.
+      Vishalanagri attracts thousands of visitors daily through its amusement parks, historic temples, museums,
+      theme parks, film cities, and art galleries. During peak seasons, uncontrolled crowd surges lead to long
+      queues, safety issues, traffic blocks, and reduced visitor satisfaction. The goal is to create a real-time
+      crowd prediction system that accurately estimates footfall, detects sudden crowd spikes, and identifies
+      the least crowded tourist spots instantly.
     </div>
 
     <h2 class="section-title">Algorithms Used</h2>
     <div class="content-box">
-      <p><b>1. Fenwick Tree (Binary Indexed Tree):</b>  
-      Used to process fast updates in visitor counts across tourist regions.  
-      Supports O(log n) updates and cumulative query operations.</p>
+      <p><b>1. Fenwick Tree (Binary Indexed Tree):</b> Efficient for updating visitor counts and querying cumulative
+      values in O(log n).</p>
 
-      <p><b>2. Min-Heap:</b>  
-      Used to efficiently extract the least crowded tourist attraction in real-time.  
-      Helps recommend alternate destinations to avoid overcrowding.</p>
+      <p><b>2. Min-Heap:</b> Quickly finds the least crowded tourist attraction to redirect visitors and reduce
+      overcrowding.</p>
 
-      <p><b>3. Precomputation Table:</b>  
-      Used for predicting future peak hours using previously analyzed seasonal visitor patterns.  
-      Enables quick O(1) lookup for expected crowd density.</p>
+      <p><b>3. Precomputation Table:</b> Stores previously analyzed tourist patterns to instantly predict expected
+      crowds using O(1) lookups.</p>
     </div>
 
     <h2 class="section-title">Efficiency of Algorithms</h2>
     <div class="content-box">
-      <p><b>Fenwick Tree:</b> O(log n) for both updates & queries</p>
-      <p><b>Min-Heap:</b> O(log n) for insert & extract-min operations</p>
-      <p><b>Precomputation:</b> O(1) per lookup after initial preprocessing</p>
+      <p><b>Fenwick Tree:</b> O(log n) updates, O(log n) queries</p>
+      <p><b>Min-Heap:</b> O(log n) insertion & extract-min</p>
+      <p><b>Precomputation:</b> O(1) querying after preprocessing</p>
     </div>
 
     <h2 class="section-title">How This Problem Aligns with the SDGs?</h2>
     <div class="content-box">
-      <p><b>SDG 8 – Decent Work & Economic Growth:</b>  
-      Smooth tourist flow increases tourism revenue and ensures safe working conditions for staff.</p>
+      <p><b>SDG 8 – Decent Work & Economic Growth:</b> Better crowd management ensures smoother tourism operations,
+      resulting in higher revenue and safer working conditions.</p>
 
-      <p><b>SDG 11 – Sustainable Cities & Communities:</b>  
-      Managing overcrowding improves public safety, preserves cultural sites, and enhances visitor experience.</p>
+      <p><b>SDG 11 – Sustainable Cities & Communities:</b> Smart crowd prediction prevents overcrowding, protects
+      heritage structures, and improves visitor experience.</p>
     </div>
 
-   <div class="cpp-heading">C++ Implementation</div>
+    <div class="cpp-heading">C++ Implementation</div>
     <div class="button-row">
       <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/fenwicktour.cpp.cpp" target="_blank" class="cpp-btn">
-       BFS Flood Spread (C++)
+        Fenwick (C++)
       </a>
       <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/precompute.cpp" target="_blank" class="cpp-btn">
-       Dijkstra Weighted Flood Spread (C++)
+        Precomputing (C++)
       </a>
-       <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/minheaptour.cpp" target="_blank" class="cpp-btn">
-       Dijkstra Weighted Flood Spread (C++)
+      <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/minheaptour.cpp" target="_blank" class="cpp-btn">
+        Min Heap (C++)
       </a>
     </div>
 
