@@ -140,30 +140,32 @@
    /* PENTAGON MODULE BUTTON + RECTANGLE BOX DESIGN */
    /* ========================================= */
 
+   /* Thought Space card styling */
+section.card.thought-space {
+  background: rgba(255, 248, 220, 0.7); /* soft cream, gentle */
+  border-radius: 20px;
+  padding: 40px 30px;
+  margin: 30px auto;
+  width: 75%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease-in-out;
+}
+
+section.card.thought-space:hover {
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3), 0 0 60px rgba(255, 200, 100, 0.5);
+}
+
+/* Modules container (grid layout) */
 .modules-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 25px;
   justify-items: center;
   margin-top: 25px;
 }
 
-/* REMOVE complex staggered alignment */
-
-/* module box colors */
-.module-box {
-  width: 200px;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  transition: 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  background: linear-gradient(135deg, #00b3b3, #008080);
-  box-shadow: 0 5px 15px rgba(0,179,179,0.6),
-              0 5px 25px rgba(0,128,128,0.5);
-}
-
+/* Pentagon module buttons */
 .module-btn {
   position: relative;
   width: 160px;
@@ -184,28 +186,20 @@
   text-align: center;
   padding: 10px;
   color: white;
-  opacity: 0.9;
-  transition: 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-  box-shadow: 0 0 15px rgba(0,204,204,0.9),
-              0 0 30px rgba(0,153,153,0.9),
-              0 0 20px #00ffff;
+  opacity: 0.95;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 20px rgba(0,204,204,0.8), 0 0 30px rgba(0,153,153,0.7);
 }
 
+/* Heavy glow on hover */
 .module-btn:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 50px white,
-              0 0 80px rgba(0,204,204,1),
-              0 0 100px rgba(0,153,153,1.0),
-              0 5px 25px rgba(0,0,0,0.5);
-  text-shadow: 0 0 12px white, 0 0 25px rgba(0, 255, 255, 0.9);
-}
-
-.module-btn:active {
-  transform: scale(1.15);
-  box-shadow: 0 0 40px white,
-              0 0 65px rgba(0,204,204,1),
-              0 0 90px rgba(0,153,153,1.0),
-              0 5px 20px rgba(0,0,0,0.6);
+  transform: scale(1.25);
+  box-shadow: 
+    0 0 30px white,
+    0 0 80px #00ffff,
+    0 0 120px #00ffff,
+    0 0 200px #00ffff;
+  text-shadow: 0 0 15px white, 0 0 25px #00ffff;
 }
 
 /* Last pink card adjustments */
@@ -263,7 +257,8 @@ section.card:last-of-type .subheading {
       <img src="bcase.png" alt="Single Image" class="full-image">
   </section>
 
-<section class="card">
+  <!-- Updated Thought Space Card -->
+  <section class="card thought-space">
     <h2>Welcome To My Thought Space!!</h2>
     <p class="subheading">Explore my ideas and works below!</p>
 
@@ -279,7 +274,7 @@ section.card:last-of-type .subheading {
         <a href="module9.html" class="module-btn">Knowledge Transfer System</a>
         <a href="module10.html" class="module-btn">Seasonal Hotel Occupency Optimization </a>
     </div>
-</section>
+  </section>
 
 </body>
 </html>
