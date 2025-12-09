@@ -137,8 +137,8 @@
     }
 
    /* ========================================= */
-/* PENTAGON MODULE BUTTON + RECTANGLE BOX DESIGN */
-/* ========================================= */
+   /* PENTAGON MODULE BUTTON + RECTANGLE BOX DESIGN */
+   /* ========================================= */
 
 .modules-container {
   display: grid;
@@ -172,6 +172,7 @@
   justify-self: start;
 }
 
+/* UPDATED module box colors for better visibility */
 .module-box {
   width: 200px;
   height: 200px;
@@ -180,9 +181,9 @@
   align-items: center;
   border-radius: 15px;
   transition: 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  background: #006666;
-  box-shadow: 0 5px 15px rgba(0, 102, 102, 0.6),
-              0 5px 25px rgba(0, 77, 77, 0.5);
+  background: linear-gradient(135deg, #00b3b3, #008080);
+  box-shadow: 0 5px 15px rgba(0,179,179,0.6),
+              0 5px 25px rgba(0,128,128,0.5);
 }
 
 .module-btn {
@@ -191,7 +192,7 @@
   height: 160px;
   font-size: 16px;
   font-weight: bold;
-  background: linear-gradient(135deg, #008B8B, #006666);
+  background: linear-gradient(135deg, #00cccc, #009999);
   clip-path: polygon(
     50% 0%,
     100% 38%,
@@ -205,18 +206,18 @@
   text-align: center;
   padding: 10px;
   color: white;
-  opacity: 0.85;
+  opacity: 0.9;
   transition: 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-  box-shadow: 0 0 15px rgba(0, 139, 139, 0.9),
-              0 0 30px rgba(0, 102, 102, 0.9),
+  box-shadow: 0 0 15px rgba(0,204,204,0.9),
+              0 0 30px rgba(0,153,153,0.9),
               0 0 20px #00ffff;
 }
 
 .module-btn:hover {
   transform: scale(1.2);
   box-shadow: 0 0 50px white,
-              0 0 80px rgba(0, 139, 139, 1),
-              0 0 100px rgba(0, 102, 102, 1.0),
+              0 0 80px rgba(0,204,204,1),
+              0 0 100px rgba(0,153,153,1.0),
               0 5px 25px rgba(0,0,0,0.5);
   text-shadow: 0 0 12px white, 0 0 25px rgba(0, 255, 255, 0.9);
 }
@@ -224,8 +225,8 @@
 .module-btn:active {
   transform: scale(1.15);
   box-shadow: 0 0 40px white,
-              0 0 65px rgba(0, 139, 139, 1),
-              0 0 90px rgba(0, 102, 102, 1.0),
+              0 0 65px rgba(0,204,204,1),
+              0 0 90px rgba(0,153,153,1.0),
               0 5px 20px rgba(0,0,0,0.6);
 }
 
@@ -250,6 +251,7 @@ section.card:last-of-type .subheading {
   font-size: 1.8em; /* bigger */
 }
 
+  </style>
 </head>
 <body class="light">
 
