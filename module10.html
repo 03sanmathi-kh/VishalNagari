@@ -1,346 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module 10 – Smart Seasonal Vacation Recommendation System</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 10: Smart Seasonal Vacation Recommendation System</title>
 
   <style>
-    /* =========================== */
-    /* THEME SETTINGS */
-    /* =========================== */
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      transition: background 0.3s, color 0.3s;
-    }
-
+    /* ===== THEME BACKGROUND ===== */
     body.light {
-      background: #f5faff; /* almost white */
-      color: #002244;
+      background-color: #f5f5f5;
+      color: black;
     }
-
     body.dark {
-      background: #00111f; /* deep navy */
-      color: white;
+      background-color: navy;
+      color: black;
     }
 
-    /* =========================== */
-    /* CARD DESIGN */
-    /* =========================== */
-    .module-card {
-      width: 85%;
-      margin: 40px auto;
-      padding: 25px;
-      border-radius: 18px;
-      background: #e7f5ff; /* very light sky blue */
+    /* ===== TOGGLE BUTTON ===== */
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: rgba(135, 206, 250, 0.8);
+      padding: 8px 14px;
+      color: navy;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    /* ===== BACK BUTTON ===== */
+    .back-btn {
+      position: fixed;
+      top: 55px;
+      left: 10px;
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      background: rgba(135, 206, 250, 0.8);
+      color: navy;
+      box-shadow: 0 0 18px 3px silver;
       transition: 0.3s;
-      box-shadow: 0 0 10px rgba(180, 180, 180, 0.3);
+      z-index: 999;
+    }
+    .back-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px 8px silver, 0 0 25px rgba(135, 206, 250, 0.8);
     }
 
-    body.dark .module-card {
-      background: #0a2d45; /* deep sky-blue shade */
-      color: #ffffff;
-      box-shadow: 0 0 10px rgba(220, 220, 220, 0.25);
+    /* ===== MAIN CARD ===== */
+    .module-card {
+      width: 70%;
+      background: rgba(255, 228, 196, 0.6);
+      margin: 80px auto 60px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      transition: 0.3s ease-in-out;
     }
 
     .module-card:hover {
-      box-shadow: 0 0 15px silver;
-      transform: scale(1.01);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 25px rgba(255, 228, 196, 0.8);
+      transform: translateY(-2px);
     }
 
-    h2 {
-      margin-top: 0;
-      color: #005b99;
+    .module-card h1 {
+      text-align: center;
+      color: maroon;
     }
 
-    body.dark h2 {
-      color: #9cd4ff;
-    }
-
+    /* ===== HEADINGS ===== */
     .section-title {
+      font-size: 1.5em;
       margin-top: 25px;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #004b78;
+      font-weight: bold;
+      color: maroon;
     }
 
-    body.dark .section-title {
-      color: #bfe6ff;
+    /* ===== CONTENT BOX ===== */
+    .content-box {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 18px;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      color: black;
+      transition: 0.3s ease-in-out;
+    }
+
+    .content-box:hover {
+      box-shadow: 0 0 50px 10px #FFD700, 0 0 30px silver, 0 0 40px #FFA500;
+      transform: translateY(-1px);
+    }
+
+    /* ===== BUTTONS ===== */
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+      flex-wrap: wrap;
     }
 
     .cpp-btn {
       display: inline-block;
-      padding: 12px 20px;
-      background: #4da9ff;
-      color: white;
       text-decoration: none;
-      border-radius: 10px;
-      font-weight: 600;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #4682B4, #1E90FF);
+      color: white;
+      box-shadow: 0 0 18px 3px silver;
       transition: 0.3s;
-      margin-top: 18px;
     }
 
     .cpp-btn:hover {
-      background: #6bbcff;
-      box-shadow: 0 0 12px silver;
+      transform: scale(1.05);
+      box-shadow: 0 0 40px 10px silver, 0 0 25px #1E90FF;
     }
 
-    /* Button Row */
-    .button-row {
-      margin-top: 15px;
-    }
-
-    /* Toggle Theme Button */
-    .theme-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: #1e90ff;
-      color: white;
-      padding: 10px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: 0.3s;
-    }
-
-    .theme-toggle:hover {
-      background: #4da9ff;
-      box-shadow: 0 0 10px silver;
+    .cpp-heading {
+      text-align: center;
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-top: 40px;
+      color: maroon;
     }
   </style>
 </head>
 
 <body class="light">
 
-  <div class="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle"
+    onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">
+    Switch Theme
+  </button>
+
+  <!-- Back Button -->
+  <a href="sanmathi_port.html" class="back-btn">⬅ Back</a>
 
   <div class="module-card">
 
-    <!-- =========================== -->
-    <!-- PROBLEM STATEMENT -->
-    <!-- =========================== -->
-    <h2>Smart Seasonal Vacation Recommendation System</h2>
+    <h1>Module 10: Smart Seasonal Vacation Recommendation System</h1>
 
-    <p>
-      Vishal Nagri aims to help citizens identify the perfect time to visit recreational spots
-      by analysing weekday–weekend patterns, festival seasons, vacation months and New Year surges.
-      The goal is to build a system that predicts crowd behaviour, adjusts for seasonal peaks,
-      and suggests the most peaceful and optimal visiting windows. By bringing structured
-      intelligence into natural crowd fluctuations, the system ensures that citizens enjoy
-      smoother travel, reduced waiting time, and a better overall holiday experience.
-    </p>
-
-    <!-- =========================== -->
-    <!-- ALGORITHMS USED -->
-    <!-- =========================== -->
-    <div class="section-title">Algorithms Used</div>
-
-    <p><strong>Array Query (Range Query / Prefix-Sum Based Analysis):</strong>
-      Helps analyse crowd intensity over days, weeks and festival ranges by quickly extracting sums,
-      peaks or averages from preprocessed arrays. Supports fast seasonal pattern evaluation.
-    </p>
-
-    <p><strong>Segment Tree:</strong>
-      Efficiently handles range updates and queries for crowd intensity, allowing dynamic adjustment
-      for changes in visitor patterns or sudden seasonal peaks.
-    </p>
-
-    <p><strong>Skip List:</strong>
-      Maintains chronologically sorted visitor records with fast insertion and lookup,
-      enabling smooth updates when new crowd data arrives dynamically.
-    </p>
-
-    <!-- =========================== -->
-    <!-- ALGORITHM EFFICIENCY -->
-    <!-- =========================== -->
-    <div class="section-title">Algorithm Efficiency</div>
-
-    <p><strong>Array Query:</strong>
-      Preprocessing: O(n), Query: O(1) using prefix sums.
-    </p>
-
-    <p><strong>Segment Tree:</strong>
-      Build: O(n), Query/Update: O(log n).
-    </p>
-
-    <p><strong>Skip List:</strong>
-      Average Insert/Search: O(log n).
-    </p>
-
-    <!-- =========================== -->
-    <!-- DESIGN TECHNIQUES -->
-    <!-- =========================== -->
-    <div class="section-title">Design Techniques Used</div>
-
-    <p><strong>Sliding Window:</strong>
-      Helps evaluate crowd levels over continuous day ranges, enabling recommendation of least crowded slots efficiently.
-    </p>
-
-    <p><strong>Pattern Recognition:</strong>
-      Identifies repeating festival trends, weekend surges and monthly vacation cycles to predict future crowd behaviour.
-    </p>
-
-    <p><strong>Pre-Computing:</strong>
-      Uses prefix arrays and preprocessed structures to answer queries instantly without recomputing every time.
-    </p>
-
-    <!-- =========================== -->
-    <!-- SDGs -->
-    <!-- =========================== -->
-    <div class="section-title">Related SDGs</div>
-
-    <p>
-      <strong>SDG 11 – Sustainable Cities & Communities:</strong>
-      Improves citizen well-being through planned travel and reduced congestion.
-      <br><br>
-      <strong>SDG 8 – Decent Work & Economic Growth:</strong>
-      Supports local tourism by helping distribute visitors more evenly across seasons.
-    </p>
-
-    <!-- =========================== -->
-    <!-- C++ IMPLEMENTATION -->
-    <!-- =========================== -->
-    <div class="section-title" style="font-size: 1.45rem;">C++ Implementation</div>
-
-    <p>
-      A combined C++ implementation is prepared using Array Query, Segment Tree, and Skip List.
-      Together, they analyse time-based patterns, retrieve festival or location labels instantly,
-      manage dynamic chronological logs, and keep vacation categories uniformly balanced.
-      This unified structure delivers a complete, efficient recommendation engine for seasonal travel prediction.
-    </p>
-
-    <div class="button-row">
-      <a class="cpp-btn" href="#" target="_blank">View Combined C++ Code</a>
+    <h2 class="section-title">Problem Statement</h2>
+    <div class="content-box">
+      In Vishal Nagri, planning a hotel stay or vacation can be stressful due to fluctuating crowd patterns.  
+      Weekends, festivals, holidays, and peak tourist seasons create high congestion, leading to long waits, increased costs, and diminished experience.  
+      Citizens need a smart system that predicts optimal days for visiting, balancing crowd levels and events.  
+      This system should analyze daily crowd data and special events to recommend periods that are peaceful, enjoyable, and cost-efficient.
     </div>
 
-    <pre style="background:#0a2d45; color:#bfe6ff; padding:15px; border-radius:10px; overflow:auto;">
-// Combined C++ Implementation: Array Query + Segment Tree + Skip List
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
-#include &lt;map&gt;
-#include &lt;cstdlib&gt;
-#include &lt;ctime&gt;
+    <h2 class="section-title">Algorithms Used</h2>
+    <div class="content-box">
+      <p><b>1. Array Query / Prefix Sum:</b> Precomputes cumulative crowd totals for each day, allowing the system to quickly calculate crowd for any range of days.  
+      Useful for spotting multi-day windows with lower congestion, helping visitors plan trips that avoid crowded periods.</p>
 
-using namespace std;
+      <p><b>2. Segment Tree:</b> Maintains minimum crowd information for day ranges and dynamically updates as new data arrives.  
+      Ensures that the system can always suggest the least crowded day or period, even with sudden changes in visitor patterns.</p>
 
-// ---------------- Array Query ----------------
-class ArrayQuery {
-    vector&lt;int&gt; prefix;
-public:
-    ArrayQuery(const vector&lt;int&gt;&amp; data) {
-        prefix.resize(data.size()+1,0);
-        for(int i=0;i&lt;data.size();i++) prefix[i+1]=prefix[i]+data[i];
-    }
-    int rangeSum(int l, int r){ return prefix[r+1]-prefix[l]; }
-};
+      <p><b>3. Linked List:</b> Stores special events such as festivals and holidays with associated day indices.  
+      Sequential traversal allows checking for event clashes with potential visit days, ensuring recommendations consider both crowd and events.
+      </p>
+    </div>
 
-// ---------------- Segment Tree ----------------
-class SegmentTree {
-    vector&lt;int&gt; tree;
-    int n;
-    void build(const vector&lt;int&gt;&amp; data, int v, int tl, int tr){
-        if(tl==tr) tree[v]=data[tl];
-        else{
-            int tm=(tl+tr)/2;
-            build(data,2*v,tl,tm);
-            build(data,2*v+1,tm+1,tr);
-            tree[v]=tree[2*v]+tree[2*v+1];
-        }
-    }
-    int query(int v,int tl,int tr,int l,int r){
-        if(l&gt;r) return 0;
-        if(l==tl &amp;&amp; r==tr) return tree[v];
-        int tm=(tl+tr)/2;
-        return query(2*v,tl,tm,l,min(r,tm)) + query(2*v+1,tm+1,tr,max(l,tm+1),r);
-    }
-public:
-    SegmentTree(const vector&lt;int&gt;&amp; data){ n=data.size(); tree.resize(4*n); build(data,1,0,n-1); }
-    int rangeSum(int l,int r){ return query(1,0,n-1,l,r); }
-};
+    <h2 class="section-title">Algorithm Efficiency</h2>
+    <div class="content-box">
+      <ul>
+        <li><b>Array Query / Prefix Sum:</b> O(n) preprocessing for n days, followed by O(1) queries. Enables instant multi-day crowd calculations.</li>
+        <li><b>Segment Tree:</b> O(n) build, O(log n) query/update. Handles dynamic changes in visitor data efficiently.</li>
+        <li><b>Linked List:</b> O(n) insertion/search, but practical for small numbers of events, allowing quick event checking per day.</li>
+      </ul>
+    </div>
 
-// ---------------- Skip List Node ----------------
-struct SkipListNode {
-    int key;
-    string value;
-    vector&lt;SkipListNode*&gt; forward;
-    SkipListNode(int k,string v,int level): key(k), value(v), forward(level+1,nullptr){}
-};
+    <h2 class="section-title">Design Techniques Used</h2>
+    <div class="content-box">
+      <p><b>Sliding Window:</b> Evaluates consecutive days together to find the least crowded multi-day periods.  
+      Helps plan vacations spanning multiple days without rechecking each individual day separately.</p>
 
-// ---------------- Skip List ----------------
-class SkipList {
-    int maxLevel;
-    float p;
-    SkipListNode *header;
-public:
-    SkipList(int maxL=6,float probability=0.5){
-        maxLevel=maxL; p=probability;
-        header=new SkipListNode(-1,"",maxLevel);
-        srand(time(NULL));
-    }
-    int randomLevel(){
-        int lvl=0;
-        while((float)rand()/RAND_MAX &lt; p &amp;&amp; lvl &lt; maxLevel) lvl++;
-        return lvl;
-    }
-    void insert(int key,string value){
-        vector&lt;SkipListNode*&gt; update(maxLevel+1);
-        SkipListNode* x=header;
-        for(int i=maxLevel;i&gt;=0;i--){
-            while(x-&gt;forward[i]!=nullptr &amp;&amp; x-&gt;forward[i]-&gt;key&lt;key) x=x-&gt;forward[i];
-            update[i]=x;
-        }
-        x=x-&gt;forward[0];
-        if(x==nullptr || x-&gt;key!=key){
-            int lvl=randomLevel();
-            x=new SkipListNode(key,value,lvl);
-            for(int i=0;i&lt;=lvl;i++){
-                x-&gt;forward[i]=update[i]-&gt;forward[i];
-                update[i]-&gt;forward[i]=x;
-            }
-        }
-    }
-    string search(int key){
-        SkipListNode* x=header;
-        for(int i=maxLevel;i&gt;=0;i--){
-            while(x-&gt;forward[i]!=nullptr &amp;&amp; x-&gt;forward[i]-&gt;key&lt;key) x=x-&gt;forward[i];
-        }
-        x=x-&gt;forward[0];
-        if(x!=nullptr &amp;&amp; x-&gt;key==key) return x-&gt;value;
-        return "";
-    }
-};
+      <p><b>Preprocessing & Event Traversal:</b> Prefix sums allow instant crowd calculations, while the linked list ensures all events are checked efficiently.  
+      This combination enables the system to provide quick, accurate recommendations in real time.</p>
+    </div>
 
-int main(){
-    vector&lt;int&gt; crowdData={5,10,7,12,6,8,15};
-    ArrayQuery aq(crowdData);
-    SegmentTree st(crowdData);
-    SkipList sl;
-    sl.insert(0,"New Year");
-    sl.insert(3,"Festival");
-    cout &lt;&lt; "ArrayQuery Sum 1-4: " &lt;&lt; aq.rangeSum(1,4) &lt;&lt; endl;
-    cout &lt;&lt; "SegmentTree Sum 1-4: " &lt;&lt; st.rangeSum(1,4) &lt;&lt; endl;
-    cout &lt;&lt; "SkipList key 3: " &lt;&lt; sl.search(3) &lt;&lt; endl;
-    return 0;
-}
-    </pre>
+    <div class="cpp-heading">C++ Implementation: Combined Array Query, Segment Tree, and Linked List for real-time hotel/vacation recommendations</div>
+    <div class="button-row">
+      <a href="#" target="_blank" class="cpp-btn">View Combined C++ Code</a>
+    </div>
 
   </div>
-
-  <script>
-    function toggleTheme() {
-      const body = document.body;
-      if (body.classList.contains("light")) {
-        body.classList.remove("light");
-        body.classList.add("dark");
-      } else {
-        body.classList.remove("dark");
-        body.classList.add("light");
-      }
-    }
-  </script>
 
 </body>
 </html>
