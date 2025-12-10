@@ -3,276 +3,207 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Governance</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Title contrast colors */
-    body.dark .main-heading .title,
-    body.dark .main-heading .subtitle {
-      color: white;
-    }
+  <title>Your Portfolio – Commercials</title>
 
-    body.light .main-heading .title,
-    body.light .main-heading .subtitle {
-      color: maroon;
+  <style>
+    /* ======================= */
+    /* THEME STYLES */
+    /* ======================= */
+    body.light {
+      background: #fafafa;
+      color: #222;
     }
 
     body.dark {
-      background-color: navy;
+      background: #002244;
       color: white;
     }
 
-    body.light {
-      background-color: #f5f5f5;
-      color: black;
+    body.light .main-title { color: #880000; }
+    body.dark .main-title { color: #ffffff; }
+
+    /* ======================= */
+    /* THEME BUTTON */
+    /* ======================= */
+    .theme-toggle {
+      position: fixed;
+      left: 15px;
+      top: 15px;
+      padding: 10px 20px;
+      background: #ffe08a;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      z-index: 20;
     }
 
-    .main-heading:hover,
-    .project-overview img:hover,
-    .city-text:hover {
-      box-shadow: 0 0 15px silver, 0 0 30px silver, 0 0 45px silver;
-      text-shadow: 0 0 10px silver, 0 0 20px silver, 0 0 30px silver;
-      transform: scale(1.02);
-    }
-
+    /* ======================= */
+    /* NAVIGATION */
+    /* ======================= */
     nav {
+      width: 100%;
+      background: #162850;
+      padding: 12px;
       display: flex;
       justify-content: flex-end;
-      gap: 15px;
-      background: rgba(0,0,128,0.8);
-      padding: 10px;
-      position: relative;
+      gap: 18px;
+      position: sticky;
+      top: 0;
       z-index: 10;
     }
 
     nav a {
-      padding: 8px 12px;
-      text-decoration: none;
       color: white;
+      text-decoration: none;
       font-weight: bold;
-      border-radius: 4px;
-    }
-
-    nav a:hover {
-      background: rgba(0,0,128,0.6);
-      color: silver;
-    }
-
-    nav a.active {
-      background: silver;
-      color: navy;
-    }
-
-    .theme-toggle {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      padding: 10px 20px;
-      background: rgba(135, 206, 250, 0.8);
-      color: navy;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 8px;
-      box-shadow: 0 0 18px silver;
+      padding: 8px 14px;
+      border-radius: 6px;
       transition: 0.3s;
     }
 
-    .theme-toggle:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 35px silver, 0 0 25px rgba(135, 206, 250, 0.8);
+    nav a:hover {
+      background: #324c7e;
     }
 
-    .card {
-      background: #ffe0e0;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 30px auto;
-      width: 70%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      position: relative;
+    nav .active {
+      background: #ffe08a;
+      color: #162850;
     }
 
-    .card h2 {
-      margin-top: 0;
-      font-size: 2em;
-      color: maroon;
-      text-align: center;
-    }
-
-    .card .icon {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 60px;
-      height: 60px;
-    }
-
-    .card img.theme-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-height: 400px;
-      margin-top: 15px;
-      border-radius: 0;
-      object-fit: cover;
-    }
-
-    .card img.full-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin-top: 15px;
-      border-radius: 0;
-    }
-
+    /* ======================= */
+    /* MAIN TITLE */
+    /* ======================= */
     .main-heading {
-      margin-top: 40px;
+      margin-top: 60px;
       text-align: center;
     }
 
-    .main-heading .title {
-      font-size: 1.8em;
+    .main-title {
+      font-size: 2rem;
       font-weight: bold;
+      text-shadow: 0 0 5px rgba(0,0,0,0.2);
     }
 
-   /* ========================================= */
-   /* PENTAGON MODULE BUTTON + RECTANGLE BOX DESIGN */
-   /* ========================================= */
+    /* ======================= */
+    /* IMAGE SECTIONS */
+    /* ======================= */
+    .image-section {
+      width: 70%;
+      margin: 30px auto;
+      padding: 15px;
+      border-radius: 12px;
+      background: #fff0f0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
-   /* Thought Space card styling */
-section.card.thought-space {
-  background: rgba(255, 248, 220, 0.7); /* soft cream, gentle */
-  border-radius: 20px;
-  padding: 40px 30px;
-  margin: 30px auto;
-  width: 75%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  backdrop-filter: blur(6px);
-  transition: all 0.3s ease-in-out;
-}
+    .image-section img {
+      width: 100%;
+      border-radius: 10px;
+    }
 
-section.card.thought-space:hover {
-  box-shadow: 0 15px 50px rgba(0,0,0,0.3), 0 0 60px rgba(255, 200, 100, 0.5);
-}
+    /* ======================= */
+    /* BOX WITH MODULE BUTTONS */
+    /* ======================= */
+    .content-box {
+      width: 75%;
+      margin: 25px auto;
+      padding: 30px;
+      border-radius: 15px;
+      background: #dff7ff;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+      text-align: center;
+    }
 
-/* Modules container (grid layout) */
-.modules-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 25px;
-  justify-items: center;
-  margin-top: 25px;
-}
+    .content-box h2 {
+      margin-top: 0;
+      text-align: center;
+    }
 
-/* Pentagon module buttons */
-.module-btn {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  font-size: 16px;
-  font-weight: bold;
-  background: linear-gradient(135deg, #00cccc, #009999);
-  clip-path: polygon(
-    50% 0%,
-    100% 38%,
-    82% 100%,
-    18% 100%,
-    0% 38%
-  );
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-  color: white;
-  opacity: 0.95;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 20px rgba(0,204,204,0.8), 0 0 30px rgba(0,153,153,0.7);
-}
+    /* GRID FOR 6 MODULE BUTTONS */
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 25px;
+      justify-items: center;
+    }
 
-/* Heavy glow on hover */
-.module-btn:hover {
-  transform: scale(1.25);
-  box-shadow: 
-    0 0 30px white,
-    0 0 80px #00ffff,
-    0 0 120px #00ffff,
-    0 0 200px #00ffff;
-  text-shadow: 0 0 15px white, 0 0 25px #00ffff;
-}
+    .module-btn {
+      width: 100%;
+      max-width: 200px;
+      padding: 18px 0;
+      background: #004466;
+      color: white;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: 0.3s;
+      display: flex;
+      justify-content: center;
+    }
 
-/* Last pink card adjustments */
-section.card:last-of-type {
-  padding: 50px;
-  width: 75%;
-  min-height: 400px;
-  text-align: center;
-}
-
-section.card:last-of-type h2 {
-  color: #2c2c2c;
-  text-shadow: 0 0 5px silver, 0 0 15px silver;
-  font-size: 2.5em; /* bigger */
-  margin-bottom: 15px;
-}
-
-section.card:last-of-type .subheading {
-  color: #2c2c2c;
-  text-shadow: 0 0 5px silver, 0 0 15px silver;
-  font-size: 1.8em; /* bigger */
-}
-
+    .module-btn:hover {
+      background: #0077aa;
+      transform: scale(1.08);
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
+
 <body class="light">
 
-  <!-- Theme Toggle Button -->
-  <button class="theme-toggle" onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">Switch Theme</button>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" onclick="
+    document.body.classList.toggle('light');
+    document.body.classList.toggle('dark');
+  ">Switch Theme</button>
 
-  <!-- Navigation -->
+  <!-- NAVIGATION -->
   <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="project.html">Project</a>
-      <a href="sanmathi_port.html" class="active">Sanmathi</a>
-      <a href="vasavi_port.html">Vasavi</a>
-      <a href="akshata_port.html">Akshata</a>
-      <a href="isha_port.html">Isha</a>
-      <a href="collabs.html">Collabs</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="project.html">Project</a>
+    <a href="sanmathi_port.html">Sanmathi</a>
+    <a href="vasavi_port.html">Vasavi</a>
+    <a href="akshata_port.html" class="active">Akshata</a>
+    <a href="isha_port.html">Isha</a>
+    <a href="collabs.html">Collabs</a>
   </nav>
 
-  <h1 id="title" class="main-heading">
-      <span class="title">Industries, Urban Infrastructure & Tourism</span>
-  </h1>
-
-  <section class="card">
-      <img src="icon.jpg" alt="Industry Icon" class="icon">
-      <h2>Why did I choose these sectors? A glimpse..</h2>
-      <img src="Theme.png.png" alt="Industries Image" class="theme-image">
-      <img src="dis.png.png" alt="Description Image" class="full-image">
+  <!-- MAIN TITLE -->
+  <section class="main-heading">
+    <h1 class="main-title">Urban Systems, Infrastructure & My Research Threads</h1>
   </section>
 
-  <section class="card">
-      <img src="bcase.png" alt="Single Image" class="full-image">
-  </section>
+  <!-- IMAGE SECTION 1 -->
+  <div class="image-section">
+    <img src="flower.png" alt="akshe 1">
+  </div>
 
-  <!-- Updated Thought Space Card -->
-  <section class="card thought-space">
-    <h2>Welcome To My Thought Space!!</h2>
-    <p class="subheading">Explore my ideas and works below!</p>
+  <!-- IMAGE SECTION 2 -->
+  <div class="image-section">
+    <img src="image2.png" alt="Sample Image 2">
+  </div>
 
-    <div class="modules-container">
-        <a href="vm3.html" class="module-btn">Loan distribution</a>
-        <a href="module2.html" class="module-btn">Dynamic Production Planning</a>
-        <a href="module3.html" class="module-btn">Urban Flood Spread Mapping </a>
-        <a href="module4.html" class="module-btn">Drinking Water Distribution</a>
-        <a href="module5.html" class="module-btn">Tourists' Crowding Prediction</a>
-        <a href="module6.html" class="module-btn">Disaster-Resilient Infrastructure</a>
-        <a href="module7.html" class="module-btn">Internet Connectivity Optimization</a>
-        <a href="module8.html" class="module-btn">Energy Efficient Lighting</a>
-        <a href="module9.html" class="module-btn">Knowledge Transfer System</a>
-        <a href="module10.html" class="module-btn">Seasonal Hotel Occupency Optimization </a>
+  <!-- IMAGE SECTION 3 -->
+  <div class="image-section">
+    <img src="image3.png" alt="Sample Image 3">
+  </div>
+
+  <!-- === SINGLE BOX WITH 6 MODULE BUTTONS === -->
+  <section class="content-box">
+    <h2>Explore My Modules</h2>
+
+    <div class="module-grid">
+      <a href="vm3.html" class="module-btn">loan dis</a>
+      <a href="module2.html" class="module-btn">Module 2</a>
+      <a href="module3.html" class="module-btn">Module 3</a>
+      <a href="module4.html" class="module-btn">Module 4</a>
+      <a href="module5.html" class="module-btn">Module 5</a>
+      <a href="module6.html" class="module-btn">Module 6</a>
     </div>
   </section>
 
