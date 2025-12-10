@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Lane Road Separation + Smart Gate Control System</title>
+
+  <style>
+    /* ===== THEME BACKGROUND ===== */
+    body.light {
+      background: linear-gradient(135deg, #ffd6e0, #ffe6f0);
+      color: #333;
+      transition: background 0.5s, color 0.5s;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body.dark {
+      background: linear-gradient(135deg, #f2c1d1, #f9e4f3);
+      color: #fff;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    /* ===== THEME TOGGLE ===== */
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #ff6b81;
+      padding: 8px 14px;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    .theme-toggle:hover { transform: scale(1.1); }
+
+    /* ===== BACK BUTTON ===== */
+    .back-btn {
+      position: fixed;
+      top: 55px;  
+      left: 10px;
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      background: rgba(255, 182, 193, 0.8); 
+      color: #333;
+      box-shadow: 0 0 18px 3px silver;
+      transition: 0.3s;
+      z-index: 999;
+    }
+    .back-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px 8px silver, 0 0 25px rgba(255, 182, 193, 0.8);
+    }
+
+    /* ===== MAIN CARD ===== */
+    .module-card {
+      width: 70%;
+      background: rgba(255, 255, 255, 0.8);
+      margin: 100px auto 60px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* ===== WAVE BACKGROUND ===== */
+    .wave-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(255, 192, 203,0.3) 0%, transparent 70%),
+        radial-gradient(circle at 75% 75%, rgba(255, 223, 186,0.3) 0%, transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(255, 182, 193,0.2) 0%, transparent 80%);
+      animation: waveFlow 25s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes waveFlow {
+      0% { transform: translateX(0) translateY(0) rotate(0deg); }
+      25% { transform: translateX(-30px) translateY(10px) rotate(2deg); }
+      50% { transform: translateX(-60px) translateY(0) rotate(-2deg); }
+      75% { transform: translateX(-30px) translateY(-10px) rotate(1deg); }
+      100% { transform: translateX(0) translateY(0) rotate(0deg); }
+    }
+
+    .module-card h1,
+    .module-card h2,
+    .module-card h3,
+    .module-card p,
+    .module-card li {
+      position: relative;
+      z-index: 1;
+    }
+
+    .module-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+    }
+
+    .module-card h1 { text-align: center; color: maroon; }
+    .section-title { font-size: 1.4em; margin-top: 25px; font-weight: bold; color: maroon; }
+    .content-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 18px;
+      border-radius: 12px;
+      margin-top: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      color: #333;
+      transition: 0.3s ease-in-out;
+    }
+    .content-box:hover {
+      box-shadow: 0 0 50px 10px rgba(255,182,193,0.3), 0 0 30px rgba(255,223,186,0.3);
+      transform: translateY(-1px);
+    }
+
+    .button-row { display: flex; justify-content: center; gap: 20px; margin-top: 10px; flex-wrap: wrap; z-index: 1; position: relative; }
+    .cpp-btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #ff6b81, #ffd700);
+      color: white;
+      box-shadow: 0 0 18px 3px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .cpp-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px 10px rgba(255,182,193,0.5), 0 0 25px rgba(255,223,186,0.5);
+    }
+
+    .cpp-heading { text-align: center; font-size: 1.3em; font-weight: bold; margin-top: 40px; color: maroon; position: relative; z-index: 1; }
+
+  </style>
+</head>
+
+<body class="light">
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle"
+    onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">
+    Switch Theme
+  </button>
+
+  <!-- Back Button -->
+  <a href="akshata_port.html" class="back-btn">⬅ Back</a>
+
+  <div class="module-card">
+    <div class="wave-bg"></div>
+
+    <h1>Multi-Lane Road Separation + Smart Gate Control System</h1>
+
+    <h2 class="section-title">Problem Statement</h2>
+    <div class="content-box">
+      <p>All types of vehicles currently move on the same road:</p>
+      <ul>
+        <li>EV buses</li>
+        <li>EV cars</li>
+        <li>EV scooters</li>
+        <li>Petrol/Diesel (Resident) Vehicles</li>
+        <li>Outsider Vehicles</li>
+        <li>Goods Trucks</li>
+      </ul>
+      <p>This causes lane mixing, congestion, delays, and unsafe driving.  
+      The city needs **dedicated lanes** with **smart gates** that allow only correct vehicle types.</p>
+    </div>
+
+    <h2 class="section-title">Solution</h2>
+    <div class="content-box">
+      <p>A fully automated lane management system that:</p>
+      <ul>
+        <li>Reads vehicle number using ANPR</li>
+        <li>Classifies vehicle type using a hash table</li>
+        <li>Opens gate only for allowed vehicles</li>
+        <li>Uses BFS to check congestion status</li>
+        <li>Queues vehicles when lane is full</li>
+        <li>Continuously monitors all lanes in real time</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Data Structures Used</h2>
+    <div class="content-box">
+      <ul>
+        <li><b>Graph</b> → Lane connectivity</li>
+        <li><b>Hash Table</b> → Vehicle number → vehicle type</li>
+        <li><b>Queue</b> → Vehicles waiting at lane</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Algorithms Used</h2>
+    <div class="content-box">
+      <ul>
+        <li><b>BFS</b> → Checks if lane path is free or congested</li>
+        <li><b>Hash Lookup</b> → Fast classification O(1)</li>
+        <li><b>Selection Sort</b> → Sorts lane loads (optional)</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Algorithm Efficiency</h2>
+    <div class="content-box">
+      <ul>
+        <li><b>Hash Table:</b> O(1)</li>
+        <li><b>BFS:</b> O(V + E)</li>
+        <li><b>Queue:</b> O(1) operations</li>
+        <li><b>Selection Sort:</b> O(n²) — for lane load sorting</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Step-by-Step Process</h2>
+    <div class="content-box">
+      <p>1. Vehicle arrives at lane gate → ANPR reads plate.</p>
+      <p>2. Hash table identifies vehicle type.</p>
+      <p>3. Based on type:</p>
+      <ul>
+        <li>EV Car → EV-Car Lane</li>
+        <li>EV Bus → EV-Bus Lane</li>
+        <li>EV Scooter → EV-Scooter Lane</li>
+        <li>Resident Petrol/Diesel → Non-EV Lane</li>
+        <li>Outsider → Visitor Lane</li>
+        <li>Truck → Goods Lane</li>
+      </ul>
+      <p>4. BFS checks lane congestion.</p>
+      <p>5. If lane free → gate opens.</p>
+      <p>6. If congested → vehicle joins queue.</p>
+      <p>7. Dashboard updates lane status continuously.</p>
+    </div>
+
+    <h2 class="section-title">How This Innovation Supports the SDGs</h2>
+    <div class="content-box">
+      <p><b>SDG 9 – Industry, Innovation & Infrastructure:</b> Automated gate systems, sensors, and smart ANPR.</p>
+      <p><b>SDG 11 – Sustainable Cities & Communities:</b> Reduces congestion, improves road discipline.</p>
+      <p><b>SDG 13 – Climate Action:</b> Smooth lane flow reduces idling emissions and promotes EV priority.</p>
+    </div>
+
+    <div class="cpp-heading">C++ Implementation</div>
+    <div class="button-row">
+      <a class="cpp-btn">Hash Table – Vehicle Type Lookup (C++)</a>
+      <a class="cpp-btn">Queue – Vehicles Waiting at Lane (C++)</a>
+      <a class="cpp-btn">BFS – Lane Congestion Check (C++)</a>
+      <a class="cpp-btn">Selection Sort – Lane Load Sorting (C++)</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
