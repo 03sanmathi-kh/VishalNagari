@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -33,7 +33,7 @@
     /* ===== BACK BUTTON ===== */
     .back-btn {
       position: fixed;
-      top: 55px;  /* below toggle button */
+      top: 55px; 
       left: 10px;
       display: inline-block;
       text-decoration: none;
@@ -147,50 +147,48 @@
 
   <div class="module-card">
 
-    <h1>Module 1: </h1>
+    <h1>Module 1: Smart Housing Allocation – Case Study for Vishalanagari</h1>
 
     <h2 class="section-title">Problem Statement</h2>
     <div class="content-box">
-      Vishalanagari is emerging as a strong commercial hub with growth in smart housing, tax planning, loan distribution, gaming, civic data analytics, population services, and e-commerce.
-These sectors depend on fast data flow and efficient resource use.
-But fluctuating demand and poor coordination often cause delays and service bottlenecks.
-Businesses face rising costs and inefficiencies due to uneven resource allocation.
-Managing multiple services together needs smart, automated decision-making.
-This module aims to optimize data, services, and resource flow across the city's commercial network.
+      Vishalanagari is expanding rapidly, increasing the demand for smart housing solutions. Efficient allocation of houses based on income levels, family size, accessibility needs, and available housing units is becoming a major challenge. Manual systems lead to delays, mismatches, and unfair distribution. Fluctuating population growth and irregular housing requests create even more pressure. A smart, automated approach is needed to store resident data, track occupancy, and allocate homes efficiently in real-time.
+      <br><br>
+
+      Vishalanagari is emerging as a strong commercial hub with growth in smart housing, tax planning, loan distribution, gaming, civic data analytics, population services, and e-commerce. These sectors depend on fast data flow and efficient resource use. But fluctuating demand and poor coordination often cause delays and service bottlenecks. Businesses face rising costs and inefficiencies due to uneven resource allocation. Managing multiple services together needs smart, automated decision-making. This module aims to optimize data, services, and resource flow across the city's commercial network.
+      <br><br>
+
+      <b>Loan Distribution:</b>  
+      Loan distribution is essential for providing timely financial support to individuals and businesses. Challenges such as demand fluctuations and verification delays often slow down processing. This module aims to streamline allocation, improve efficiency, and ensure faster, more reliable loan delivery.
     </div>
 
     <h2 class="section-title">Algorithms Used</h2>
     <div class="content-box">
-      <p><b>1. Greedy Allocation:</b> Quickly assigns available materials to factories to meet immediate demand efficiently.</p>
-      <p><b>2. Priority Queues:</b> Manages factories by urgency or material requirements for quick decision-making.</p>
-      <p><b>3. Sliding Window Forecasting:</b> Predicts upcoming resource requirements based on recent consumption trends.</p>
-
+      <p><b>1. AVL Tree:</b> Used to store and manage resident data with fast search, insert, and balance operations.</p>
+      <p><b>2. Segment Tree:</b> Used for efficiently tracking available housing units and processing range-based allocation queries.</p>
     </div>
 
     <h2 class="section-title">Algorithm Efficiency</h2>
     <div class="content-box">
       <ul>
-        <li><b>Greedy Allocation:</b> O(n log n) – efficient for real-time assignment of materials.</li>
-        <li><b>Priority Queues:</b> O(log n) per operation – manages factory priority efficiently.</li>
-        <li><b>Sliding Window Forecasting:</b> O(n) – calculates predictions over recent data with minimal overhead.</li>
-
+        <li><b>AVL Tree operations (insert/search):</b> O(log n)</li>
+        <li><b>Segment Tree build:</b> O(n)</li>
+        <li><b>Segment Tree query/update:</b> O(log n)</li>
       </ul>
     </div>
+
     <h2 class="section-title">How This Innovation Powers the SDGs</h2>
-<div class="content-box">
-  <p><b>SDG 9 – Industry, Innovation & Infrastructure:</b><br>
-  Adaptive EV resource routing accelerates smarter manufacturing, minimizes bottlenecks, and strengthens India’s clean-tech industrial backbone.</p>
+    <div class="content-box">
+      <p><b>SDG 11 – Sustainable Cities & Communities:</b><br>
+      Smart housing allocation ensures affordable, fair, and well-organized living spaces for all citizens.</p>
 
-  <p><b>SDG 12 – Responsible Consumption & Production:</b><br>
-  Intelligent material distribution reduces overuse, prevents battery wastage, and drives a circular, resource-efficient EV ecosystem.</p>
-</div>
-
+      <p><b>SDG 10 – Reduced Inequalities:</b><br>
+      Automated allocation minimizes human bias, ensuring equal access to housing based on transparent criteria.</p>
+    </div>
 
     <div class="cpp-heading">C++ Implementation</div>
     <div class="button-row">
       <a href="https://github.com/kabburvasavi-sudo/vasavi_code/blob/main/loan.cpp" target="_blank" class="cpp-btn">
         loan c++
-     
       </a>
     </div>
 
