@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Module 8: Smart Energy-Efficient Street Lighting System</title>
+
+  <style>
+    /* ================= THEME ================= */
+    body.light { background-color: #fffde7; color: #333300; } /* light yellowish background */
+    body.dark  { background-color: #2a2a1a; color: #f7f7c2; }
+
+    /* ===== Controls ===== */
+    .theme-toggle {
+      position: fixed; top: 12px; left: 12px;
+      background: #fff59d; color: #333300; border: none;
+      padding: 8px 14px; border-radius: 8px; cursor: pointer;
+      font-weight: 700; z-index: 999;
+      box-shadow: 0 0 8px rgba(255,235,59,0.28);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .theme-toggle:hover { transform: scale(1.03); box-shadow: 0 0 14px rgba(255,235,59,0.42); }
+
+    .back-btn {
+      position: fixed; top: 56px; left: 12px;
+      background: rgba(255,241,118,0.95); color: #333300;
+      padding: 10px 16px; border-radius: 8px; text-decoration: none;
+      font-weight: 700; box-shadow: 0 0 8px rgba(255,235,59,0.25); z-index: 999;
+    }
+    .back-btn:hover { transform: translateY(-2px); box-shadow: 0 0 14px rgba(255,235,59,0.42); }
+
+    /* ===== Card ===== */
+    .module-card {
+      width: 78%;
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 30px 34px;
+      border-radius: 18px;
+      background: rgba(255,249,196,0.95);
+      color: #333300;
+      box-shadow:
+        0 8px 30px rgba(0,0,0,0.1),
+        0 0 22px rgba(255,235,59,0.14);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .module-card:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 18px 48px rgba(0,0,0,0.2),
+        0 0 36px rgba(255,235,59,0.35);
+    }
+
+    body.dark .module-card {
+      background: rgba(40,40,25,0.92);
+      color: #f7f7c2;
+      box-shadow:
+        0 10px 40px rgba(0,0,0,0.55),
+        0 0 22px rgba(255,235,59,0.22);
+    }
+
+    /* ===== Typography ===== */
+    .module-card h1 {
+      margin: 4px 0 8px;
+      text-align: center;
+      font-size: 1.9rem;
+      color: #b38f00;
+      letter-spacing: 0.4px;
+    }
+    body.dark .module-card h1 { color: #f7f7c2; }
+
+    .section-title {
+      margin-top: 22px;
+      font-weight: 800;
+      color: #996600;
+      font-size: 1.12rem;
+    }
+    body.dark .section-title { color: #f7f7c2; }
+
+    .content-box {
+      background: rgba(255,255,224,0.85);
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin-top: 10px;
+      color: #333300;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      transition: box-shadow .18s ease, transform .18s ease;
+      line-height: 1.5;
+    }
+    .content-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.10), 0 0 18px rgba(255,235,59,0.35);
+    }
+    body.dark .content-box {
+      background: rgba(35,35,20,0.75);
+      color: #f7f7c2;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+    body.dark .content-box:hover {
+      box-shadow: 0 16px 30px rgba(0,0,0,0.55), 0 0 18px rgba(255,235,59,0.30);
+    }
+
+    .list-item { margin: 8px 0; }
+    .eff-line { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; color: #996600; }
+    body.dark .eff-line { color: #fff88a; }
+
+    /* ===== C++ section ===== */
+    .cpp-heading {
+      text-align: center; margin-top: 28px;
+      font-size: 1.32rem; font-weight: 900; color: #b38f00;
+    }
+    body.dark .cpp-heading { color: #f7f7c2; }
+
+    .cpp-desc {
+      margin-top: 10px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(255,248,196,0.95);
+      color: #333300;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      line-height: 1.5;
+    }
+    body.dark .cpp-desc {
+      background: rgba(35,35,20,0.92);
+      color: #f7f7c2;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+    }
+
+    .button-row { display:flex; gap:14px; justify-content:center; margin-top:16px; flex-wrap:wrap; }
+
+    .cpp-btn {
+      display:inline-block;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      color: #333300;
+      background: linear-gradient(135deg, #fff9c4 0%, #ffeb3b 100%);
+      box-shadow: 0 6px 18px rgba(255,235,59,0.12);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .cpp-btn:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(255,235,59,0.32); }
+
+    body.dark .cpp-btn {
+      color: #f7f7c2;
+      background: linear-gradient(135deg, rgba(255,235,59,0.16), rgba(255,193,7,0.22));
+      box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+    }
+    body.dark .cpp-btn:hover {
+      box-shadow: 0 20px 36px rgba(0,0,0,0.55), 0 0 26px rgba(255,235,59,0.32);
+    }
+
+    @media (max-width: 820px) {
+      .module-card { width: 92%; padding: 20px; margin-top: 56px; }
+      .module-card h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body class="light">
+
+  <button class="theme-toggle" onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">
+    Switch Theme
+  </button>
+
+  <a class="back-btn" href="sanmathi_port.html">⬅ Back</a>
+
+  <main class="module-card" role="main" aria-labelledby="module-title">
+    <h1 id="module-title">Module 8: Smart Energy-Efficient Street Lighting System</h1>
+
+    <!-- Problem Statement -->
+    <h2 class="section-title">Problem Statement</h2>
+    <div class="content-box">
+      In emerging smart cities, streetlights often waste electricity by staying ON during low traffic periods or in sparsely populated zones.  
+      The challenge is to create a real-time, adaptive system that:  
+      <ul>
+        <li>Monitors pedestrian, vehicle, and industrial activity across the city.</li>
+        <li>Activates only the necessary streetlights while maintaining safety.</li>
+        <li>Minimizes energy consumption without compromising coverage.</li>
+        <li>Adapts dynamically to sudden changes in city activity, such as festivals or traffic surges.</li>
+      </ul>
+    </div>
+
+    <!-- Algorithms Used -->
+    <h2 class="section-title">Algorithms Used</h2>
+    <div class="content-box">
+      <p class="list-item"><b>1. Queue-Based Event Simulation:</b> Processes city activity events (traffic, pedestrians, industry) in chronological order. This enables the system to decide which streetlights to switch ON/OFF in real-time, focusing only on zones affected by current events.</p>
+      <p class="list-item"><b>2. Union-Find (Disjoint Set Union):</b> Groups streetlights into connected clusters based on activity zones. Ensures that only essential lights per cluster are turned ON, reducing redundancy and optimizing energy usage.</p>
+    </div>
+
+    <!-- Algorithm Efficiency -->
+    <h2 class="section-title">Algorithm Efficiency</h2>
+    <div class="content-box">
+      <p class="list-item eff-line"><b>Queue-Based Event Simulation:</b> Each event is processed in O(1) time using a standard queue; highly efficient for dynamic, real-time updates.</p>
+      <p class="list-item eff-line"><b>Union-Find:</b> Nearly O(1) per union/find operation with path compression. Clusters high-activity zones efficiently, ensuring minimal streetlights are active while maintaining coverage.</p>
+    </div>
+
+    <!-- Design Techniques -->
+    <h2 class="section-title">Design Techniques Used</h2>
+    <div class="content-box">
+      <p class="list-item"><b>Event-Driven Simulation:</b> Only process changes when events occur, avoiding unnecessary calculations and making the system responsive in real-time.</p>
+      <p class="list-item"><b>Cluster-Based Optimization:</b> Groups streetlights in connected zones, reducing energy use while keeping safety intact.</p>
+    </div>
+
+    <!-- SDGs -->
+    <h2 class="section-title">How This Aligns with SDGs</h2>
+    <div class="content-box">
+      <p class="list-item"><b>SDG 7 – Affordable & Clean Energy:</b> Reduces energy waste by smartly controlling streetlight usage.</p>
+      <p class="list-item"><b>SDG 11 – Sustainable Cities & Communities:</b> Ensures safe, well-lit streets while promoting energy efficiency in urban planning.</p>
+      <p class="list-item"><b>SDG 9 – Industry, Innovation & Infrastructure:</b> Uses advanced algorithmic solutions to optimize urban infrastructure intelligently.</p>
+    </div>
+
+    <!-- C++ Implementation -->
+    <div class="cpp-heading">C++ Implementation: Queue Simulation & Union-Find for Smart Lighting</div>
+    <div class="cpp-desc">
+      1. <b>Queue Simulation:</b> Dynamically processes city events to decide which streetlights to activate.  
+      2. <b>Union-Find:</b> Clusters connected streetlight zones and ensures minimal lights cover all active zones, reducing energy use while maintaining safety.
+    </div>
+  
+    <div class="button-row">
+      <a href="#" target="_blank" class="cpp-btn">Queue Simulation Code</a>
+      <a href="#" target="_blank" class="cpp-btn">Union-Find Code</a>
+    </div>
+<div class="button-row">
+      <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/light.cpp" target="_blank" class="cpp-btn">
+        Queue(C++)
+      </a>
+    <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/lightdsu.cpp" target="_blank" class="cpp-btn">
+        Union Find(C++)
+      </a>
+  </main>
+
+</body>
+</html>
+<div class="button-row">
+      <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/greedy.cpp" target="_blank" class="cpp-btn">
+        Greedy Algorithm (C++)
+      </a>
