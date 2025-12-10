@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaboration – Vishalanagri Project</title>
+  <style>
+    /* Chameleon-like animated background */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(270deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+      background-size: 800% 800%;
+      animation: backgroundShift 20s ease infinite;
+    }
+
+    @keyframes backgroundShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .content-box {
+      background-color: #b3e5fc; /* light blue */
+      padding: 30px 40px;
+      border-radius: 25px;
+      max-width: 1000px;
+      width: 90%;
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    h1 {
+      text-align: center;
+      color: #004d99;
+      margin-bottom: 20px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 20px auto;
+      border-radius: 15px;
+    }
+
+    p {
+      text-align: justify;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #003366;
+    }
+
+    .back-btn {
+      display: block;
+      width: 120px;
+      margin: 20px auto 0 auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #004d99;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-box">
+    <h1>Sanmathi and Akshata collaborating!!</h1>
+    <img src="cotton.jpg" alt="Collaboration Image">
+
+    <p>This collaboration combines Sanmathi’s focus on Industries, Infrastructure, and Logistics Optimization with Akshata’s focus on Traffic, Transport, and Flow Efficiency.</p>
+
+    <p>Vishalanagri, located in the Vidarbha region of Maharashtra, is India’s leading cotton textile hub. Cotton is cultivated along the fertile banks of the Purna river and transported to multiple ginning mills, textile factories, and export terminals. The goal of this project is to design an optimized, cost-efficient, and time-efficient transportation network for cotton supply within Vishalanagri. The network must account for road constraints such as fuel costs, delays, congestion, and seasonal blockages, as well as capacity constraints between farms, mills, and factories. Timely delivery is critical to prevent spoilage and production delays.</p>
+
+    <p>To model and optimize the supply chain, advanced graph-based algorithms will be used. Dijkstra’s algorithm efficiently finds minimum-cost paths from farms to ginning mills and factories. Bellman-Ford handles scenarios with possible negative edge weights and detects cycles, while Floyd-Warshall calculates all-pairs shortest paths for full network insight. For flow optimization, Min Cost Max Flow determines how much cotton to send along each route to minimize total transport cost while satisfying supply and demand constraints. Optional enhancements include dynamic traffic modeling and simulation-based optimization for seasonal variations.</p>
+
+    <p>The optimized cotton supply chain will reduce transportation costs, ensure faster delivery, avoid bottlenecks, and improve sustainability by lowering emissions. Computational efficiency for the algorithms is high: Dijkstra runs in O(V log V + E), Bellman-Ford in O(V × E), Floyd-Warshall in O(V³), and Min Cost Max Flow in O(F × E × log V), where F is the total flow and E the number of edges.</p>
+
+    <p>This project also aligns with several Sustainable Development Goals. It supports SDG 9 by modernizing industry and transport infrastructure, SDG 11 by integrating smart-city principles for efficient urban transport, SDG 12 by reducing waste and improving resource efficiency, and SDG 13 by lowering carbon emissions through optimized routing.</p>
+
+    <p>For design and visualization, the network can be represented as a graph with nodes as farms, ginning mills, factories, and export terminals, and edges representing roads with cost and time weights. Routes can be color-coded for efficiency, and edge widths can represent the volume of cotton transported. An interactive or simulated view could show seasonal or traffic variations to observe route adjustments dynamically, making it clear how the optimized supply chain balances cost, time, and sustainability.</p>
+
+    <button class="back-btn" onclick="window.location.href='collbs.html'">Back</button>
+  </div>
+</body>
+</html>
