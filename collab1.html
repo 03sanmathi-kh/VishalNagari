@@ -1,209 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta-name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Collaboration – Vishalanagri Project</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collaboration – Vishalanagari Project</title>
+
+  <!-- Cartoon handwriting font -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
   <style>
-    /* Constant lavenderish-white background */
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f8f7ff; /* constant background */
+      font-family: "Patrick Hand", cursive;
+      background-color: #001f3f; /* Navy blue */
+      color: white;
+      padding-bottom: 40px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.3);
+      border: 2px solid rgba(255,255,255,0.6);
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      z-index: 2000;
+    }
+    .back-btn:hover {
+      background: rgba(255,255,255,0.5);
+    }
+
+    /* Navigation */
+    nav {
+      width: 100%;
+      text-align: center;
+      margin-top: 70px;
+    }
+    nav a {
+      margin: 0 18px;
+      text-decoration: none;
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    /* Lavender animated box */
+    .lav-box {
+      width: 75%;
+      margin: 50px auto 30px auto;
+      padding: 40px;
+      border-radius: 25px;
+      animation: colorShift 3.5s linear infinite;
+      box-shadow: 0 0 25px rgba(230,200,255,0.7);
+      border: 3px solid rgba(255,255,255,0.4);
+    }
+
+    @keyframes colorShift {
+      0% { background: linear-gradient(135deg, #d8baff, #b48cff); }
+      25% { background: linear-gradient(135deg, #f2d9ff, #c9a4ff); }
+      50% { background: linear-gradient(135deg, #e6c6ff, #ab7cff); }
+      75% { background: linear-gradient(135deg, #f1ddff, #d5aaff); }
+      100% { background: linear-gradient(135deg, #d8baff, #b48cff); }
+    }
+
+    .lav-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .lav-img-space {
+      width: 100%;
+      height: 240px;
+      border-radius: 20px;
+      border: 3px dashed rgba(255,255,255,0.7);
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+      font-size: 1.3rem;
+      margin-top: 25px;
     }
 
-    /* Animated content box */
-    .content-box {
-      background: linear-gradient(270deg, #b3e5fc, #d6f0ff, #c2e9fb, #a1c4fd);
-      background-size: 800% 800%;
-      animation: contentShift 15s ease infinite;
-      padding: 40px 50px;
-      border-radius: 25px;
-      max-width: 1000px;
-      width: 100%;
-      box-shadow: 0 0 25px rgba(0,0,0,0.2);
-      overflow-y: auto;
-      max-height: 90vh;
-    }
-
-    @keyframes contentShift {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    h1 {
+    h2 {
       text-align: center;
-      color: #004d99;
-      margin-bottom: 20px;
-      font-size: 2.5rem;
+      font-size: 2rem;
+      margin-top: 50px;
+      margin-bottom: 10px;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto 30px auto;
-      border-radius: 15px;
+    p {
+      width: 75%;
+      margin: 12px auto;
+      font-size: 1.25rem;
+      line-height: 2rem;
     }
 
-    .section {
-      margin-bottom: 25px;
-    }
-
-    .section h2 {
-      color: #003366;
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .section p {
-      color: #001f4d;
-      font-size: 1rem;
-      margin: 0 0 8px 20px;
-      line-height: 1.5;
-    }
-
-    /* C++ Buttons */
+    /* Buttons for C++ files */
     .button-container {
+      width: 80%;
+      margin: 30px auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
-      margin-top: 30px;
     }
 
     .cpp-btn {
-      padding: 12px 20px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: #fff;
-      background-color: #004d99;
-      border: none;
+      padding: 14px 22px;
+      background: #643fcd;
       border-radius: 12px;
+      color: white;
+      font-size: 1.1rem;
+      border: none;
       cursor: pointer;
       transition: 0.3s;
-      text-align: center;
+      font-family: "Patrick Hand", cursive;
     }
 
     .cpp-btn:hover {
-      background-color: #0066cc;
-    }
-
-    .back-btn {
-      display: block;
-      width: 120px;
-      margin: 25px auto 0 auto;
-      padding: 10px 20px;
-      font-size: 16px;
-      font-weight: bold;
-      background-color: #004d99;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .back-btn:hover {
-      background-color: #0066cc;
-    }
-
-    @media (max-width: 768px) {
-      .content-box { padding: 30px 25px; }
-      h1 { font-size: 2rem; }
-      .section h2 { font-size: 1.4rem; }
-      .cpp-btn { font-size: 0.9rem; padding: 10px 15px; }
+      background: #7a57e5;
     }
   </style>
 </head>
 
 <body>
-  <div class="content-box">
-    <h1>Sanmathi & Akshata Collaboration</h1>
-    <img src="cotton.png" alt="Collaboration Image">
 
-    <div class="section">
-      <h2>Focus Areas:</h2>
-      <p>• Sanmathi: Industries, Infrastructure, Logistics Optimization</p>
-      <p>• Akshata: Traffic, Transport, Flow Efficiency</p>
-    </div>
+  <!-- Back Button -->
+  <button class="back-btn" onclick="window.location.href='collbs.html'">Back</button>
 
-    <div class="section">
-      <h2>Project Goal:</h2>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="collabz.html">Collabz</a>
+  </nav>
 
-      <p>
-        • In Vishalanagri, cotton harvested in the early morning from different farm clusters often reaches
-          nearby ginning mills late due to road bottlenecks and unpredictable traffic. This delay causes
-          processing queues, factory slowdowns, and at times even shipment backlogs at export terminals.
-          Our goal is to build a system that can predict these inefficiencies before they occur and redirect
-          vehicles through alternate routes in real time.
-      </p>
-
-      <p>
-        • The project aims to create an end-to-end intelligent network where cotton moves smoothly
-          from farms → mills → textile factories → ports. The algorithms help identify the fastest and
-          cheapest route at every hour of the day by analysing road load, distance, cost, and congestion.
-          When traffic spikes unexpectedly, the system adjusts instantly, ensuring trucks keep moving
-          without getting stuck.
-      </p>
-
-      <p>
-        • Ultimately, the project ensures that industries never run out of raw cotton, mills maintain
-          uninterrupted operations, factories ship goods on schedule, and the entire city experiences
-          reduced congestion because transport flows are evenly distributed.
-      </p>
-
-      <p>
-        • This creates a fully optimized cotton supply chain where farmers get faster returns, industries get
-          steady supply, transport becomes more predictable, and environmental impact is reduced through
-          efficient route usage.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Algorithms Used:</h2>
-      <p>• Dijkstra: Minimum-cost paths</p>
-      <p>• Bellman-Ford: Handles negative edge weights, detects cycles</p>
-      <p>• Floyd-Warshall: All-pairs shortest paths</p>
-      <p>• Min Cost Max Flow: Optimal cotton distribution</p>
-    </div>
-
-    <div class="section">
-      <h2>Benefits:</h2>
-      <p>• Reduced transportation costs</p>
-      <p>• Faster delivery & no bottlenecks</p>
-      <p>• Sustainable & lower emissions</p>
-      <p>• Load balancing across routes</p>
-    </div>
-
-    <div class="section">
-      <h2>SDG Alignment:</h2>
-      <p>• SDG 9: Industry, Innovation & Infrastructure</p>
-      <p>• SDG 11: Sustainable Cities & Communities</p>
-      <p>• SDG 12: Responsible Consumption & Production</p>
-      <p>• SDG 13: Climate Action</p>
-    </div>
-
-    <div class="section">
-      <h2>View C++ Implementations below:</h2>
-      <div class="button-container">
-        <button class="cpp-btn" onclick="window.open('https://github.com/yourrepo/Dijkstra.cpp','_blank')">Dijkstra.cpp</button>
-        <button class="cpp-btn" onclick="window.open('https://github.com/yourrepo/BellmanFord.cpp','_blank')">BellmanFord.cpp</button>
-        <button class="cpp-btn" onclick="window.open('https://github.com/yourrepo/FloydWarshall.cpp','_blank')">FloydWarshall.cpp</button>
-        <button class="cpp-btn" onclick="window.open('https://github.com/yourrepo/MinCostMaxFlow.cpp','_blank')">MinCostMaxFlow.cpp</button>
-        <button class="cpp-btn" onclick="window.open('https://github.com/yourrepo/CompleteSolution.cpp','_blank')">CompleteSolution.cpp</button>
-      </div>
-    </div>
-
-    <button class="back-btn" onclick="window.location.href='collbs.html'">Back</button>
-
+  <!-- Lavender Box -->
+  <div class="lav-box">
+    <div class="lav-title">Sanmathi & Akshata Collaboration!</div>
+    <div class="lav-img-space">Image Space</div>
   </div>
+
+  <!-- Focus Areas -->
+  <h2>Focus Areas</h2>
+  <p>• Sanmathi: Industries, Infrastructure & Logistics Optimization</p>
+  <p>• Akshata: Traffic, Transport & Flow Efficiency</p>
+
+  <!-- Project Goal / Problem Statement SAME SECTION -->
+  <h2>Project Goal / Problem Statement</h2>
+  <p>
+    Vishalanagri experiences large fluctuations in daily movement — raw materials, cotton harvest trucks,
+    office commuters, festival crowds, weather disturbances, and emergency vehicles. These unpredictable
+    surges cause transport delays, uneven load distribution, and unstable supply chains.
+  </p>
+  <p>
+    During the cotton harvest season, trucks rush from farms to ginning mills. At the same time, factories
+    demand continuous raw cotton flow. Festival traffic increases, roads choke, and even warehouses overflow.
+    One disruption affects the entire chain — farms wait, mills slow down, factories pause production, and
+    ports miss shipment deadlines.
+  </p>
+  <p>
+    Our collaboration aims to create a predictive, stable, algorithm-driven model that can sense traffic load,
+    analyze congestion, choose alternate routes, and keep cotton & vehicle flow smooth at any hour.
+  </p>
+
+  <!-- Algorithms Used -->
+  <h2>Algorithms Used</h2>
+  <p>• Dijkstra – Minimum-cost routing</p>
+  <p>• Bellman-Ford – Negative weights & hazard adjustments</p>
+  <p>• Floyd-Warshall – All-pairs route optimization</p>
+  <p>• Min Cost Max Flow – Smart cotton distribution across routes</p>
+
+  <!-- Efficiency Section -->
+  <h2>Efficiency</h2>
+  <p>
+    The system reduces overall travel time, balances network load, and avoids bottlenecks by dynamically
+    switching routes when congestion spikes. Algorithms work together to ensure faster processing, fewer
+    delays, lower costs, and stable supply flow throughout the day.
+  </p>
+
+  <!-- Image Space After Efficiency -->
+  <div class="lav-img-space" style="margin-top:25px; width:75%; margin-left:auto; margin-right:auto;">
+    Efficiency Flow Diagram
+  </div>
+
+  <!-- Benefits -->
+  <h2>Benefits</h2>
+  <p>• Smooth transport & reduced congestion</p>
+  <p>• Lower emissions through optimized routing</p>
+  <p>• Cost savings for industries</p>
+  <p>• Stable cotton flow from farms to ports</p>
+
+  <!-- SDG Alignment -->
+  <h2>SDG Alignment</h2>
+  <p>• SDG 9 – Industry, Innovation & Infrastructure</p>
+  <p>• SDG 11 – Sustainable Cities</p>
+  <p>• SDG 12 – Efficient Resource Management</p>
+  <p>• SDG 13 – Climate Action</p>
+
+  <!-- C++ Buttons -->
+  <h2>C++ Implementations</h2>
+  <div class="button-container">
+    <button class="cpp-btn">Dijkstra.cpp</button>
+    <button class="cpp-btn">BellmanFord.cpp</button>
+    <button class="cpp-btn">FloydWarshall.cpp</button>
+    <button class="cpp-btn">MinCostMaxFlow.cpp</button>
+    <button class="cpp-btn">CompleteSolution.cpp</button>
+  </div>
+
 </body>
 </html>
