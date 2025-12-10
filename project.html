@@ -20,7 +20,7 @@
 /* Glow when touched (hover) */
 .info-card:hover, .portfolio-card:hover {
   transform: scale(1.015);
-  box-shadow: 0 0 25px rgba(135,206,250,0.9); /* stronger glow */
+  box-shadow: 0 0 25px rgba(135,206,250,0.9);
 }
 
 /* Portfolio cards specific */
@@ -33,12 +33,12 @@
 }
 
 .portfolio-card {
-  width: 22%; /* four cards side by side */
+  width: 22%;
   min-width: 200px;
   text-align: center;
   padding: 20px;
-  color: navy; /* text color */
-  box-shadow: 0 0 18px rgba(135,206,250,0.9); /* sky blue glow */
+  color: navy; /* heading color */
+  box-shadow: 0 0 18px rgba(135,206,250,0.9);
   transition: 0.3s;
   border: 1px solid rgba(0,0,0,0.2);
 }
@@ -59,7 +59,7 @@
   margin-top: 12px;
   font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 0 8px rgba(135,206,250,0.6); /* slight glow always */
+  box-shadow: 0 0 8px rgba(135,206,250,0.6);
   transition: 0.3s;
 }
 .portfolio-card a:hover {
@@ -78,7 +78,7 @@ body.light .project-overview h2 { color: maroon; }
 
 /* Widen info cards slightly */
 .info-card {
-  color: navy;
+  color: navy; /* heading color */
 }
 
 /* Statistics cards container for 2 in a row */
@@ -110,11 +110,17 @@ body.light .project-overview h2 { color: maroon; }
   font-weight: bold;
   display: inline-block;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 0 20px rgba(135,206,250,0.9); /* brighter glow */
+  box-shadow: 0 0 20px rgba(135,206,250,0.9);
 }
 .github-btn:hover {
   box-shadow: 0 0 30px rgba(135,206,250,1);
   transform: scale(1.05);
+}
+
+/* DARK MODE: text under portfolio and info cards */
+body.dark .portfolio-card p,
+body.dark .info-card p {
+  color: #f8f8f8;
 }
 
 /* Responsive for portfolio cards */
@@ -165,7 +171,6 @@ body.light .project-overview h2 { color: maroon; }
 <section class="project-overview">
   <h2>City Statistical Overview</h2>
   <div class="stats-container">
-    <!-- Population Card -->
     <div class="info-card">
       <h3>Population Distribution</h3>
       <p><strong>Total Population:</strong> 28 million</p>
@@ -175,7 +180,6 @@ body.light .project-overview h2 { color: maroon; }
       <p><strong>Total Area:</strong> 1500 sq. km</p>
     </div>
 
-    <!-- AQI Zones -->
     <div class="info-card">
       <h3>Air Quality Index (AQI)</h3>
       <p><strong>Industrial Sector:</strong> 225</p>
@@ -187,7 +191,6 @@ body.light .project-overview h2 { color: maroon; }
       <p><strong>City Average AQI:</strong> 130</p>
     </div>
 
-    <!-- Pincode Card -->
     <div class="info-card">
       <h3>Pincode Information</h3>
       <p><strong>Range:</strong> 446001 – 446150</p>
@@ -195,7 +198,6 @@ body.light .project-overview h2 { color: maroon; }
       <p><strong>Starting Format:</strong> 446xxx</p>
     </div>
 
-    <!-- Vehicle Number Card -->
     <div class="info-card">
       <h3>Vehicle Registration System</h3>
       <p><strong>State Code:</strong> MH</p>
@@ -216,10 +218,9 @@ body.light .project-overview h2 { color: maroon; }
 <!-- ===================== PHASE 2 - Portfolio Creation ===================== -->
 <section class="project-overview">
   <h2>PHASE 2 - Portfolio Creation</h2>
-  <p style="text-align:center;">Below are the four key team members’ portfolio cards. Click “View Portfolio” to explore individual contributions.</p>
+  <p style="text-align:center;"> Click “View Portfolio” to explore individual contributions.</p>
 
   <div class="portfolio-container">
-    <!-- Card 1 -->
     <div class="portfolio-card">
       <h3>Sanmathi Hegde</h3>
       <p><strong>Roll Number:</strong>407</p>
@@ -228,7 +229,6 @@ body.light .project-overview h2 { color: maroon; }
       <a href="sanmathi_port.html" target="_blank">View Portfolio</a>
     </div>
 
-    <!-- Card 2 -->
     <div class="portfolio-card">
       <h3>Vasavi Kabbur</h3>
       <p><strong>Roll Number:</strong>415 </p>
@@ -237,7 +237,6 @@ body.light .project-overview h2 { color: maroon; }
       <a href="vasavi_port.html" target="_blank">View Portfolio</a>
     </div>
 
-    <!-- Card 3 -->
     <div class="portfolio-card">
       <h3>Akshata Pawar</h3>
       <p><strong>Roll Number:</strong>434</p>
@@ -246,7 +245,6 @@ body.light .project-overview h2 { color: maroon; }
       <a href="akshata_port.html" target="_blank">View Portfolio</a>
     </div>
 
-    <!-- Card 4 -->
     <div class="portfolio-card">
       <h3>Isha Shet</h3>
       <p><strong>Roll Number:</strong>418 </p>
