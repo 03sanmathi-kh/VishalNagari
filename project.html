@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project – Vishalanagari</title>
   <link rel="stylesheet" href="style.css">
+
 <style>
     .github-btn {
       background: #333;      
@@ -15,27 +16,54 @@
       font-weight: bold;
       display: inline-block;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 0 10px rgba(192,192,192,0.6); /* always glowing */
+      box-shadow: 0 0 10px rgba(192,192,192,0.6); 
     }
 
     .github-btn:hover {
       box-shadow: 0 0 14px rgba(192,192,192,0.9);
-      transform: scale(1.03); /* gentle lift */
+      transform: scale(1.03);
     }
+
     .project-overview h2 {
-      font-size: 2.5em;   /* slightly bigger */
+      font-size: 2.5em;
       text-align: center;
       margin-bottom: 15px;
     }
 
     body.dark .project-overview h2 {
-      color: #ffcc00; /* bright golden/yellow for dark theme */
+      color: #ffcc00;
     }
 
     body.light .project-overview h2 {
-      color: maroon; /* dark maroon for light theme */
+      color: maroon;
     }
-  </style>
+
+    /* Info block styling */
+    .info-block {
+      background: rgba(255,255,255,0.07);
+      padding: 18px;
+      margin: 14px auto;
+      border-radius: 12px;
+      width: 85%;
+      backdrop-filter: blur(6px);
+      border-left: 4px solid #ffcc00;
+      line-height: 1.6;
+    }
+
+    body.light .info-block {
+      background: rgba(0,0,0,0.07);
+      border-left: 4px solid maroon;
+    }
+
+    .info-block strong {
+      color: #ffd966;
+    }
+
+    body.light .info-block strong {
+      color: maroon;
+    }
+</style>
+
 </head>
 
 <body class="dark">
@@ -67,6 +95,46 @@
   </p>
 </section>
 
+<!-- NEW CITY STATS SECTION -->
+<section class="project-overview">
+  <h2>City Statistics & Administrative Profile</h2>
+
+  <div class="info-block">
+    <strong>Location:</strong> Vidarbha region, between Amravati & Akola; Eastern Deccan Plateau.<br>
+    <strong>Geography:</strong> Total area 1500 sq. km; Purna River in NW supports agriculture.<br>
+    <strong>Specialty:</strong> India's leading cotton textile & export hub; ideal black soil.
+  </div>
+
+  <div class="info-block">
+    <strong>Population:</strong> 28 million (as of 2025)<br>
+    <strong>Density:</strong> 18,000 people/sq. km<br>
+    <strong>Gender Ratio (estimated):</strong> 51% male, 49% female
+  </div>
+
+  <div class="info-block">
+    <strong>Annual Budget:</strong> ₹18,000 crore (FY 2025)<br>
+    <strong>City Purpose:</strong> India’s capital of civic innovation and smart governance.
+  </div>
+
+  <div class="info-block">
+    <strong>Pincode Range:</strong> 446001 – 446150 <br>
+    <strong>Total Codes:</strong> approx. 150<br>
+    <strong>State Code:</strong> MH <br>
+    <strong>RTO Codes:</strong> 61 to 70 <br>
+    <strong>Vehicle Format:</strong> MH 61 AB 1234
+  </div>
+
+  <div class="info-block">
+    <strong>Average AQI:</strong> 130 (citywide)<br>
+    <strong>Industrial Sector:</strong> 225<br>
+    <strong>Residential Area:</strong> 101<br>
+    <strong>Forest / Green Zone:</strong> 45<br>
+    <strong>Agricultural Land:</strong> 89<br>
+    <strong>Airport Zone:</strong> 170<br>
+    <strong>Transport Region:</strong> 198
+  </div>
+</section>
+
 <section class="project-overview">
   <h2>PHASE 1 - Design of City</h2>
   <img src="Image1.jpg" alt="City Design">
@@ -77,8 +145,11 @@
 function toggleTheme() {
   document.body.classList.toggle("light");
   const btn = document.getElementById("toggleBtn");
-  btn.textContent = document.body.classList.contains("light") ? "Switch to Dark Mode" : "Switch to Light Mode";
+  btn.textContent = document.body.classList.contains("light")
+    ? "Switch to Dark Mode"
+    : "Switch to Light Mode";
 }
 </script>
+
 </body>
 </html>
