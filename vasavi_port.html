@@ -5,100 +5,61 @@
   <title>Vasavi – Commerce & Government Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { 
-      margin:0; 
-      font-family:'Segoe UI',sans-serif; 
-      transition: background 0.3s,color 0.3s; 
-      position: relative; 
-      min-height: 100vh; 
-      overflow-x: hidden; 
-    }
-    body.dark { background:#0a0a0a; color:#fff;}
-    body.light { background:#f5f5f5; color:#222;} /* contrasting text */
+    body { margin:0; font-family:'Segoe UI',sans-serif; transition: background 0.3s,color 0.3s; position: relative; min-height: 100vh; overflow-x: hidden; }
+    body.dark { background:#0a0a0a; color:#fff; }
+    body.light { background:#f5f5f5; color:#222; }
 
-    /* Wave background */
     .wave-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
     .wave { position:absolute; width:200%; height:200%; opacity:0.5; animation:waveMove 25s linear infinite; }
     .wave1 { fill:#f39c12; animation-duration:30s; }
     .wave2 { fill:#e67e22; animation-duration:35s; }
     .wave3 { fill:#f1c40f; animation-duration:40s; }
-
     body.light .wave1 { fill:#fce5b6; }
     body.light .wave2 { fill:#f9d776; }
     body.light .wave3 { fill:#f7f1a5; }
 
-    @keyframes waveMove {
-      0% { transform: translateX(0) translateY(0) rotate(0deg); }
-      50% { transform: translateX(10%) translateY(5%) rotate(2deg); }
-      100% { transform: translateX(0) translateY(0) rotate(0deg); }
-    }
+    @keyframes waveMove { 0% { transform: translateX(0) translateY(0) rotate(0deg); } 50% { transform: translateX(10%) translateY(5%) rotate(2deg); } 100% { transform: translateX(0) translateY(0) rotate(0deg); } }
 
-    header { text-align:center; padding:40px 20px; position: relative; }
+    header { text-align:center; padding:40px 20px; }
     header h1 { font-size:42px; font-weight:900; color:#f39c12; }
     header h3 { font-size:22px; font-weight:600; color:#e67e22; }
     header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; }
 
-    /* Buttons */
-    .theme-toggle { 
-      position: fixed; top:20px; right:20px;
-      padding:10px 20px; border:none; border-radius:25px; cursor:pointer; font-size:14px; font-weight:600; background:#3498db; color:#fff; 
-      z-index: 10;
-    }
-    .theme-toggle:hover { background:#2980b9; }
-
-    .home-button { 
-      position: fixed; top:20px; left:20px;
-      padding:10px 20px; border:none; border-radius:25px; cursor:pointer; font-size:14px; font-weight:600; background:#27ae60; color:#fff; 
-      z-index: 10;
-    }
-    .home-button:hover { background:#1e8449; }
+    .theme-toggle { position: fixed; top:20px; right:20px; padding:10px 20px; border:none; border-radius:25px; cursor:pointer; font-size:14px; font-weight:600; background:#3498db; color:#fff; z-index: 10; }
+    .home-button { position: fixed; top:20px; left:20px; padding:10px 20px; border:none; border-radius:25px; cursor:pointer; font-size:14px; font-weight:600; background:#27ae60; color:#fff; z-index: 10; }
 
     .bubble-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:30px; }
-    .bubble { width:120px; height:120px; border-radius:50%; 
-      display:flex; align-items:center; justify-content:center; cursor:pointer;
-      color:#fff; font-weight:600; transition:transform 0.3s ease, background 0.3s ease; text-align:center; padding:10px; }
+    .bubble { width:120px; height:120px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#fff; font-weight:600; transition:transform 0.3s ease, background 0.3s ease; text-align:center; padding:10px; }
     .bubble:hover { transform:scale(1.1); }
 
-    /* Bubble colors */
-    .budget { background:#e74c3c; }
+    /* Updated for brown color */
+    .housing { background:brown; }
+
     .tax { background:#3498db; }
     .loan { background:#f1c40f; color:#222; }
     .resource { background:#2ecc71; }
     .optimization { background:#9b59b6; }
+    .forecast { background:#1abc9c; }
+    .supply { background:#8e44ad; }
 
-    /* Module content tinted with same bubble color */
-    #m1 { background: rgba(231,76,60,0.2); }
+    #m1 { background: rgba(165, 42, 42, 0.2); }
     #m2 { background: rgba(52,152,219,0.2); }
     #m3 { background: rgba(241,196,15,0.2); }
     #m4 { background: rgba(46,204,113,0.2); }
     #m5 { background: rgba(155,89,182,0.2); }
+    #m6 { background: rgba(26,188,156,0.2); }
+    #m7 { background: rgba(142,68,173,0.2); }
+   
 
-    .module-content { display:none; margin:20px auto; padding:20px;
-      border-radius:15px; max-width:900px; transition: background 0.3s, color 0.3s; }
-    .module-content h2 { font-size:24px; }
-    .module-content p { font-size:16px; line-height:1.6; }
-    pre { background:rgba(0,0,0,0.1); padding:15px; border-radius:10px;
-      overflow-x:auto; font-size:14px; text-align:left; transition: background 0.3s,color 0.3s;}
-    body.dark pre { background:rgba(255,255,255,0.08); color:#fff; }
-    body.light pre { background: rgba(0,0,0,0.08); color:#222; }
-
-    section.conclusion { margin:40px auto; max-width:900px; padding:20px; background:rgba(0,0,0,0.06); border-radius:15px; transition: background 0.3s,color 0.3s;}
-    body.dark section.conclusion { background: rgba(0,0,0,0.3); color:#fff; }
-    body.light section.conclusion { background: rgba(255,255,255,0.8); color:#222; }
+    .module-content { display:none; margin:20px auto; padding:20px; border-radius:15px; max-width:900px; }
   </style>
 </head>
 <body class="dark">
 
 <div class="wave-bg">
-  <svg class="wave wave1" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path>
-  </svg>
-  <svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path>
-  </svg>
-  <svg class="wave wave3" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path>
-  </svg>
+  <svg class="wave wave1" viewBox="0 0 1440 320"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
+  <svg class="wave wave2" viewBox="0 0 1440 320"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
+  <svg class="wave wave3" viewBox="0 0 1440 320"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
 </div>
 
 <button class="home-button" onclick="goHome()">🏠 Home</button>
@@ -107,20 +68,24 @@
 <header>
   <h1>Vasavi</h1>
   <h3>Commerce & Government – Vishalnagari</h3>
-  <p>
-    This domain focuses on <strong>budget allocation, taxation, loans, resource distribution, and process optimization in banks & government bodies</strong>.  
-    Algorithms like <strong>greedy allocation, dynamic programming, graph algorithms, linear programming, and heuristics</strong> power efficient governance and commerce management.
-  </p>
+  <p>This domain focuses on budget allocation, taxation, loans, resource distribution, and optimization.</p>
 </header>
 
 <div class="bubble-container">
-  <div class="bubble-container">
-  <div class="bubble housing" onclick="toggleModule('m1')">Smart Hosing Allocation</div>
+  <!-- 1 -->
+  <div class="bubble housing" onclick="toggleModule('m1')">Smart Housing Allocation</div>
+  <!-- 2 -->
   <div class="bubble tax" onclick="toggleModule('m2')">Tax Planning</div>
+  <!-- 3 -->
   <div class="bubble loan" onclick="toggleModule('m3')">Loan Distribution</div>
-  <div class="bubble resource" onclick="toggleModule('m4')">Gaming and Entertainment</div>
-  <div class="bubble optimization" onclick="toggleModule('m5')">E-Commerce Fulfillment</div>
-</div>
+  <!-- 4 -->
+  <div class="bubble resource" onclick="toggleModule('m4')">Gaming</div>
+  <!-- 5 -->
+  <div class="bubble optimization" onclick="toggleModule('m5')">E-Commerce</div>
+  <!-- 6 (Civic Data Analytics) -->
+  <div class="bubble" style="background:orange;" onclick="toggleModule('m6')">Civic Data Analytics</div>
+  <!-- 7 (Population) -->
+  <div class="bubble" style="background:#0080ff;" onclick="toggleModule('m7')">Population</div>
 </div>
 
 <!-- Module content examples -->
@@ -184,6 +149,7 @@ int maxLoanProfit(int W, vector<int>& loans, vector<int>& returns, int n){
 }
   </pre>
 </div>
+
 <!-- MODULE 4: Gaming & Entertainment Allocation -->
 <div id="m4" class="module-content">
   <h2>Gaming & Entertainment Allocation</h2>
@@ -208,7 +174,7 @@ if (available > 0) allocateSeat(userBooking, available);
 cout << "Entertainment booking confirmed!";
   </pre>
 
-  <p><strong>Conclusion:</strong><br>
+  <p><strong>✅Conclusion:</strong><br>
   This approach ensures fair seat allocation across zones and price ranges.<br>
   Vishalnagari can deliver smooth entertainment experiences while optimizing server and seating resources.</p>
 </div>
@@ -240,7 +206,67 @@ for each batch in orders {
 deliverBatches(path);                        // send picked orders for delivery
   </pre>
 
-  <p><strong>Conclusion:</strong> Optimized order fulfillment reduces delivery times, lowers costs, and improves customer experience in e-commerce.</p>
+  <p><strong>✅Conclusion:</strong> Optimized order fulfillment reduces delivery times, lowers costs, and improves customer experience in e-commerce.</p>
+</div>
+
+<!-- MODULE 6: Civic Data Analytics -->
+<div id="m6" class="module-content">
+  <h2>Civic Data Analytics</h2>
+
+  <p><strong>Business Problem:</strong><br>
+  Vishalnagari needs to efficiently analyze civic data such as health and transport.<br>
+  Without optimized querying, large datasets become slow to process and insights are delayed.<br>
+  A smart analytics system ensures fast range queries and scalable preprocessing.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Sparse Table for efficient range queries on static civic data.<br>
+  - Preprocessing with Merge Sort / Heap Sort for scalable data organization.<br>
+  📊 Efficiency: Sorting O(n log n), Sparse Table build O(n log n), query O(1).</p>
+
+  <pre>
+  // Civic Data Analytics for Vishalnagari
+  vector<int> civicData = loadData(); 
+  mergeSort(civicData); // or heapSort(civicData)
+  buildSparseTable(civicData);
+  int l = 1, r = 5; // query range
+  int result = rangeQuery(l, r);
+  cout << "Analytics Result: " << result;
+  </pre>
+
+  <p><strong>✅Conclusion:</strong><br>
+  This approach enables instant range queries on civic datasets.<br>
+  Vishalnagari can deliver timely insights across health and transport sectors,<br>
+  ensuring data-driven decisions and efficient civic resource management.</p>
+</div>
+
+<!-- MODULE 7: Population Analytics -->
+<div id="m7" class="module-content">
+  <h2>Population Analytics</h2>
+
+  <p><strong>Business Problem:</strong><br>
+  Vishalnagari needs efficient analysis of population data — age groups, density, and growth trends.<br>
+  Without optimized querying, demographic insights become slow and unreliable.<br>
+  A smart analytics system ensures fast range queries and scalable preprocessing for large datasets.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Sparse Table for efficient range queries on static population data.<br>
+  - Preprocessing with Merge Sort / Heap Sort for scalable organization of demographic records.<br>
+  📊 Efficiency: Sorting O(n log n), Sparse Table build O(n log n), query O(1).</p>
+
+  <pre>
+  // Population Analytics for Vishalnagari
+  vector<int> populationData = loadPopulation(); 
+  mergeSort(populationData); // or heapSort(populationData)
+  buildSparseTable(populationData);
+  int l = 2, r = 8; // query range (e.g., age groups or districts)
+  int result = rangeQuery(l, r);
+  cout << "Population Analysis Result: " << result;
+  </pre>
+
+  <p><strong>✅Conclusion:</strong><br>
+  This approach enables instant demographic queries across age groups, districts, or density ranges.<br>
+  Vishalnagari can deliver accurate population insights,<br>
+  supporting urban planning, healthcare, and resource allocation.</p>
 </div>
 
 <script>
@@ -266,5 +292,6 @@ function goHome() {
   window.location.href = "index.html";
 }
 </script>
+
 </body>
 </html>
