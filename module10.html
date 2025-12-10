@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 10 – Smart Seasonal Vacation Recommendation System</title>
+
+  <style>
+    /* =========================== */
+    /* THEME SETTINGS */
+    /* =========================== */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light {
+      background: #f5faff; /* almost white */
+      color: #002244;
+    }
+
+    body.dark {
+      background: #00111f; /* deep navy */
+      color: white;
+    }
+
+    /* =========================== */
+    /* CARD DESIGN */
+    /* =========================== */
+    .module-card {
+      width: 85%;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 18px;
+      background: #e7f5ff; /* very light sky blue */
+      transition: 0.3s;
+      box-shadow: 0 0 10px rgba(180, 180, 180, 0.3);
+    }
+
+    body.dark .module-card {
+      background: #0a2d45; /* deep sky-blue shade */
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(220, 220, 220, 0.25);
+    }
+
+    .module-card:hover {
+      box-shadow: 0 0 15px silver;
+      transform: scale(1.01);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #005b99;
+    }
+
+    body.dark h2 {
+      color: #9cd4ff;
+    }
+
+    .section-title {
+      margin-top: 25px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #004b78;
+    }
+
+    body.dark .section-title {
+      color: #bfe6ff;
+    }
+
+    .cpp-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #4da9ff;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: 0.3s;
+      margin-top: 18px;
+    }
+
+    .cpp-btn:hover {
+      background: #6bbcff;
+      box-shadow: 0 0 12px silver;
+    }
+
+    /* Button Row */
+    .button-row {
+      margin-top: 15px;
+    }
+
+    /* Toggle Theme Button */
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: #1e90ff;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: #4da9ff;
+      box-shadow: 0 0 10px silver;
+    }
+  </style>
+</head>
+
+<body class="light">
+
+  <div class="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
+
+  <div class="module-card">
+
+    <!-- =========================== -->
+    <!-- PROBLEM STATEMENT -->
+    <!-- =========================== -->
+    <h2>Smart Seasonal Vacation Recommendation System</h2>
+
+    <p>
+      Vishal Nagri aims to help citizens identify the perfect time to visit recreational spots
+      by analysing weekday–weekend patterns, festival seasons, vacation months and New Year surges.
+      The goal is to build a system that predicts crowd behaviour, adjusts for seasonal peaks,
+      and suggests the most peaceful and optimal visiting windows. By bringing structured
+      intelligence into natural crowd fluctuations, the system ensures that citizens enjoy
+      smoother travel, reduced waiting time, and a better overall holiday experience.
+    </p>
+
+    <!-- =========================== -->
+    <!-- ALGORITHMS USED -->
+    <!-- =========================== -->
+    <div class="section-title">Algorithms Used</div>
+
+    <p><strong>Array Query (Range Query / Prefix-Sum Based Analysis):</strong>
+      Helps analyse crowd intensity over days, weeks and festival ranges by quickly extracting sums,
+      peaks or averages from preprocessed arrays. Supports fast seasonal pattern evaluation.
+    </p>
+
+    <p><strong>Segment Tree:</strong>
+      Efficiently handles range updates and queries for crowd intensity, allowing dynamic adjustment
+      for changes in visitor patterns or sudden seasonal peaks.
+    </p>
+
+    <p><strong>Skip List:</strong>
+      Maintains chronologically sorted visitor records with fast insertion and lookup,
+      enabling smooth updates when new crowd data arrives dynamically.
+    </p>
+
+    <!-- =========================== -->
+    <!-- ALGORITHM EFFICIENCY -->
+    <!-- =========================== -->
+    <div class="section-title">Algorithm Efficiency</div>
+
+    <p><strong>Array Query:</strong>
+      Preprocessing: O(n), Query: O(1) using prefix sums.
+    </p>
+
+    <p><strong>Segment Tree:</strong>
+      Build: O(n), Query/Update: O(log n).
+    </p>
+
+    <p><strong>Skip List:</strong>
+      Average Insert/Search: O(log n).
+    </p>
+
+    <!-- =========================== -->
+    <!-- DESIGN TECHNIQUES -->
+    <!-- =========================== -->
+    <div class="section-title">Design Techniques Used</div>
+
+    <p><strong>Sliding Window:</strong>
+      Helps evaluate crowd levels over continuous day ranges, enabling recommendation of least crowded slots efficiently.
+    </p>
+
+    <p><strong>Pattern Recognition:</strong>
+      Identifies repeating festival trends, weekend surges and monthly vacation cycles to predict future crowd behaviour.
+    </p>
+
+    <p><strong>Pre-Computing:</strong>
+      Uses prefix arrays and preprocessed structures to answer queries instantly without recomputing every time.
+    </p>
+
+    <!-- =========================== -->
+    <!-- SDGs -->
+    <!-- =========================== -->
+    <div class="section-title">Related SDGs</div>
+
+    <p>
+      <strong>SDG 11 – Sustainable Cities & Communities:</strong>
+      Improves citizen well-being through planned travel and reduced congestion.
+      <br><br>
+      <strong>SDG 8 – Decent Work & Economic Growth:</strong>
+      Supports local tourism by helping distribute visitors more evenly across seasons.
+    </p>
+
+    <!-- =========================== -->
+    <!-- C++ IMPLEMENTATION -->
+    <!-- =========================== -->
+    <div class="section-title" style="font-size: 1.45rem;">C++ Implementation</div>
+
+    <p>
+      A combined C++ implementation is prepared using Array Query, Segment Tree, and Skip List.
+      Together, they analyse time-based patterns, retrieve festival or location labels instantly,
+      manage dynamic chronological logs, and keep vacation categories uniformly balanced.
+      This unified structure delivers a complete, efficient recommendation engine for seasonal travel prediction.
+    </p>
+
+    <div class="button-row">
+      <a class="cpp-btn" href="#" target="_blank">View Combined C++ Code</a>
+    </div>
+
+    <pre style="background:#0a2d45; color:#bfe6ff; padding:15px; border-radius:10px; overflow:auto;">
+// Combined C++ Implementation: Array Query + Segment Tree + Skip List
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+#include &lt;cstdlib&gt;
+#include &lt;ctime&gt;
+
+using namespace std;
+
+// ---------------- Array Query ----------------
+class ArrayQuery {
+    vector&lt;int&gt; prefix;
+public:
+    ArrayQuery(const vector&lt;int&gt;&amp; data) {
+        prefix.resize(data.size()+1,0);
+        for(int i=0;i&lt;data.size();i++) prefix[i+1]=prefix[i]+data[i];
+    }
+    int rangeSum(int l, int r){ return prefix[r+1]-prefix[l]; }
+};
+
+// ---------------- Segment Tree ----------------
+class SegmentTree {
+    vector&lt;int&gt; tree;
+    int n;
+    void build(const vector&lt;int&gt;&amp; data, int v, int tl, int tr){
+        if(tl==tr) tree[v]=data[tl];
+        else{
+            int tm=(tl+tr)/2;
+            build(data,2*v,tl,tm);
+            build(data,2*v+1,tm+1,tr);
+            tree[v]=tree[2*v]+tree[2*v+1];
+        }
+    }
+    int query(int v,int tl,int tr,int l,int r){
+        if(l&gt;r) return 0;
+        if(l==tl &amp;&amp; r==tr) return tree[v];
+        int tm=(tl+tr)/2;
+        return query(2*v,tl,tm,l,min(r,tm)) + query(2*v+1,tm+1,tr,max(l,tm+1),r);
+    }
+public:
+    SegmentTree(const vector&lt;int&gt;&amp; data){ n=data.size(); tree.resize(4*n); build(data,1,0,n-1); }
+    int rangeSum(int l,int r){ return query(1,0,n-1,l,r); }
+};
+
+// ---------------- Skip List Node ----------------
+struct SkipListNode {
+    int key;
+    string value;
+    vector&lt;SkipListNode*&gt; forward;
+    SkipListNode(int k,string v,int level): key(k), value(v), forward(level+1,nullptr){}
+};
+
+// ---------------- Skip List ----------------
+class SkipList {
+    int maxLevel;
+    float p;
+    SkipListNode *header;
+public:
+    SkipList(int maxL=6,float probability=0.5){
+        maxLevel=maxL; p=probability;
+        header=new SkipListNode(-1,"",maxLevel);
+        srand(time(NULL));
+    }
+    int randomLevel(){
+        int lvl=0;
+        while((float)rand()/RAND_MAX &lt; p &amp;&amp; lvl &lt; maxLevel) lvl++;
+        return lvl;
+    }
+    void insert(int key,string value){
+        vector&lt;SkipListNode*&gt; update(maxLevel+1);
+        SkipListNode* x=header;
+        for(int i=maxLevel;i&gt;=0;i--){
+            while(x-&gt;forward[i]!=nullptr &amp;&amp; x-&gt;forward[i]-&gt;key&lt;key) x=x-&gt;forward[i];
+            update[i]=x;
+        }
+        x=x-&gt;forward[0];
+        if(x==nullptr || x-&gt;key!=key){
+            int lvl=randomLevel();
+            x=new SkipListNode(key,value,lvl);
+            for(int i=0;i&lt;=lvl;i++){
+                x-&gt;forward[i]=update[i]-&gt;forward[i];
+                update[i]-&gt;forward[i]=x;
+            }
+        }
+    }
+    string search(int key){
+        SkipListNode* x=header;
+        for(int i=maxLevel;i&gt;=0;i--){
+            while(x-&gt;forward[i]!=nullptr &amp;&amp; x-&gt;forward[i]-&gt;key&lt;key) x=x-&gt;forward[i];
+        }
+        x=x-&gt;forward[0];
+        if(x!=nullptr &amp;&amp; x-&gt;key==key) return x-&gt;value;
+        return "";
+    }
+};
+
+int main(){
+    vector&lt;int&gt; crowdData={5,10,7,12,6,8,15};
+    ArrayQuery aq(crowdData);
+    SegmentTree st(crowdData);
+    SkipList sl;
+    sl.insert(0,"New Year");
+    sl.insert(3,"Festival");
+    cout &lt;&lt; "ArrayQuery Sum 1-4: " &lt;&lt; aq.rangeSum(1,4) &lt;&lt; endl;
+    cout &lt;&lt; "SegmentTree Sum 1-4: " &lt;&lt; st.rangeSum(1,4) &lt;&lt; endl;
+    cout &lt;&lt; "SkipList key 3: " &lt;&lt; sl.search(3) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      if (body.classList.contains("light")) {
+        body.classList.remove("light");
+        body.classList.add("dark");
+      } else {
+        body.classList.remove("dark");
+        body.classList.add("light");
+      }
+    }
+  </script>
+
+</body>
+</html>
