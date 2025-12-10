@@ -6,26 +6,36 @@
   <title>Project – Vishalanagari</title>
   <link rel="stylesheet" href="style.css">
 
-<style>
+  <style>
 /* ----- CARD STYLING ----- */
-.info-card {
+.info-card, .portfolio-card {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(8px);
   padding: 18px 22px;
   border-radius: 14px;
   margin: 16px auto;
-  width: 78%;
-  border: 1px solid rgba(255,255,255,0.25);
   transition: transform 0.3s ease, box-shadow 0.35s ease;
+  border: 1px solid rgba(255,255,255,0.25);
 }
 
 /* Glow when touched (hover) */
-.info-card:hover {
+.info-card:hover, .portfolio-card:hover {
   transform: scale(1.015);
-  box-shadow: 0 0 14px rgba(255,255,255,0.45);
+  box-shadow: 0 0 14px rgba(135,206,250,0.6); /* sky-blue glow */
 }
 
-/* GitHub button unchanged */
+/* Portfolio cards specific */
+.portfolio-card {
+  width: 22%; /* four cards side by side */
+  min-width: 200px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px 1%;
+  text-align: center;
+  padding: 20px;
+}
+
+/* GitHub button (for portfolio) */
 .github-btn {
   background: #333;
   color: white;
@@ -37,7 +47,6 @@
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   box-shadow: 0 0 10px rgba(192,192,192,0.6);
 }
-
 .github-btn:hover {
   box-shadow: 0 0 14px rgba(192,192,192,0.9);
   transform: scale(1.03);
@@ -49,16 +58,34 @@
   text-align: center;
   margin-bottom: 15px;
 }
+body.dark .project-overview h2 { color: #ffcc00; }
+body.light .project-overview h2 { color: maroon; }
 
-body.dark .project-overview h2 {
-  color: #ffcc00;
+/* Portfolio card buttons */
+.portfolio-btn {
+  background-color: #004d99;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.portfolio-btn:hover {
+  background-color: #0066cc;
 }
 
-body.light .project-overview h2 {
-  color: maroon;
+/* Responsive for portfolio cards */
+@media (max-width: 900px) {
+  .portfolio-card { width: 45%; margin: 2.5%; }
 }
+@media (max-width: 600px) {
+  .portfolio-card { width: 90%; margin: 5% auto; }
+}
+
 </style>
-
 </head>
 
 <body class="dark">
@@ -85,14 +112,12 @@ body.light .project-overview h2 {
 <section class="project-overview">
   <h2>Our Vision</h2>
   <p class="city-motto"><strong>Designing Tomorrow, One Algorithm at a Time</strong></p>
-
   <p class="city-text">
-    Vishalanagari, located in Maharashtra’s Vidarbha region between Amravati and Akola, is a next-generation smart city built on the fertile lands of the Deccan Plateau. The Purna River supports rich agriculture, making the region India’s premier cotton-growing and textile hub with major export networks. Designed for 28 million people with a density of 18,000/km², the city operates on an annual budget of ₹18,000 crore and is recognized nationwide as India’s capital of civic innovation. Within city limits, 100% electric vehicles ensure zero-emission transport, while smart algorithms manage traffic, agriculture, industries, commercial hubs, governance systems, and sustainability operations — forming a balanced and efficient urban ecosystem. <br><strong>Strong roots, smart shoots.</strong>
+    Vishalanagari, located in Maharashtra’s Vidarbha region between Amravati and Akola, is a next-generation smart city built on the fertile lands of the Deccan Plateau. The Purna River supports rich agriculture, making the region India’s premier cotton-growing and textile hub with major export networks. This is the most unique and the only city with 100% electric vehicles within the city-range ( ensuring zero-emission transport), while manufacturing the needed electric vehicles itself. The smart algorithms manage traffic, agriculture, industries, commercial hubs, governance systems, and sustainability operations — forming a balanced and efficient urban ecosystem. <br><strong>Strong roots, smart shoots.</strong>
   </p>
 </section>
 
 <!-- ===================== NEW INFORMATION CARDS ===================== -->
-
 <section class="project-overview">
   <h2>City Statistical Overview</h2>
 
@@ -134,15 +159,57 @@ body.light .project-overview h2 {
     <p><strong>Series Code:</strong> Any 2 English letters</p>
     <p><strong>Vehicle Format Example:</strong> MH 61 AB 1234</p>
   </div>
-
 </section>
-
 
 <section class="project-overview">
   <h2>PHASE 1 - Design of City :</h2>
-<h3 class="sub-phase">This stage focuses on mapping the city’s core framework — zoning, mobility networks, green corridors, and resource grids — to ensure long-term scalability</h3>
+  <h3 class="sub-phase">This stage focuses on mapping the city’s core framework — zoning, mobility networks, green corridors, and resource grids — to ensure long-term scalability</h3>
   <img src="Image1.jpg" alt="City Design">
   <img src="Image2.jpg" alt="City Design">
+</section>
+
+<!-- ===================== PHASE 2 - Portfolio Creation ===================== -->
+<section class="project-overview">
+  <h2>PHASE 2 - Portfolio Creation</h2>
+  <p style="text-align:center;">Below are the four key team members’ portfolio cards. Click “View Portfolio” to explore individual contributions.</p>
+
+  <div style="text-align:center;">
+    <!-- Card 1 -->
+    <div class="portfolio-card">
+      <h3>Sanmathi</h3>
+      <p><strong>Roll Number:</strong> </p>
+      <p><strong>USN:</strong> </p>
+      <p style="min-height:60px;"> <!-- Space for text description --> </p>
+      <button class="portfolio-btn" onclick="window.open('#','_blank')">View Portfolio</button>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="portfolio-card">
+      <h3>Vasavi</h3>
+      <p><strong>Roll Number:</strong> </p>
+      <p><strong>USN:</strong> </p>
+      <p style="min-height:60px;"> <!-- Space for text description --> </p>
+      <button class="portfolio-btn" onclick="window.open('#','_blank')">View Portfolio</button>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="portfolio-card">
+      <h3>Akshata</h3>
+      <p><strong>Roll Number:</strong> </p>
+      <p><strong>USN:</strong> </p>
+      <p style="min-height:60px;"> <!-- Space for text description --> </p>
+      <button class="portfolio-btn" onclick="window.open('#','_blank')">View Portfolio</button>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="portfolio-card">
+      <h3>Isha</h3>
+      <p><strong>Roll Number:</strong> </p>
+      <p><strong>USN:</strong> </p>
+      <p style="min-height:60px;"> <!-- Space for text description --> </p>
+      <button class="portfolio-btn" onclick="window.open('#','_blank')">View Portfolio</button>
+    </div>
+  </div>
 </section>
 
 <script>
