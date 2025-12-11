@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collaboration – Vishalanagari Project</title>
+
+  <!-- Cartoon handwriting font -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Patrick Hand", cursive;
+      background-color: #001f3f;
+      color: black;
+      padding-bottom: 40px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.3);
+      border: 2px solid rgba(255,255,255,0.6);
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      z-index: 2000;
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.5); }
+
+    /* Lavender box */
+    .lav-box {
+      width: 85%;
+      margin: 70px auto;
+      padding: 40px;
+      border-radius: 25px;
+      background: #f3e8ff;
+      box-shadow: 0 0 25px rgba(230,200,255,0.7);
+      border: 3px solid rgba(255,255,255,0.4);
+    }
+
+    .lav-title { font-size: 2rem; text-align:center; }
+
+    .lav-img-space {
+      width: 100%;
+      height: 240px;
+      border-radius: 20px;
+      border: 3px dashed rgba(255,255,255,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
+      margin-top: 25px;
+    }
+
+    /* Tiny icon image */
+    .lav-img {
+      max-width: 18%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    h2 { text-align:center; font-size:2rem; margin-top:45px; margin-bottom:10px; }
+
+    p { width:75%; margin:12px auto; font-size:1.25rem; line-height:2rem; }
+
+    .button-row {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .cpp-btn { 
+      padding:14px 22px; 
+      background:#643fcd; 
+      border-radius:12px; 
+      color:white; 
+      font-size:1.1rem; 
+      border:none; 
+      cursor:pointer; 
+      transition:0.3s; 
+      font-family:"Patrick Hand", cursive; 
+      text-decoration:none;
+    }
+    .cpp-btn:hover { background:#7a57e5; }
+  </style>
+</head>
+
+<body>
+
+  <button class="back-btn" onclick="window.location.href='collbs.html'">Back</button>
+
+  <div class="lav-box">
+    <div class="lav-title">Sanmathi & Isha – Eco-Tourism x Eco-Innovation</div>
+
+    <div class="lav-img-space">
+      <img src="cotton.png" alt="Project Image" class="lav-img">
+    </div>
+
+    <h2>Focus Areas</h2>
+    <p>
+      • This collaboration blends my domain – Industries, Infrastructure & Tourism – 
+      with Isha’s focus area of Agriculture & Eco-Innovation to design a sustainable 
+      eco-tourism engine for our smart city Vishalanagari.
+    </p>
+
+    <h2>Project Goal / Problem Statement</h2>
+    <p><strong>Eco-Tourism Route Balancing using Searching & Sorting Algorithms</strong></p>
+
+    <p>
+      Vishalanagari’s tourism routes pass through biodiverse agricultural belts, 
+      innovation farms, spice valleys, and bio-parks. During peak visitor seasons, 
+      excess tourist movement disturbs soil-healing beds, pollinator pathways, and 
+      eco-innovation test zones.  
+    </p>
+    
+    <p>
+      The city needs a system that <b>sorts all eco-corridors by environmental load</b> 
+      and <b>searches the safest available route</b> for each tourist batch—ensuring 
+      minimal ecological impact while maintaining tourism flow.
+    </p>
+
+    <p>
+      Input: A list of eco-corridors, each marked with a live “eco-strain score” 
+      (soil stress, visitor density, noise footprint, and habitat sensitivity).  
+      Output: A dynamically assigned route that keeps strain under safe thresholds by 
+      sorting zones by sensitivity and searching the next viable corridor.
+    </p>
+
+    <h2>Algorithms Used</h2>
+    <p>• <b>Merge Sort</b> – Sort eco-corridors by environmental strain (low → high)</p>
+    <p>• <b>Quick Sort</b> – Fast re-ranking of tourist batches by disturbance level</p>
+    <p>• <b>Binary Search</b> – Find the first route with strain below safety threshold</p>
+    <p>• <b>Linear Search</b> – Scan for emergency overload zones</p>
+
+    <h2>Efficiency of Each Algorithm</h2>
+    <p><b>Merge Sort:</b> Time – O(n log n), Space – O(n) — stable ordering</p>
+    <p><b>Quick Sort:</b> Time – O(n log n) average, O(n²) worst-case — very fast in practice</p>
+    <p><b>Binary Search:</b> Time – O(log n), Space – O(1) — efficient safe-route lookup</p>
+    <p><b>Linear Search:</b> Time – O(n), Space – O(1) — real-time hazard scanning</p>
+
+    <h2>SDG Alignment</h2>
+    <p>• SDG 9 – Innovation & Infrastructure (smart eco-routing)</p>
+    <p>• SDG 11 – Sustainable Cities (reduced ecological damage)</p>
+    <p>• SDG 12 – Responsible Consumption (controlled tourist load)</p>
+    <p>• SDG 13 – Climate Action (lower emissions & habitat protection)</p>
+
+    <h2>C++ Implementations</h2>
+
+    <div class="button-row">
+      <a href="YOUR_MERGESORT.CPP" target="_blank" class="cpp-btn">Merge Sort Code</a>
+      <a href="YOUR_QUICKSORT.CPP" target="_blank" class="cpp-btn">Quick Sort Code</a>
+      <a href="YOUR_BINARYSEARCH.CPP" target="_blank" class="cpp-btn">Binary Search Code</a>
+      <a href="YOUR_LINEARSEARCH.CPP" target="_blank" class="cpp-btn">Linear Search Code</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
 
