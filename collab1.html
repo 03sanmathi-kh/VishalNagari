@@ -46,41 +46,10 @@
 
     .lav-title { font-size: 2rem; text-align:center; }
 
-    .lav-img-space {
-      width: 100%;
-      height: 240px;
-      border-radius: 20px;
-      border: 3px dashed rgba(255,255,255,0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.3rem;
-      margin-top: 25px;
-    }
-
-    /* ⭐ New: Center both images + reduce cotton.png size */
-    .lav-img {
-      max-width: 60%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
-    /* ⭐ New: Make cotton.png VERY small */
-    .cotton-small {
-      max-width: 20% !important;
-    }
-
     h2 { text-align:center; font-size:2rem; margin-top:45px; margin-bottom:10px; }
 
     p { width:75%; margin:12px auto; font-size:1.25rem; line-height:2rem; }
 
-    .button-container { width:80%; margin:30px auto; display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
-
-    .cpp-btn { padding:14px 22px; background:#643fcd; border-radius:12px; color:white; font-size:1.1rem; border:none; cursor:pointer; transition:0.3s; font-family:"Patrick Hand", cursive; }
-    .cpp-btn:hover { background:#7a57e5; }
-
-    /* ⭐ New: Add spacing & proper alignment to C++ buttons */
     .button-row {
       width: 100%;
       display: flex;
@@ -89,20 +58,32 @@
       gap: 18px;
       margin-top: 20px;
     }
+
+    .cpp-btn { 
+      padding:14px 22px; 
+      background:#643fcd; 
+      border-radius:12px; 
+      color:white; 
+      font-size:1.1rem; 
+      border:none; 
+      cursor:pointer; 
+      transition:0.3s; 
+      font-family:"Patrick Hand", cursive; 
+      text-decoration:none;
+    }
+    .cpp-btn:hover { background:#7a57e5; }
   </style>
 </head>
 
 <body>
 
-  <button class="back-btn" onclick="window.location.href='collbs.html'">Back</button>
+  <!-- UPDATED BACK BUTTON -->
+  <button class="back-btn" onclick="window.location.href='collabS.html'">Back</button>
 
   <div class="lav-box">
     <div class="lav-title">Hey there!! Sanmathi & Akshata Collaborating!!</div>
 
- <div class="lav-img-space">
-    <img src="cotton.png" alt="Project Image" class="lav-img cotton-small">
-</div>
-
+    <!-- IMAGE SECTION REMOVED COMPLETELY -->
 
     <h2>Focus Areas</h2>
     <p>• Collaboration connects my focus on sector Industries, Infrastructure & Logistics Optimization with my partner Akshata's focus in the field of Traffic & Transport analysis.</p>
@@ -171,11 +152,7 @@
       </a>
     </div>
       
-    </div>
-
   </div>
-
-  
 
 </body>
 </html>
