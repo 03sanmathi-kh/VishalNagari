@@ -12,7 +12,7 @@
     body {
       margin: 0;
       font-family: "Patrick Hand", cursive;
-      background-color: #001f3f; /* Navy blue */
+      background-color: #001f3f;
       color: white;
       padding-bottom: 40px;
     }
@@ -31,35 +31,15 @@
       font-size: 1.1rem;
       z-index: 2000;
     }
-    .back-btn:hover {
-      background: rgba(255,255,255,0.5);
-    }
-
-    /* Navigation */
-    nav {
-      width: 100%;
-      text-align: center;
-      margin-top: 70px;
-    }
-    nav a {
-      margin: 0 18px;
-      text-decoration: none;
-      color: white;
-      font-size: 1.3rem;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-    nav a:hover {
-      opacity: 0.7;
-    }
+    .back-btn:hover { background: rgba(255,255,255,0.5); }
 
     /* Lavender animated box */
     .lav-box {
-      width: 75%;
-      margin: 50px auto 30px auto;
+      width: 85%;
+      margin: 70px auto;
       padding: 40px;
       border-radius: 25px;
-      animation: colorShift 3.5s linear infinite;
+      animation: colorShift 9s linear infinite;
       box-shadow: 0 0 25px rgba(230,200,255,0.7);
       border: 3px solid rgba(255,255,255,0.4);
     }
@@ -72,11 +52,7 @@
       100% { background: linear-gradient(135deg, #d8baff, #b48cff); }
     }
 
-    .lav-title {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 18px;
-    }
+    .lav-title { font-size: 2rem; text-align:center; }
 
     .lav-img-space {
       width: 100%;
@@ -90,132 +66,86 @@
       margin-top: 25px;
     }
 
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-top: 50px;
-      margin-bottom: 10px;
-    }
+    h2 { text-align:center; font-size:2rem; margin-top:45px; margin-bottom:10px; }
 
-    p {
-      width: 75%;
-      margin: 12px auto;
-      font-size: 1.25rem;
-      line-height: 2rem;
-    }
+    p { width:75%; margin:12px auto; font-size:1.25rem; line-height:2rem; }
 
-    /* Buttons for C++ files */
-    .button-container {
-      width: 80%;
-      margin: 30px auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
+    .button-container { width:80%; margin:30px auto; display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
 
-    .cpp-btn {
-      padding: 14px 22px;
-      background: #643fcd;
-      border-radius: 12px;
-      color: white;
-      font-size: 1.1rem;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-      font-family: "Patrick Hand", cursive;
-    }
-
-    .cpp-btn:hover {
-      background: #7a57e5;
-    }
+    .cpp-btn { padding:14px 22px; background:#643fcd; border-radius:12px; color:white; font-size:1.1rem; border:none; cursor:pointer; transition:0.3s; font-family:"Patrick Hand", cursive; }
+    .cpp-btn:hover { background:#7a57e5; }
   </style>
 </head>
 
 <body>
 
-  <!-- Back Button -->
   <button class="back-btn" onclick="window.location.href='collbs.html'">Back</button>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="collabz.html">Collabz</a>
-  </nav>
-
-  <!-- Lavender Box -->
   <div class="lav-box">
-    <div class="lav-title">Hey there!!Sanmathi & Akshata Collaborating!!</div>
+    <div class="lav-title">Hey there!! Sanmathi & Akshata Collaborating!!</div>
+
     <div class="lav-img-space">Image Space</div>
+
+    <h2>Focus Areas</h2>
+    <p>• Collaboration connects Industries, Infrastructure & Logistics Optimization with Traffic & Transport analysis.</p>
+
+    <h2>Project Goal / Problem Statement</h2>
+    <p><strong>Cotton Supply Chain Optimisation (Graph + Shortest Path + Min-Cost Flow)</strong></p>
+    <p>
+      Vishalanagri is India’s largest cotton textile hub. Cotton is grown in farms around the Purna river and transported
+      to 12 major ginning and textile clusters. Design the most cost-efficient and time-efficient transportation network
+      from farms → ginning mills → textile factories → export terminals.
+    </p>
+    <p>
+      <em>Input:</em> A road graph where edge-weights encode fuel cost, expected delays, congestion probabilities, and
+      seasonal blockages. <em>Output:</em> Optimised routing plan and flow assignment minimizing total transportation cost
+      while meeting delivery time constraints and capacity limits.
+    </p>
+    <p>
+      Approach: Model the network as a directed graph. Use single-source shortest path algorithms (Dijkstra or Bellman-Ford)
+      for route discovery and Min-Cost Max-Flow to assign cotton shipments across multiple routes under capacity and cost
+      constraints. Preprocess with all-pairs analyses (Floyd-Warshall) where required, and dynamically update edge weights
+      for real-time congestion or hazard updates.
+    </p>
+
+    <h2>Algorithms Used</h2>
+    <p>• Dijkstra – Minimum-cost single-source routing</p>
+    <p>• Bellman-Ford – Handles negative/hazard-adjusted weights</p>
+    <p>• Floyd-Warshall – All-pairs baseline mapping</p>
+    <p>• Min Cost Max Flow – Optimal distribution of cotton shipments</p>
+
+    <h2>Efficiency of Each Algorithm</h2>
+    <p>• <b>Dijkstra:</b> Time – O(V²) (dense) or O(E log V) with binary heap; Space – O(V)</p>
+    <p>• <b>Bellman-Ford:</b> Time – O(V × E); Space – O(V) — useful when negative adjustments exist</p>
+    <p>• <b>Floyd-Warshall:</b> Time – O(V³); Space – O(V²) — for dense all-pairs insights</p>
+    <p>• <b>Min Cost Max Flow:</b> Time – typically O(V × E²) depending on implementation (SPFA or Dijkstra potentials); Space – O(V + E)</p>
+
+    <div class="lav-img-space" style="margin-top:25px; width:90%; margin-left:auto; margin-right:auto;">Efficiency Flow Diagram</div>
+
+    <h2>Benefits</h2>
+    <p>• Smooth routing & reduced congestion</p>
+    <p>• Lower emissions through optimized paths</p>
+    <p>• Industry cost savings</p>
+    <p>• Stable cotton supply chain</p>
+
+    <h2>SDG Alignment</h2>
+    <p>• SDG 9 – Industry, Innovation & Infrastructure</p>
+    <p>• SDG 11 – Sustainable Cities</p>
+    <p>• SDG 12 – Efficient Resource Management</p>
+    <p>• SDG 13 – Climate Action</p>
+
+    <h2>C++ Implementations</h2>
+    <div class="button-container">
+      <button class="cpp-btn" onclick="alert('Dijkstra.cpp not linked yet')">Dijkstra.cpp</button>
+      <button class="cpp-btn" onclick="alert('BellmanFord.cpp not linked yet')">BellmanFord.cpp</button>
+      <button class="cpp-btn" onclick="alert('FloydWarshall.cpp not linked yet')">FloydWarshall.cpp</button>
+      <button class="cpp-btn" onclick="alert('MinCostMaxFlow.cpp not linked yet')">MinCostMaxFlow.cpp</button>
+      <button class="cpp-btn" onclick="alert('CompleteSolution.cpp not linked yet')">CompleteSolution.cpp</button>
+    </div>
+
   </div>
 
-  <!-- Focus Areas -->
-  <h2>Focus Areas</h2>
-  <p>• This collab begins with my focus on sectors - Industries, Infrastructure & Logistics Optimization with my partner Akshata's focus and study in sectors of Traffic & Transport</p>
   
-
-  <!-- Project Goal / Problem Statement SAME SECTION -->
-  <h2>Project Goal / Problem Statement</h2>
-  <p>
-    Vishalanagri experiences large fluctuations in daily movement — raw materials, cotton harvest trucks,
-    office commuters, festival crowds, weather disturbances, and emergency vehicles. These unpredictable
-    surges cause transport delays, uneven load distribution, and unstable supply chains.
-  </p>
-  <p>
-    During the cotton harvest season, trucks rush from farms to ginning mills. At the same time, factories
-    demand continuous raw cotton flow. Festival traffic increases, roads choke, and even warehouses overflow.
-    One disruption affects the entire chain — farms wait, mills slow down, factories pause production, and
-    ports miss shipment deadlines.
-  </p>
-  <p>
-    Our collaboration aims to create a predictive, stable, algorithm-driven model that can sense traffic load,
-    analyze congestion, choose alternate routes, and keep cotton & vehicle flow smooth at any hour.
-  </p>
-
-  <!-- Algorithms Used -->
-  <h2>Algorithms Used</h2>
-  <p>• Dijkstra – Minimum-cost routing</p>
-  <p>• Bellman-Ford – Negative weights & hazard adjustments</p>
-  <p>• Floyd-Warshall – All-pairs route optimization</p>
-  <p>• Min Cost Max Flow – Smart cotton distribution across routes</p>
-
-  <!-- Efficiency Section -->
-  <h2>Efficiency</h2>
-  <p>
-    The system reduces overall travel time, balances network load, and avoids bottlenecks by dynamically
-    switching routes when congestion spikes. Algorithms work together to ensure faster processing, fewer
-    delays, lower costs, and stable supply flow throughout the day.
-  </p>
-
-  <!-- Image Space After Efficiency -->
-  <div class="lav-img-space" style="margin-top:25px; width:75%; margin-left:auto; margin-right:auto;">
-    Efficiency Flow Diagram
-  </div>
-
-  <!-- Benefits -->
-  <h2>Benefits</h2>
-  <p>• Smooth transport & reduced congestion</p>
-  <p>• Lower emissions through optimized routing</p>
-  <p>• Cost savings for industries</p>
-  <p>• Stable cotton flow from farms to ports</p>
-
-  <!-- SDG Alignment -->
-  <h2>SDG Alignment</h2>
-  <p>• SDG 9 – Industry, Innovation & Infrastructure</p>
-  <p>• SDG 11 – Sustainable Cities</p>
-  <p>• SDG 12 – Efficient Resource Management</p>
-  <p>• SDG 13 – Climate Action</p>
-
-  <!-- C++ Buttons -->
-  <h2>C++ Implementations</h2>
-  <div class="button-container">
-    <button class="cpp-btn">Dijkstra.cpp</button>
-    <button class="cpp-btn">BellmanFord.cpp</button>
-    <button class="cpp-btn">FloydWarshall.cpp</button>
-    <button class="cpp-btn">MinCostMaxFlow.cpp</button>
-    <button class="cpp-btn">CompleteSolution.cpp</button>
-  </div>
 
 </body>
 </html>
