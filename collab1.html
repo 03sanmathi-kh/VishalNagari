@@ -39,17 +39,9 @@
       margin: 70px auto;
       padding: 40px;
       border-radius: 25px;
-      animation: colorShift 9s linear infinite;
+      background: #f3e8ff;
       box-shadow: 0 0 25px rgba(230,200,255,0.7);
       border: 3px solid rgba(255,255,255,0.4);
-    }
-
-    @keyframes colorShift {
-      0% { background: linear-gradient(135deg, #d8baff, #b48cff); }
-      25% { background: linear-gradient(135deg, #f2d9ff, #c9a4ff); }
-      50% { background: linear-gradient(135deg, #e6c6ff, #ab7cff); }
-      75% { background: linear-gradient(135deg, #f1ddff, #d5aaff); }
-      100% { background: linear-gradient(135deg, #d8baff, #b48cff); }
     }
 
     .lav-title { font-size: 2rem; text-align:center; }
@@ -123,8 +115,7 @@
     <p>• <b>Floyd-Warshall:</b> Time – O(V³); Space – O(V²) — for dense all-pairs insights</p>
     <p>• <b>Min Cost Max Flow:</b> Time – typically O(V × E²) depending on implementation (SPFA or Dijkstra potentials); Space – O(V + E)</p>
 
-    <div class="lav-img-space" style="margin-top:25px; width:90%; margin-left:auto; margin-right:auto;">Efficiency Flow Diagram</div>
-
+    <img src="algoflow.jpeg" alt="Project Image" class="lav-img">
     <h2>Benefits</h2>
     <p>• Smooth routing & reduced congestion</p>
     <p>• Lower emissions through optimized paths</p>
