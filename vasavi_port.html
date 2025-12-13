@@ -143,19 +143,24 @@
       text-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
 
-    /* ========================== */
-    /* IMAGE PANEL */
-    /* ========================== */
-    .img-box {
-      width: 75%;
-      margin: 20px auto;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 5px 22px rgba(0,0,0,0.15);
-      border: 4px solid #e9d3ff;
-    }
+/* ========================== */
+/* IMAGE PANEL */
+/* ========================== */
+.img-box {
+  width: 45%;              /* smaller than 75% */
+  max-width: 420px;        /* prevents it from becoming too big */
+  margin: 20px auto;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 22px rgba(0,0,0,0.15);
+  border: 4px solid #e9d3ff;
+}
 
-    .img-box img { width: 100%; }
+.img-box img {
+  width: 100%;
+  height: auto;
+}
+
 
     /* ========================== */
     /* MODULE SECTION */
