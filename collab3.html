@@ -30,8 +30,13 @@
       cursor: pointer;
       font-size: 1.1rem;
       z-index: 2000;
+      transition: 0.3s;
+      text-shadow: 0 0 4px #fff;
     }
-    .back-btn:hover { background: rgba(255,255,255,0.5); }
+    .back-btn:hover { 
+      background: rgba(255,255,255,0.5); 
+      box-shadow: 0 0 10px silver; 
+    }
 
     /* Lavender box */
     .lav-box {
@@ -44,26 +49,51 @@
       border: 3px solid rgba(255,255,255,0.4);
     }
 
-    /* Navy blur title (soft glow) */
+    /* Title */
     .lav-title {
-      font-size: 2.8rem;
+      font-size: 3rem;
       text-align: center;
-      color: #001f5c; /* deep navy blue */
-      text-shadow: 0 0 6px rgba(0, 30, 80, 0.4);
+      color: #001f5c;
+      text-shadow: 0 0 8px rgba(0, 30, 80, 0.6);
+      font-weight: bold;
     }
 
     .subtitle {
       text-align: center;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       margin-top: 6px;
       color: #0a2a4a;
+      font-weight: 600;
+      text-shadow: 0 0 2px rgba(10,20,50,0.4);
     }
 
-    h2 { text-align:center; font-size:2rem; margin-top:35px; margin-bottom:10px; }
+    h2 {
+      text-align:center; 
+      font-size:2rem; 
+      margin-top:35px; 
+      margin-bottom:10px; 
+      font-weight:bold;
+      color:#001f3f;
+      text-shadow: 0 0 4px silver;
+      transition: 0.3s;
+    }
+    h2:hover { text-shadow: 0 0 12px silver; }
 
-    p { width:75%; margin:12px auto; font-size:1.12rem; line-height:1.9rem; color:#0b2340; }
+    p { 
+      width:75%; 
+      margin:12px auto; 
+      font-size:1.14rem; 
+      line-height:2rem; 
+      color:#0b2340; 
+    }
 
-    .small-note { width:75%; margin:6px auto; font-size:0.98rem; color:#12304a; }
+    .small-note { 
+      width:75%; 
+      margin:6px auto; 
+      font-size:1rem; 
+      color:#12304a; 
+      font-style:italic;
+    }
 
     .button-row {
       width: 100%;
@@ -75,25 +105,40 @@
     }
 
     .cpp-btn { 
-      padding:12px 18px; 
+      padding:14px 20px; 
       background:#643fcd; 
       border-radius:12px; 
       color:white; 
-      font-size:1.05rem; 
+      font-size:1.1rem; 
       border:none; 
       cursor:pointer; 
-      transition:0.25s; 
+      transition:0.3s; 
       font-family:"Patrick Hand", cursive; 
       text-decoration:none;
-      display:inline-block;
+      font-weight:bold;
+      text-shadow: 0 0 2px #fff;
     }
-    .cpp-btn:hover { background:#7a57e5; transform: translateY(-3px); }
+    .cpp-btn:hover { 
+      background:#7a57e5; 
+      transform: translateY(-3px); 
+      box-shadow: 0 0 10px silver;
+    }
 
-    /* small responsive tweak */
+    /* Images */
+    img {
+      border-radius:12px;
+      max-width:70%;
+      transition: 0.3s;
+    }
+    img:hover { box-shadow: 0 0 15px silver; }
+
+    /* Responsive */
     @media (max-width:720px) {
       .lav-box { width: 94%; padding: 24px; }
       p { width: 92%; font-size:1rem; line-height:1.6rem; }
-      .lav-title { font-size: 2.2rem; }
+      .lav-title { font-size: 2.4rem; }
+      h2 { font-size:1.8rem; }
+      .subtitle { font-size:1rem; }
     }
   </style>
 </head>
@@ -106,18 +151,14 @@
     <div class="lav-title">Sanmathi & Vasavi – Tech Parks × Governance</div>
     <div class="subtitle">Technology Development, Smart Infrastructure & Transparent Governance for Vishalanagari</div>
 
-   
-
-
     <h2>Focus Areas</h2>
     <p>
       • This collaboration combines my focus on Technology,Smart Infrastructure and TechPark design
       with my partner Vasavi’s focus shifting towards in public administration, compliance, and transparent city services.
     </p>
     <div style="text-align:center; margin:20px 0;">
-  <img src="Park.png" alt="Description" style="max-width:70%; border-radius:12px;">
-</div>
-
+      <img src="Park.png" alt="Description">
+    </div>
 
     <h2>Problem Statement</h2>
     <p><strong>Digital Integrity Monitoring for Vishalanagari Tech Parks (Pattern Detection & Log Scanning)</strong></p>
@@ -146,10 +187,9 @@
     <p><b>Boyer–Moore:</b> Average Time – sublinear in practice (skips), Worst-case – O(n + m); Space – O(alphabet)</p>
     <p><b>Z-Algorithm:</b> Time – O(n + m) for combined string preprocessing; Space – O(n) for Z array — useful for similarity detection</p>
 
-   <div style="text-align:center; margin:20px 0;">
-  <img src="flowww.png" alt="Description" style="max-width:70%; border-radius:12px;">
-</div>
-
+    <div style="text-align:center; margin:20px 0;">
+      <img src="flowww.png" alt="Description">
+    </div>
 
     <h2>SDG Alignment</h2>
     <p>• SDG 9 – Industry, Innovation & Infrastructure (secure tech ecosystem)</p>
@@ -160,20 +200,20 @@
     <h2>C++ Implementations</h2>
     <p class="small-note">We tried Z algorithm here to identify cloned requests by measuring prefix similarity in governance log strings. </p>
 
-     <div class="button-row">
+    <div class="button-row">
       <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/RKarp.cpp" target="_blank" class="cpp-btn">
         Rabin Karp(C++)
       </a>
       <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/KMP.cpp" target="_blank" class="cpp-btn">
        KMP(C++)
       </a>
-    <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/BM.cpp" target="_blank" class="cpp-btn">
+      <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/BM.cpp" target="_blank" class="cpp-btn">
        Boyer Moore (C++)
       </a>
       <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/Z.cpp" target="_blank" class="cpp-btn">
        Z Algorithm (C++)
       </a>
-  </div>
+    </div>
 
   </div>
 
