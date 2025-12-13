@@ -223,6 +223,78 @@ section.card:last-of-type .subheading {
   font-size: 1.8em; /* bigger */
 }
 
+/* ================= NEW ADDITIONS ================= */
+
+/* New pink card with spheres */
+.section-problem-card {
+  background: #ffe0e0;
+  border-radius: 20px;
+  padding: 50px;
+  margin: 40px auto;
+  width: 75%;
+  text-align: center;
+  box-shadow: 0 0 25px silver;
+}
+
+.section-problem-card h2 {
+  color: maroon;
+  font-size: 2.5em;
+  margin-bottom: 35px;
+}
+
+.problem-spheres {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.problem-sphere {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.problem-sphere:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px silver, 0 0 45px silver;
+}
+
+/* Course reflections card */
+.section-reflection-card {
+  background: #ffe0e0;
+  border-radius: 20px;
+  padding: 50px;
+  margin: 50px auto;
+  width: 75%;
+  text-align: center;
+  box-shadow: 0 0 35px silver;
+}
+
+.section-reflection-card h2 {
+  font-size: 2.5em;
+  color: maroon;
+  text-shadow: 0 0 10px silver;
+  margin-bottom: 25px;
+}
+
+.section-reflection-card img {
+  width: 85%;
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px silver;
+}
   </style>
 </head>
 <body class="light">
@@ -275,6 +347,31 @@ section.card:last-of-type .subheading {
         <a href="module10.html" class="module-btn">Seasonal Hotel Occupency Optimization </a>
     </div>
   </section>
+
+  <!-- ================= NEW SECTION: Problem Spheres ================= -->
+  <section class="section-problem-card">
+    <h2>Education, Health & Social Welfare Insights/h2>
+    <div class="problem-spheres">
+      <a href="https://github.com/yourrepo/problem1.cpp" class="problem-sphere">AQI Monitoring<br>for Students</a>
+      <a href="https://github.com/yourrepo/problem2.cpp" class="problem-sphere">Museum Footfall<br>Prediction</a>
+      <a href="https://github.com/yourrepo/problem3.cpp" class="problem-sphere">Blood Bank<br>Optimization</a>
+      <a href="https://github.com/yourrepo/problem4.cpp" class="problem-sphere">Cancer Screening<br>Scheduling</a>
+      <a href="https://github.com/yourrepo/problem5.cpp" class="problem-sphere">Senior Citizen<br>Healthcare</a>
+    </div>
+  </section>
+
+ <section class="card" style="box-shadow: 0 0 15px silver, 0 0 30px silver; padding: 50px; width: 75%; text-align: center;">
+    <h2>Course Reflections</h2>
+    <img src="course_image.jpg" alt="Course Reflections Image" class="full-image" style="margin-bottom: 30px;">
+    <p style="color: #2c2c2c; text-shadow: 0 0 5px silver, 0 0 15px silver; font-size: 1.2em; line-height: 1.6em; margin-top: 20px;">
+        Working on this city project was like trying to organize a city with a spaghetti of algorithms—but somehow, it clicked! The DAA course taught me how to break big, messy problems into manageable pieces, optimize solutions, and think critically about efficiency—basically, turning chaos into a city that runs (almost) smoothly.<br><br>
+        From adaptive resource flow to disaster-resilient infrastructure, every module was a mix of coding, creativity, and a dash of real-world problem-solving. Sure, some simulations threw tantrums, and some ideas needed multiple tries, but every hiccup was a lesson, and every tiny success felt like a mini celebration.<br><br>
+        This project didn’t just sharpen my technical skills—it showed me that behind every number, there’s a story, and behind every algorithm, an opportunity to make a real impact. I’ve grown as a thinker, a learner, and a problem-solver… and I might even laugh at a bug or two along the way.<br><br>
+        <strong>And yeah… these are 100% my own words—no sneaky LLMs involved!!</strong>
+    </p>
+</section>
+
+
 
 </body>
 </html>
