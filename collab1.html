@@ -12,10 +12,11 @@
     body {
       margin: 0;
       font-family: "Patrick Hand", cursive;
-      background-color: #001f3f;
-      color: black;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77);
+      color: #f0e6f6;
       padding-bottom: 40px;
       font-size: 18px;
+      transition: background 0.5s, color 0.5s;
     }
 
     /* Back Button */
@@ -24,19 +25,20 @@
       top: 15px;
       left: 15px;
       padding: 12px 18px;
-      background: rgba(255,255,255,0.3);
-      border: 2px solid rgba(255,255,255,0.6);
-      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      color: #fffacd;
       border-radius: 12px;
       cursor: pointer;
       font-size: 1.2rem;
       z-index: 2000;
       transition: 0.3s;
-      text-shadow: 0 0 4px #fff;
+      text-shadow: 0 0 6px #ffd700;
     }
     .back-btn:hover { 
-      background: rgba(255,255,255,0.5);
-      box-shadow: 0 0 12px silver;
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 18px #ffd700, 0 0 12px silver;
+      transform: translateY(-2px);
     }
 
     /* Lavender box */
@@ -45,43 +47,44 @@
       margin: 70px auto;
       padding: 45px;
       border-radius: 25px;
-      background: #f3e8ff;
-      box-shadow: 0 0 25px rgba(230,200,255,0.7);
-      border: 3px solid rgba(255,255,255,0.4);
+      background: rgba(255, 240, 245, 0.1);
+      box-shadow: 0 0 35px rgba(255, 182, 193, 0.7), 0 0 25px rgba(255, 192, 203, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.2);
       transition: 0.3s;
     }
     .lav-box:hover {
-      box-shadow: 0 0 35px silver, 0 0 25px rgba(230,200,255,0.7);
+      box-shadow: 0 0 45px #ff69b4, 0 0 35px rgba(255, 182, 193, 0.7);
     }
 
     .lav-title {
       font-size: 3rem;
       text-align: center;
-      color: #001f5c;
-      text-shadow: 0 0 6px rgba(0, 30, 80, 0.4);
+      color: #ffb347;
+      text-shadow: 0 0 8px #ffb347, 0 0 12px #ff69b4;
       font-weight: bold;
       transition: 0.3s;
     }
-    .lav-title:hover { text-shadow: 0 0 12px silver; }
+    .lav-title:hover { text-shadow: 0 0 16px #ffd700, 0 0 20px #ff69b4; }
 
     h2 { 
-      text-align:center; 
-      font-size:2.2rem; 
-      margin-top:50px; 
-      margin-bottom:14px; 
-      font-weight:bold;
-      color:#001f3f;
-      text-shadow: 0 0 4px silver;
+      text-align: center; 
+      font-size: 2.2rem; 
+      margin-top: 50px; 
+      margin-bottom: 14px; 
+      font-weight: bold;
+      color: #f5b041; 
+      text-shadow: 0 0 6px #ffda6b, 0 0 8px #ff7f50;
       transition: 0.3s;
     }
-    h2:hover { text-shadow: 0 0 12px silver; }
+    h2:hover { text-shadow: 0 0 14px #ffd700, 0 0 20px #ff7f50; }
 
     p { 
-      width:78%; 
-      margin:14px auto; 
-      font-size:1.3rem; 
-      line-height:2.1rem; 
-      color:#0b2340;
+      width: 78%; 
+      margin: 14px auto; 
+      font-size: 1.3rem; 
+      line-height: 2.1rem; 
+      color: #ffe4c4;
+      text-shadow: 0 0 4px #ffdab9;
     }
 
     .button-row {
@@ -94,43 +97,45 @@
     }
 
     .cpp-btn { 
-      padding:16px 26px; 
-      background:#643fcd; 
-      border-radius:14px; 
-      color:white; 
-      font-size:1.2rem; 
-      border:none; 
-      cursor:pointer; 
-      transition:0.3s; 
-      font-family:"Patrick Hand", cursive; 
-      text-decoration:none;
-      font-weight:bold;
-      text-shadow: 0 0 2px #fff;
+      padding: 16px 26px; 
+      background: linear-gradient(135deg, #ff7f50, #ffb347); 
+      border-radius: 14px; 
+      color: #fff; 
+      font-size: 1.2rem; 
+      border: none; 
+      cursor: pointer; 
+      transition: 0.3s; 
+      font-family: "Patrick Hand", cursive; 
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 0 4px #fff, 0 0 6px #ffb347;
     }
     .cpp-btn:hover { 
-      background:#7a57e5; 
-      box-shadow: 0 0 12px silver;
-      transform: translateY(-2px);
+      background: linear-gradient(135deg, #ffb347, #ff7f50);
+      box-shadow: 0 0 16px #ffda6b, 0 0 20px #ff4500;
+      transform: translateY(-3px);
     }
 
     /* Images centered with glow on hover */
     .collab-image img, .lav-img {
-      display:block;
+      display: block;
       margin: 25px auto;
-      max-width:70%;
-      border-radius:12px;
+      max-width: 70%;
+      border-radius: 12px;
       transition: 0.3s;
+      box-shadow: 0 0 12px #fff5e6, 0 0 25px rgba(255, 215, 0, 0.4);
     }
     .collab-image img:hover, .lav-img:hover {
-      box-shadow: 0 0 15px silver;
+      box-shadow: 0 0 25px #ffda6b, 0 0 40px #ff7f50;
+      transform: scale(1.03);
     }
 
     /* Responsive */
-    @media (max-width:720px) {
+    @media (max-width: 720px) {
       .lav-box { width: 94%; padding: 30px; }
-      p { width: 92%; font-size:1.2rem; line-height:1.8rem; }
+      p { width: 92%; font-size: 1.2rem; line-height: 1.8rem; }
       .lav-title { font-size: 2.5rem; }
-      h2 { font-size:1.9rem; }
+      h2 { font-size: 1.9rem; }
     }
   </style>
 </head>
