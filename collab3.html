@@ -12,9 +12,10 @@
     body {
       margin: 0;
       font-family: "Patrick Hand", cursive;
-      background-color: #001f3f;
-      color: black;
+      background: linear-gradient(135deg, #1b1b2f, #2c2c54);
+      color: #e0d4b7;
       padding-bottom: 40px;
+      transition: background 0.5s, color 0.5s;
     }
 
     /* Back Button */
@@ -23,19 +24,20 @@
       top: 15px;
       left: 15px;
       padding: 10px 16px;
-      background: rgba(255,255,255,0.3);
-      border: 2px solid rgba(255,255,255,0.6);
-      color: white;
+      background: rgba(255,182,193,0.2);
+      border: 2px solid rgba(255,192,203,0.5);
+      color: #fffacd;
       border-radius: 12px;
       cursor: pointer;
       font-size: 1.1rem;
       z-index: 2000;
       transition: 0.3s;
-      text-shadow: 0 0 4px #fff;
+      text-shadow: 0 0 6px #ffd700;
     }
     .back-btn:hover { 
-      background: rgba(255,255,255,0.5); 
-      box-shadow: 0 0 10px silver; 
+      background: rgba(255,182,193,0.35); 
+      box-shadow: 0 0 14px #ff69b4, 0 0 10px silver; 
+      transform: translateY(-2px);
     }
 
     /* Lavender box */
@@ -44,55 +46,63 @@
       margin: 70px auto;
       padding: 40px;
       border-radius: 25px;
-      background: #f3e8ff;
-      box-shadow: 0 0 25px rgba(230,200,255,0.7);
-      border: 3px solid rgba(255,255,255,0.4);
+      background: rgba(230,200,255,0.05);
+      box-shadow: 0 0 35px rgba(255,182,193,0.5), 0 0 25px rgba(255,192,203,0.3);
+      border: 2px solid rgba(255,182,193,0.3);
+      transition: 0.3s;
+    }
+    .lav-box:hover {
+      box-shadow: 0 0 45px #ff69b4, 0 0 35px rgba(255,182,193,0.7);
     }
 
     /* Title */
     .lav-title {
       font-size: 3rem;
       text-align: center;
-      color: #001f5c;
-      text-shadow: 0 0 8px rgba(0, 30, 80, 0.6);
+      color: #d4a066;  /* subtle gold */
+      text-shadow: 0 0 4px #d4a066; /* small glow only */
       font-weight: bold;
+      transition: 0.3s;
     }
 
     .subtitle {
       text-align: center;
       font-size: 1.1rem;
       margin-top: 6px;
-      color: #0a2a4a;
+      color: #b57f4f;
       font-weight: 600;
-      text-shadow: 0 0 2px rgba(10,20,50,0.4);
+      text-shadow: 0 0 3px rgba(180,130,80,0.6);
     }
 
+    /* Headings */
     h2 {
       text-align:center; 
       font-size:2rem; 
       margin-top:35px; 
       margin-bottom:10px; 
       font-weight:bold;
-      color:#001f3f;
-      text-shadow: 0 0 4px silver;
+      color:#d4a066;  /* subtle gold */
+      text-shadow: 0 0 3px #d4a066; /* small glow */
       transition: 0.3s;
     }
-    h2:hover { text-shadow: 0 0 12px silver; }
+    h2:hover { text-shadow: 0 0 6px #ffd700; } /* small hover glow */
 
     p { 
       width:75%; 
       margin:12px auto; 
       font-size:1.14rem; 
       line-height:2rem; 
-      color:#0b2340; 
+      color:#d4b483; 
+      text-shadow: 0 0 2px #b57f4f;
     }
 
     .small-note { 
       width:75%; 
       margin:6px auto; 
       font-size:1rem; 
-      color:#12304a; 
+      color:#b57f4f; 
       font-style:italic;
+      text-shadow: 0 0 2px #a6694e;
     }
 
     .button-row {
@@ -106,7 +116,7 @@
 
     .cpp-btn { 
       padding:14px 20px; 
-      background:#643fcd; 
+      background: linear-gradient(135deg, #ff7f50, #ffb347); 
       border-radius:12px; 
       color:white; 
       font-size:1.1rem; 
@@ -116,12 +126,12 @@
       font-family:"Patrick Hand", cursive; 
       text-decoration:none;
       font-weight:bold;
-      text-shadow: 0 0 2px #fff;
+      text-shadow: 0 0 4px #fff, 0 0 6px #ffb347;
     }
     .cpp-btn:hover { 
-      background:#7a57e5; 
+      background: linear-gradient(135deg, #ffb347, #ff7f50);
       transform: translateY(-3px); 
-      box-shadow: 0 0 10px silver;
+      box-shadow: 0 0 16px #ffda6b, 0 0 20px #ff4500;
     }
 
     /* Images */
@@ -129,8 +139,12 @@
       border-radius:12px;
       max-width:70%;
       transition: 0.3s;
+      box-shadow: 0 0 10px #ffd700, 0 0 15px rgba(255,215,0,0.3);
     }
-    img:hover { box-shadow: 0 0 15px silver; }
+    img:hover { 
+      box-shadow: 0 0 25px #ffda6b, 0 0 35px #ff7f50; 
+      transform: scale(1.03);
+    }
 
     /* Responsive */
     @media (max-width:720px) {
