@@ -15,6 +15,7 @@
       background-color: #001f3f;
       color: black;
       padding-bottom: 40px;
+      font-size: 18px;
     }
 
     /* Back Button */
@@ -22,62 +23,115 @@
       position: fixed;
       top: 15px;
       left: 15px;
-      padding: 10px 16px;
+      padding: 12px 18px;
       background: rgba(255,255,255,0.3);
       border: 2px solid rgba(255,255,255,0.6);
       color: white;
       border-radius: 12px;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       z-index: 2000;
+      transition: 0.3s;
+      text-shadow: 0 0 4px #fff;
     }
-    .back-btn:hover { background: rgba(255,255,255,0.5); }
+    .back-btn:hover { 
+      background: rgba(255,255,255,0.5);
+      box-shadow: 0 0 12px silver;
+    }
 
     /* Lavender box */
     .lav-box {
       width: 85%;
       margin: 70px auto;
-      padding: 40px;
+      padding: 45px;
       border-radius: 25px;
       background: #f3e8ff;
       box-shadow: 0 0 25px rgba(230,200,255,0.7);
       border: 3px solid rgba(255,255,255,0.4);
+      transition: 0.3s;
+    }
+    .lav-box:hover {
+      box-shadow: 0 0 35px silver, 0 0 25px rgba(230,200,255,0.7);
     }
 
-   .lav-title {
-  font-size: 2.8rem;
-  text-align: center;
-  color: #001f5c; /* deep navy blue */
-  text-shadow: 0 0 6px rgba(0, 30, 80, 0.4);
-}
+    .lav-title {
+      font-size: 3rem;
+      text-align: center;
+      color: #001f5c;
+      text-shadow: 0 0 6px rgba(0, 30, 80, 0.4);
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .lav-title:hover { text-shadow: 0 0 12px silver; }
 
+    h2 { 
+      text-align:center; 
+      font-size:2.2rem; 
+      margin-top:50px; 
+      margin-bottom:14px; 
+      font-weight:bold;
+      color:#001f3f;
+      text-shadow: 0 0 4px silver;
+      transition: 0.3s;
+    }
+    h2:hover { text-shadow: 0 0 12px silver; }
 
-    h2 { text-align:center; font-size:2rem; margin-top:45px; margin-bottom:10px; }
-
-    p { width:75%; margin:12px auto; font-size:1.25rem; line-height:2rem; }
+    p { 
+      width:78%; 
+      margin:14px auto; 
+      font-size:1.3rem; 
+      line-height:2.1rem; 
+      color:#0b2340;
+    }
 
     .button-row {
       width: 100%;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 20px;
+      gap: 20px;
+      margin-top: 25px;
     }
 
     .cpp-btn { 
-      padding:14px 22px; 
+      padding:16px 26px; 
       background:#643fcd; 
-      border-radius:12px; 
+      border-radius:14px; 
       color:white; 
-      font-size:1.1rem; 
+      font-size:1.2rem; 
       border:none; 
       cursor:pointer; 
       transition:0.3s; 
       font-family:"Patrick Hand", cursive; 
       text-decoration:none;
+      font-weight:bold;
+      text-shadow: 0 0 2px #fff;
     }
-    .cpp-btn:hover { background:#7a57e5; }
+    .cpp-btn:hover { 
+      background:#7a57e5; 
+      box-shadow: 0 0 12px silver;
+      transform: translateY(-2px);
+    }
+
+    /* Images centered with glow on hover */
+    .collab-image img, .lav-img {
+      display:block;
+      margin: 25px auto;
+      max-width:70%;
+      border-radius:12px;
+      transition: 0.3s;
+    }
+    .collab-image img:hover, .lav-img:hover {
+      box-shadow: 0 0 15px silver;
+    }
+
+    /* Responsive */
+    @media (max-width:720px) {
+      .lav-box { width: 94%; padding: 30px; }
+      p { width: 92%; font-size:1.2rem; line-height:1.8rem; }
+      .lav-title { font-size: 2.5rem; }
+      h2 { font-size:1.9rem; }
+    }
   </style>
 </head>
 
@@ -90,9 +144,8 @@
     <div class="lav-title">Hey there!! Sanmathi & Akshata Collaborating!!</div>
 
     <div class="collab-image">
-    <img src="cotton.png" alt="Collaboration Image">
-</div>
-
+      <img src="cotton.png" alt="Collaboration Image">
+    </div>
 
     <h2>Focus Areas</h2>
     <p>• Collaboration connects my focus on sector Industries, Infrastructure & Logistics Optimization with my partner Akshata's focus in the field of Traffic & Transport analysis.</p>
