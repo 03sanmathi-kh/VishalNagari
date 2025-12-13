@@ -1,213 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Agriculture – Vishalnagari</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industries, Urban Infrastructure & Tourism</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Title contrast colors */
+    body.dark .main-heading .title,
+    body.dark .main-heading .subtitle {
+      color: white;
+    }
 
-<style>
-/* ===== SAME THEME COLORS ===== */
-body.dark{background:navy;color:white;}
-body.light{background:#f5f5f5;color:black;}
-body{margin:0;font-family:Segoe UI;transition:0.3s;}
+    body.light .main-heading .title,
+    body.light .main-heading .subtitle {
+      color: maroon;
+    }
 
-nav{
- display:flex;justify-content:flex-end;gap:15px;
- background:rgba(0,0,128,0.8);padding:10px;
-}
-nav a{
- color:white;text-decoration:none;font-weight:bold;
- padding:8px 12px;border-radius:4px;
-}
-nav a:hover{background:silver;color:navy;}
-nav a.active{background:silver;color:navy;}
+    body.dark {
+      background-color: navy;
+      color: white;
+    }
 
-.theme-toggle{
- position:absolute;top:10px;left:10px;
- padding:10px 20px;background:rgba(135,206,250,0.8);
- border:none;border-radius:8px;font-weight:bold;
- cursor:pointer;box-shadow:0 0 18px silver;
+    body.light {
+      background-color: #f5f5f5;
+      color: black;
+    }
+
+    .main-heading:hover,
+    .project-overview img:hover,
+    .city-text:hover {
+      box-shadow: 0 0 15px silver, 0 0 30px silver, 0 0 45px silver;
+      text-shadow: 0 0 10px silver, 0 0 20px silver, 0 0 30px silver;
+      transform: scale(1.02);
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      background: rgba(0,0,128,0.8);
+      padding: 10px;
+      position: relative;
+      z-index: 10;
+    }
+
+    nav a {
+      padding: 8px 12px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background: rgba(0,0,128,0.6);
+      color: silver;
+    }
+
+    nav a.active {
+      background: silver;
+      color: navy;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 20px;
+      background: rgba(135, 206, 250, 0.8);
+      color: navy;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 0 18px silver;
+      transition: 0.3s;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px silver, 0 0 25px rgba(135, 206, 250, 0.8);
+    }
+
+    .card {
+      background: #ffe0e0;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 30px auto;
+      width: 70%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 2em;
+      color: maroon;
+      text-align: center;
+    }
+
+    .card .icon {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 60px;
+      height: 60px;
+    }
+
+    .card img.theme-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      margin-top: 15px;
+      border-radius: 0;
+      object-fit: cover;
+    }
+
+    .card img.full-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 15px;
+      border-radius: 0;
+    }
+
+    .main-heading {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .main-heading .title {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+   /* ========================================= */
+   /* PENTAGON MODULE BUTTON + RECTANGLE BOX DESIGN */
+   /* ========================================= */
+
+   /* Thought Space card styling */
+section.card.thought-space {
+  background: rgba(255, 248, 220, 0.7); /* soft cream, gentle */
+  border-radius: 20px;
+  padding: 40px 30px;
+  margin: 30px auto;
+  width: 75%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease-in-out;
 }
 
-/* ===== CARDS ===== */
-.card{
- background:#ffe0e0;border-radius:12px;
- padding:25px;margin:30px auto;width:75%;
- box-shadow:0 5px 15px rgba(0,0,0,0.2);
+section.card.thought-space:hover {
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3), 0 0 60px rgba(255, 200, 100, 0.5);
 }
 
-.main-heading{text-align:center;margin-top:40px;}
-.main-heading span{font-size:1.8em;font-weight:bold;color:maroon;}
-
-/* ===== GLASS CIRCLE MODULES ===== */
-.modules-container{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
- gap:30px;justify-items:center;margin-top:30px;
-}
-.circle{
- width:150px;height:150px;border-radius:50%;
- background:rgba(255,255,255,0.25);
- backdrop-filter:blur(8px);
- display:flex;align-items:center;justify-content:center;
- text-align:center;font-weight:bold;color:navy;
- cursor:pointer;transition:0.3s;
- box-shadow:0 0 20px silver;
-}
-.circle:hover{
- transform:scale(1.15);
- box-shadow:0 0 35px silver,0 0 60px silver;
+/* Modules container (grid layout) */
+.modules-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  margin-top: 25px;
 }
 
-/* ===== TIMELINE ===== */
-.timeline{position:relative;margin:50px auto;width:80%;}
-.timeline:before{
- content:'';position:absolute;left:50%;
- width:4px;height:100%;background:silver;
+/* Pentagon module buttons */
+.module-btn {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00cccc, #009999);
+  clip-path: polygon(
+    50% 0%,
+    100% 38%,
+    82% 100%,
+    18% 100%,
+    0% 38%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  opacity: 0.95;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 20px rgba(0,204,204,0.8), 0 0 30px rgba(0,153,153,0.7);
 }
-.step{
- width:45%;padding:15px;
- background:rgba(255,255,255,0.8);
- border-radius:10px;margin:25px 0;
-}
-.left{margin-left:0;}
-.right{margin-left:55%;}
 
-/* ===== SVG MAP ===== */
-.map{display:flex;justify-content:center;margin:40px;}
-.field{fill:#7fbf7f;animation:pulse 2.5s infinite;}
-@keyframes pulse{
- 0%{opacity:0.6;}50%{opacity:1;}100%{opacity:0.6;}
+/* Heavy glow on hover */
+.module-btn:hover {
+  transform: scale(1.25);
+  box-shadow: 
+    0 0 30px white,
+    0 0 80px #00ffff,
+    0 0 120px #00ffff,
+    0 0 200px #00ffff;
+  text-shadow: 0 0 15px white, 0 0 25px #00ffff;
 }
 
-/* ===== MODULE CONTENT ===== */
-.module-content{
- display:none;margin-top:25px;
- background:white;color:black;
- padding:20px;border-radius:10px;
+/* Last pink card adjustments */
+section.card:last-of-type {
+  padding: 50px;
+  width: 75%;
+  min-height: 400px;
+  text-align: center;
 }
-pre{
- background:#111;color:#0f0;
- padding:12px;border-radius:8px;
- overflow-x:auto;
+
+section.card:last-of-type h2 {
+  color: #2c2c2c;
+  text-shadow: 0 0 5px silver, 0 0 15px silver;
+  font-size: 2.5em; /* bigger */
+  margin-bottom: 15px;
 }
-</style>
+
+section.card:last-of-type .subheading {
+  color: #2c2c2c;
+  text-shadow: 0 0 5px silver, 0 0 15px silver;
+  font-size: 1.8em; /* bigger */
+}
+
+  </style>
 </head>
-
 <body class="light">
 
-<button class="theme-toggle"
-onclick="document.body.classList.toggle('dark');
-document.body.classList.toggle('light');">
-Switch Theme
-</button>
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">Switch Theme</button>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="project.html">Project</a>
-<a class="active">Agriculture</a>
-</nav>
+  <!-- Navigation -->
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="project.html">Project</a>
+      <a href="sanmathi_port.html" class="active">Sanmathi</a>
+      <a href="vasavi_port.html">Vasavi</a>
+      <a href="akshata_port.html">Akshata</a>
+      <a href="isha_port.html">Isha</a>
+      <a href="collabs.html">Collabs</a>
+  </nav>
 
-<h1 class="main-heading">
-<span>Agriculture – Vishalnagari</span>
-</h1>
+  <h1 id="title" class="main-heading">
+      <span class="title">Agriculture</span>
+  </h1>
 
-<section class="card">
-<h2>Why Agriculture?</h2>
-<p>
-Agriculture in Vishalnagari focuses on efficient water usage,
-crop planning, storage, disease control and market access
-using algorithm-based solutions.
-</p>
-</section>
+  <section class="card">
+      <img src="icon.jpg" alt="Industry Icon" class="icon">
+      <h2>Why did I choose these sectors? A glimpse..</h2>
+      <img src="Theme.png.png" alt="Industries Image" class="theme-image">
+      <img src="dis.png.png" alt="Description Image" class="full-image">
+  </section>
 
-<!-- ===== GLASS CIRCLE MODULES ===== -->
-<section class="card">
-<h2>Smart Agriculture Modules</h2>
+  <section class="card">
+      <img src="bcase.png" alt="Single Image" class="full-image">
+  </section>
 
-<div class="modules-container">
-<div class="circle" onclick="show('m1')">Smart Irrigation</div>
-<div class="circle" onclick="show('m2')">Crop Recommendation</div>
-<div class="circle" onclick="show('m3')">Agri Transport</div>
-<div class="circle" onclick="show('m4')">Drone Monitoring</div>
-<div class="circle" onclick="show('m5')">Cold Storage</div>
-<div class="circle" onclick="show('m6')">Marketplace</div>
-</div>
-</section>
+  <!-- Updated Thought Space Card -->
+  <section class="card thought-space">
+    <h2>Welcome To My Thought Space!!</h2>
+    <p class="subheading">Explore my ideas and works below!</p>
 
-<!-- ===== TIMELINE ===== -->
-<section class="card">
-<h2>Agriculture Workflow Timeline</h2>
-<div class="timeline">
-<div class="step left">Soil Analysis & Data Collection</div>
-<div class="step right">Crop Recommendation (BST)</div>
-<div class="step left">Smart Irrigation (Graphs)</div>
-<div class="step right">Harvest & Transport (Dijkstra)</div>
-<div class="step left">Storage & Market Supply</div>
-</div>
-</section>
-
-<!-- ===== SVG MAP ===== -->
-<section class="card">
-<h2>Agriculture Zone Map</h2>
-<div class="map">
-<svg width="400" height="250">
-<rect x="30" y="40" width="100" height="70" class="field"/>
-<rect x="160" y="40" width="100" height="70" class="field"/>
-<rect x="95" y="140" width="100" height="70" class="field"/>
-<text x="50" y="35">Farm A</text>
-<text x="180" y="35">Farm B</text>
-<text x="120" y="135">Farm C</text>
-</svg>
-</div>
-</section>
-
-<!-- ===== MODULE CONTENT ===== -->
-<section class="card">
-<div id="m1" class="module-content">
-<h3>Smart Irrigation</h3>
-<p><b>Algorithm:</b> Dijkstra</p>
-<pre>
-dist[src]=0;
-while(pq not empty){
- u=extractMin();
- for each v:
-  if(dist[u]+w < dist[v])
-   dist[v]=dist[u]+w;
-}
-</pre>
-<a href="module1.html">Open Full Module →</a>
-</div>
-
-<div id="m2" class="module-content">
-<h3>Crop Recommendation</h3>
-<p><b>Algorithm:</b> Binary Search</p>
-<pre>
-while(l<=r){
- mid=(l+r)/2;
- if(crop[mid]==target) found;
-}
-</pre>
-<a href="module2.html">Open Full Module →</a>
-</div>
-
-<div id="m3" class="module-content">
-<h3>Agri Transport</h3>
-<p><b>Algorithm:</b> Dijkstra</p>
-<pre>
-priority_queue pq;
-while(!pq.empty()) relax edges;
-</pre>
-</div>
-</section>
-
-<script>
-function show(id){
- document.querySelectorAll('.module-content')
- .forEach(m=>m.style.display='none');
- document.getElementById(id).style.display='block';
-}
-</script>
+    <div class="modules-container">
+        <a href="module1.html" class="module-btn">Smart irrigation and water distribution network</a>
+        <a href="module2.html" class="module-btn">Crop recommendation and seasonal planning system</a>
+        <a href="module3.html" class="module-btn">Precision farming using iot and sensors</a>
+        <a href="module4.html" class="module-btn">Agri-logistics and cold storage optimisation</a>
+        <a href="module5.html" class="module-btn">Agri waste to Bio-Energy production</a>
+        <a href="module6.html" class="module-btn">Greenhouse and vertical farming optimisation </a>
+        <a href="module7.html" class="module-btn">Samrt crop disease detection system</a>
+        <a href="module8.html" class="module-btn">Agriculture supply chain management platfrom</a>
+       
+    </div>
+  </section>
 
 </body>
 </html>
