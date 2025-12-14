@@ -14,64 +14,64 @@
     }
 
     .container {
-      width: 80%;
+      width: 85%; /* slightly bigger */
       margin: 50px auto;
-      padding: 30px;
+      padding: 40px; /* increased padding */
       background: #e6f4ff; /* light blue */
       border-radius: 15px;
-      box-shadow: 0 0 12px #87ceeb;
+      box-shadow: 0 0 18px #87ceeb, 0 0 36px #87ceeb; /* heavier glow */
       transition: all 0.3s ease;
     }
 
     .container:hover {
-      box-shadow: 0 0 20px #87ceeb, 0 0 40px #87ceeb; /* sky blue glow */
+      box-shadow: 0 0 28px #87ceeb, 0 0 50px #87ceeb; /* heavier sky blue glow */
     }
 
     h1 {
       text-align: center;
-      font-size: 2.5em;
+      font-size: 2.6em;
       color: #003366;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       transition: text-shadow 0.3s ease;
     }
 
     h1:hover {
-      text-shadow: 0 0 6px #87ceeb;
+      text-shadow: 0 0 8px #87ceeb;
     }
 
     h2 {
-      font-size: 1.8em;
+      font-size: 1.85em;
       margin-top: 25px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: #003366;
       transition: text-shadow 0.3s ease;
     }
 
     h2:hover {
-      text-shadow: 0 0 5px #87ceeb;
+      text-shadow: 0 0 6px #87ceeb;
     }
 
     p {
-      font-size: 1.1em;
-      line-height: 1.6em;
+      font-size: 1.15em;
+      line-height: 1.7em;
       margin-bottom: 20px;
       transition: text-shadow 0.3s ease;
     }
 
     p:hover {
-      text-shadow: 0 0 4px #87ceeb;
+      text-shadow: 0 0 5px #87ceeb;
     }
 
     .buttons {
       display: flex;
       gap: 30px;
       justify-content: center;
-      margin-top: 30px;
+      margin-top: 35px;
     }
 
     .buttons a {
       text-decoration: none;
-      padding: 15px 25px;
+      padding: 16px 28px;
       background-color: #003366;
       color: white;
       border-radius: 50px;
@@ -82,9 +82,23 @@
 
     .buttons a:hover {
       background-color: #00509e;
-      box-shadow: 0 0 15px #87ceeb, 0 0 30px #87ceeb;
+      box-shadow: 0 0 20px #87ceeb, 0 0 40px #87ceeb;
     }
 
+    /* Additional efficiency info styling */
+    .efficiency {
+      font-size: 1em;
+      font-weight: bold;
+      color: #003366;
+      margin-top: -10px;
+      margin-bottom: 20px;
+      text-align: center;
+      transition: text-shadow 0.3s ease;
+    }
+
+    .efficiency:hover {
+      text-shadow: 0 0 4px #87ceeb;
+    }
   </style>
 </head>
 <body>
@@ -102,16 +116,18 @@
      Sliding Window and Pre-Computing
     </p>
 
+    <p class="efficiency">
+      Algorithm Efficiency: O(n) time for sliding window processing, pre-computation reduces repeated calculations
+    </p>
+
     <div class="buttons">
-     
-      
       <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/code1.cpp" target="_blank" class="cpp-btn">
        View code
       </a>
       <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/AQI.csv" target="_blank" class="cpp-btn">
        View Dataset
       </a>
-</div>
+    </div>
   </div>
 
 </body>
