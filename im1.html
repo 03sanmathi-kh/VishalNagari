@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,39 +149,44 @@
 
   <div class="module-card">
 
-    <h1>Module 1:Smart irrigation and water distribution netwrok</h1>
+    <h1>Module 1: Smart Irrigation & Water Distribution Network</h1>
 
     <h2 class="section-title">Problem Statement</h2>
     <div class="content-box">
-      The Smart Irrigation and Water Distribution Network aims to ensure efficient and reliable water supply to agricultural lands in Vishalnagari. Traditional irrigation systems often result in water wastage and uneven distribution. This module models reservoirs, pipelines, and farmlands as interconnected components to optimize water flow. The objective is to minimize water loss, reduce distribution time, and ensure equitable water delivery to all farms.
+       <p> <strong>Farmers often waste water because pipelines do not deliver water through the shortest or least-pressure-loss routes. This leads to unequal distribution and water scarcity..</strong></p>
+    </div>
+
+    <h2 class="section-title">Solution</h2>
+    <div class="content-box">
+     Use <b>Dijkstra’s Algorithm</b> to find the shortest and most efficient pipeline route so that water reaches all connected fields with minimal loss.</p>
     </div>
 
     <h2 class="section-title">Algorithms Used</h2>
     <div class="content-box">
-      <p><b>1. Graphs:</b> Farm as vertices, pipeline as edges.</p>
-      <p><b>2.BFS :</b> Lvel wise water distibution.</p><p><b>3. DFS:</b> Leakage or connectivity check.</p>
-      <p><b>4. dijkstra's Algorithm:</b>shorter water path.</p>
+       <p><strong>Algorithm:</strong>  Dijkstra – Shortest water flow route (O(E + V log V))</p>
 
-    </div>
+   
+   
 
-    <h2 class="section-title">Algorithm Efficiency</h2>
-    <div class="content-box">
-      <ul>
-        <li><b>Greedy Allocation:</b> O(n log n) – efficient for real-time assignment of materials.</li>
-        <li><b>Priority Queues:</b> O(log n) per operation – manages factory priority efficiently.</li>
-        <li><b>Sliding Window Forecasting:</b> O(n) – calculates predictions over recent data with minimal overhead.</li>
+<p><strong>Conclusion:</strong> Water reaches farms using the most efficient pipeline network.</p>
 
-      </ul>
-    </div>
-    <h2 class="section-title">How This Innovation Powers the SDGs</h2>
-<div class="content-box">
-  <p><b>SDG 9 – Industry, Innovation & Infrastructure:</b><br>
-  Adaptive EV resource routing accelerates smarter manufacturing, minimizes bottlenecks, and strengthens India’s clean-tech industrial backbone.</p>
 
-  <p><b>SDG 12 – Responsible Consumption & Production:</b><br>
-  Intelligent material distribution reduces overuse, prevents battery wastage, and drives a circular, resource-efficient EV ecosystem.</p>
+<div class="sdg-box">
+<b>🌍 SDGs Addressed:</b>
+<ul>
+<li>SDG 6 – Clean Water and Sanitation</li>
+<li>SDG 12 – Responsible Consumption and Production</li>
+</ul>
+<b>Impact Analysis:</b>
+<p>Optimized irrigation reduces water wastage, ensures equitable distribution, and promotes sustainable agricultural water management.</p>
+</div>
 </div>
 
+
+<!-- Extra HTML Feature -->
+<div style="padding:15px;background:#2d14cf;border-radius:10px;color:#aee30f;">
+<b>Pipeline Status:</b> Water Flow: <progress value="70" max="100"></progress> 70%
+</div>
 
     <div class="cpp-heading">C++ Implementation</div>
     <div class="button-row">
