@@ -11,6 +11,10 @@
         (Optional: Dynamic Programming can also be applied for further optimization.)
     </p>
 
+    <p class="efficiency">
+        Algorithm Efficiency: O(n) for pattern recognition, memoization reduces repeated computations
+    </p>
+
     <div class="problem-buttons">
          <div class="buttons">
      
@@ -26,24 +30,25 @@
 </section>
 
 <style>
-/* Module 2 Section Styling - Lavender Theme */
+/* Module 2 Section Styling - Lavender Theme (Updated) */
 .section-problem-card {
-    padding: 35px;
+    padding: 40px; /* slightly bigger */
+    width: 90%;    /* larger container */
     background-color: #efe6ff; /* lavender */
     border-radius: 16px;
-    margin-bottom: 40px;
+    margin: 40px auto; /* auto margin for centering */
     text-align: center;
-    box-shadow: 0 0 12px #c9b6ff;
+    box-shadow: 0 0 18px #c9b6ff, 0 0 36px #b39ddb; /* heavier glow */
     transition: all 0.3s ease;
 }
 
 .section-problem-card:hover {
-    box-shadow: 0 0 20px #c9b6ff, 0 0 40px #b39ddb; /* lavender glow */
+    box-shadow: 0 0 28px #c9b6ff, 0 0 50px #b39ddb; /* heavier lavender glow */
 }
 
 /* Headings */
 .section-problem-card h2 {
-    font-size: 1.9em;
+    font-size: 2em;
     margin-bottom: 18px;
     font-weight: bold;
     color: #3d2b5a;
@@ -51,11 +56,11 @@
 }
 
 .section-problem-card h2:hover {
-    text-shadow: 0 0 6px #b39ddb;
+    text-shadow: 0 0 8px #b39ddb;
 }
 
 .section-problem-card h3 {
-    font-size: 1.4em;
+    font-size: 1.45em;
     margin-bottom: 12px;
     font-weight: bold;
     color: #3d2b5a;
@@ -63,23 +68,36 @@
 }
 
 .section-problem-card h3:hover {
-    text-shadow: 0 0 5px #b39ddb;
+    text-shadow: 0 0 6px #b39ddb;
 }
 
 /* Paragraphs */
 .section-problem-card p {
-    font-size: 1.05em;
+    font-size: 1.08em;
     color: #4a3f5c;
-    line-height: 1.7em;
+    line-height: 1.8em;
     margin-bottom: 22px;
-    max-width: 900px;
+    max-width: 950px;
     margin-left: auto;
     margin-right: auto;
     transition: text-shadow 0.3s ease;
 }
 
 .section-problem-card p:hover {
-    text-shadow: 0 0 4px #c9b6ff;
+    text-shadow: 0 0 5px #c9b6ff;
+}
+
+/* Algorithm efficiency styling */
+.efficiency {
+    font-size: 1em;
+    font-weight: bold;
+    color: #3d2b5a;
+    margin-bottom: 20px;
+    transition: text-shadow 0.3s ease;
+}
+
+.efficiency:hover {
+    text-shadow: 0 0 4px #b39ddb;
 }
 
 /* Buttons */
@@ -92,7 +110,7 @@
 
 .buttons a {
     display: inline-block;
-    padding: 15px 28px;
+    padding: 16px 28px;
     background-color: #b39ddb;
     color: #2c1b47;
     text-decoration: none;
@@ -104,7 +122,7 @@
 
 .buttons a:hover {
     background-color: #a68fd6;
-    box-shadow: 0 0 15px #c9b6ff, 0 0 30px #b39ddb;
+    box-shadow: 0 0 20px #c9b6ff, 0 0 40px #b39ddb;
     transform: translateY(-3px);
 }
 </style>
