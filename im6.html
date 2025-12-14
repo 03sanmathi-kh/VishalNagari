@@ -1,21 +1,23 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Module 1: Adaptive Resource Flow</title>
+  <title>Module 6: Farmers Marketplace Platform</title>
 
   <style>
     /* ===== THEME BACKGROUND ===== */
     body.light {
-      background-color: #f5f5f5;
-      color: black;
+      background: radial-gradient(circle at 20% 20%, #FDEDED 0%, transparent 40%),
+                  radial-gradient(circle at 80% 70%, #AEDEFC 0%, transparent 45%),
+                  linear-gradient(135deg, #EDFFF0, #FDEDED);
+      color: #F875AA;
     }
     body.dark {
-      background-color: navy;
-      color: black;
+      background: radial-gradient(circle at 30% 30%, #AEDEFC 0%, transparent 40%),
+                  radial-gradient(circle at 70% 80%, #F875AA 0%, transparent 45%),
+                  linear-gradient(135deg, #F875AA, #AEDEFC);
+      color: #FDEDED;
     }
 
     /* ===== TOGGLE BUTTON ===== */
@@ -23,13 +25,14 @@
       position: fixed;
       top: 10px;
       left: 10px;
-      background: #444;
+      background: #F875AA;
       padding: 8px 14px;
-      color: white;
+      color: #FDEDED;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       z-index: 999;
+      box-shadow: 0 0 20px #AEDEFC;
     }
 
     /* ===== BACK BUTTON ===== */
@@ -42,37 +45,37 @@
       padding: 10px 20px;
       font-weight: bold;
       border-radius: 8px;
-      background: rgba(135, 206, 250, 0.8);
-      color: navy;
-      box-shadow: 0 0 18px 3px silver;
+      background: linear-gradient(135deg, #AEDEFC, #EDFFF0);
+      color: #F875AA;
+      box-shadow: 0 0 18px 3px #FDEDED;
       transition: 0.3s;
       z-index: 999;
     }
     .back-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 35px 8px silver, 0 0 25px rgba(135, 206, 250, 0.8);
+      box-shadow: 0 0 35px 8px #AEDEFC, 0 0 25px #EDFFF0;
     }
 
     /* ===== MAIN CARD ===== */
     .module-card {
       width: 70%;
-      background: rgba(193, 255, 193, 0.6);
+      background: rgba(237, 255, 240, 0.7);
       margin: 80px auto 60px auto;
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
       transition: 0.3s ease-in-out;
     }
 
     .module-card:hover {
-      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 25px rgba(193, 255, 193, 0.8);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.5), 0 0 25px #AEDEFC;
       transform: translateY(-2px);
     }
 
     .module-card h1 {
       text-align: center;
-      color: maroon;
+      color: #F875AA;
     }
 
     /* ===== HEADINGS ===== */
@@ -80,22 +83,22 @@
       font-size: 1.4em;
       margin-top: 25px;
       font-weight: bold;
-      color: maroon;
+      color: #F875AA;
     }
 
     /* ===== CONTENT BOX ===== */
     .content-box {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(253, 237, 237, 0.9);
       padding: 18px;
       border-radius: 10px;
       margin-top: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      color: black;
+      box-shadow: 0 0 15px #AEDEFC;
+      color: #F875AA;
       transition: 0.3s ease-in-out;
     }
 
     .content-box:hover {
-      box-shadow: 0 0 50px 10px #00ffcc, 0 0 30px silver, 0 0 40px lime;
+      box-shadow: 0 0 50px 10px #AEDEFC, 0 0 30px #FDEDED, 0 0 40px #EDFFF0;
       transform: translateY(-1px);
     }
 
@@ -114,15 +117,15 @@
       padding: 10px 20px;
       font-weight: bold;
       border-radius: 8px;
-      background: linear-gradient(135deg, #228B22, #32CD32);
-      color: white;
-      box-shadow: 0 0 18px 3px silver;
+      background: linear-gradient(135deg, #F875AA, #AEDEFC);
+      color: #FDEDED;
+      box-shadow: 0 0 18px 3px #EDFFF0;
       transition: 0.3s;
     }
 
     .cpp-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 40px 10px silver, 0 0 25px lime;
+      box-shadow: 0 0 40px 10px #AEDEFC, 0 0 25px #FDEDED;
     }
 
     .cpp-heading {
@@ -130,7 +133,7 @@
       font-size: 1.3em;
       font-weight: bold;
       margin-top: 40px;
-      color: maroon;
+      color: #F875AA;
     }
 
   </style>
@@ -149,7 +152,7 @@
 
   <div class="module-card">
 
-    <h1>Module 6:Farmers Marketplace Platform</h1>
+    <h1>Module 6: Farmers Marketplace Platform</h1>
 
     <h2 class="section-title">Problem Statement</h2>
     <div class="content-box">
@@ -181,7 +184,7 @@
 
 
 <!-- Extra HTML Feature -->
-<div style="padding:10px;border:2px dashed #e67e22;border-radius:8px;">
+<div style="padding:10px;border:2px dashed #F875AA;border-radius:8px;">
 Top Deal of the Day: <b>Tomatoes - ₹22/kg</b>
 </div>
 
