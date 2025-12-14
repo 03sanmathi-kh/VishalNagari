@@ -16,14 +16,12 @@
     </p>
 
    <div class="problem-buttons">
-        <div class="buttons">
-            <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/code4.cpp" target="_blank" class="cpp-btn">
-                View code
-            </a>
-            <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/hospital_id,hospital_name,blood_typ.csv" target="_blank" class="cpp-btn">
-                View Dataset
-            </a>
-        </div>
+        <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/code4.cpp" target="_blank" class="problem-button">
+            View Code
+        </a>
+        <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/hospital_id,hospital_name,blood_typ.csv" target="_blank" class="problem-button">
+            View Dataset
+        </a>
     </div>
 </section>
 
@@ -101,9 +99,10 @@
 /* Buttons */
 .problem-buttons {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     justify-content: center;
     margin-top: 25px;
+    flex-wrap: wrap;
 }
 
 .problem-button {
@@ -116,6 +115,7 @@
     border-radius: 30px;
     transition: all 0.3s ease;
     font-size: 1em;
+    box-shadow: 0 0 12px #a8e6a1, 0 0 24px #6fcf6f; /* box effect */
 }
 
 .problem-button:hover {
