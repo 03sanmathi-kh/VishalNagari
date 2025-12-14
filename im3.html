@@ -1,19 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Module 1: Adaptive Resource Flow</title>
+  <title>Module 3:Transport Route Optimization</title>
 
   <style>
     /* ===== THEME BACKGROUND ===== */
     body.light {
-      background-color: #f5f5f5;
+      background: radial-gradient(circle at 25% 30%, #8BAE66 0%, transparent 45%),
+                  radial-gradient(circle at 75% 70%, #EBD5AB 0%, transparent 45%),
+                  linear-gradient(135deg, #628141, #EBD5AB);
       color: black;
     }
     body.dark {
-      background-color: navy;
+      background: radial-gradient(circle at 30% 30%, #628141 0%, transparent 45%),
+                  radial-gradient(circle at 70% 70%, #8BAE66 0%, transparent 45%),
+                  linear-gradient(135deg, #1B211A, #628141);
       color: black;
     }
 
@@ -22,13 +25,14 @@
       position: fixed;
       top: 10px;
       left: 10px;
-      background: #444;
+      background: #1B211A;
       padding: 8px 14px;
-      color: white;
+      color: #EBD5AB;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       z-index: 999;
+      box-shadow: 0 0 20px #8BAE66;
     }
 
     /* ===== BACK BUTTON ===== */
@@ -41,37 +45,37 @@
       padding: 10px 20px;
       font-weight: bold;
       border-radius: 8px;
-      background: rgba(135, 206, 250, 0.8);
-      color: navy;
-      box-shadow: 0 0 18px 3px silver;
+      background: linear-gradient(135deg, #8BAE66, #EBD5AB);
+      color: #1B211A;
+      box-shadow: 0 0 18px 3px #628141;
       transition: 0.3s;
       z-index: 999;
     }
     .back-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 35px 8px silver, 0 0 25px rgba(135, 206, 250, 0.8);
+      box-shadow: 0 0 35px 8px #8BAE66, 0 0 25px #EBD5AB;
     }
 
     /* ===== MAIN CARD ===== */
     .module-card {
       width: 70%;
-      background: rgba(193, 255, 193, 0.6);
+      background: rgba(139, 174, 102, 0.65);
       margin: 80px auto 60px auto;
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+      backdrop-filter: blur(10px);
       transition: 0.3s ease-in-out;
     }
 
     .module-card:hover {
-      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 25px rgba(193, 255, 193, 0.8);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.6), 0 0 25px #628141;
       transform: translateY(-2px);
     }
 
     .module-card h1 {
       text-align: center;
-      color: maroon;
+      color: #1B211A;
     }
 
     /* ===== HEADINGS ===== */
@@ -79,22 +83,22 @@
       font-size: 1.4em;
       margin-top: 25px;
       font-weight: bold;
-      color: maroon;
+      color: #1B211A;
     }
 
     /* ===== CONTENT BOX ===== */
     .content-box {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(235, 213, 171, 0.9);
       padding: 18px;
       border-radius: 10px;
       margin-top: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      box-shadow: 0 0 15px #628141;
       color: black;
       transition: 0.3s ease-in-out;
     }
 
     .content-box:hover {
-      box-shadow: 0 0 50px 10px #00ffcc, 0 0 30px silver, 0 0 40px lime;
+      box-shadow: 0 0 50px 10px #8BAE66, 0 0 30px #628141, 0 0 40px #EBD5AB;
       transform: translateY(-1px);
     }
 
@@ -113,15 +117,15 @@
       padding: 10px 20px;
       font-weight: bold;
       border-radius: 8px;
-      background: linear-gradient(135deg, #228B22, #32CD32);
+      background: linear-gradient(135deg, #628141, #8BAE66);
       color: white;
-      box-shadow: 0 0 18px 3px silver;
+      box-shadow: 0 0 18px 3px #1B211A;
       transition: 0.3s;
     }
 
     .cpp-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 40px 10px silver, 0 0 25px lime;
+      box-shadow: 0 0 40px 10px #8BAE66, 0 0 25px #EBD5AB;
     }
 
     .cpp-heading {
@@ -129,7 +133,7 @@
       font-size: 1.3em;
       font-weight: bold;
       margin-top: 40px;
-      color: maroon;
+      color: #1B211A;
     }
 
   </style>
@@ -180,12 +184,9 @@
 </div>
 
 <!-- Extra HTML Feature -->
-<div style="border-left:5px solid #3498db;padding:10px;">
+<div style="border-left:5px solid #628141;padding:10px;background:#EBD5AB;">
 <b>Live Status:</b> Delivery truck ETA: 12 minutes.
 </div>
-
-
-
 
     <div class="cpp-heading">C++ Implementation</div>
     <div class="button-row">
