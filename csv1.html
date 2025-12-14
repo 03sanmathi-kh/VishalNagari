@@ -17,31 +17,49 @@
       width: 80%;
       margin: 50px auto;
       padding: 30px;
-      background: #ffe0e0;
+      background: #e6f4ff; /* light blue */
       border-radius: 15px;
-      box-shadow: 0 0 15px silver, 0 0 30px silver;
+      box-shadow: 0 0 12px #87ceeb;
+      transition: all 0.3s ease;
+    }
+
+    .container:hover {
+      box-shadow: 0 0 20px #87ceeb, 0 0 40px #87ceeb; /* sky blue glow */
     }
 
     h1 {
       text-align: center;
       font-size: 2.5em;
-      color: maroon;
+      color: #003366;
       margin-bottom: 20px;
-      text-shadow: 0 0 5px silver, 0 0 15px silver;
+      transition: text-shadow 0.3s ease;
+    }
+
+    h1:hover {
+      text-shadow: 0 0 6px #87ceeb;
     }
 
     h2 {
       font-size: 1.8em;
       margin-top: 25px;
       margin-bottom: 10px;
-      color: #2c2c2c;
-      text-shadow: 0 0 3px silver;
+      color: #003366;
+      transition: text-shadow 0.3s ease;
+    }
+
+    h2:hover {
+      text-shadow: 0 0 5px #87ceeb;
     }
 
     p {
       font-size: 1.1em;
       line-height: 1.6em;
       margin-bottom: 20px;
+      transition: text-shadow 0.3s ease;
+    }
+
+    p:hover {
+      text-shadow: 0 0 4px #87ceeb;
     }
 
     .buttons {
@@ -54,17 +72,17 @@
     .buttons a {
       text-decoration: none;
       padding: 15px 25px;
-      background-color: black;
+      background-color: #003366;
       color: white;
       border-radius: 50px;
       font-weight: bold;
       text-align: center;
-      transition: 0.3s;
+      transition: all 0.3s ease;
     }
 
     .buttons a:hover {
-      background-color: #333;
-      box-shadow: 0 0 15px silver, 0 0 25px silver;
+      background-color: #00509e;
+      box-shadow: 0 0 15px #87ceeb, 0 0 30px #87ceeb;
     }
 
   </style>
@@ -90,7 +108,7 @@
       <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/code1.cpp" target="_blank" class="cpp-btn">
        View code
       </a>
-      <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/code1.csv" target="_blank" class="cpp-btn">
+      <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/AQI.csv" target="_blank" class="cpp-btn">
        View Dataset
       </a>
 </div>
