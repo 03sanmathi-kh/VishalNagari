@@ -1,19 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Module 1: Adaptive Resource Flow</title>
+  <title>Module 4: Drone-based Field Monitoring</title>
 
   <style>
     /* ===== THEME BACKGROUND ===== */
     body.light {
-      background-color: #f5f5f5;
+      background: radial-gradient(circle at 20% 30%, #CBF3BB 0%, transparent 45%),
+                  radial-gradient(circle at 80% 70%, #ABE7B2 0%, transparent 45%),
+                  linear-gradient(135deg, #ECF4E8, #CBF3BB);
       color: black;
     }
     body.dark {
-      background-color: navy;
+      background: radial-gradient(circle at 30% 30%, #93BFC7 0%, transparent 45%),
+                  radial-gradient(circle at 70% 70%, #ABE7B2 0%, transparent 45%),
+                  linear-gradient(135deg, #93BFC7, #ABE7B2);
       color: black;
     }
 
@@ -22,13 +25,14 @@
       position: fixed;
       top: 10px;
       left: 10px;
-      background: #444;
+      background: #93BFC7;
       padding: 8px 14px;
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       z-index: 999;
+      box-shadow: 0 0 20px #CBF3BB;
     }
 
     /* ===== BACK BUTTON ===== */
@@ -41,37 +45,37 @@
       padding: 10px 20px;
       font-weight: bold;
       border-radius: 8px;
-      background: rgba(135, 206, 250, 0.8);
-      color: navy;
-      box-shadow: 0 0 18px 3px silver;
+      background: linear-gradient(135deg, #ABE7B2, #CBF3BB);
+      color: #93BFC7;
+      box-shadow: 0 0 18px 3px #ECF4E8;
       transition: 0.3s;
       z-index: 999;
     }
     .back-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 35px 8px silver, 0 0 25px rgba(135, 206, 250, 0.8);
+      box-shadow: 0 0 35px 8px #CBF3BB, 0 0 25px #ECF4E8;
     }
 
     /* ===== MAIN CARD ===== */
     .module-card {
       width: 70%;
-      background: rgba(193, 255, 193, 0.6);
+      background: rgba(171, 231, 178, 0.65);
       margin: 80px auto 60px auto;
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
       transition: 0.3s ease-in-out;
     }
 
     .module-card:hover {
-      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 25px rgba(193, 255, 193, 0.8);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.5), 0 0 25px #93BFC7;
       transform: translateY(-2px);
     }
 
     .module-card h1 {
       text-align: center;
-      color: maroon;
+      color: #93BFC7;
     }
 
     /* ===== HEADINGS ===== */
@@ -79,22 +83,22 @@
       font-size: 1.4em;
       margin-top: 25px;
       font-weight: bold;
-      color: maroon;
+      color: #93BFC7;
     }
 
     /* ===== CONTENT BOX ===== */
     .content-box {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(236, 244, 232, 0.9);
       padding: 18px;
       border-radius: 10px;
       margin-top: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      box-shadow: 0 0 15px #CBF3BB;
       color: black;
       transition: 0.3s ease-in-out;
     }
 
     .content-box:hover {
-      box-shadow: 0 0 50px 10px #00ffcc, 0 0 30px silver, 0 0 40px lime;
+      box-shadow: 0 0 50px 10px #ABE7B2, 0 0 30px #CBF3BB, 0 0 40px #ECF4E8;
       transform: translateY(-1px);
     }
 
@@ -113,15 +117,15 @@
       padding: 10px 20px;
       font-weight: bold;
       border-radius: 8px;
-      background: linear-gradient(135deg, #228B22, #32CD32);
+      background: linear-gradient(135deg, #93BFC7, #ABE7B2);
       color: white;
-      box-shadow: 0 0 18px 3px silver;
+      box-shadow: 0 0 18px 3px #CBF3BB;
       transition: 0.3s;
     }
 
     .cpp-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 40px 10px silver, 0 0 25px lime;
+      box-shadow: 0 0 40px 10px #ABE7B2, 0 0 25px #ECF4E8;
     }
 
     .cpp-heading {
@@ -129,7 +133,7 @@
       font-size: 1.3em;
       font-weight: bold;
       margin-top: 40px;
-      color: maroon;
+      color: #93BFC7;
     }
 
   </style>
@@ -182,7 +186,7 @@
 
 
 <!-- Extra HTML Feature -->
-<div style="padding:10px;background:#8e44ad;color:white;border-radius:8px;">
+<div style="padding:10px;background:#93BFC7;color:white;border-radius:8px;">
 Drone Battery: <progress value="85" max="100"></progress> 85%
 </div>
 
