@@ -16,7 +16,6 @@
       transition: background 0.5s, color 0.5s;
     }
 
-    /* Back Button */
     .back-btn {
       position: fixed;
       top: 15px;
@@ -38,7 +37,6 @@
       transform: translateY(-2px);
     }
 
-    /* Lavender box */
     .lav-box {
       width: 85%;
       margin: 70px auto;
@@ -53,7 +51,6 @@
       box-shadow: 0 0 45px #ff69b4, 0 0 35px rgba(255, 182, 193, 0.7);
     }
 
-    /* Title */
     .lav-title {
       font-size: 3rem;
       text-align: center;
@@ -64,7 +61,6 @@
     }
     .lav-title:hover { text-shadow: 0 0 6px #ffd700; }
 
-    /* Headings */
     h2 { 
       text-align: center; 
       font-size: 2.2rem; 
@@ -139,32 +135,74 @@
 
 <body>
 
-  <button class="back-btn" onclick="window.location.href='collabs.html'">Back</button>
+<button class="back-btn" onclick="window.location.href='collabs.html'">Back</button>
 
-  <div class="lav-box">
-    <div class="lav-title">Hey there!! Sanmathi & Akshata Collaborating!!</div>
+<div class="lav-box">
+  <div class="lav-title">Hey there!! Sanmathi & Akshata Collaborating!!</div>
 
-    <div class="collab-image">
-      <img src="cotton.png" alt="Collaboration Image">
-    </div>
+  <div class="collab-image">
+    <img src="cotton.png" alt="Collaboration Image">
+  </div>
 
-    <h2>Focus Areas</h2>
-    <p>• Collaboration connects my focus on sector Industries, Infrastructure & Logistics Optimization with my partner Akshata's focus in the field of Traffic & Transport analysis.</p>
+  <h2>Focus Areas</h2>
+  <p>• Collaboration connects my focus on sector Industries, Infrastructure & Logistics Optimization with my partner Akshata's focus in the field of Traffic & Transport analysis.</p>
 
-    <h2>Project Goal / Problem Statement</h2>
-    <p><strong>Cotton Supply Chain Optimisation (Graph + Shortest Path + Min-Cost Flow)</strong></p>
-    <p>
-      Vishalanagri is India’s largest cotton textile hub. Cotton is grown in farms around the Purna river and transported
-      to 12 major ginning and textile clusters. Design the most cost-efficient and time-efficient transportation network
-      from farms → ginning mills → textile factories → export terminals.
-    </p>
-    <p><em>Input:</em> A road graph where edge-weights encode fuel cost, expected delays, congestion probabilities, and seasonal blockages.</p>
-    <p><em>Output:</em> Optimised routing plan and flow assignment minimizing total transportation cost while meeting delivery time constraints and capacity limits.</p>
-    <p>
-      Approach: Model the network as a directed graph. Use single-source shortest path algorithms (Dijkstra or Bellman-Ford)
-      for route discovery and Min-Cost Max-Flow to assign cotton shipments across multiple routes under capacity and cost
-      constraints. Preprocess with all-pairs analyses (Floyd-Warshall) where required, and dynamically update edge weights
-      for real-time congestion or hazard updates.
-    </p>
+  <h2>Project Goal / Problem Statement</h2>
+  <p><strong>Cotton Supply Chain Optimisation (Graph + Shortest Path + Min-Cost Flow)</strong></p>
 
-    <!-- Rest of the file remains unchanged -->
+  <p>
+    Vishalanagri is India’s largest cotton textile hub. Cotton is grown in farms around the Purna river and transported
+    to 12 major ginning and textile clusters. Design the most cost-efficient and time-efficient transportation network
+    from farms → ginning mills → textile factories → export terminals.
+  </p>
+
+  <p><em>Input:</em> A road graph where edge-weights encode fuel cost, expected delays, congestion probabilities, and seasonal blockages.</p>
+  <p><em>Output:</em> Optimised routing plan and flow assignment minimizing total transportation cost while meeting delivery time constraints and capacity limits.</p>
+
+  <p>
+    Approach: Model the network as a directed graph. Use single-source shortest path algorithms (Dijkstra or Bellman-Ford)
+    for route discovery and Min-Cost Max-Flow to assign cotton shipments across multiple routes under capacity and cost
+    constraints. Preprocess with all-pairs analyses (Floyd-Warshall) where required, and dynamically update edge weights
+    for real-time congestion or hazard updates.
+  </p>
+
+  <h2>Algorithms Used</h2>
+  <p>• Dijkstra – Minimum-cost single-source routing</p>
+  <p>• Bellman-Ford – Handles negative/hazard-adjusted weights</p>
+  <p>• Floyd-Warshall – All-pairs baseline mapping</p>
+  <p>• Min Cost Max Flow – Optimal distribution of cotton shipments</p>
+
+  <h2>Efficiency of Each Algorithm</h2>
+  <p>• <b>Dijkstra:</b> Time – O(V²) or O(E log V); Space – O(V)</p>
+  <p>• <b>Bellman-Ford:</b> Time – O(V × E); Space – O(V)</p>
+  <p>• <b>Floyd-Warshall:</b> Time – O(V³); Space – O(V²)</p>
+  <p>• <b>Min Cost Max Flow:</b> Time – O(V × E²); Space – O(V + E)</p>
+
+  <img src="algoflow.jpeg" alt="Project Image" class="lav-img">
+
+  <h2>Benefits</h2>
+  <p>• Smooth routing & reduced congestion</p>
+  <p>• Lower emissions through optimized paths</p>
+  <p>• Industry cost savings</p>
+  <p>• Stable cotton supply chain</p>
+
+  <h2>SDG Alignment</h2>
+  <p>• SDG 9 – Industry, Innovation & Infrastructure</p>
+  <p>• SDG 11 – Sustainable Cities</p>
+  <p>• SDG 12 – Efficient Resource Management</p>
+  <p>• SDG 13 – Climate Action</p>
+
+  <h2>C++ Implementations</h2>
+  <div class="button-row">
+    <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/dijkstracollab.cpp" target="_blank" class="cpp-btn">Dijkstra code</a>
+    <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/bfscollab.cpp" target="_blank" class="cpp-btn">BFS code</a>
+    <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/greedycollab.cpp" target="_blank" class="cpp-btn">Greedy code</a>
+    <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/dfscollab.cpp" target="_blank" class="cpp-btn">DFS code</a>
+    <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/cotton.cpp" target="_blank" class="cpp-btn">
+      Approach using Bellman-Ford & Floyd-Warshall
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
