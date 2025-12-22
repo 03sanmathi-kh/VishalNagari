@@ -541,31 +541,59 @@ body.light .star {
 }
 /* --------- */
 
-/* DARK MODE */
+/* ===================================================== */
+/* ===== DARK MODE NAVY DEPTH WAVE OVERRIDE (SAFE) ===== */
+/* ===================================================== */
+
+/* ---- Base background feel (deep navy blur) ---- */
+body.dark {
+  background-color: #050b1f; /* deep navy base */
+}
+
+/* ---- Deepest & least transparent wave (touching base) ---- */
 body.dark::before {
-  background: rgba(10, 20, 80, 0.85);   /* darkest blue, most opaque */
+  background: rgba(8, 18, 50, 0.85);   /* darkest navy */
+  filter: blur(2px);
 }
 
+/* ---- Slightly lighter navy ---- */
 body.dark::after {
-  background: rgba(30, 60, 130, 0.65);  /* lighter blue */
+  background: rgba(15, 35, 85, 0.65);  /* rich navy blue */
+  filter: blur(3px);
 }
 
+/* ---- Mid blue layer ---- */
 body.dark .wave-layer3 {
-  background: rgba(70, 120, 200, 0.45); /* sky blue tone */
+  background: rgba(35, 75, 150, 0.45); /* calm blue */
+  filter: blur(4px);
 }
 
-/* Extra gradient waves (already present) */
+/* ---- Extra depth layers (already exist, just tuned) ---- */
 body.dark .wave-layer1 {
-  opacity: 0.35;
+  background: rgba(70, 120, 200, 0.30); /* sky-blue transition */
+  filter: blur(5px);
 }
 
 body.dark .wave-layer2 {
-  opacity: 0.25;
+  background: rgba(140, 190, 240, 0.20); /* pale sky blue */
+  filter: blur(6px);
 }
 
 body.dark .wave-layer4 {
-  opacity: 0.18;
+  background: rgba(230, 245, 255, 0.12); /* near-white highlight */
+  filter: blur(7px);
 }
+
+/* ---- Unified soft silver glow (not blue-heavy) ---- */
+body.dark::before,
+body.dark::after,
+body.dark .wave-layer1,
+body.dark .wave-layer2,
+body.dark .wave-layer3,
+body.dark .wave-layer4 {
+  box-shadow: 0 0 40px rgba(180,200,255,0.25);
+}
+
 
 /* LIGHT MODE */
 body.light::before {
