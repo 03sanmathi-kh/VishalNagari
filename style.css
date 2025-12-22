@@ -539,85 +539,85 @@ body.light .star {
   background: #555; /* visible but not too bright */
   box-shadow: 0 0 6px #555, 0 0 12px #99ccff;
 }
-/* =============================== */
-/* =============================== */
+/* --------- */
 
-
+/* DARK MODE */
 body.dark::before {
-  background: linear-gradient(
-    120deg,
-    rgba(0, 255, 255, 0.65),
-    rgba(138, 43, 226, 0.55),
-    rgba(0, 150, 255, 0.6)
-  );
-  filter: drop-shadow(0 0 35px rgba(0,255,255,0.6));
+  background: rgba(10, 20, 80, 0.85);   /* darkest blue, most opaque */
 }
 
 body.dark::after {
-  background: linear-gradient(
-    240deg,
-    rgba(255, 0, 255, 0.45),
-    rgba(0, 200, 255, 0.55),
-    rgba(100, 0, 255, 0.5)
-  );
-  filter: drop-shadow(0 0 40px rgba(180,0,255,0.6));
+  background: rgba(30, 60, 130, 0.65);  /* lighter blue */
 }
 
 body.dark .wave-layer3 {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 255, 180, 0.45),
-    rgba(0, 120, 255, 0.55)
-  );
-  filter: drop-shadow(0 0 45px rgba(0,200,255,0.7));
+  background: rgba(70, 120, 200, 0.45); /* sky blue tone */
 }
 
-/* Light mode waves – clearer pastel tones */
-body.light::before,
-body.light::after,
+/* Extra gradient waves (already present) */
+body.dark .wave-layer1 {
+  opacity: 0.35;
+}
+
+body.dark .wave-layer2 {
+  opacity: 0.25;
+}
+
+body.dark .wave-layer4 {
+  opacity: 0.18;
+}
+
+/* LIGHT MODE */
+body.light::before {
+  background: rgba(160, 190, 255, 0.85);
+}
+
+body.light::after {
+  background: rgba(190, 215, 255, 0.65);
+}
+
 body.light .wave-layer3 {
-  filter: drop-shadow(0 0 30px rgba(0,120,255,0.45));
+  background: rgba(210, 235, 255, 0.45);
 }
 
-/* ---- Brighter Stars ---- */
+body.light .wave-layer1 { opacity: 0.35; }
+body.light .wave-layer2 { opacity: 0.25; }
+body.light .wave-layer4 { opacity: 0.18; }
+
+
+body::before,
+body::after,
+body .wave-layer3,
+.wave-layer1,
+.wave-layer2,
+.wave-layer4 {
+  filter: drop-shadow(0 0 35px rgba(160,220,255,0.35));
+}
+
+
 .star {
-  opacity: 1;
   box-shadow:
-    0 0 10px #ffffff,
-    0 0 20px #a0f0ff,
-    0 0 35px #c0f0ff;
+    0 0 10px white,
+    0 0 18px #a0f0ff,
+    0 0 30px rgba(160,240,255,0.9);
 }
 
-/* Extra sparkle animation boost */
 @keyframes twinkle {
-  0% { opacity: 0.4; transform: scale(0.7); }
+  0% { opacity: 0.4; transform: scale(0.8); }
   50% { opacity: 1; transform: scale(1.6); }
-  100% { opacity: 0.4; transform: scale(0.7); }
+  100% { opacity: 0.4; transform: scale(0.8); }
 }
 
-/* ---- Shinier Bubbles ---- */
+
 .bubble {
-  background: radial-gradient(
-    circle at top left,
-    rgba(255,255,255,0.6),
-    rgba(0,255,255,0.35),
-    rgba(0,150,255,0.25)
-  );
+  background: rgba(0,255,255,0.35);
   box-shadow:
-    0 0 15px rgba(0,255,255,0.6),
-    0 0 30px rgba(0,150,255,0.5);
+    0 0 12px rgba(0,255,255,0.6),
+    0 0 22px rgba(160,240,255,0.8);
 }
 
-/* Light mode bubbles – glassy look */
-body.light .bubble {
-  background: radial-gradient(
-    circle at top left,
-    rgba(255,255,255,0.7),
-    rgba(150,200,255,0.4),
-    rgba(100,150,255,0.25)
-  );
+.bubble:hover {
   box-shadow:
-    0 0 12px rgba(100,150,255,0.6),
-    0 0 25px rgba(0,120,255,0.4);
+    0 0 25px silver,
+    0 0 40px #c0f0ff;
 }
-
