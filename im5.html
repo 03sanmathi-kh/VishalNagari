@@ -8,15 +8,15 @@
   <style>
     /* ===== THEME BACKGROUND ===== */
     body.light {
-      background: radial-gradient(circle at 20% 20%, #FBEFEF 0%, transparent 45%),
-                  radial-gradient(circle at 80% 80%, #F9DFDF 0%, transparent 45%),
-                  linear-gradient(135deg, #FCF8F8, #FBEFEF);
+      background: radial-gradient(circle at 20% 20%, #F5D3C4 0%, transparent 45%),
+                  radial-gradient(circle at 80% 80%, #F2AEBB 0%, transparent 45%),
+                  linear-gradient(135deg, #A7AAE1, #F5D3C4);
       color: black;
     }
     body.dark {
-      background: radial-gradient(circle at 30% 30%, #F5AFAF 0%, transparent 45%),
-                  radial-gradient(circle at 70% 70%, #F9DFDF 0%, transparent 45%),
-                  linear-gradient(135deg, #F5AFAF, #F9DFDF);
+      background: radial-gradient(circle at 30% 30%, #696FC7 0%, transparent 45%),
+                  radial-gradient(circle at 70% 70%, #F2AEBB 0%, transparent 45%),
+                  linear-gradient(135deg, #696FC7, #F2AEBB);
       color: black;
     }
 
@@ -25,41 +25,41 @@
       position: fixed;
       top: 10px;
       left: 10px;
-      background: #F5AFAF;
+      background: #696FC7;
       padding: 8px 14px;
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       z-index: 999;
-      box-shadow: 0 0 20px #F9DFDF;
+      box-shadow: 0 0 20px #A7AAE1;
     }
 
     /* ===== BACK BUTTON ===== */
     .back-btn {
       position: fixed;
-      top: 55px;  /* below toggle button */
+      top: 55px;
       left: 10px;
       display: inline-block;
       text-decoration: none;
       padding: 10px 20px;
       font-weight: bold;
       border-radius: 8px;
-      background: linear-gradient(135deg, #F9DFDF, #FBEFEF);
-      color: #F5AFAF;
-      box-shadow: 0 0 18px 3px #FBEFEF;
+      background: linear-gradient(135deg, #F2AEBB, #F5D3C4);
+      color: #696FC7;
+      box-shadow: 0 0 18px 3px #A7AAE1;
       transition: 0.3s;
       z-index: 999;
     }
     .back-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 35px 8px #F9DFDF, 0 0 25px #FCF8F8;
+      box-shadow: 0 0 35px 8px #F2AEBB, 0 0 25px #A7AAE1;
     }
 
     /* ===== MAIN CARD ===== */
     .module-card {
       width: 70%;
-      background: rgba(249, 223, 223, 0.7);
+      background: rgba(245, 211, 196, 0.7);
       margin: 80px auto 60px auto;
       padding: 30px;
       border-radius: 15px;
@@ -69,13 +69,13 @@
     }
 
     .module-card:hover {
-      box-shadow: 0 15px 50px rgba(0,0,0,0.5), 0 0 25px #F5AFAF;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.5), 0 0 25px #696FC7;
       transform: translateY(-2px);
     }
 
     .module-card h1 {
       text-align: center;
-      color: #F5AFAF;
+      color: #696FC7;
     }
 
     /* ===== HEADINGS ===== */
@@ -83,22 +83,22 @@
       font-size: 1.4em;
       margin-top: 25px;
       font-weight: bold;
-      color: #F5AFAF;
+      color: #696FC7;
     }
 
     /* ===== CONTENT BOX ===== */
     .content-box {
-      background: rgba(252, 248, 248, 0.9);
+      background: rgba(167, 170, 225, 0.9);
       padding: 18px;
       border-radius: 10px;
       margin-top: 10px;
-      box-shadow: 0 0 15px #F9DFDF;
+      box-shadow: 0 0 15px #F2AEBB;
       color: black;
       transition: 0.3s ease-in-out;
     }
 
     .content-box:hover {
-      box-shadow: 0 0 50px 10px #F9DFDF, 0 0 30px #FBEFEF, 0 0 40px #FCF8F8;
+      box-shadow: 0 0 50px 10px #F2AEBB, 0 0 30px #F5D3C4, 0 0 40px #A7AAE1;
       transform: translateY(-1px);
     }
 
@@ -117,15 +117,15 @@
       padding: 10px 20px;
       font-weight: bold;
       border-radius: 8px;
-      background: linear-gradient(135deg, #F5AFAF, #F9DFDF);
+      background: linear-gradient(135deg, #696FC7, #A7AAE1);
       color: white;
-      box-shadow: 0 0 18px 3px #FBEFEF;
+      box-shadow: 0 0 18px 3px #F5D3C4;
       transition: 0.3s;
     }
 
     .cpp-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 40px 10px #F9DFDF, 0 0 25px #FCF8F8;
+      box-shadow: 0 0 40px 10px #F2AEBB, 0 0 25px #A7AAE1;
     }
 
     .cpp-heading {
@@ -133,7 +133,7 @@
       font-size: 1.3em;
       font-weight: bold;
       margin-top: 40px;
-      color: #F5AFAF;
+      color: #696FC7;
     }
 
   </style>
@@ -141,13 +141,11 @@
 
 <body class="light">
 
-  <!-- Theme Toggle -->
   <button class="theme-toggle"
     onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">
     Switch Theme
   </button>
 
-  <!-- Back Button -->
   <a href="isha_port.html" class="back-btn">⬅ Back</a>
 
   <div class="module-card">
@@ -156,7 +154,7 @@
 
     <h2 class="section-title">Problem Statement</h2>
     <div class="content-box">
-       <p> <strong>Manual storage tracking leads to spoilage and inventory mismatch.</strong></p>
+       <p><strong>Manual storage tracking leads to spoilage and inventory mismatch.</strong></p>
     </div>
 
     <h2 class="section-title">Solution</h2>
@@ -166,35 +164,52 @@
 
     <h2 class="section-title">Algorithms Used</h2>
     <div class="content-box">
-       <p><strong>Algorithm:</strong>  BST Insert & Traverse (O(log n))</p>
+       <p><strong>Algorithm:</strong> BST Insert & Traverse (O(log n))</p>
+    </div>
 
-   
+    <h2 class="section-title">Dataset Description</h2>
+    <div class="content-box">
+      <p>The dataset contains warehouse and cold storage items including ItemID, ItemName, Category, Quantity, StorageTemperature, and LastChecked timestamps for inventory tracking.</p>
+    </div>
+
+    <div style="background:#A7AAE1;padding:12px;border-radius:10px;color:#fff;margin-top:10px;">
+      <b>Dataset:</b> 
+      <a href="prob5.csv" download style="color:#fff;text-decoration:underline;">Download CSV</a>
+    </div>
+
+    <div style="background:#A7AAE1;padding:12px;border-radius:10px;color:#fff;margin-top:10px;">
+      <b>Project Documentation:</b> 
+      <a href="readme5.md" download style="color:#fff;text-decoration:underline;">Download README</a>
+    </div>
+
     <h2 class="section-title">How This Innovation Powers the SDGs</h2>
-<div class="content-box">
- <div class="sdg-box">
-<b>🌍 SDGs Addressed:</b>
-<ul>
-<li>SDG 12 – Responsible Consumption</li>
-<li>SDG 2 – Zero Hunger</li>
-</ul>
-<b>Impact Analysis:</b>
-<p>Reduces post-harvest losses and ensures food availability through efficient storage.</p>
-</div>
-</div>
+    <div class="content-box">
+      <b> SDGs Addressed:</b>
+      <ul>
+        <li>SDG 12 – Responsible Consumption</li>
+        <li>SDG 2 – Zero Hunger</li>
+      </ul>
+    </div>
 
+    <h2 class="section-title">Impact Analysis</h2>
+    <div class="content-box">
+      <p>Reduces post-harvest losses and ensures food availability through efficient storage.</p>
+    </div>
 
+    <h2 class="section-title">System Status</h2>
+    <div class="content-box">
+      <p>🟢 Cold Storage Operating Normally | Temperature Stable</p>
+    </div>
 
-<!-- Extra HTML Feature -->
-<div style="padding:12px;background:#F5AFAF;color:#fff;border-radius:10px;">
-Cold Storage Temperature: <b>4°C</b>
-</div>
+    <div style="padding:12px;background:#696FC7;color:#fff;border-radius:10px;margin-top:15px;">
+      Cold Storage Temperature: <b>4°C</b>
+    </div>
 
     <div class="cpp-heading">C++ Implementation</div>
     <div class="button-row">
       <a href="https://github.com/shetisha77/isha/blob/main/i5.cpp" target="_blank" class="cpp-btn">
         Greedy Algorithm (C++)
       </a>
-     
     </div>
 
   </div>
