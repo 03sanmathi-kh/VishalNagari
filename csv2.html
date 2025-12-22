@@ -1,128 +1,182 @@
-<section class="section-problem-card">
-    <h2> Museum Footfall Prediction</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishalnagari Candidate Selection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #2c2c2c;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 85%;
+      margin: 50px auto;
+      padding: 40px;
+      background: #e6f4ff;
+      border-radius: 15px;
+      box-shadow: 0 0 18px #87ceeb, 0 0 36px #87ceeb;
+      transition: all 0.3s ease;
+    }
+
+    .container:hover {
+      box-shadow: 0 0 28px #87ceeb, 0 0 50px #87ceeb;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.6em;
+      color: #003366;
+      margin-bottom: 25px;
+      transition: text-shadow 0.3s ease;
+    }
+
+    h1:hover {
+      text-shadow: 0 0 8px #87ceeb;
+    }
+
+    h2 {
+      font-size: 1.85em;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      color: #003366;
+      transition: text-shadow 0.3s ease;
+    }
+
+    h2:hover {
+      text-shadow: 0 0 6px #87ceeb;
+    }
+
+    p {
+      font-size: 1.15em;
+      line-height: 1.7em;
+      margin-bottom: 20px;
+      transition: text-shadow 0.3s ease;
+    }
+
+    p:hover {
+      text-shadow: 0 0 5px #87ceeb;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 35px;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      padding: 16px 28px;
+      background-color: #003366;
+      color: white;
+      border-radius: 50px;
+      font-weight: bold;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .buttons a:hover {
+      background-color: #00509e;
+      box-shadow: 0 0 20px #87ceeb, 0 0 40px #87ceeb;
+    }
+
+    .efficiency {
+      font-size: 1em;
+      font-weight: bold;
+      color: #003366;
+      margin-top: -10px;
+      margin-bottom: 20px;
+      text-align: center;
+      transition: text-shadow 0.3s ease;
+    }
+
+    .efficiency:hover {
+      text-shadow: 0 0 4px #87ceeb;
+    }
+
+    .center-img {
+      display: block;
+      margin: 30px auto;
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #87ceeb;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Vishalnagari Candidate Selection Module</h1>
+
+    <h2>Problem Statement</h2>
     <p>
-        In this module, the focus is on predicting visitor footfall in a museum using historical data and patterns. 
-        The goal is to help museum management optimize staffing, ticketing, and crowd management.
+      In the smart city of Vishalnagari, local authorities and companies aim to promote 
+      local talent while ensuring that only the most qualified candidates are selected for employment.
+      Every month, companies post job openings with specific skill requirements, such as proficiency 
+      in programming languages, data analysis, or technical expertise. The city has a diverse pool 
+      of candidates, including residents of Vishalnagari and students from other areas.
+    </p>
+    <p>
+      The objective of the system is to select candidates efficiently, applying the following rules:
+      Only candidates meeting all required skills for a job are considered; 
+      Vishalnagari students are given preference over non-local candidates when multiple eligible candidates exist;
+      and within local and non-local groups, candidates are ranked by experience, academic score, or certifications.
+    </p>
+    <p>
+      The system must handle multiple job postings and a large number of candidates, 
+      ensuring fair, prioritized selection and providing transparency to employers and applicants.
     </p>
 
-    <h3>Algorithm Used:</h3>
+    <h2>Algorithm Used</h2>
     <p>
-        Pattern Recognition, Memoization, and Recursion are used to identify trends and predict peak hours. 
-        (Optional: Dynamic Programming can also be applied for further optimization.)
+      <strong>Heap / Priority Queue-Based Selection:</strong> 
+      Candidates are filtered for skill requirements, then inserted into a max-heap where priority is computed based on:
+      local status, experience, academic score, and certifications. The heap allows efficient extraction 
+      of top candidates for each job posting.
     </p>
 
     <p class="efficiency">
-        Algorithm Efficiency: O(n) for pattern recognition, memoization reduces repeated computations
+      Algorithm Efficiency: O(n × log n) for building and extracting candidates from the heap per job posting
     </p>
 
-    <div class="problem-buttons">
-         <div class="buttons">
-     
-      
-      <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/code2.cpp" target="_blank" class="cpp-btn">
-       View code
+    <h2>Algorithm Flow</h2>
+    <img src="selection_flow.png" alt="Algorithm Flow Diagram" class="center-img">
+
+    <h2>Design Techniques Used</h2>
+    <p>
+      <strong>Heap / Priority Queue:</strong> Efficient top candidate extraction.<br>
+      <strong>Filtering:</strong> Ensures candidates meet all required skills.<br>
+      <strong>Prioritization:</strong> Gives preference to Vishalnagari residents.<br>
+      <strong>Ranking:</strong> Orders candidates based on experience, academics, and certifications.<br>
+      <strong>Decomposition:</strong> Breaks the system into input processing, filtering, prioritization, and ranking modules.<br>
+      <strong>Abstraction:</strong> Represents complex candidate data as simplified numerical scores for heap ordering.
+    </p>
+
+    <h2>Relevant Sustainable Development Goals (SDGs)</h2>
+    <p>
+      <strong>SDG 4 – Quality Education:</strong> Encourages skilled candidates to apply their knowledge.<br>
+      <strong>SDG 8 – Decent Work and Economic Growth:</strong> Supports fair employment and local talent development.<br>
+      <strong>SDG 10 – Reduced Inequalities:</strong> Gives preference to local students while maintaining merit-based ranking.
+    </p>
+
+    <div class="buttons">
+      <a href="sanmathi_port.html" class="cpp-btn">
+       Back
       </a>
-      <a href="https://github.com/03sanmathi-kh/DAA_code_sanmathi/blob/main/vishalnagari_museum_footfall_100_entries.csv" target="_blank" class="cpp-btn">
-       View Dataset
+      <a href="#" class="cpp-btn">
+       View Sample Candidate Dataset
       </a>
-</div>
+      <a href="#" class="cpp-btn">
+       Run Selection Algorithm
+      </a>
     </div>
-</section>
+  </div>
 
-<style>
-/* Module 2 Section Styling - Lavender Theme (Updated) */
-.section-problem-card {
-    padding: 40px; /* slightly bigger */
-    width: 90%;    /* larger container */
-    background-color: #efe6ff; /* lavender */
-    border-radius: 16px;
-    margin: 40px auto; /* auto margin for centering */
-    text-align: center;
-    box-shadow: 0 0 18px #c9b6ff, 0 0 36px #b39ddb; /* heavier glow */
-    transition: all 0.3s ease;
-}
-
-.section-problem-card:hover {
-    box-shadow: 0 0 28px #c9b6ff, 0 0 50px #b39ddb; /* heavier lavender glow */
-}
-
-/* Headings */
-.section-problem-card h2 {
-    font-size: 2em;
-    margin-bottom: 18px;
-    font-weight: bold;
-    color: #3d2b5a;
-    transition: text-shadow 0.3s ease;
-}
-
-.section-problem-card h2:hover {
-    text-shadow: 0 0 8px #b39ddb;
-}
-
-.section-problem-card h3 {
-    font-size: 1.45em;
-    margin-bottom: 12px;
-    font-weight: bold;
-    color: #3d2b5a;
-    transition: text-shadow 0.3s ease;
-}
-
-.section-problem-card h3:hover {
-    text-shadow: 0 0 6px #b39ddb;
-}
-
-/* Paragraphs */
-.section-problem-card p {
-    font-size: 1.08em;
-    color: #4a3f5c;
-    line-height: 1.8em;
-    margin-bottom: 22px;
-    max-width: 950px;
-    margin-left: auto;
-    margin-right: auto;
-    transition: text-shadow 0.3s ease;
-}
-
-.section-problem-card p:hover {
-    text-shadow: 0 0 5px #c9b6ff;
-}
-
-/* Algorithm efficiency styling */
-.efficiency {
-    font-size: 1em;
-    font-weight: bold;
-    color: #3d2b5a;
-    margin-bottom: 20px;
-    transition: text-shadow 0.3s ease;
-}
-
-.efficiency:hover {
-    text-shadow: 0 0 4px #b39ddb;
-}
-
-/* Buttons */
-.problem-buttons {
-    display: flex;
-    gap: 25px;
-    justify-content: center;
-    margin-top: 25px;
-}
-
-.buttons a {
-    display: inline-block;
-    padding: 16px 28px;
-    background-color: #b39ddb;
-    color: #2c1b47;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    font-size: 1em;
-}
-
-.buttons a:hover {
-    background-color: #a68fd6;
-    box-shadow: 0 0 20px #c9b6ff, 0 0 40px #b39ddb;
-    transform: translateY(-3px);
-}
-</style>
+</body>
+</html>
