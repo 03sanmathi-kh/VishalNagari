@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -38,7 +38,7 @@
     /* ===== BACK BUTTON ===== */
     .back-btn {
       position: fixed;
-      top: 55px;  /* below toggle button */
+      top: 55px;
       left: 10px;
       display: inline-block;
       text-decoration: none;
@@ -78,7 +78,6 @@
       color: #CF4B00;
     }
 
-    /* ===== HEADINGS ===== */
     .section-title {
       font-size: 1.4em;
       margin-top: 25px;
@@ -86,7 +85,6 @@
       color: #CF4B00;
     }
 
-    /* ===== CONTENT BOX ===== */
     .content-box {
       background: rgba(156, 198, 219, 0.85);
       padding: 18px;
@@ -102,7 +100,10 @@
       transform: translateY(-1px);
     }
 
-    /* ===== BUTTONS ===== */
+    progress {
+      accent-color: #CF4B00;
+    }
+
     .button-row {
       display: flex;
       justify-content: center;
@@ -135,19 +136,16 @@
       margin-top: 40px;
       color: #CF4B00;
     }
-
   </style>
 </head>
 
 <body class="light">
 
-  <!-- Theme Toggle -->
   <button class="theme-toggle"
     onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">
     Switch Theme
   </button>
 
-  <!-- Back Button -->
   <a href="isha_port.html" class="back-btn">⬅ Back</a>
 
   <div class="module-card">
@@ -156,35 +154,59 @@
 
     <h2 class="section-title">Problem Statement</h2>
     <div class="content-box">
-       <p> <strong>Farmers often waste water because pipelines do not deliver water through the shortest or least-pressure-loss routes. This leads to unequal distribution and water scarcity..</strong></p>
+      <p><strong>Farmers often waste water because pipelines do not deliver water through the shortest or least-pressure-loss routes. This leads to unequal distribution and water scarcity.</strong></p>
     </div>
 
     <h2 class="section-title">Solution</h2>
     <div class="content-box">
-     Use <b>Dijkstra’s Algorithm</b> to find the shortest and most efficient pipeline route so that water reaches all connected fields with minimal loss.</p>
+      <p>Use <b>Dijkstra’s Algorithm</b> to find the shortest and most efficient pipeline route so that water reaches all connected fields with minimal loss.</p>
     </div>
 
-    <h2 class="section-title">Algorithms Used</h2>
+    <h2 class="section-title">Dataset Description</h2>
     <div class="content-box">
-       <p><strong>Algorithm:</strong>  Dijkstra – Shortest water flow route (O(E + V log V))</p>
+      <p>The dataset is represented as a weighted graph where nodes represent reservoirs, junctions, and agricultural fields. Edge weights indicate pipeline distance and pressure loss.</p>
+    </div>
 
-<p><strong>Conclusion:</strong> Water reaches farms using the most efficient pipeline network.</p>
+    <h2 class="section-title">Dataset & Documentation</h2>
 
-<div class="sdg-box">
-<b>🌍 SDGs Addressed:</b>
-<ul>
-<li>SDG 6 – Clean Water and Sanitation</li>
-<li>SDG 12 – Responsible Consumption and Production</li>
-</ul>
-<b>Impact Analysis:</b>
-<p>Optimized irrigation reduces water wastage, ensures equitable distribution, and promotes sustainable agricultural water management.</p>
-</div>
-</div>
+    <div class="content-box">
+      <b>Dataset:</b>
+      <a href="prob1.csv" download style="color:#CF4B00;text-decoration:underline;">
+        Download CSV
+      </a>
+    </div>
 
-<!-- Extra HTML Feature -->
-<div style="padding:15px;background:#CF4B00;border-radius:10px;color:#FCF6D9;">
-<b>Pipeline Status:</b> Water Flow: <progress value="70" max="100"></progress> 70%
-</div>
+    <div class="content-box">
+      <b>Project Documentation:</b>
+      <a href="readme1.md" download style="color:#CF4B00;text-decoration:underline;">
+        Download README
+      </a>
+    </div>
+
+    <h2 class="section-title">Algorithm Used</h2>
+    <div class="content-box">
+      <p><strong>Dijkstra’s Algorithm</strong> is used to compute the shortest path in the water pipeline network, minimizing pressure loss and distance.</p>
+      <p><strong>Time Complexity:</strong> O(E + V log V)</p>
+    </div>
+
+    <h2 class="section-title">SDGs Used</h2>
+    <div class="content-box">
+      <ul>
+        <li>SDG 6 – Clean Water and Sanitation</li>
+        <li>SDG 12 – Responsible Consumption and Production</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Impact Analysis</h2>
+    <div class="content-box">
+      <p>Optimized irrigation ensures fair water distribution, reduces wastage, improves crop yield, and supports sustainable agricultural practices.</p>
+    </div>
+
+    <h2 class="section-title">System Status</h2>
+    <div class="content-box">
+      <p><strong>Pipeline Efficiency:</strong></p>
+      <progress value="70" max="100"></progress> 70% Operational
+    </div>
 
     <div class="cpp-heading">C++ Implementation</div>
     <div class="button-row">
