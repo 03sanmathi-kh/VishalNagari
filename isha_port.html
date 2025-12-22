@@ -171,14 +171,21 @@ section.card.thought-space:hover {
     0 0 120px #EE6983;
   text-shadow: 0 0 15px #FCF5EE;
 }
+
+/* ===== ONLY CHANGE MADE ===== */
+.modules-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  justify-items: center;
+  margin-top: 30px;
+}
 </style>
 </head>
 
 <body class="light">
-<!-- Theme Toggle Button -->
 <button class="theme-toggle" onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">Switch Theme</button>
 
-<!-- Navigation -->
 <nav>
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
